@@ -89,8 +89,7 @@ public:
 		if (!cmpValueModificationManager)
 			return m_Radius;
 
-		u32 newRadius = cmpValueModificationManager->ApplyModifications(L"TerritoryInfluence/Radius", m_Radius, GetEntityId());
-		return newRadius;
+		return cmpValueModificationManager->ApplyModifications(L"TerritoryInfluence/Radius", m_Radius, GetEntityId());
 	}
 };
 
