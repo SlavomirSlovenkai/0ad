@@ -533,13 +533,13 @@ public:
 		if (!GetObstructionSquare(s))
 			return false;
 
-		CFixedVector2D front = CFixedVector2D(s.x, s.z) + s.v.Multiply(s.hh);
-		CFixedVector2D  back = CFixedVector2D(s.x, s.z) - s.v.Multiply(s.hh);
-
 		CmpPtr<ICmpTerrain> cmpTerrain(GetSystemEntity());
 		CmpPtr<ICmpWaterManager> cmpWaterManager(GetSystemEntity());
 		if (!cmpTerrain || !cmpWaterManager)
 			return false;
+
+		CFixedVector2D front = CFixedVector2D(s.x, s.z) + s.v.Multiply(s.hh);
+		CFixedVector2D  back = CFixedVector2D(s.x, s.z) - s.v.Multiply(s.hh);
 
 		// Keep these constants in agreement with the pathfinder.
 		return cmpWaterManager->GetWaterLevel(front.X, front.Y) - cmpTerrain->GetGroundLevel(front.X, front.Y) > fixed::FromInt(1) &&
@@ -560,8 +560,6 @@ public:
 		if (!cmpPosition->IsInWorld())
 			return FOUNDATION_CHECK_FAIL_NO_OBSTRUCTION; // no obstruction
 
-		CFixedVector2D pos = cmpPosition->GetPosition2D();
-
 		CmpPtr<ICmpPathfinder> cmpPathfinder(GetSystemEntity());
 		if (!cmpPathfinder)
 			return FOUNDATION_CHECK_FAIL_ERROR; // error
@@ -575,7 +573,7 @@ public:
 
 		// Get passability class
 		pass_class_t passClass = cmpPathfinder->GetPassabilityClass(className);
-
+		CFixedVector2D pos = cmpPosition->GetPosition2D();
 		// Ignore collisions within the same control group, or with other non-foundation-blocking shapes.
 		// Note that, since the control group for each entity defaults to the entity's ID, this is typically
 		// equivalent to only ignoring the entity's own shape and other non-foundation-blocking shapes.
@@ -597,8 +595,6 @@ public:
 		if (!cmpPosition->IsInWorld())
 			return false; // no obstruction
 
-		CFixedVector2D pos = cmpPosition->GetPosition2D();
-
 		CmpPtr<ICmpObstructionManager> cmpObstructionManager(GetSystemEntity());
 		if (!cmpObstructionManager)
 			return false; // error
@@ -610,6 +606,7 @@ public:
 			return false;
 		}
 
+		CFixedVector2D pos = cmpPosition->GetPosition2D();
 		// Ignore collisions with entities unless they block foundations and match both control groups.
 		SkipTagRequireControlGroupsAndFlagObstructionFilter filter(m_Tag, m_ControlGroup, m_ControlGroup2,
 			ICmpObstructionManager::FLAG_BLOCK_FOUNDATION);
@@ -627,15 +624,15 @@ public:
 		CmpPtr<ICmpObstructionManager> cmpObstructionManager(GetSystemEntity());
 		if (!cmpObstructionManager)
 			return ret; // error
-
+			
+		ICmpObstructionManager::ObstructionSquare square;
+		if (!GetObstructionSquare(square))
+			return ret; // error
+			
 		// Ignore collisions within the same control group, or with other shapes that don't match the filter.
 		// Note that, since the control group for each entity defaults to the entity's ID, this is typically
 		// equivalent to only ignoring the entity's own shape and other shapes that don't match the filter.
 		SkipControlGroupsRequireFlagObstructionFilter filter(false, m_ControlGroup, m_ControlGroup2, flags);
-
-		ICmpObstructionManager::ObstructionSquare square;
-		if (!GetObstructionSquare(square))
-			return ret; // error
 
 		cmpObstructionManager->GetUnitsOnObstruction(square, ret, filter, false);
 		cmpObstructionManager->GetStaticObstructionsOnObstruction(square, ret, filter);
