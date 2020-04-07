@@ -66,6 +66,8 @@ public:
 	{
 		for (size_t i = 0; i < m_Projectiles.size(); ++i)
 			GetSimContext().GetUnitManager().DeleteUnit(m_Projectiles[i].unit);
+		for (size_t i = 0; i < m_StoppedProjectiles.size(); ++i)
+			GetSimContext().GetUnitManager().DeleteUnit(m_StoppedProjectiles[i
 		m_Projectiles.clear();
 	}
 
