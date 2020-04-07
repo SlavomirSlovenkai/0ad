@@ -206,8 +206,7 @@ bool CSimulation2Impl::LoadScripts(CComponentManager& componentManager, std::set
 		if (loadedScripts)
 			loadedScripts->insert(path);
 		LOGMESSAGE("Loading simulation script '%s'", path.string8());
-		if (!componentManager.LoadScript(path))
-			ok = false;
+		ok = componentManager.LoadScript(path) && ok;
 	}
 	return ok;
 }
@@ -229,8 +228,7 @@ bool CSimulation2Impl::LoadTriggerScripts(CComponentManager& componentManager, J
 				loadedScripts->insert(scriptName);
 			}
 			LOGMESSAGE("Loading trigger script '%s'", scriptName.c_str());
-			if (!componentManager.LoadScript(scriptName.data()))
-				ok = false;
+			ok = componentManager.LoadScript(scriptName.data()) && ok;
 		}
 	}
 	return ok;
