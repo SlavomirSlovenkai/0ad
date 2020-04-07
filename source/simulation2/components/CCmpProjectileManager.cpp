@@ -130,7 +130,6 @@ private:
 		uint32_t id;
 		std::wstring impactActorName;
 		bool isImpactAnimationCreated;
-		bool stopped;
 
 		CVector3D position(float t)
 		{
@@ -154,6 +153,8 @@ private:
 	};
 
 	std::vector<Projectile> m_Projectiles;
+	std::vector<Projectile> m_StoppedProjectiles;
+	std::vector<Projectile> m_CarryOnProjectiles;
 
 	std::vector<ProjectileImpactAnimation> m_ProjectileImpactAnimations;
 
@@ -222,9 +223,8 @@ uint32_t CCmpProjectileManager::LaunchProjectile(CFixedVector3D launchPoint, CFi
 
 void CCmpProjectileManager::AdvanceProjectile(Projectile& projectile, float dt) const
 {
+	boolean stoped = false;
 	projectile.time += dt;
-	if (projectile.stopped)
-		return;
 
 	CVector3D delta;
 	if (dt < 0.1f)
@@ -247,10 +247,17 @@ void CCmpProjectileManager::AdvanceProjectile(Projectile& projectile, float dt) 
 			if (projectile.pos.Y < h)
 			{
 				projectile.pos.Y = h; // stick precisely to the terrain
-				projectile.stopped = true;
+				stoped = true;
+				m_StoppedProjectiles.push_back(projectile);
 			}
+			else
+				m_CarryOnProjectiles.push_back(projectile);
 		}
+		else
+  			m_CarryOnProjectiles.push_back(projectile);
 	}
+	else
+		m_CarryOnProjectiles.push_back(projectile);
 
 	// Construct a rotation matrix so that (0,1,0) is in the direction of 'delta'
 
@@ -283,43 +290,41 @@ void CCmpProjectileManager::Interpolate(float frameTime)
 	{
 		AdvanceProjectile(m_Projectiles[i], frameTime);
 	}
-
+	
+	m_Projectiles = m_CarryOnProjectiles;
+	m_CarryOnProjectiles.clear();
+	
 	// Remove the ones that have reached their target
-	for (size_t i = 0; i < m_Projectiles.size(); )
+	for (size_t i = 0; i < m_StoppedProjectiles.size(); )
 	{
-		if (!m_Projectiles[i].stopped)
-		{
-			++i;
-			continue;
-		}
 
-		if (!m_Projectiles[i].impactActorName.empty() && !m_Projectiles[i].isImpactAnimationCreated)
+		if (!m_StoppedProjectiles[i].impactActorName.empty() && !m_StoppedProjectiles[i].isImpactAnimationCreated)
 		{
 			m_Projectiles[i].isImpactAnimationCreated = true;
 			CMatrix3D transform;
 			CQuaternion quat;
 			quat.ToMatrix(transform);
-			transform.Translate(m_Projectiles[i].pos);
+			transform.Translate(m_StoppedProjectiles[i].pos);
 
 			std::set<CStr> selections;
-			CUnit* unit = GetSimContext().GetUnitManager().CreateUnit(m_Projectiles[i].impactActorName, m_ActorSeed++, selections);
+			CUnit* unit = GetSimContext().GetUnitManager().CreateUnit(m_StoppedProjectiles[i].impactActorName, m_ActorSeed++, selections);
 			unit->GetModel().SetTransform(transform);
 
 			ProjectileImpactAnimation projectileImpactAnimation;
 			projectileImpactAnimation.unit = unit;
-			projectileImpactAnimation.time = m_Projectiles[i].impactAnimationLifetime;
-			projectileImpactAnimation.pos = m_Projectiles[i].pos;
+			projectileImpactAnimation.time = m_StoppedProjectiles[i].impactAnimationLifetime;
+			projectileImpactAnimation.pos = m_StoppedProjectiles[i].pos;
 			m_ProjectileImpactAnimations.push_back(projectileImpactAnimation);
 		}
 
 		// Projectiles hitting targets get removed immediately.
 		// Those hitting the ground stay for a while, because it looks pretty.
-		if (m_Projectiles[i].time - m_Projectiles[i].timeHit > PROJECTILE_DECAY_TIME)
+		if (m_StoppedProjectiles[i].time - m_StoppedProjectiles[i].timeHit > PROJECTILE_DECAY_TIME)
 		{
 			// Delete in-place by swapping with the last in the list
-			std::swap(m_Projectiles[i], m_Projectiles.back());
-			GetSimContext().GetUnitManager().DeleteUnit(m_Projectiles.back().unit);
-			m_Projectiles.pop_back();
+			std::swap(m_StoppedProjectiles[i], m_StoppedProjectiles.back());
+			GetSimContext().GetUnitManager().DeleteUnit(m_StoppedProjectiles.back().unit);
+			m_StoppedProjectiles.pop_back();
 			continue;
 		}
 		++i;
@@ -355,6 +360,17 @@ void CCmpProjectileManager::RemoveProjectile(uint32_t id)
 			return;
 		}
 	}
+	for (size_t i = 0; i < m_StoppedProjectiles.size(); i++)
+	{
+		if (m_StoppedProjectiles[i].id == id)
+		{
+			// Delete in-place by swapping with the last in the list
+			std::swap(m_StoppedProjectiles[i], m_StoppedProjectiles.back());
+			GetSimContext().GetUnitManager().DeleteUnit(m_StoppedProjectiles.back().unit);
+			m_StoppedProjectiles.pop_back();
+			return;
+		}
+	}
 }
 
 void CCmpProjectileManager::RenderModel(CModelAbstract& model, const CVector3D& position, SceneCollector& collector,
@@ -384,6 +400,11 @@ void CCmpProjectileManager::RenderSubmit(SceneCollector& collector, const CFrust
 	bool losRevealAll = cmpRangeManager->GetLosRevealAll(player);
 
 	for (const Projectile& projectile : m_Projectiles)
+	{
+		RenderModel(projectile.unit->GetModel(), projectile.pos, collector, frustum, culling, los, losRevealAll);
+	}
+	
+	for (const Projectile& projectile: m_StoppedProjectiles)
 	{
 		RenderModel(projectile.unit->GetModel(), projectile.pos, collector, frustum, culling, los, losRevealAll);
 	}
