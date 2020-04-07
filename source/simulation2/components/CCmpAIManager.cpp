@@ -410,12 +410,9 @@ public:
 		if (!m_HasSharedComponent)
 			return false;
 
-		// reset the value so it can be used to determine if we actually initialized it.
-		m_HasSharedComponent = false;
+		m_HasSharedComponent = LoadScripts(L"common-api");
 
-		if (LoadScripts(L"common-api"))
-			m_HasSharedComponent = true;
-		else
+		if (!m_HasSharedCompontent)
 			return false;
 
 		// mainly here for the error messages
@@ -476,8 +473,7 @@ public:
 			return false;
 
 		// this will be set to true if we need to load the shared Component.
-		if (!m_HasSharedComponent)
-			m_HasSharedComponent = ai->m_UseSharedComponent;
+		m_HasSharedComponent = m_HasSharedComponent || ai->m_UseSharedComponent;
 
 		m_Players.push_back(ai);
 
@@ -570,12 +566,11 @@ public:
 	void UpdateTerritoryMap(const Grid<u8>& territoryMap)
 	{
 		ENSURE(m_CommandsComputed);
-		bool dimensionChange = m_TerritoryMap.m_W != territoryMap.m_W || m_TerritoryMap.m_H != territoryMap.m_H;
 
 		m_TerritoryMap = territoryMap;
 
 		JSContext* cx = m_ScriptInterface->GetContext();
-		if (dimensionChange)
+		if (m_TerritoryMap.m_W != territoryMap.m_W || m_TerritoryMap.m_H != territoryMap.m_H)
 			ScriptInterface::ToJSVal(cx, &m_TerritoryMapVal, m_TerritoryMap);
 		else
 		{
