@@ -61,11 +61,7 @@ public:
 	virtual void Init(const CParamNode& paramNode)
 	{
 		m_BaseRange = m_Range = paramNode.GetChild("Range").ToFixed();
-
-		if (paramNode.GetChild("RevealShore").IsOk())
-			m_RevealShore = paramNode.GetChild("RevealShore").ToBool();
-		else
-			m_RevealShore = false;
+		m_RevealShore = paramNode.GetChild("RevealShore").IsOk() && paramNode.GetChild("RevealShore").ToBool();
 	}
 
 	virtual void Deinit()
