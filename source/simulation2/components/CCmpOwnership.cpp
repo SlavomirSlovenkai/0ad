@@ -96,8 +96,7 @@ public:
 
 	virtual void SetOwnerQuiet(player_id_t playerID)
 	{
-		if (playerID != m_Owner)
-			m_Owner = playerID;
+		m_Owner = playerID;
 	}
 };
 
