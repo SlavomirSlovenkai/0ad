@@ -536,12 +536,8 @@ public:
 
 	virtual void Hotload(const VfsPath& name)
 	{
-		if (!m_Unit)
+		if (!m_Unit || name != m_ActorName)
 			return;
-
-		if (name != m_ActorName)
-			return;
-
 		ReloadActor();
 	}
 
