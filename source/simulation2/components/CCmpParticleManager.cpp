@@ -68,10 +68,7 @@ public:
 		{
 			const CMessageInterpolate& msgData = static_cast<const CMessageInterpolate&> (msg);
 			if (CRenderer::IsInitialised())
-			{
-				float time = useSimTime ? msgData.deltaSimTime : msgData.deltaRealTime;
-				g_Renderer.GetParticleManager().Interpolate(time);
-			}
+				g_Renderer.GetParticleManager().Interpolate(useSimTime ? msgData.deltaSimTime : msgData.deltaRealTime);
 			break;
 		}
 		}
