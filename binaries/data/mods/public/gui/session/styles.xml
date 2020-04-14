@@ -34,14 +34,6 @@
 		text_valign="top"
 	/>
 
-	<style name="BuildNameText"
-		font="sans-stroke-12"
-		textcolor="white"
-		text_align="center"
-		text_valign="bottom"
-		ghost="true"
-	/>
-
 	<style name="leftAlignedText"
 		textcolor="white"
 		text_align="left"
@@ -172,13 +164,6 @@
 		ghost="true"
 	/>
 
-	<style name="SettingsText"
-		font="sans-stroke-16"
-		textcolor="white"
-		text_align="right"
-		text_valign="center"
-	/>
-
 	<style name="dialogTitleText"
 		font="sans-bold-18"
 		textcolor="white"
@@ -243,7 +228,6 @@
 		buffer_zone="5"
 		font="sans-bold-stroke-14"
 		textcolor="white"
-		textcolor_selected="white"
 		text_align="left"
 		text_valign="top"
 	/>

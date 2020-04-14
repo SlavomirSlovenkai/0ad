@@ -214,8 +214,10 @@ EntitySelection.prototype.update = function()
 {
 	this.checkRenamedEntities();
 
+	let controlsAll = g_SimState.players[g_ViewedPlayer] && g_SimState.players[g_ViewedPlayer].controlsAll;
+	let removeOwnerChanges = !g_IsObserver && !controlsAll && this.toList().length > 1;
+
 	let changed = false;
-	let removeOwnerChanges = !g_IsObserver && !g_DevSettings.controlAll && this.toList().length > 1;
 
 	for (let ent in this.selected)
 	{
@@ -377,6 +379,9 @@ EntitySelection.prototype.getFirstSelected = function()
 	return undefined;
 };
 
+/**
+ * TODO: This array should not be recreated every call
+ */
 EntitySelection.prototype.toList = function()
 {
 	let ents = [];
@@ -428,6 +433,18 @@ EntitySelection.prototype.onChange = function()
 		onSelectionChange();
 };
 
+EntitySelection.prototype.selectAndMoveTo = function(entityID)
+{
+	let entState = GetEntityState(entityID);
+	if (!entState || !entState.position)
+		return;
+
+	this.reset();
+	this.addList([entityID]);
+
+	Engine.CameraMoveTo(entState.position.x, entState.position.z);
+}
+
 /**
  * Cache some quantities which depends only on selection
  */
@@ -457,12 +474,18 @@ function EntityGroupsContainer()
 		this.groups[i] = new EntityGroups();
 }
 
+/**
+ * Add entities to a group.
+ * @param {string} groupName - The number of the group to add the entities to.
+ * @param {number[]} ents - The entities to add to the group.
+ */
 EntityGroupsContainer.prototype.addEntities = function(groupName, ents)
 {
-	for (let ent of ents)
-		for (let group of this.groups)
-			if (ent in group.ents)
-				group.removeEnt(ent);
+	if (Engine.ConfigDB_GetValue("user", "gui.session.disjointcontrolgroups") == "true")
+		for (let ent of ents)
+			for (let group of this.groups)
+				if (ent in group.ents)
+					group.removeEnt(ent);
 
 	this.groups[groupName].add(ents);
 };

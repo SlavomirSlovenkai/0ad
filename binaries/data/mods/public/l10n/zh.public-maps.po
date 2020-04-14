@@ -1,26 +1,27 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
 # Christian Xia <wood_elf@126.com>, 2016
 # Gring Archer <gongghy@gmail.com>, 2017
 # helinb <1696060289@qq.com>, 2015
+# Julian, 2019
 # Kelvin Cooper <Zhu-Zhe-Yong@live.com>, 2016
 # Mysterelee <8161525@qq.com>, 2014
 # Revolve Yao <revolveyao@outlook.com>, 2016
 # Siwei Chen <chensiwei@tsinghua.edu.cn>, 2016
 # Vince Luo <vinceluo11@gmail.com>, 2017
 # Wong Arfa <arfa244@gmail.com>, 2016
-# liulitchi <xingzuo88@qq.com>, 2014,2017-2019
+# liulitchi <xingzuo88@qq.com>, 2014,2017-2020
 # 武军 李 <lwj7863439@gmail.com>, 2016-2017
 # 玉堂白鹤 <yjwork@qq.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-05-27 10:00+0200\n"
-"PO-Revision-Date: 2019-05-27 15:47+0000\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"POT-Creation-Date: 2020-01-17 08:09+0000\n"
+"PO-Revision-Date: 2020-01-19 10:34+0000\n"
+"Last-Translator: liulitchi <xingzuo88@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/wildfire-games/0ad/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -195,14 +196,17 @@ msgid "Canyon"
 msgstr "峡谷"
 
 #: maps/random/continent.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Description
 msgid "All players starts on a continent surrounded by water."
 msgstr "所有玩家都在一个被水所环绕的大陆开始游戏。"
 
 #: maps/random/continent.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Name
 msgid "Continent"
 msgstr "大陆"
 
 #: maps/random/corinthian_isthmus.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Description
 #: maps/skirmishes/Corinthian Isthmus (2).xml:Description:39
 #: maps/skirmishes/Corinthian Isthmus (4).xml:Description:40
 msgid ""
@@ -245,6 +249,22 @@ msgid ""
 "the Boii were defeated by the rising power of the Dacians, hence leading to "
 "the reemergence of the Geto-Dacian Confederation under King Burebista."
 msgstr "凯尔特的波伊部落扩展到潘诺尼亚后，玩家沿着多瑙河河岸开局。 为了巩固他们对这片土地的控制，凯尔特人增援部队已被派去铲除其余的外国文化。 玩家不仅要在自己之间争夺权力，还要击败这些无情的入侵者。 最终，波伊被崛起的达契亚击败，导致了在Burebista国王统治下的Geto-Dacian邦联重新出现。"
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Description
+msgid "Bright daylight illuminates the scene."
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Name
+msgid "Day"
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Description
+msgid "Attackers are covered by the darkness of the night."
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Name
+msgid "Night"
+msgstr ""
 
 #: maps/random/danubius.jsonsettings.Name
 msgid "Danubius"
@@ -317,16 +337,16 @@ msgstr "死火山"
 
 #: maps/random/fields_of_meroe.jsonsettings.Description
 msgid ""
-"The \"Island of Meroe\", a vast peninsula flanked by the Nile and Atbarah "
+"The \"Island of Meroë\", a vast peninsula flanked by the Nile and Atbarah "
 "rivers, formed the heartland of ancient Kush. Where the harsh deserts start "
 "making way for the semi-arid savannahs and small acacia forests dot the "
 "landscape. The area is rich in resources and the ever-present Nile brings "
 "life, but grave threats loom on the opposite riverbank."
-msgstr "麦罗埃岛是一个巨大的半岛，位于尼罗河和阿特巴拉河之间，是古代库什的中心地带。 严酷的沙漠开始为半干旱的热带草原和小型金合欢树林开辟道路。 该地区资源丰富，长流不息的尼罗河带来了活力，但对面的河岸却出现了严重的威胁。"
+msgstr "“麦罗埃岛”是一个巨大的半岛，两侧是尼罗河和阿特巴拉河，为古代库什的中心地带。 严酷的沙漠环境，只留下了半干旱的大草原和小片金合欢树林。该地区资源丰富，永不干涸的尼罗河孕育了生命，不过河河岸有严重的威胁。"
 
 #: maps/random/fields_of_meroe.jsonsettings.Name
-msgid "Fields of Meroe"
-msgstr "麦罗埃地区"
+msgid "Fields of Meroë"
+msgstr "麦罗埃田地"
 
 #: maps/random/flood.jsonsettings.Description
 msgid ""
@@ -360,7 +380,7 @@ msgstr "一片水路纵横交错的大地。"
 
 #: maps/random/gear.jsonsettings.Name
 msgid "Gear"
-msgstr "齿轮装地图"
+msgstr "齿轮状地图"
 
 #: maps/random/guadalquivir_river.jsonsettings.Description
 msgid ""
@@ -542,10 +562,12 @@ msgid "Lower Nubia"
 msgstr "下努比亚"
 
 #: maps/random/mainland.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Description
 msgid "A typical map without any water."
 msgstr "没有水域的典型地图"
 
 #: maps/random/mainland.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Name
 msgid "Mainland"
 msgstr "大陆"
 
@@ -678,6 +700,22 @@ msgid ""
 "inadvisable to disable treasures, since there is no gatherable wood. Not "
 "recommended for inexperienced players.[/color]"
 msgstr "玩家从一片贫瘠的极地植被区开局。 在海中鱼类和鲸鱼比比皆是，而脆弱的冰冷的土地充斥着可捕获的海象和致命的狼群。 一个明智而强大的统治者不仅会战胜他的敌人，而且还会保留这些野兽的数量，以免破坏经济导致垮台。[color=\"red\"]警告：由于没有可收集的木材，因此不建议禁用珍宝。 不推荐新手玩家。[/color]"
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Description
+msgid "Scattered sunlight illuminates the scenery in a vivid red tone."
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Name
+msgid "Dawn"
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Description
+msgid "The scenery is illuminated by direct or indirect sunlight."
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Name
+msgid "Daylight"
+msgstr ""
 
 #: maps/random/polar_sea.jsonsettings.Name
 msgid "Polar Sea"
@@ -860,20 +898,94 @@ msgid "The Nile"
 msgstr "尼罗河"
 
 #: maps/random/unknown.jsonsettings.Description
-msgid "The unknown. Warning: May be a naval map."
-msgstr "未知。警告：可能为海图。"
+msgid "The unknown."
+msgstr "未知"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Name
+msgid "Isthmus"
+msgstr "地峡"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Description
+msgid "A small central river."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Name
+msgid "Central River"
+msgstr "中央河流                                                                                  "
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Description
+msgid ""
+"Players are aligned on a strip of land with seas bordering on one or both "
+"sides that may hold islands."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Name
+msgid "Edge Seas"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Description
+msgid "Land shaped like a concrescent moon around a central lake."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Name
+msgid "Gulf"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Description
+msgid "Mainland style with some small random lakes."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Name
+msgid "Lakes"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Description
+msgid ""
+"A large hill encompasses the map and leaves players only a small passage to "
+"the two neighboring players."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Name
+msgid "Passes"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Description
+msgid ""
+"The land is enclosed by a hill that leaves a small area per player connected"
+" to the large central place."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Name
+msgid "Lowlands"
+msgstr "低地"
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Description
+msgid "A huge sea is dividing the map into two halves."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Name
+msgid "Naval: Central Sea"
+msgstr "海事：中央海"
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Description
+msgid "Players are scattered across island chains and disconnected islands."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Name
+msgid "Naval: Archipelago"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Description
+msgid "A central lake with rivers possibly separating neighboring players."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Name
+msgid "Naval: Lake and rivers"
+msgstr ""
 
 #: maps/random/unknown.jsonsettings.Name
 msgid "Unknown"
 msgstr "未知"
-
-#: maps/random/unknown_land.jsonsettings.Description
-msgid "The unknown."
-msgstr "未知"
-
-#: maps/random/unknown_land.jsonsettings.Name
-msgid "Unknown Land"
-msgstr "未知大陆"
 
 #: maps/random/volcanic_lands.jsonsettings.Description
 msgid "A charred dead land where players start around a smoking volcano."
@@ -935,7 +1047,7 @@ msgstr "第一波攻击将会在%(time)s后到来！"
 msgid "An enemy wave is attacking!"
 msgstr "有一波敌人来袭！"
 
-#: maps/random/survivalofthefittest_triggers.js:289
+#: maps/random/survivalofthefittest_triggers.js:288
 #, javascript-format
 msgid "%(player)s has been defeated (lost civic center)."
 msgstr "%(player)s已战败(失去市政中心)。"
@@ -1040,47 +1152,6 @@ msgstr "在希腊阿卡迪亚的春日时分。若雨下得不够，其余时间
 #: maps/scenarios/WallTest.xml:PlayerData[0].Name:27
 #: maps/scenarios/Walls.xml:PlayerData[0].Name:27
 #: maps/scenarios/reservoir.xml:PlayerData[0].Name:27
-#: maps/skirmishes/Acropolis Bay (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[0].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[0].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[0].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[0].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[0].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[0].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[0].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[0].Name:39
 msgid "Player 1"
 msgstr "玩家1"
 
@@ -1104,48 +1175,7 @@ msgstr "玩家1"
 #: Islands.xml:PlayerData[1].Name:39 maps/scenarios/Tropical
 #: Island.xml:PlayerData[1].Name:39
 #: maps/scenarios/WallTest.xml:PlayerData[1].Name:27
-#: maps/scenarios/Walls.xml:PlayerData[1].Name:27 maps/skirmishes/Acropolis
-#: Bay (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[1].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[1].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[1].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[1].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[2].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[1].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[1].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[1].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[1].Name:39
+#: maps/scenarios/Walls.xml:PlayerData[1].Name:27
 msgid "Player 2"
 msgstr "玩家2"
 
@@ -1374,25 +1404,7 @@ msgstr "入侵力量"
 #: Oases.xml:PlayerData[2].Name:27 maps/scenarios/Sandbox -
 #: Britons.xml:PlayerData[2].Name:39 maps/scenarios/Sandbox -
 #: Gauls.xml:PlayerData[3].Name:40 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[2].Name:27 maps/skirmishes/Barcania
-#: (3).xml:PlayerData[2].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[2].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Gallic Fields
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Gambia River
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[2].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[2].Name:39
+#: Oasis.xml:PlayerData[2].Name:27
 msgid "Player 3"
 msgstr "玩家3"
 
@@ -1429,22 +1441,7 @@ msgstr "一个小型的沙漠地图。每个玩家都在一个散佈于荒凉沙
 #: maps/scenarios/Gold_Rush.xml:PlayerData[3].Name:27
 #: maps/scenarios/Necropolis.xml:PlayerData[3].Name:39 maps/scenarios/Saharan
 #: Oases.xml:PlayerData[3].Name:27 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[3].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[3].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[3].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[3].Name:39
+#: Oasis.xml:PlayerData[3].Name:27
 msgid "Player 4"
 msgstr "玩家4"
 
@@ -1578,10 +1575,10 @@ msgstr "该地图显示了重建后的古代城市那帕塔。[color=\"res] 注�
 
 #: maps/scenarios/Necropolis.xml:Description:39
 msgid ""
-"4 players duke it out over the vast Nile Delta. Each city starts out nestled atop a large acropolis, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
+"Four players duke it out over the vast Nile Delta. Each city starts out nestled atop a large plateau, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
 "\n"
 "Scouts say the nearby branches of the Nile River are shallow and fordable in multiple locations, so should only serve as a minor barrier between enemy factions."
-msgstr "4 位玩家于广阔的尼罗河三角洲一较高下。每个城市都位于大型的卫城中开始游戏，但资源量稀少，迫使每一个玩家都必须将他们采集资源的动作扩展到周边的土地。\n\n斥候回报，附近的尼罗河支流皆相当浅，且多处皆可涉水而过，因此只是敌方进攻的轻微障碍。"
+msgstr "在广阔的尼罗河三角洲，四名玩家展开竞争。市政中心坐落在大高原上，而资源稀缺，迫使玩家扩展土地，抢占资源。\n\n斥候来报，尼罗河附近的支流很浅，多处可涉水而过，因此敌方可轻易突破。"
 
 #: maps/scenarios/Necropolis.xml:Name:39
 msgid "Necropolis"
@@ -1740,7 +1737,7 @@ msgstr "迦太基"
 #: maps/scenarios/Sandbox - Carthaginians.xml:PlayerData[1].Name:39
 #: maps/scenarios/Sandbox - Persians.xml:PlayerData[1].Name:39
 msgid "Creeps"
-msgstr "Creeps"
+msgstr "爬行"
 
 #: maps/scenarios/Sandbox - Carthaginians.xml:Name:39
 msgid "Sandbox - The Carthaginians"
@@ -2047,7 +2044,7 @@ msgstr "游戏中的所有单位。"
 
 #: maps/scenarios/WallTest.xml:Description:27
 #: maps/scenarios/_default.xml:Description:28 maps/scenarios/temperate
-#: map.xml:Description:27 maps/scenarios/test-foundation.xml:Description:40
+#: map.xml:Description:27
 msgid "Give an interesting description of your map."
 msgstr "给地图一个有趣的说明。"
 
@@ -2068,11 +2065,10 @@ msgid "We Are Legion"
 msgstr "我们是军团"
 
 #: maps/scenarios/We are Legion.xml:Description:27
-msgid "A quick battle demo map using Roman legionnaires."
-msgstr "一个测试罗马军团快速战斗的演示地图"
+msgid "A quick battle demo map using Roman legionaries."
+msgstr "演示地图，以测试罗马军团快速战斗。"
 
 #: maps/scenarios/_default.xml:Name:28
-#: maps/scenarios/test-foundation.xml:Name:40
 msgid "Unnamed map"
 msgstr "未命名地图"
 
@@ -2104,24 +2100,34 @@ msgstr "海战演示"
 msgid "Base Temperate Map"
 msgstr "温带地图"
 
-#: maps/scenarios/unit_motion_integration_test.xml:Name:28
-msgid "Unit Motion Integration Test"
-msgstr ""
+#: maps/scenarios/test-foundation.xml:Description:40
+msgid ""
+"This map is designed to help artists and modders find the adequate "
+"foundation for a specific building. This map is not meant to be playable."
+msgstr "非游戏地图，此地图旨在帮助艺术家和模型师找到特定建筑的地基。"
 
-#: maps/scenarios/unit_motion_integration_test.xml:Description:28
+#: maps/scenarios/test-foundation.xml:Name:40
+msgid "Foundation Testing Map"
+msgstr "地基测试地图"
+
+#: maps/scenarios/unit_motion_integration_test.xml:Description:40
 msgid ""
 "This map is designed to test some basic unit movement cases. It will involve"
 " unitAI, unitMotion and the relevant pathfinders and thus acts as an "
 "integrated test map. Look for things such as stuck units, wrong animations, "
 "and weird pathing."
-msgstr ""
+msgstr "本地图旨在测试一些基本的单位运动案例。 涉及了 unitAI、unitMotion 和相关的探测器，因此可作为综合测试图。 寻找诸如卡单位，错误动画，和奇怪的路径。"
+
+#: maps/scenarios/unit_motion_integration_test.xml:Name:40
+msgid "Unit Motion Integration Test"
+msgstr "单元运动集成测试"
 
 #: maps/skirmishes/Acropolis Bay (2).xml:Description:39
 msgid ""
-"Each player starts the match atop a large flat plateau, otherwise known as an acropolis.\n"
+"Each player starts the match atop a large flat plateau.\n"
 "\n"
-"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed acropolis commanding the valley below."
-msgstr "每个玩家都在一个大型平台，又称卫城，之上开始游戏。\n\n东部是一个大型的海湾，可能会有一些渔获。西边则是一片崎岖的腹地及一个控制底下的山谷的无主卫城。"
+"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed plateau commanding the valley below."
+msgstr "每个玩家都在一个大型地图上开始游戏。\n\n东部是一个大型的海湾，可能会有一些渔获。西边则是一片崎岖的腹地及一个控制底下的山谷的无主卫城。"
 
 #: maps/skirmishes/Acropolis Bay (2).xml:Name:39
 msgid "Acropolis Bay (2)"
@@ -2147,6 +2153,17 @@ msgstr "阿尔卑斯山的高耸山峰及山谷。\n\n每个玩家都在一个�
 #: maps/skirmishes/Alpine_Valleys_(2).xml:Name:39
 msgid "Alpine Valleys (2)"
 msgstr "阿尔卑斯山谷 (2)"
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Description:40
+msgid ""
+"Skirmish high in the Atlas mountains, where snowcapped mountains loom over "
+"desert oases. A wild landscape awaits; every player will experience "
+"different advantages and challenges based on their location."
+msgstr ""
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Name:40
+msgid "Atlas Valleys (8)"
+msgstr ""
 
 #: maps/skirmishes/Bactria (2).xml:Description:39
 msgid ""
@@ -2188,11 +2205,11 @@ msgid ""
 "as the Butana Steppe."
 msgstr "位于撒哈拉南部、尼罗河以东，如今称作布塔那草原的半干旱地区。"
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[0].Name:40
 msgid "West Player"
 msgstr "西边玩家"
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
 msgid "East Player"
 msgstr "东边玩家"
 
@@ -2300,27 +2317,27 @@ msgstr "峭壁决斗 ( 3 v 3 )"
 msgid "Egypt (3v3)"
 msgstr "埃及(3V3)"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[0].Name:40
 msgid "Alexandria"
 msgstr "亚历山大"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
 msgid "Theben"
 msgstr "底比斯"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
 msgid "Siwa"
 msgstr "锡瓦"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
 msgid "Sinai"
 msgstr "西奈"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
 msgid "Memphis"
 msgstr "孟斐斯"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[6].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
 msgid "Cyrene"
 msgstr "昔兰尼"
 
@@ -2340,6 +2357,14 @@ msgid ""
 "- Eastern desert: mount Sinai, deep Wadi, Red Sea reefs\n"
 "- Western desert: Oasis Charga and Siwa, Qattara Depression\n"
 msgstr "为古埃及的而战！\n\n玩家以成熟的城市和小型军队开局，每个都有明显的优点和缺点。小心，有7个强大的堡垒和劫匪！\n\n公元前一世纪。埃及在内部分为希腊化（亚历山大，以塞琉古为代表）和传统影响（孟菲斯，以托勒密为代表）。尼罗河南部的底比斯已被库什接管。在地中海城市昔兰尼所在的Al-Dschabal al-Achdar西北部，罗马人正准备入侵。来自东部沙漠的Tih和西奈山的敌人（以波斯人为代表）正在向前推进和锡瓦绿洲。西南沙漠的查加（以迦太基为代表）也试图分一杯羹。\n位置：\n- 亚历山大港：图书馆，港口\n- 孟菲斯：大墓地，金字塔，阿匹斯神庙\n- 底比斯：神庙区，帝王谷\n- 昔兰尼：地中海城市，橄榄树林\n- 法耶姆：鳄鱼神殿，尼罗河大坝\n- 东部沙漠：西奈山，深谷，红海珊瑚礁\n- 西部沙漠：查加和锡瓦绿洲，卡塔拉低地\n"
+
+#: maps/skirmishes/Farmland (2).xml:Description:40
+msgid "Farmland in Eastern Europe."
+msgstr "东欧的农田"
+
+#: maps/skirmishes/Farmland (2).xml:Name:40
+msgid "Farmland (2)"
+msgstr "农田(2)"
 
 #: maps/skirmishes/Forest Battle (4).xml:Description:40
 msgid ""
@@ -2378,8 +2403,8 @@ msgstr "冈比亚河 (3)"
 #: maps/skirmishes/Golden Island (2).xml:Description:40
 msgid ""
 "A ring of land borders a resource-rich island in the Mediterranean. Players "
-"can access the center via a narrow strip of land or via boat."
-msgstr "一环土地接壤的一个资源丰富的地中海岛屿。玩家可以通过一个狭长地带或通过船进入中心。"
+"can access the center via a narrow strip of shallow water or via boat."
+msgstr "环形土地接壤的一个资源丰富的地中海岛屿。玩家可以通过一个狭长地带或通过船进入中心。"
 
 #: maps/skirmishes/Golden Island (2).xml:Name:40
 msgid "Golden Island (2)"
@@ -2399,10 +2424,10 @@ msgstr "黄金绿洲(2)"
 #: maps/skirmishes/Greek Acropolis (2).xml:Description:39
 #: maps/skirmishes/Greek Acropolis Night (2).xml:Description:39
 msgid ""
-"Two factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Two factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
-msgstr "双方皆发现自己安全的位于一个大型的岩石高原，或称卫城，之上。\n\n探索这片土地，寻找无主的宝藏及争夺新的资源。"
+msgstr "双方皆位于一个大型的岩石高原上。\n\n探索这片土地，寻找无主的宝藏及争夺新的资源。"
 
 #: maps/skirmishes/Greek Acropolis (2).xml:Name:39
 msgid "Greek Acropolis (2)"
@@ -2410,10 +2435,10 @@ msgstr "雅典卫城 (2)"
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Description:39
 msgid ""
-"Three factions find themselves perched safely atop large rocky plateaus, or acropolises, whereas the fourth one is separated from their foes by a river branch.\n"
+"Three factions find themselves perched safely atop large rocky plateaus, whereas the fourth one is separated from their foes by a river branch.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources.."
-msgstr "其中三方会发现自己安全的位于一个大型的岩石高原，或称卫城，之上，而第四个则会被一条河流的分支隔开来。 \n\n 探索这片土地，寻找无主的宝藏及争夺新的资源。"
+msgstr "其中三方会发现自己安全的位于一个大型的岩石高原之上，而第四方则会被一条河流的分支隔开来。 \n\n 探索这片土地，寻找无主的宝藏及争夺新的资源。"
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Name:39
 msgid "Greek Acropolis (4)"
@@ -2525,6 +2550,30 @@ msgstr "被困在寒冷的北方，2 个玩家相互争取征服岛屿的机会�
 msgid "Northern Island (2)"
 msgstr "北方之岛 (2)"
 
+#: maps/skirmishes/Obedska_Bog_(4).xml:Description:40
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Description:40
+msgid ""
+"A lazy river meanders through these Serbian wetlands. Stone is scarce, but many lumps of bog iron sit waiting to be found.\n"
+"\n"
+"*This map makes heavy use of grass actors which may adversely affect performance."
+msgstr ""
+
+#: maps/skirmishes/Obedska_Bog_(4).xml:Name:40
+msgid "Obedska Bog (4)"
+msgstr ""
+
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Name:40
+msgid "Obedska Bog Night (4)"
+msgstr ""
+
+#: maps/skirmishes/Oceanside (2).xml:Description:40
+msgid "A Lush temperate biome along an ocean. "
+msgstr "海洋沿岸，一处郁郁葱葱的温带生物群落。"
+
+#: maps/skirmishes/Oceanside (2).xml:Name:40
+msgid "Oceanside (2)"
+msgstr "海滨(2)"
+
 #: maps/skirmishes/Persian Highlands (4).xml:Description:39
 msgid ""
 "A dry central basin rich in minerals surrounded by rocky hills and "
@@ -2567,6 +2616,19 @@ msgstr "座落于位在北非的阿特拉斯山脉的南边。\n\n有着大量�
 #: maps/skirmishes/Sahel (4).xml:Name:39
 msgid "Sahel (4)"
 msgstr "萨赫勒 (4)"
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Description:40
+msgid ""
+"The diverse rainforests nestled in the Sahyadri mountain range of the west coast of India. It goes without saying, wood is abundant.\n"
+"\n"
+"Iberian players do not get full circuit walls, but 5 strategically placed wall towers.\n"
+"\n"
+"WARNING: This map uses a lot of floral actors on account of being a rainforest. Expect a drop in framerate, this is taxing on most mid range computers."
+msgstr ""
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Name:40
+msgid "Sahyadri Buttes (5)"
+msgstr ""
 
 #: maps/skirmishes/Savanna River.xml:Description:39
 msgid "A large savanna is bisected by a narrow jungle stream."
@@ -2628,11 +2690,19 @@ msgstr "一个由高山和沙漠包围的绿洲。毗邻水源的农田使农业
 msgid "Team Oasis (2v2)"
 msgstr "团队绿洲(2对2)"
 
+#: maps/skirmishes/Temperate Roadway (2).xml:Description:40
+msgid "Temperate zone map with plentiful resources. Map Size: Small"
+msgstr "含有大量资源的温带区域。地图类型：小型。"
+
+#: maps/skirmishes/Temperate Roadway (2).xml:Name:40
+msgid "Temperate Roadway (2)"
+msgstr "温带巷道(2)"
+
 #: maps/skirmishes/Thessalian Plains (4).xml:Description:39
 msgid ""
 "The rolling Thessalian plain is traversed with narrow streams, easily "
 "forded. Wide-open spaces allow for massive expansion, while each player "
-"starts the match safe atop a large acropolis."
+"starts the match safe atop a large plateau."
 msgstr "许多易于穿过的狭窄细流穿过绵延起伏的色萨利平原。有着可以大举扩张的开阔地图，每个玩家都在安全的大型雅典卫城上开始游戏。"
 
 #: maps/skirmishes/Thessalian Plains (4).xml:Name:39
@@ -2641,10 +2711,10 @@ msgstr "色萨利平原 (4)"
 
 #: maps/skirmishes/Tuscan Acropolis (4).xml:Description:40
 msgid ""
-"Four factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Four factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
-msgstr "四个文明皆发现自己安全的位于一个大型的岩石高原，或称卫城，之上。\n\n探索这片土地，寻找无主的宝藏及争夺新的资源。"
+msgstr "四个文明安全地位于一个大型的岩石高原上。\n\n探索土地，寻找宝藏及争夺新的资源。"
 
 #: maps/skirmishes/Tuscan Acropolis (4).xml:Name:40
 msgid "Tuscan Acropolis (4)"
@@ -2659,6 +2729,17 @@ msgstr "东西方共有两个海的大型热带地图。适合两个各有三个
 #: maps/skirmishes/Two Seas (6).xml:Name:40
 msgid "Two Seas (6)"
 msgstr "两海 (6)"
+
+#: maps/skirmishes/Vesuvius_(6).xml:Description:40
+msgid ""
+"Skirmish as ash lightly falls around this recently erupted volcano. the "
+"scorched landscape offers little food, though the blasted forests are still "
+"laden with useful wood. "
+msgstr ""
+
+#: maps/skirmishes/Vesuvius_(6).xml:Name:40
+msgid "Vesuvius (6)"
+msgstr ""
 
 #: maps/skirmishes/Via Augusta (4).xml:Description:40
 msgid ""

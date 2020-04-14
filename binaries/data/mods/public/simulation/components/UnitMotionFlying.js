@@ -203,7 +203,7 @@ UnitMotionFlying.prototype.OnUpdate = function(msg)
 	if (!this.reachedTarget && this.targetMinRange <= distFromTarget && distFromTarget <= this.targetMaxRange)
 	{
 		this.reachedTarget = true;
-		Engine.PostMessage(this.entity, MT_MotionChanged, { "starting": false, "error": false });
+		Engine.PostMessage(this.entity, MT_MotionUpdate, { "updateString": "likelySuccess" });
 	}
 
 	// If we're facing away from the target, and are still fairly close to it,
@@ -276,29 +276,6 @@ UnitMotionFlying.prototype.MoveToTargetRange = function(target, minRange, maxRan
 	return true;
 };
 
-UnitMotionFlying.prototype.IsInPointRange = function(x, y, minRange, maxRange)
-{
-	var cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
-	var pos = cmpPosition.GetPosition2D();
-
-	var distFromTarget = Math.euclidDistance2D(x, y, pos.x, pos.y);
-	if (minRange <= distFromTarget && distFromTarget <= maxRange)
-		return true;
-
-	return false;
-};
-
-UnitMotionFlying.prototype.IsInTargetRange = function(target, minRange, maxRange)
-{
-	var cmpTargetPosition = Engine.QueryInterface(target, IID_Position);
-	if (!cmpTargetPosition || !cmpTargetPosition.IsInWorld())
-		return false;
-
-	var targetPos = cmpTargetPosition.GetPosition2D();
-
-	return this.IsInPointRange(targetPos.x, targetPos.y, minRange, maxRange);
-};
-
 UnitMotionFlying.prototype.GetWalkSpeed = function()
 {
 	return +this.template.MaxSpeed;
@@ -314,6 +291,11 @@ UnitMotionFlying.prototype.GetRunMultiplier = function()
 	return 1;
 };
 
+UnitMotionFlying.prototype.IsMoveRequested = function()
+{
+	return this.hasTarget;
+};
+
 UnitMotionFlying.prototype.GetCurrentSpeed = function()
 {
 	return this.speed;
@@ -322,7 +304,7 @@ UnitMotionFlying.prototype.GetCurrentSpeed = function()
 UnitMotionFlying.prototype.GetSpeedMultiplier = function()
 {
 	return this.GetCurrentSpeed() / this.GetWalkSpeed();
-}
+};
 
 UnitMotionFlying.prototype.GetPassabilityClassName = function()
 {

@@ -20,14 +20,12 @@
 # pragma warning(disable:4100) // unreferenced formal parameter
 # pragma warning(disable:4245) // signed/unsigned mismatch
 # pragma warning(disable:4505) // unreferenced local function has been removed
-#if _MSC_VER > 1800
 # pragma warning(disable:4365) // signed unsigned mismatch
 # pragma warning(disable:4191) // unsafe conversion
 # pragma warning(disable:4820) // incorrect padding
 # pragma warning(disable:4668) // macro error
 # pragma warning(disable:4710) // function not inlined
 # pragma warning(disable:4711) // selected for automatic inline expansion
-#endif
 # pragma comment(lib, "ws2_32.lib")
 #endif
 
@@ -621,7 +619,7 @@ const char *mg_version(void) {
   return MONGOOSE_VERSION;
 }
 
-static void mg_strlcpy(register char *dst, register const char *src, size_t n) {
+static void mg_strlcpy(char *dst, const char *src, size_t n) {
   for (; *src != '\0' && n > 1; n--) {
     *dst++ = *src++;
   }

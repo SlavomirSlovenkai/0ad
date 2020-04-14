@@ -37,6 +37,7 @@
       <PyramidSmall>4</PyramidSmall>
       <PyramidLarge>2</PyramidLarge>
       <TempleOfAmun>1</TempleOfAmun>
+      <Gladiator>0</Gladiator>
     </Limits>
     <LimitChangers>
       <WarDog>
@@ -48,6 +49,9 @@
       <Juggernaut>
         <PtolemyIV>4</PtolemyIV>
       </Juggernaut>
+      <Gladiator>
+        <Amphitheater>15</Amphitheater>
+      </Gladiator>
     </LimitChangers>
     <LimitRemovers>
       <CivilCentre>
@@ -89,6 +93,29 @@
     </Rates>
     <Interval>1000</Interval>
   </ResourceTrickle>
-  <StatisticsTracker/>
+  <StatisticsTracker>
+	<!-- The summary screen and lobby rankings expect these classes, but additional classes may be added -->
+	<UnitClasses datatype="tokens">
+		Infantry
+		Worker
+		FemaleCitizen
+		Cavalry
+		Champion
+		Hero
+		Siege
+		Ship
+		Domestic
+		Trader
+	</UnitClasses>
+	<StructureClasses datatype="tokens">
+		House
+		Economic
+		Outpost
+		Military
+		Fortress
+		CivCentre
+		Wonder
+	</StructureClasses>
+  </StatisticsTracker>
   <TechnologyManager/>
 </Entity>

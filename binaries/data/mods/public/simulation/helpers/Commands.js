@@ -51,16 +51,6 @@ function ProcessCommand(player, cmd)
 }
 
 var g_Commands = {
-	"debug-print": function(player, cmd, data)
-	{
-		print(cmd.message);
-	},
-
-	"chat": function(player, cmd, data)
-	{
-		var cmpGuiInterface = Engine.QueryInterface(SYSTEM_ENTITY, IID_GuiInterface);
-		cmpGuiInterface.PushNotification({ "type": cmd.type, "players": [player], "message": cmd.message });
-	},
 
 	"aichat": function(player, cmd, data)
 	{
@@ -649,6 +639,13 @@ var g_Commands = {
 		});
 	},
 
+	"cancel-setup-trade-route": function(player, cmd, data)
+	{
+		GetFormationUnitAIs(data.entities, player).forEach(cmpUnitAI => {
+			cmpUnitAI.CancelSetupTradeRoute(cmd.target);
+		});
+	},
+
 	"set-trading-goods": function(player, cmd, data)
 	{
 		data.cmpPlayer.SetTradingGoods(cmd.tradingGoods);
@@ -743,11 +740,13 @@ var g_Commands = {
 				continue;
 			}
 
-			var cmpTechnologyManager = QueryOwnerInterface(ent, IID_TechnologyManager);
-			if (cmpUpgrade.GetRequiredTechnology(cmd.template) && !cmpTechnologyManager.IsTechnologyResearched(cmpUpgrade.GetRequiredTechnology(cmd.template)))
+			let cmpTechnologyManager = QueryOwnerInterface(ent, IID_TechnologyManager);
+			let requiredTechnology = cmpUpgrade.GetRequiredTechnology(cmd.template);
+
+			if (requiredTechnology && (!cmpTechnologyManager || !cmpTechnologyManager.IsTechnologyResearched(requiredTechnology)))
 			{
 				if (g_DebugCommands)
-					warn("Invalid command: upgrading requires unresearched technology: " + uneval(cmd));
+					warn("Invalid command: upgrading is not possible for this player or requires unresearched technology: " + uneval(cmd));
 				continue;
 			}
 

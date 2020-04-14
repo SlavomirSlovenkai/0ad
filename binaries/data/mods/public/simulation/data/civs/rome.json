@@ -67,7 +67,7 @@
 		{
 			"Name": "Conscription",
 			"History": "Many Roman soldiers were conscripted into service. While volunteers were preferred, the Roman state did maintain an annual military draft. During an emergency the draft and the terms of service were enlarged. The importance of military service in Republican Rome was so great it was a prerequisite for a political career. Members of the Senate were called Conscript Fathers because of this, reflected in how the ordo equester was said to have been \"conscripted\" into the Senate.",
-			"Description": "Allied citizen-soldier infantry −20% training time."
+			"Description": "Allied Citizen Infantry −10% training time."
 		}
 	],
 	"Structures":
@@ -126,9 +126,9 @@
 		"special/formations/column_open",
 		"special/formations/line_open",
 		"special/formations/flank",
+		"special/formations/battle_line",
 		"special/formations/skirmish",
 		"special/formations/wedge",
-		"special/formations/battle_line",
 		"special/formations/testudo",
 		"special/formations/anti_cavalry"
 	],

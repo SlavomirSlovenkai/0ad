@@ -1,4 +1,4 @@
-/* Copyright (C) 2013 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -27,7 +27,7 @@
 #include "precompiled.h"
 #include "h_mgr.h"
 
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
 #include <limits.h>	// CHAR_BIT
 #include <string.h>
@@ -38,8 +38,8 @@
 #include "lib/allocators/overrun_protector.h"
 #include "lib/allocators/pool.h"
 #include "lib/module_init.h"
-#include "lib/posix/posix_pthread.h"
 
+#include <mutex>
 
 namespace ERR {
 static const Status H_IDX_INVALID   = -120000;	// totally invalid
@@ -94,9 +94,8 @@ static const u64 IDX_MASK = (1l << IDX_BITS) - 1;
 
 // - tag (1-based) ensures the handle references a certain resource instance.
 //   (field width determines maximum unambiguous resource allocs)
-typedef i64 Tag;
+using Tag = i64;
 #define TAG_BITS 48
-static const u64 TAG_MASK = 0xFFFFFFFF;	// safer than (1 << 32) - 1
 
 // make sure both fields fit within a Handle variable
 cassert(IDX_BITS + TAG_BITS <= sizeof(Handle)*CHAR_BIT);
@@ -107,13 +106,6 @@ cassert(IDX_BITS + TAG_BITS <= sizeof(Handle)*CHAR_BIT);
 static inline size_t h_idx(const Handle h)
 {
 	return (size_t)(h & IDX_MASK) - 1;
-}
-
-// return the handle's tag field.
-// no error checking!
-static inline Tag h_tag(Handle h)
-{
-	return h >> IDX_BITS;
 }
 
 // build a handle from index and tag.
@@ -282,8 +274,8 @@ static Status h_data_tag_type(const Handle h, const H_Type type, HDATA*& hd)
 // that wasn't foreseen here, so we'll just refrain from adding to the index.
 // that means they won't be found via h_find - no biggie.
 
-typedef boost::unordered_multimap<uintptr_t, ssize_t> Key2Idx;
-typedef Key2Idx::iterator It;
+using Key2Idx = std::unordered_multimap<uintptr_t, ssize_t>;
+using It = Key2Idx::iterator;
 static OverrunProtector<Key2Idx> key2idx_wrapper;
 
 enum KeyRemoveFlag { KEY_NOREMOVE, KEY_REMOVE };
@@ -503,22 +495,12 @@ fail:
 }
 
 
-static pthread_mutex_t h_mutex;
-// (the same class is defined in vfs.cpp, but it is easier to
-// just duplicate it to avoid having to specify the mutex.
-// such a class exists in ps/ThreadUtil.h, but we can't
-// take a dependency on that module here.)
-struct H_ScopedLock
-{
-	H_ScopedLock() { pthread_mutex_lock(&h_mutex); }
-	~H_ScopedLock() { pthread_mutex_unlock(&h_mutex); }
-};
-
+static std::recursive_mutex h_mutex;
 
 // any further params are passed to type's init routine
 Handle h_alloc(H_Type type, const PIVFS& vfs, const VfsPath& pathname, size_t flags, ...)
 {
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 
 	RETURN_STATUS_IF_ERR(type_validate(type));
 
@@ -582,7 +564,7 @@ static void h_free_hd(HDATA* hd)
 
 Status h_free(Handle& h, H_Type type)
 {
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 
 	// 0-initialized or an error code; don't complain because this
 	// happens often and is harmless.
@@ -636,7 +618,7 @@ VfsPath h_filename(const Handle h)
 // TODO: what if iterating through all handles is too slow?
 Status h_reload(const PIVFS& vfs, const VfsPath& pathname)
 {
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 
 	const u32 key = fnv_hash(pathname.string().c_str(), pathname.string().length()*sizeof(pathname.string()[0]));
 
@@ -678,7 +660,7 @@ Status h_reload(const PIVFS& vfs, const VfsPath& pathname)
 
 Handle h_find(H_Type type, uintptr_t key)
 {
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 	return key_find(key, type);
 }
 
@@ -692,7 +674,7 @@ Handle h_find(H_Type type, uintptr_t key)
 // at that point, all (cached) OpenAL resources must be freed.
 Status h_force_free(Handle h, H_Type type)
 {
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 
 	// require valid index; ignore tag; type checked below.
 	HDATA* hd;
@@ -743,18 +725,6 @@ static ModuleInitState initState;
 
 static Status Init()
 {
-	// lock must be recursive (e.g. h_alloc calls h_find)
-	pthread_mutexattr_t attr;
-	int err;
-	err = pthread_mutexattr_init(&attr);
-	ENSURE(err == 0);
-	err = pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
-	ENSURE(err == 0);
-	err = pthread_mutex_init(&h_mutex, &attr);
-	ENSURE(err == 0);
-	err = pthread_mutexattr_destroy(&attr);
-	ENSURE(err == 0);
-
 	RETURN_STATUS_IF_ERR(pool_create(&hpool, hdata_cap*sizeof(HDATA), sizeof(HDATA)));
 	return INFO::OK;
 }
@@ -767,7 +737,7 @@ static void Shutdown()
 	// raise a double-free warning unless we ignore it. (#860, #915, #920)
 	ignoreDoubleFree = true;
 
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 
 	// forcibly close all open handles
 	for(HDATA* hd = (HDATA*)hpool.da.base; hd < (HDATA*)(hpool.da.base + hpool.da.pos); hd = (HDATA*)(uintptr_t(hd)+hpool.el_size))
@@ -791,7 +761,7 @@ void h_mgr_free_type(const H_Type type)
 {
 	ignoreDoubleFree = true;
 
-	H_ScopedLock s;
+	std::lock_guard<std::recursive_mutex> lock(h_mutex);
 
 	// forcibly close all open handles of the specified type
 	for(HDATA* hd = (HDATA*)hpool.da.base; hd < (HDATA*)(hpool.da.base + hpool.da.pos); hd = (HDATA*)(uintptr_t(hd)+hpool.el_size))

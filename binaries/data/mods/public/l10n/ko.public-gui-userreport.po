@@ -1,17 +1,17 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2018 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
-# 이정희 <daemul72@gmail.com>, 2019
-# ks k, 2019
+# MarongHappy <daemul72@gmail.com>, 2019
+# ks k, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D. — Empires Ascendant\n"
-"POT-Creation-Date: 2018-11-06 16:32+0100\n"
+"POT-Creation-Date: 2020-02-07 08:09+0000\n"
 "PO-Revision-Date: 2018-10-14 18:34+0000\n"
-"Last-Translator: ks k, 2019\n"
+"Last-Translator: ks k, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/wildfire-games/teams/17418/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -376,8 +376,8 @@ msgstr ""
 
 #: gui/userreport/Terms_and_Conditions.txt:64
 msgid ""
-" 6. Wildfire Games does not process personal data that is not neeeded for "
-"the specified purposes (GDPR 5.1.c, \"data minimisation\")."
+" 6. Wildfire Games does not process personal data that is not needed for the"
+" specified purposes (GDPR 5.1.c, \"data minimisation\")."
 msgstr ""
 " 6. 와일드 파이어 게임즈는 지정된 목적에 필요하지 않은 개인 자료를 처리하지 않습니다 (GDPR 5.1.c, \"자료 최소화\")."
 
@@ -428,7 +428,7 @@ msgstr ""
 
 #: gui/userreport/Terms_and_Conditions.txt:71
 msgid "The minimum age to use the service is 13."
-msgstr "본 서비스를 이용할 수있는 최소 연령은 13세입니다."
+msgstr "본 서비스를 이용할 수 있는 최소 연령은 13세입니다."
 
 #: gui/userreport/Terms_and_Conditions.txt:72
 msgid ""
@@ -465,5 +465,5 @@ msgid ""
 "For further information on Wildfire Games Privacy Policies, visit "
 "https://trac.wildfiregames.com/wiki/UserDataProtection"
 msgstr ""
-"와일드 파이어 게임즈의 개인 정보 보호 정책에 대한 자세한 내용은 다음 사이트를 참조하십시오. "
+"와일드 파이어 게임즈의 개인 정보 보호 정책에 대한 자세한 내용은 다음 사이트를 참조하십시오 "
 "https://trac.wildfiregames.com/wiki/UserDataProtection"

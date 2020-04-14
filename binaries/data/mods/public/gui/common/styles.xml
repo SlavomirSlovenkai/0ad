@@ -4,26 +4,6 @@
 
 	<!--
 	==========================================
-	- DEFAULT STYLE: The style with the name 'default' is special, it will
-	- be called by every object before any other style is loaded.
-	==========================================
-	-->
-
-	<style name="default"
-		absolute="false"
-		enabled="true"
-		ghost="false"
-		hidden="false"
-		size="0 0 100% 100%"
-		z="0"
-
-		font="sans-14"
-		buffer_zone="5"
-		multiline="false"
-	/>
-
-	<!--
-	==========================================
 	MENU TEXT STYLES
 	==========================================
 	-->
@@ -66,18 +46,10 @@
 
 	<style name="TranslucentPanelThinBorder"
 		sprite="TranslucentPanelThinBorder"
-		buffer_zone="10"
-		font="sans-bold-stroke-14"
-		textcolor="white"
-		text_align="left"
-		text_valign="top"
 	/>
 
 	<style name="StonePanelThinBorder"
 		sprite="StonePanelThinBorder"
-		buffer_zone="10"
-		text_align="left"
-		text_valign="top"
 	/>
 
 	<!--
@@ -129,7 +101,6 @@
 		scrollbar_style="ModernScrollBar"
 		scroll_bottom="true"
 		textcolor="white"
-		textcolor_selected="gold"
 		text_align="left"
 		text_valign="center"
 	/>
@@ -141,7 +112,6 @@
 		scrollbar_style="ModernScrollBar"
 		scroll_bottom="true"
 		textcolor="white"
-		textcolor_selected="black"
 		text_align="left"
 		text_valign="center"
 		sprite="ModernDarkBoxGold"

@@ -1,7 +1,4 @@
-var PETRA = function(m)
-{
-
-m.Config = function(difficulty, behavior)
+PETRA.Config = function(difficulty, behavior)
 {
 	// 0 is sandbox, 1 is very easy, 2 is easy, 3 is medium, 4 is hard and 5 is very hard.
 	this.difficulty = difficulty !== undefined ? difficulty : 3;
@@ -24,6 +21,14 @@ m.Config = function(difficulty, behavior)
 		"popForBlacksmith": 65,
 		"numSentryTowers": 1
 	};
+
+	// Define damage type importance factors here.
+	this.DamageTypeImportance = {
+		"Hack": 0.085,
+		"Pierce": 0.075,
+		"Crush": 0.065
+	};
+
 	this.Economy = {
 		"popPhase2": 38,	// How many units we want before aging to phase2.
 		"workPhase3": 65,	// How many workers we want before aging to phase3.
@@ -46,13 +51,13 @@ m.Config = function(difficulty, behavior)
 		"armyMergeSize": 1400	// squared.
 	};
 
-	// Additional buildings that the AI does not yet know when to build 
+	// Additional buildings that the AI does not yet know when to build
 	// and that it will try to build on phase 3 when enough resources.
 	this.buildings =
 	{
 		"default": [],
-		"athen": ["structures/{civ}_gymnasion", "structures/{civ}_prytaneion",
-			  "structures/{civ}_theatron", "structures/{civ}_royal_stoa"],
+		"athen": ["structures/{civ}_gymnasium", "structures/{civ}_prytaneion",
+			  "structures/{civ}_theater", "structures/{civ}_royal_stoa"],
 		"brit": ["structures/{civ}_rotarymill"],
 		"cart": ["structures/{civ}_embassy_celtic", "structures/{civ}_embassy_iberian",
 			 "structures/{civ}_embassy_italiote"],
@@ -60,13 +65,13 @@ m.Config = function(difficulty, behavior)
 		"iber": ["structures/{civ}_monument"],
 		"kush": ["structures/{civ}_pyramid_large", "structures/{civ}_blemmye_camp",
 			 "structures/{civ}_nuba_village"],
-		"mace": ["structures/{civ}_library", "structures/{civ}_theatron"],
+		"mace": ["structures/{civ}_library", "structures/{civ}_theater"],
 		"maur": ["structures/{civ}_pillar_ashoka"],
 		"pers": ["structures/{civ}_apadana", "structures/{civ}_hall"],
 		"ptol": ["structures/{civ}_library"],
 		"rome": ["structures/{civ}_army_camp"],
 		"sele": ["structures/{civ}_library"],
-		"spart": ["structures/{civ}_syssiton", "structures/{civ}_theatron",
+		"spart": ["structures/{civ}_syssiton", "structures/{civ}_theater",
 		          "structures/{civ}_royal_stoa"]
 	};
 
@@ -100,7 +105,7 @@ m.Config = function(difficulty, behavior)
 		"defensive": 0.5
 	};
 
-	// See m.QueueManager.prototype.wantedGatherRates()
+	// See PETRA.QueueManager.prototype.wantedGatherRates()
 	this.queues =
 	{
 		"firstTurn": {
@@ -124,7 +129,7 @@ m.Config = function(difficulty, behavior)
 	this.garrisonHealthLevel = { "low": 0.4, "medium": 0.55, "high": 0.7 };
 };
 
-m.Config.prototype.setConfig = function(gameState)
+PETRA.Config.prototype.setConfig = function(gameState)
 {
 	if (this.difficulty > 0)
 	{
@@ -238,7 +243,7 @@ m.Config.prototype.setConfig = function(gameState)
 	API3.warn(" >>>  Petra bot: personality = " + uneval(this.personality));
 };
 
-m.Config.prototype.Serialize = function()
+PETRA.Config.prototype.Serialize = function()
 {
 	var data = {};
 	for (let key in this)
@@ -247,11 +252,8 @@ m.Config.prototype.Serialize = function()
 	return data;
 };
 
-m.Config.prototype.Deserialize = function(data)
+PETRA.Config.prototype.Deserialize = function(data)
 {
 	for (let key in data)
 		this[key] = data[key];
 };
-
-return m;
-}(PETRA);

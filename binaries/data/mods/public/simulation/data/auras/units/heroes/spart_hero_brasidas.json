@@ -1,14 +1,14 @@
 {
 	"type": "range",
 	"radius": 60,
-	"affects": ["Javelin Infantry Citizen"],
+	"affects": ["Citizen Infantry Javelinist"],
 	"modifications": [
-		{ "value": "Attack/Ranged/Pierce", "multiply": 1.25 },
-		{ "value": "Armour/Pierce", "add": 1 },
 		{ "value": "Armour/Hack", "add": 1 },
-		{ "value": "Armour/Crush", "add": 1 }
+		{ "value": "Armour/Pierce", "add": 1 },
+		{ "value": "Armour/Crush", "add": 1 },
+		{ "value": "Attack/Ranged/Damage/Pierce", "multiply": 1.25 }
 	],
 	"auraName": "Helot Reforms",
-	"auraDescription": "+25% attack and +1 armor for javelin infantry citizen-soldiers.",
+	"auraDescription": "Citizen Infantry Javelinists +1 armor, +25% ranged attack pierce damage.",
 	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
 }

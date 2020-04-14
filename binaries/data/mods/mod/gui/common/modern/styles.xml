@@ -6,6 +6,7 @@
 	- DEFAULT STYLE: The style with the name 'default' is special, it will
 	- be called by every object before any other style is loaded.
 	==========================================
+	Note that the default z value is determined by GUI engine regardless of what is specified here.
 	-->
 	<style name="default"
 		absolute="false"
@@ -13,22 +14,14 @@
 		ghost="false"
 		hidden="false"
 		size="0 0 100% 100%"
-		z="0"
 		font="sans-14"
 		buffer_zone="5"
-		multiline="false"
 	/>
 	<style name="ModernWindow"
 		sprite="ModernWindow"
-		buffer_zone="12"
-		text_align="left"
-		text_valign="top"
 	/>
 	<style name="ModernDialog"
 		sprite="ModernDialog"
-		buffer_zone="12"
-		text_align="left"
-		text_valign="top"
 	/>
 	<style name="ModernList"
 		buffer_zone="5"
@@ -41,7 +34,6 @@
 		textcolor="white"
 		textcolor_selected="white"
 		text_align="left"
-		text_valign="center"
 		sound_selected="audio/interface/ui/ui_button_click.ogg"
 	/>
 	<style name="ModernSortedList"
@@ -58,7 +50,6 @@
 		textcolor="white"
 		textcolor_selected="white"
 		text_align="left"
-		text_valign="center"
 		sound_selected="audio/interface/ui/ui_button_click.ogg"
 	/>
 	<style name="ModernDropDown"
@@ -147,14 +138,14 @@
 		sprite2="ModernTickOn"
 		sprite_disabled="ModernTickDisabledOff"
 		sprite2_disabled="ModernTickDisabledOn"
-		square_side="22"
 		sound_pressed="audio/interface/ui/ui_button_click.ogg"
 	/>
 	<style name="ModernSlider"
 		sprite="ModernSliderButton"
 		sprite_bar="ModernSliderLine"
 		button_width="20"
-		tooltip_style="sliderTooltip"
+		tooltip_style="tooltipInstant"
+		sound_pressed="audio/interface/ui/ui_button_click.ogg"
 	/>
 	<style name="ModernButtonRed"
 		sprite="ModernButtonRed"

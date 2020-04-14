@@ -1,17 +1,18 @@
 # Translation template for Pyrogenesis - Mod Selector.
-# Copyright (C) 2018 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the Pyrogenesis - Mod Selector project.
 # 
 # Translators:
+# Jonatan Nyberg, 2020
 # Mattias Münster <mattiasmun@gmail.com>, 2019
 # pilino1234 <pilino1234@zoho.eu>, 2017-2018
 # theschitz <theodore@theschitz.se>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2018-12-31 09:46+0100\n"
-"PO-Revision-Date: 2019-03-19 15:06+0000\n"
-"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"POT-Creation-Date: 2020-02-21 08:09+0000\n"
+"PO-Revision-Date: 2020-02-21 14:00+0000\n"
+"Last-Translator: pilino1234 <pilino1234@zoho.eu>\n"
 "Language-Team: Swedish (http://www.transifex.com/wildfire-games/0ad/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,14 +20,14 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gui/common/functions_msgbox.js:57
+#: gui/common/functions_msgbox.js:25
 #, javascript-format
 msgid ""
 "Opening %(url)s\n"
 " in default web browser. Please wait…"
 msgstr "Öppnar %(url)s\ni standardwebbläsaren. Var god vänta..."
 
-#: gui/common/functions_msgbox.js:60
+#: gui/common/functions_msgbox.js:28
 msgid "Opening page"
 msgstr "Öppnar sidan"
 
@@ -137,12 +138,12 @@ msgid ""
 "File download failed.\n"
 "\n"
 "%(technicalDetails)s"
-msgstr "Filnedladdning misslyckades.\n\n%(technicalDetails)s"
+msgstr "Filhämtning misslyckades.\n\n%(technicalDetails)s"
 
 #: gui/modio/modio.js:105
 msgctxt "mod.io error message"
 msgid "Download Error"
-msgstr "Nedladdningsfel"
+msgstr "Hämtningsfel"
 
 #: gui/modio/modio.js:113
 #, javascript-format
@@ -166,7 +167,7 @@ msgstr "Initialiserar mod.io gränssnittet."
 msgid "Initializing"
 msgstr "Initialiserar"
 
-#: gui/modio/modio.js:136 gui/modmod/modmod.xml:(caption):184
+#: gui/modio/modio.js:136 gui/modmod/modmod.xml:(caption):181
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -185,15 +186,15 @@ msgstr "Avbryt uppdatering"
 #: gui/modio/modio.js:248
 #, javascript-format
 msgid "Downloading “%(modname)s”"
-msgstr "Laddar ner “%(modname)s”"
+msgstr "Hämtar “%(modname)s”"
 
 #: gui/modio/modio.js:251
 msgid "Downloading"
-msgstr "Laddar ner"
+msgstr "Hämtar"
 
 #: gui/modio/modio.js:253
 msgid "Cancel Download"
-msgstr "Avbryt nedladdning"
+msgstr "Avbryt hämtning"
 
 #. Translation: Mod file download indicator. Current size over expected final
 #. size, with percentage complete.
@@ -222,28 +223,30 @@ msgstr "∞"
 msgid "%(number)s %(unit)s/s"
 msgstr "%(number)s %(unit)s/s"
 
-#: gui/modmod/modmod.js:102 gui/modmod/modmod.js:233
+#: gui/modmod/modmod.js:107 gui/modmod/modmod.js:254 gui/modmod/modmod.js:275
 msgid "Filter"
 msgstr "Filter"
 
-#: gui/modmod/modmod.js:286
+#: gui/modmod/modmod.js:118 gui/modmod/modmod.js:407
+msgctxt "mod activation"
+msgid "Enable"
+msgstr "Aktivera"
+
+#: gui/modmod/modmod.js:317
 #, javascript-format
 msgid "Dependency not met: %(dep)s"
 msgstr "Beroende inte uppfyllt: %(dep)s"
 
-#: gui/modmod/modmod.js:292
+#: gui/modmod/modmod.js:323
 msgid "All dependencies met"
 msgstr "Alla beroenden uppfyllda"
 
-#: gui/modmod/modmod.js:370
-msgid "Enable"
-msgstr "Aktivera"
-
-#: gui/modmod/modmod.js:370
+#: gui/modmod/modmod.js:408
+msgctxt "mod activation"
 msgid "Disable"
 msgstr "Inaktivera"
 
-#: gui/modmod/modmod.js:380
+#: gui/modmod/modmod.js:416
 msgid "No mod has been selected."
 msgstr "Ingen mod har valts."
 
@@ -278,7 +281,7 @@ msgstr "Öppnar %(url)s i webbläsaren."
 msgid "mod.io Mods"
 msgstr "mod.io mods"
 
-#: gui/modio/modio.xml:(caption):25 gui/modmod/modmod.xml:(caption):56
+#: gui/modio/modio.xml:(caption):25 gui/modmod/modmod.xml:(caption):55
 msgid "Available Mods"
 msgstr "Tillgängliga mods"
 
@@ -292,20 +295,20 @@ msgstr "Uppdatera lista"
 
 #: gui/modio/modio.xml:(caption):83
 msgid "Download"
-msgstr "Ladda ner"
+msgstr "Hämta"
 
-#: gui/modio/modio.xml:(heading):53 gui/modmod/modmod.xml:(heading):76
-#: gui/modmod/modmod.xml:(heading):116
+#: gui/modio/modio.xml:(heading):53 gui/modmod/modmod.xml:(heading):75
+#: gui/modmod/modmod.xml:(heading):115
 msgid "Name"
 msgstr "Namn"
 
-#: gui/modio/modio.xml:(heading):56 gui/modmod/modmod.xml:(heading):79
-#: gui/modmod/modmod.xml:(heading):119
+#: gui/modio/modio.xml:(heading):56 gui/modmod/modmod.xml:(heading):78
+#: gui/modmod/modmod.xml:(heading):118
 msgid "Version"
 msgstr "Version"
 
-#: gui/modio/modio.xml:(heading):59 gui/modmod/modmod.xml:(heading):85
-#: gui/modmod/modmod.xml:(heading):125
+#: gui/modio/modio.xml:(heading):59 gui/modmod/modmod.xml:(heading):84
+#: gui/modmod/modmod.xml:(heading):124
 msgid "Mod Label"
 msgstr "Modetikett"
 
@@ -313,8 +316,8 @@ msgstr "Modetikett"
 msgid "File Size"
 msgstr "Storlek"
 
-#: gui/modio/modio.xml:(heading):65 gui/modmod/modmod.xml:(heading):88
-#: gui/modmod/modmod.xml:(heading):128
+#: gui/modio/modio.xml:(heading):65 gui/modmod/modmod.xml:(heading):87
+#: gui/modmod/modmod.xml:(heading):127
 msgid "Dependencies"
 msgstr "Beroenden "
 
@@ -322,59 +325,55 @@ msgstr "Beroenden "
 msgid "Modifications"
 msgstr "Modifieringar"
 
-#: gui/modmod/modmod.xml:(caption):37
+#: gui/modmod/modmod.xml:(caption):36
 msgid "Negate"
 msgstr "Upphäv"
 
-#: gui/modmod/modmod.xml:(caption):49
+#: gui/modmod/modmod.xml:(caption):48
 msgid "Description"
 msgstr "Beskrivning"
 
-#: gui/modmod/modmod.xml:(caption):100
+#: gui/modmod/modmod.xml:(caption):99
 msgid "Enabled Mods"
 msgstr "Aktivera mods"
 
 #: gui/modmod/modmod.xml:(caption):167
-msgid "Enable/Disable"
-msgstr "Aktivera/Inaktivera"
-
-#: gui/modmod/modmod.xml:(caption):170
 msgid "Visit Website"
-msgstr "Besök hemsidan"
+msgstr "Besök webbplats"
 
-#: gui/modmod/modmod.xml:(caption):179
+#: gui/modmod/modmod.xml:(caption):176
 msgid "Quit"
 msgstr "Avsluta"
 
-#: gui/modmod/modmod.xml:(caption):189
+#: gui/modmod/modmod.xml:(caption):186
 msgid "Help"
 msgstr "Hjälp"
 
-#: gui/modmod/modmod.xml:(caption):194
+#: gui/modmod/modmod.xml:(caption):191
 msgid "Download Mods"
-msgstr "Ladda ner mods"
+msgstr "Hämta mods"
 
-#: gui/modmod/modmod.xml:(caption):199
+#: gui/modmod/modmod.xml:(caption):196
 msgid "Save Configuration"
 msgstr "Spara konfiguration"
 
-#: gui/modmod/modmod.xml:(caption):204
+#: gui/modmod/modmod.xml:(caption):201
 msgid "Start Mods"
 msgstr "Starta mods"
 
-#: gui/modmod/modmod.xml:(heading):82 gui/modmod/modmod.xml:(heading):122
+#: gui/modmod/modmod.xml:(heading):81 gui/modmod/modmod.xml:(heading):121
 msgid "(Folder)"
 msgstr "(Mapp)"
 
-#: gui/modmod/modmod.xml:(heading):91 gui/modmod/modmod.xml:(heading):131
+#: gui/modmod/modmod.xml:(heading):90 gui/modmod/modmod.xml:(heading):130
 msgid "Website"
-msgstr "Hemsida"
+msgstr "Webbplats"
 
-#: gui/modmod/modmod.xml:(tooltip):146 gui/modmod/modmod.xml:(tooltip):160
+#: gui/modmod/modmod.xml:(tooltip):145 gui/modmod/modmod.xml:(tooltip):159
 msgid ""
 "Change the order in which mods are launched. This should match the mods "
 "dependencies."
-msgstr "Ändra ordningen i vilken mods laddas ner. Denna bör överensstämma med mods beroenden."
+msgstr "Ändra ordningen i vilken mods startas. Detta bör överensstämma med mods beroenden."
 
 #: gui/modmod/help/help.xml:(caption):13
 msgid "Pyrogenesis Mod Selector"
@@ -421,7 +420,7 @@ msgid ""
 "This service provides an easy way to download and install community-made "
 "mods and is provided by DBolical Pty Ltd, the company behind IndieDB and "
 "ModDB."
-msgstr "Denna tjänst ger ett enkelt sätt att ladda ner och installera community-made mods och tillhandahålls av DBolical Pty Ltd, företaget bakom IndieDB och ModDB."
+msgstr "Denna tjänst ger ett enkelt sätt att hämta och installera community-made mods och tillhandahålls av DBolical Pty Ltd, företaget bakom IndieDB och ModDB."
 
 #: gui/modio/Disclaimer.txt:7
 msgid "The service is for users age 13 and over."
@@ -470,4 +469,4 @@ msgid ""
 "projects for a long time! Today, mod.io allows us to list and download all "
 "the mods that were verified by the team. Click \"Download Mods\" to try it "
 "out and install some!"
-msgstr "Mod.io-tjänsten är utvecklad av DBOlical, företaget bakom IndieDB och ModDB. Dessa webbplatser har spridit ordet om 0 A.D. och andra indieprojekt under lång tid! Idag tillåter mod.io oss att lista och ladda ner all mods som har verifierats av teamet. Klicka på \"Ladda ner mods\" för att prova och installera några!"
+msgstr "Mod.io-tjänsten är utvecklad av DBOlical, företaget bakom IndieDB och ModDB. Dessa webbplatser har spridit ordet om 0 A.D. och andra indieprojekt under lång tid! Idag tillåter mod.io oss att lista och hämta all mods som har verifierats av teamet. Klicka på \"Hämta mods\" för att prova och installera några!"

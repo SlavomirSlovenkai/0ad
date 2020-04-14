@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 #include "lib/utf8.h"
 #include "ps/CConsole.h"
 #include "ps/Profile.h"
+#include "ps/Pyrogenesis.h"
 #include "renderer/Renderer.h"
 
 #include <ctime>
@@ -142,7 +143,7 @@ void CLogger::WriteMessage(const char* message, bool doRender = false)
 {
 	std::string cmessage = ToHTML(message);
 
-	CScopeLock lock(m_Mutex);
+	std::lock_guard<std::mutex> lock(m_Mutex);
 
 	++m_NumberOfMessages;
 //	if (m_UseDebugPrintf)
@@ -163,7 +164,7 @@ void CLogger::WriteError(const char* message)
 {
 	std::string cmessage = ToHTML(message);
 
-	CScopeLock lock(m_Mutex);
+	std::lock_guard<std::mutex> lock(m_Mutex);
 
 	++m_NumberOfErrors;
 	if (m_UseDebugPrintf)
@@ -183,7 +184,7 @@ void CLogger::WriteWarning(const char* message)
 {
 	std::string cmessage = ToHTML(message);
 
-	CScopeLock lock(m_Mutex);
+	std::lock_guard<std::mutex> lock(m_Mutex);
 
 	++m_NumberOfWarnings;
 	if (m_UseDebugPrintf)
@@ -221,7 +222,7 @@ void CLogger::Render()
 
 	// (Lock must come after loading the CFont, since that might log error messages
 	// and attempt to lock the mutex recursively which is forbidden)
-	CScopeLock lock(m_Mutex);
+	std::lock_guard<std::mutex> lock(m_Mutex);
 
 	for (const RenderedMessage& msg : m_RenderMessages)
 	{
@@ -285,7 +286,7 @@ void CLogger::PushRenderMessage(ELogMethod method, const char* message)
 
 void CLogger::CleanupRenderQueue()
 {
-	CScopeLock lock(m_Mutex);
+	std::lock_guard<std::mutex> lock(m_Mutex);
 
 	if (m_RenderMessages.empty())
 		return;

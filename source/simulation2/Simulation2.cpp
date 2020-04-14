@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -67,7 +67,7 @@ public:
 			CFG_GET_VAL("ooslog", m_EnableOOSLog);
 			CFG_GET_VAL("serializationtest", m_EnableSerializationTest);
 			CFG_GET_VAL("rejointest", m_RejoinTestTurn);
-			if (m_RejoinTestTurn <= 0) // Handle bogus values of the arg
+			if (m_RejoinTestTurn < 0) // Handle bogus values of the arg
 				m_RejoinTestTurn = -1;
 		}
 
@@ -538,8 +538,8 @@ void CSimulation2Impl::UpdateComponents(CSimContext& simContext, fixed turnLengt
 	CmpPtr<ICmpPathfinder> cmpPathfinder(simContext, SYSTEM_ENTITY);
 	if (cmpPathfinder)
 	{
+		cmpPathfinder->FetchAsyncResultsAndSendMessages();
 		cmpPathfinder->UpdateGrid();
-		cmpPathfinder->FinishAsyncRequests();
 	}
 
 	// Push AI commands onto the queue before we use them
@@ -553,14 +553,17 @@ void CSimulation2Impl::UpdateComponents(CSimContext& simContext, fixed turnLengt
 
 	// Process newly generated move commands so the UI feels snappy
 	if (cmpPathfinder)
-		cmpPathfinder->ProcessSameTurnMoves();
-
+	{
+		cmpPathfinder->StartProcessingMoves(true);
+		cmpPathfinder->FetchAsyncResultsAndSendMessages();
+	}
 	// Send all the update phases
 	{
 		PROFILE2("Sim - Update");
 		CMessageUpdate msgUpdate(turnLengthFixed);
 		componentManager.BroadcastMessage(msgUpdate);
 	}
+
 	{
 		CMessageUpdate_MotionFormation msgUpdate(turnLengthFixed);
 		componentManager.BroadcastMessage(msgUpdate);
@@ -568,7 +571,10 @@ void CSimulation2Impl::UpdateComponents(CSimContext& simContext, fixed turnLengt
 
 	// Process move commands for formations (group proxy)
 	if (cmpPathfinder)
-		cmpPathfinder->ProcessSameTurnMoves();
+	{
+		cmpPathfinder->StartProcessingMoves(true);
+		cmpPathfinder->FetchAsyncResultsAndSendMessages();
+	}
 
 	{
 		PROFILE2("Sim - Motion Unit");
@@ -581,12 +587,12 @@ void CSimulation2Impl::UpdateComponents(CSimContext& simContext, fixed turnLengt
 		componentManager.BroadcastMessage(msgUpdate);
 	}
 
-	// Process moves resulting from group proxy movement (unit needs to catch up or realign) and any others
-	if (cmpPathfinder)
-		cmpPathfinder->ProcessSameTurnMoves();
-
 	// Clean up any entities destroyed during the simulation update
 	componentManager.FlushDestroyedComponents();
+
+	// Process all remaining moves
+	if (cmpPathfinder)
+		cmpPathfinder->StartProcessingMoves(false);
 }
 
 void CSimulation2Impl::Interpolate(float simFrameLength, float frameOffset, float realFrameLength)
@@ -853,6 +859,9 @@ void CSimulation2::LoadMapSettings()
 	// Initialize here instead of in Update()
 	GetScriptInterface().CallFunctionVoid(global, "LoadMapSettings", m->m_MapSettings);
 
+	GetScriptInterface().FreezeObject(m->m_InitAttributes, true);
+	GetScriptInterface().SetGlobal("InitAttributes", m->m_InitAttributes, true, true, true);
+
 	if (!m->m_StartupScript.empty())
 		GetScriptInterface().LoadScript(L"map startup script", m->m_StartupScript);
 
@@ -980,7 +989,8 @@ std::string CSimulation2::GetAIData()
 
 	// Build single JSON string with array of AI data
 	JS::RootedValue ais(cx);
-	if (!scriptInterface.Eval("({})", &ais) || !scriptInterface.SetProperty(ais, "AIData", aiData))
+
+	if (!ScriptInterface::CreateObject(cx, &ais, "AIData", aiData))
 		return std::string();
 
 	return scriptInterface.StringifyJSON(&ais);

@@ -7,7 +7,9 @@
   </Armour>
   <Attack>
     <Ranged>
-      <Pierce>9</Pierce>
+      <Damage>
+        <Pierce>9</Pierce>
+      </Damage>
       <MaxRange>70</MaxRange>
       <MinRange>10</MinRange>
       <ElevationBonus>9</ElevationBonus>
@@ -31,6 +33,7 @@
   </Health>
   <Identity>
     <GenericName>Sentry Tower</GenericName>
+    <SelectionGroupName>template_structure_defensive_tower_sentry</SelectionGroupName>
     <Icon>structures/sentry_tower.png</Icon>
     <Classes datatype="tokens">GarrisonTower</Classes>
     <VisibleClasses datatype="tokens">Village DefenseTower SentryTower</VisibleClasses>
@@ -61,6 +64,7 @@
         <wood>50</wood>
         <stone>100</stone>
       </Cost>
+      <Variant>upgrading</Variant>
       <Time>100</Time>
     </Tower>
   </Upgrade>

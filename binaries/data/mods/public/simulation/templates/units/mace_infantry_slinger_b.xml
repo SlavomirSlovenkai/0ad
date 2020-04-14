@@ -2,8 +2,8 @@
 <Entity parent="template_unit_infantry_ranged_slinger">
   <Builder>
     <Entities datatype="tokens">
-      structures/mace_workshop
-      structures/mace_theatron
+      structures/mace_tower_artillery
+      structures/mace_theater
       structures/mace_library
     </Entities>
   </Builder>
@@ -15,11 +15,11 @@
   </Cost>
   <Identity>
     <Civ>mace</Civ>
+    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <Lang>greek</Lang>
     <SelectionGroupName>units/mace_infantry_slinger_b</SelectionGroupName>
     <GenericName>Rhodian Slinger</GenericName>
     <SpecificName>Sphendonḗtēs Rhódios</SpecificName>
-    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <Icon>units/mace_infantry_slinger.png</Icon>
     <RequiredTechnology>phase_town</RequiredTechnology>
   </Identity>

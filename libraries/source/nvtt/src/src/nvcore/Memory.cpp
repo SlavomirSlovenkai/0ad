@@ -1,4 +1,4 @@
-// This code is in the public domain -- Ignacio Castaño <castano@gmail.com>
+// This code is in the public domain -- Ignacio CastaÃ±o <castano@gmail.com>
 
 #include "Memory.h"
 #include "Debug.h"
@@ -114,5 +114,6 @@ void operator delete(void* p, const std::nothrow_t&) throw()
 
 #endif // 0
 
-
 #endif // NV_OVERRIDE_ALLOC
+
+

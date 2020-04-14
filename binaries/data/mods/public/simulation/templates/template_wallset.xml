@@ -6,21 +6,21 @@
 <Entity>
   <Identity>
     <Civ>gaia</Civ>
-    <Icon>structures/wall.png</Icon>
     <Classes datatype="tokens">StoneWall</Classes>
     <GenericName>City Wall</GenericName>
-    <Tooltip>Wall off your town for a stout defense.</Tooltip>
+    <Icon>structures/wall.png</Icon>
     <RequiredTechnology>phase_town</RequiredTechnology>
+    <Tooltip>Wall off your town for a stout defense.</Tooltip>
     <Undeletable>true</Undeletable>
   </Identity>
-  <WallSet>
-    <MaxTowerOverlap>0.85</MaxTowerOverlap>
-    <MinTowerOverlap>0.05</MinTowerOverlap>
-  </WallSet>
   <Visibility>
     <RetainInFog>false</RetainInFog>
     <AlwaysVisible>false</AlwaysVisible>
     <Corpse>false</Corpse>
     <Preview>false</Preview>
   </Visibility>
+  <WallSet>
+    <MaxTowerOverlap>0.85</MaxTowerOverlap>
+    <MinTowerOverlap>0.05</MinTowerOverlap>
+  </WallSet>
 </Entity>

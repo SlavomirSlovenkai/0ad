@@ -2,9 +2,11 @@
 <Entity parent="template_unit_siege_boltshooter">
   <Attack>
     <Ranged>
-      <Pierce op="mul">1.2</Pierce>
-      <Crush op="mul">0.5</Crush>
-      <MaxRange op="add">8.0</MaxRange>
+      <Damage>
+        <Pierce op="mul">1.2</Pierce>
+        <Crush op="mul">0.5</Crush>
+      </Damage>
+      <MaxRange op="add">8</MaxRange>
     </Ranged>
   </Attack>
   <Footprint replace="">
@@ -13,7 +15,7 @@
   </Footprint>
   <Identity>
     <Civ>rome</Civ>
-    <SpecificName>Scorpio</SpecificName>
+    <SpecificName>Scorpiō</SpecificName>
     <Icon>units/rome_siege_scorpio_packed.png</Icon>
   </Identity>
   <Pack>

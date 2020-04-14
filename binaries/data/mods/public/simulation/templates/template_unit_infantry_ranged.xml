@@ -7,9 +7,11 @@
   </Armour>
   <Attack>
     <Ranged>
-      <Hack>0</Hack>
-      <Pierce>1.5</Pierce>
-      <Crush>0</Crush>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>1.5</Pierce>
+        <Crush>0</Crush>
+      </Damage>
       <MaxRange>10.0</MaxRange>
       <MinRange>0.0</MinRange>
       <PrepareTime>750</PrepareTime>
@@ -19,6 +21,7 @@
         <Speed>75.0</Speed>
         <Spread>3.0</Spread>
         <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <PreferredClasses datatype="tokens">Human</PreferredClasses>
@@ -28,8 +31,8 @@
     <Max>50</Max>
   </Health>
   <Identity>
-    <GenericName>Ranged</GenericName>
     <VisibleClasses datatype="tokens">Ranged</VisibleClasses>
+    <GenericName>Ranged</GenericName>
     <Formations datatype="tokens">
       special/formations/skirmish
     </Formations>

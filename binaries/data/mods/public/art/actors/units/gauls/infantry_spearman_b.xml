@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <actor version="1">
   <castshadow/>
   <group>
@@ -53,6 +53,66 @@
         <texture file="skeletal/celt_ijv_b_01.dds" name="baseTex"/>
       </textures>
     </variant>
+    <variant name="tunic-1a">
+      <mesh>skeletal/new/m_armor_pants_tunic_long.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_1_a.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-1b">
+      <mesh>skeletal/new/m_armor_pants_tunic_long.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_1_b.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-1c">
+      <mesh>skeletal/new/m_armor_pants_tunic_long.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_1_c.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-1d">
+      <mesh>skeletal/new/m_armor_pants_tunic_long.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_1_d.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-1e">
+      <mesh>skeletal/new/m_armor_pants_tunic_long.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_1_e.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-sleeveless-1a">
+      <mesh>skeletal/new/m_armor_pants.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_sleeveless_1_a.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-sleeveless-1b">
+      <mesh>skeletal/new/m_armor_pants.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_sleeveless_1_b.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-sleeveless-1c">
+      <mesh>skeletal/new/m_armor_pants.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_sleeveless_1_c.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-sleeveless-1d">
+      <mesh>skeletal/new/m_armor_pants.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_sleeveless_1_d.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant name="tunic-sleeveless-1e">
+      <mesh>skeletal/new/m_armor_pants.dae</mesh>
+      <textures>
+        <texture file="skeletal/gaul_tunic_sleeveless_1_e.png" name="baseTex"/>
+      </textures>
+    </variant>
     <variant name="pants-basic-1">
       <mesh>skeletal/new/m_pants.dae</mesh>
       <textures>
@@ -91,12 +151,20 @@
     </variant>
   </group>
   <group>
-    <variant file="biped/base_spearman_relax.xml"/>
+    <variant file="biped/base_spearman_shield_relax_celt.xml"/>
     <variant file="biped/carry_food.xml"/>
     <variant file="biped/carry_meat.xml"/>
     <variant file="biped/carry_wood.xml"/>
     <variant file="biped/carry_stone.xml"/>
     <variant file="biped/carry_metal.xml"/>
+    <variant file="biped/approach_tree.xml"/>
+    <variant file="biped/approach_grain.xml"/>
+    <variant file="biped/approach_fruit.xml"/>
+    <variant file="biped/approach_meat.xml"/>
+    <variant file="biped/approach_rock.xml"/>
+    <variant file="biped/approach_ore.xml"/>
+    <variant file="biped/approach_ruins.xml"/>
+    <variant file="biped/approach_praise.xml"/>
   </group>
   <group>
     <variant frequency="1" name="Idle"/>

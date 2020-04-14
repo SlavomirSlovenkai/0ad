@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -81,7 +81,7 @@ class CGame
 	CTurnManager* m_TurnManager;
 
 public:
-	CGame(bool disableGraphics = false, bool replayLog = true);
+	CGame(bool replayLog);
 	~CGame();
 
 	/**
@@ -139,16 +139,6 @@ public:
 	inline bool IsGameStarted() const
 	{
 		return m_GameStarted;
-	}
-
-	/**
-	 * Get if the graphics is disabled.
-	 *
-	 * @return bool true if the m_GameView is NULL, false otherwise.
-	 */
-	inline bool IsGraphicsDisabled() const
-	{
-		return !m_GameView;
 	}
 
 	/**
@@ -213,6 +203,8 @@ public:
 	{	return *m_ReplayLogger; }
 
 private:
+	static const CStr EventNameSimulationUpdate;
+
 	void RegisterInit(const JS::HandleValue attribs, const std::string& savedState);
 	IReplayLogger* m_ReplayLogger;
 

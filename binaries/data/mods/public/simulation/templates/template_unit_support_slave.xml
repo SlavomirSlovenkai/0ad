@@ -9,7 +9,7 @@
       structures/{civ}_field
       structures/{civ}_corral
       structures/{civ}_outpost
-      other/wallset_palisade
+      structures/wallset_palisade
       structures/{civ}_dock
       structures/{civ}_barracks
       structures/{civ}_blacksmith
@@ -38,7 +38,7 @@
   <Identity>
     <VisibleClasses datatype="tokens">Slave Worker</VisibleClasses>
     <GenericName>Slave</GenericName>
-    <Icon>units/global_slave.png</Icon>
+    <SelectionGroupName>template_unit_support_slave</SelectionGroupName>
     <Tooltip>Gatherer with a finite life span. Bonused at mining and lumbering.</Tooltip>
   </Identity>
   <Loot>
@@ -65,14 +65,15 @@
   </ResourceGatherer>
   <Sound>
     <SoundGroups>
-      <select>voice/{lang}/civ/civ_{gender}_select.xml</select>
-      <order_walk>voice/{lang}/civ/civ_{gender}_walk.xml</order_walk>
-      <order_gather>voice/{lang}/civ/civ_{gender}_gather.xml</order_gather>
-      <order_repair>voice/{lang}/civ/civ_{gender}_repair.xml</order_repair>
-      <order_garrison>voice/{lang}/civ/civ_{gender}_garrison.xml</order_garrison>
+      <select>voice/{lang}/civ/civ_{phenotype}_select.xml</select>
+      <order_walk>voice/{lang}/civ/civ_{phenotype}_walk.xml</order_walk>
+      <order_gather>voice/{lang}/civ/civ_{phenotype}_gather.xml</order_gather>
+      <order_repair>voice/{lang}/civ/civ_{phenotype}_repair.xml</order_repair>
+      <order_build>voice/{lang}/civ/civ_{phenotype}_build.xml</order_build>
+      <order_garrison>voice/{lang}/civ/civ_{phenotype}_garrison.xml</order_garrison>
       <walk>actor/human/movement/walk.xml</walk>
       <run>actor/human/movement/run.xml</run>
-      <death>actor/human/death/{gender}_death.xml</death>
+      <death>actor/human/death/{phenotype}_death.xml</death>
       <build>resource/construction/con_wood.xml</build>
       <gather_fruit>resource/foraging/forage_leaves.xml</gather_fruit>
       <gather_grain>resource/farming/farm.xml</gather_grain>

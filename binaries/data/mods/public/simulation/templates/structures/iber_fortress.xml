@@ -14,23 +14,20 @@
     <Civ>iber</Civ>
     <SpecificName>Castro</SpecificName>
   </Identity>
+  <Loot>
+    <stone>240</stone>
+  </Loot>
   <Obstruction>
     <Static width="27.0" depth="27.0"/>
   </Obstruction>
   <ProductionQueue>
     <Entities datatype="tokens">
+      units/{civ}_champion_infantry
+      units/{civ}_champion_cavalry
       units/{civ}_hero_caros
       units/{civ}_hero_indibil
       units/{civ}_hero_viriato
-      units/{civ}_champion_infantry
-      units/{civ}_champion_cavalry
     </Entities>
-    <Technologies datatype="tokens">
-      siege_attack
-      siege_armor
-      siege_cost_metal
-      siege_cost_wood
-    </Technologies>
   </ProductionQueue>
   <VisualActor>
     <Actor>structures/iberians/fortress.xml</Actor>

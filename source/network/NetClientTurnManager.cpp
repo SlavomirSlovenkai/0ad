@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -20,10 +20,10 @@
 #include "NetClientTurnManager.h"
 #include "NetClient.h"
 
-#include "gui/GUIManager.h"
 #include "ps/CLogger.h"
 #include "ps/Pyrogenesis.h"
 #include "ps/Replay.h"
+#include "ps/Profile.h"
 #include "ps/Util.h"
 #include "simulation2/Simulation2.h"
 
@@ -142,17 +142,12 @@ void CNetClientTurnManager::OnSyncError(u32 turn, const CStr& expectedHash, cons
 
 	LOGERROR("Out-Of-Sync on turn %d\nPlayers: %s\nDumping state to %s", turn, playerNamesString.str().c_str(), oosdumpPath.string8());
 
-	const ScriptInterface& scriptInterface = m_NetClient.GetScriptInterface();
-	JSContext* cx = scriptInterface.GetContext();
-	JSAutoRequest rq(cx);
-
-	JS::RootedValue msg(cx);
-	scriptInterface.Eval("({ 'type':'out-of-sync' })", &msg);
-	scriptInterface.SetProperty(msg, "turn", turn);
-	scriptInterface.SetProperty(msg, "players", playerNamesStrings);
-	scriptInterface.SetProperty(msg, "expectedHash", expectedHashHex);
-	scriptInterface.SetProperty(msg, "hash", Hexify(hash));
-	scriptInterface.SetProperty(msg, "path_oos_dump", wstring_from_utf8(oosdumpPath.string8()));
-	scriptInterface.SetProperty(msg, "path_replay", wstring_from_utf8(m_Replay.GetDirectory().string8()));
-	m_NetClient.PushGuiMessage(msg);
+	m_NetClient.PushGuiMessage(
+		"type", "out-of-sync",
+		"turn", turn,
+		"players", playerNamesStrings,
+		"expectedHash", expectedHashHex,
+		"hash", Hexify(hash),
+		"path_oos_dump", wstring_from_utf8(oosdumpPath.string8()),
+		"path_replay", wstring_from_utf8(m_Replay.GetDirectory().string8()));
 }

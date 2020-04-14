@@ -6,7 +6,7 @@ newoption { trigger = "icc", description = "Use Intel C++ Compiler (Linux only; 
 newoption { trigger = "jenkins-tests", description = "Configure CxxTest to use the XmlPrinter runner which produces Jenkins-compatible output" }
 newoption { trigger = "minimal-flags", description = "Only set compiler/linker flags that are really needed. Has no effect on Windows builds" }
 newoption { trigger = "outpath", description = "Location for generated project files" }
-newoption { trigger = "with-system-mozjs38", description = "Search standard paths for libmozjs38, instead of using bundled copy" }
+newoption { trigger = "with-system-mozjs45", description = "Search standard paths for libmozjs45, instead of using bundled copy" }
 newoption { trigger = "with-system-nvtt", description = "Search standard paths for nvidia-texture-tools library, instead of using bundled copy" }
 newoption { trigger = "without-audio", description = "Disable use of OpenAL/Ogg/Vorbis APIs" }
 newoption { trigger = "without-lobby", description = "Disable the use of gloox and the multiplayer lobby" }
@@ -381,10 +381,12 @@ function project_create(project_name, target_type)
 	language "C++"
 	kind(target_type)
 
-	filter "action:vs2013"
-		toolset "v120_xp"
 	filter "action:vs2015"
 		toolset "v140_xp"
+	filter {}
+
+	filter "action:vs*"
+		buildoptions "/utf-8"
 	filter {}
 
 	project_set_target(project_name)
@@ -456,9 +458,10 @@ function project_add_contents(source_root, rel_source_dirs, rel_include_dirs, ex
 			pchheader(pch_dir.."precompiled.h")
 		filter {}
 		pchsource(pch_dir.."precompiled.cpp")
-		defines { "USING_PCH" }
+		defines { "CONFIG_ENABLE_PCH=1" }
 		files { pch_dir.."precompiled.h", pch_dir.."precompiled.cpp" }
 	else
+		defines { "CONFIG_ENABLE_PCH=0" }
 		flags { "NoPCH" }
 	end
 
@@ -700,7 +703,7 @@ function setup_all_libs ()
 		"maths/scripting",
 		"i18n",
 		"i18n/scripting",
-		"third_party/cppformat",
+		"third_party/fmt",
 	}
 	extern_libs = {
 		"spidermonkey",
@@ -730,7 +733,8 @@ function setup_all_libs ()
 		"graphics/scripting",
 		"renderer",
 		"renderer/scripting",
-		"third_party/mikktspace"
+		"third_party/mikktspace",
+		"third_party/ogre3d_preprocessor"
 	}
 	extern_libs = {
 		"opengl",
@@ -759,7 +763,10 @@ function setup_all_libs ()
 
 	source_dirs = {
 		"gui",
-		"gui/scripting",
+		"gui/ObjectTypes",
+		"gui/ObjectBases",
+		"gui/Scripting",
+		"gui/SettingTypes",
 		"i18n"
 	}
 	extern_libs = {
@@ -849,7 +856,7 @@ function setup_all_libs ()
 	end
 
 	-- runtime-library-specific
-	if _ACTION == "vs2013" or _ACTION == "vs2015" then
+	if _ACTION == "vs2015" then
 		table.insert(source_dirs, "lib/sysdep/rtl/msc");
 	else
 		table.insert(source_dirs, "lib/sysdep/rtl/gcc");
@@ -1100,8 +1107,7 @@ function setup_atlas_projects()
 	},{	-- extern_libs
 		"boost",
 		"iconv",
-		"libxml2",
-		"wxwidgets"
+		"libxml2"
 	},{	-- extra_params
 		no_pch = 1
 	})
@@ -1346,7 +1352,6 @@ function setup_tests()
 	links { "mocks_test" }
 	if _OPTIONS["atlas"] then
 		links { "AtlasObject" }
-		project_add_extern_libs({"wxwidgets"}, target_type)
 	end
 	extra_params = {
 		extra_files = { "test_setup.cpp" },

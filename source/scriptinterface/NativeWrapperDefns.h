@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with 0 A.D.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "ps/Profile.h"
 
 // Use the macro below to define types that will be passed by value to C++ functions.
 // NOTE: References are used just to avoid superfluous copy constructor calls
@@ -46,13 +45,13 @@ PASS_BY_VALUE_IN_NATIVE_WRAPPER(double)
 
 #undef PASS_BY_VALUE_IN_NATIVE_WRAPPER
 
-// This works around a bug in Visual Studio 2013 (error C2244 if ScriptInterface:: is included in the
+// This works around a bug in Visual Studio (error C2244 if ScriptInterface:: is included in the
 // type specifier of MaybeRef<T>::Type for parameters inside the member function declaration).
 // It's probably the bug described here, but I'm not quite sure (at least the example there still
 // cause error C2244):
 // https://connect.microsoft.com/VisualStudio/feedback/details/611863/vs2010-c-fails-with-error-c2244-gcc-4-3-4-compiles-ok
 //
-// TODO: When dropping support for VS 2013, check if this bug is still present in the supported
+// TODO: When dropping support for VS 2015, check if this bug is still present in the supported
 // Visual Studio versions (replace the macro definitions in NativeWrapperDecls.h with these ones,
 // remove them from here and check if this causes error C2244 when compiling.
 #undef NUMBERED_LIST_TAIL_MAYBE_REF
@@ -132,9 +131,7 @@ BOOST_PP_REPEAT(SCRIPT_INTERFACE_MAX_ARGS, OVERLOADS, ~)
 	{ \
 		JS::CallArgs args = JS::CallArgsFromVp(argc, vp); \
 		JSAutoRequest rq(cx); \
-		JS::RootedObject thisObj(cx, JS_THIS_OBJECT(cx, vp)); \
-		if (ScriptInterface::GetClass(thisObj) != CLS) return false; \
-		TC* c = static_cast<TC*>(ScriptInterface::GetPrivate(thisObj)); \
+		TC* c = ScriptInterface::GetPrivate<TC>(cx, args, CLS); \
 		if (! c) return false; \
 		BOOST_PP_REPEAT_##z (i, CONVERT_ARG, ~) \
 		JS::RootedValue rval(cx); \
@@ -152,9 +149,7 @@ BOOST_PP_REPEAT(SCRIPT_INTERFACE_MAX_ARGS, OVERLOADS, ~)
 	{ \
 		JS::CallArgs args = JS::CallArgsFromVp(argc, vp); \
 		JSAutoRequest rq(cx); \
-		JS::RootedObject thisObj(cx, JS_THIS_OBJECT(cx, vp)); \
-		if (ScriptInterface::GetClass(thisObj) != CLS) return false; \
-		TC* c = static_cast<TC*>(ScriptInterface::GetPrivate(thisObj)); \
+		TC* c = ScriptInterface::GetPrivate<TC>(cx, args, CLS); \
 		if (! c) return false; \
 		BOOST_PP_REPEAT_##z (i, CONVERT_ARG, ~) \
 		JS::RootedValue rval(cx); \

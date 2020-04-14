@@ -6,14 +6,13 @@
   </Footprint>
   <Identity>
     <Civ>sele</Civ>
-    <SelectionGroupName>structures/sele_wallset_stone</SelectionGroupName>
-    <SpecificName>Teîkhos</SpecificName>
+    <SpecificName>Teichos</SpecificName>
   </Identity>
   <Obstruction>
     <Static width="24.0" depth="6.0"/>
   </Obstruction>
   <VisualActor>
-    <Actor>structures/seleucids/wall_med.xml</Actor>
+    <Actor>structures/seleucids/wall_medium.xml</Actor>
   </VisualActor>
   <WallPiece>
     <Length>21.1</Length>

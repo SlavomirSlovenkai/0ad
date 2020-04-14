@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #include "network/NetFileTransfer.h"
 #include "network/NetHost.h"
 #include "scriptinterface/ScriptVal.h"
+#include "scriptinterface/ScriptInterface.h"
 
 #include "ps/CStr.h"
 
@@ -107,7 +108,7 @@ public:
 	 * @param server IP address or host name to connect to
 	 * @return true on success, false on connection failure
 	 */
-	bool SetupConnection(const CStr& server, const u16 port, ENetHost* enetClient = NULL);
+	bool SetupConnection(const CStr& server, const u16 port, ENetHost* enetClient);
 
 	/**
 	 * Destroy the connection to the server.
@@ -153,7 +154,16 @@ public:
 	 * Add a message to the queue, to be read by GuiPoll.
 	 * The script value must be in the GetScriptInterface() JS context.
 	 */
-	void PushGuiMessage(const JS::HandleValue message);
+	template<typename... Args>
+	void PushGuiMessage(Args const&... args)
+	{
+		JSContext* cx = GetScriptInterface().GetContext();
+		JSAutoRequest rq(cx);
+
+		JS::RootedValue message(cx);
+		ScriptInterface::CreateObject(cx, &message, args...);
+		m_GuiMessageQueue.push_back(JS::Heap<JS::Value>(message));
+	}
 
 	/**
 	 * Return a concatenation of all messages in the GUI queue,

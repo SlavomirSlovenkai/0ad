@@ -1,5 +1,5 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
@@ -7,14 +7,14 @@
 # Chris_Kay_083, 2014
 # Dominik Novosel <vortextardis@gmail.com>, 2017
 # Jakov Vukadin <jakisha.vukadin@gmail.com>, 2017
-# Chris_Kay_083, 2014-2015
+# Chris_Kay_083, 2014-2015,2020
 # Tomislav Gregorić, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:07+0200\n"
-"PO-Revision-Date: 2019-04-01 16:10+0000\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"POT-Creation-Date: 2020-01-17 08:08+0000\n"
+"PO-Revision-Date: 2020-03-14 18:03+0000\n"
+"Last-Translator: Chris_Kay_083\n"
 "Language-Team: Croatian (http://www.transifex.com/wildfire-games/0ad/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgid ""
 msgstr "Grci su bili vrlo uspješni u helenizaciji raznih stranaca. Tijekom Helenističkog razdoblja, Grčki je bio službeni jezik drevnog svijeta, i koristio se od Španjolske do Indije. "
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Description
-msgid "Allied warships −25% construction time."
+msgid "Allied Warships −25% construction time."
 msgstr ""
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Name
@@ -77,7 +77,7 @@ msgid ""
 "city-states instituted the so-called Delian League in 478 B.C., whose "
 "purpose was to push the Persians out of the Aegean region. The allied states"
 " contributed ships and money, while the Athenians offered their entire navy."
-msgstr "Kratko nakon velikih pomorskih pobjeda kod Salame i Mykale, Grčke gradovi-države osnovali su tako zvanu Delsku Ligu u 478 g.pr.Kr čija je svrha bila da odgurnu Perzijance van iz Egejske regije. Savezničke države su pridonjele brodove i novac. dok  su Atenjani ponudili njihovu cjelu mornaricu."
+msgstr "Ubrzo nakon velikih pomorskih pobjeda na Salaminu i Mycale, grčki gradovi-države su pokrenule takozvanu Delijsku ligu u 478 godini prije Krista, čija je svrha bila istjerati Perzijance iz Egejske regije. Dok su savezne države pridonijele brodove i novac, a Atenjani ponudili cijelu svoju mornaricu."
 
 #: simulation/data/civs/athen.jsonAINames[0]
 #: simulation/data/civs/athen.jsonFactions[0].Heroes[0].Name
@@ -154,7 +154,7 @@ msgstr "Ifikratske Reforme"
 msgid ""
 "Stone walls can be built in neutral territory. Construction time for walls "
 "is reduced by 50%."
-msgstr "Kameni zidovi se mogu graditi u neutralnom teritoriju. Vrijeme izgradnje za zidove je smanjeno za 50%."
+msgstr "Kameni zidovi se mogu graditi u neutralnom teritoriju. Vrijeme izgradnje zidova  smanjeno je  za 50%."
 
 #: simulation/data/civs/athen.jsonFactions[0].Technologies[1].Name
 msgid "Long Walls"
@@ -314,7 +314,7 @@ msgid "Celtic religion and druidry inspired their warlike mindset. "
 msgstr "Keltska religija i druidi su nadahnuli njihovo ratno stanje uma"
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Description
-msgid "Allied healers −20% resource costs."
+msgid "Allied Healers −20% resource costs."
 msgstr ""
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Name
@@ -559,7 +559,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Description
-msgid "Allied markets +10% international trade bonus."
+msgid "Allied Markets +10% international trade bonus."
 msgstr ""
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Name
@@ -766,8 +766,8 @@ msgid "Gauls"
 msgstr "Gali"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Description
-msgid "Allied structures −20% technology research time."
-msgstr ""
+msgid "Allied Structures −20% technology research time."
+msgstr "Savezničke strukture - 20% tehnološkog vremena istraživanja."
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Name
 msgid "Druidic Wisdom"
@@ -966,7 +966,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier javelinists −20% resource costs."
+msgid "Allied Citizen Javelinists −10% resource costs."
 msgstr ""
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Name
@@ -975,10 +975,10 @@ msgstr "Saripeko"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].History
 msgid ""
-"The Iberians were long known to provide mercenary soldiers to other nations "
-"to serve as auxiliaries to their armies in foreign wars. Carthage is the "
-"most well known example, and we have evidence of them serving in such a "
-"capacity in Aquitania."
+"The Iberians were long known to provide mercenaries to other nations to "
+"serve as auxiliaries to their armies in foreign wars. Carthage is the most "
+"well known example, and we have evidence of them serving in such a capacity "
+"in Aquitania."
 msgstr ""
 
 #: simulation/data/civs/iber.jsonAINames[0]
@@ -1162,10 +1162,10 @@ msgstr ""
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Name
 msgid "Elephant Suppliers"
-msgstr ""
+msgstr "Dobavljači slonova"
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Description
-msgid "Allied elephants −20% resource costs and training time."
+msgid "Allied Elephants −20% resource costs and training time."
 msgstr ""
 
 #: simulation/data/civs/kush.jsonAINames[0]
@@ -1376,7 +1376,7 @@ msgstr ""
 
 #: simulation/data/civs/mace.jsonTeamBonuses[0].Description
 msgid "Allies +20% barter sell prices."
-msgstr ""
+msgstr "Saveznici +20% razmjene prodajnih cijena."
 
 #: simulation/data/civs/mace.jsonTeamBonuses[0].Name
 msgid "Standardized Currency"
@@ -1574,18 +1574,6 @@ msgid ""
 "Hellenistic culture."
 msgstr ""
 
-#: simulation/data/civs/mace.jsonStructures[2].Name
-msgid "Siege Workshop"
-msgstr "Radionica za opsadu"
-
-#: simulation/data/civs/mace.jsonStructures[2].Special
-msgid "Constructs and upgrades all Macedonian siege engines."
-msgstr ""
-
-#: simulation/data/civs/mace.jsonStructures[2].History
-msgid "The Macedonians were innovators in area of siegecraft."
-msgstr ""
-
 #: simulation/data/civs/mace.jsonHistory
 msgid ""
 "Macedonia was an ancient Greek kingdom, centered in the northeastern part of"
@@ -1637,9 +1625,9 @@ msgstr ""
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Description
 msgid ""
-"Allied temples −50% resource costs and building time; temple technologies "
+"Allied Temples −50% resource costs and building time; Temple technologies "
 "−50% resource costs and research time."
-msgstr ""
+msgstr "Saveznički hramovi -50% troškova resursa i vremena izgradnje; Tehnologije hrama -50% troškova resursa i vremena istraživanja."
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Name
 msgid "Ashoka's Religious Support"
@@ -1656,43 +1644,35 @@ msgid "Chandragupta Maurya"
 msgstr ""
 
 #: simulation/data/civs/maur.jsonAINames[1]
+msgid "Bindusara Maurya"
+msgstr ""
+
+#: simulation/data/civs/maur.jsonAINames[2]
 #: simulation/data/civs/maur.jsonFactions[0].Heroes[1].Name
 msgid "Ashoka the Great"
 msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[2]
-msgid "Ashokavardhan Maurya"
-msgstr ""
-
 #: simulation/data/civs/maur.jsonAINames[3]
-msgid "Acharya Bhadrabahu"
+msgid "Dasharatha Maurya"
 msgstr ""
 
 #: simulation/data/civs/maur.jsonAINames[4]
-msgid "Bindusara Maurya"
-msgstr ""
-
-#: simulation/data/civs/maur.jsonAINames[5]
-msgid "Dasaratha Maurya"
-msgstr ""
-
-#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Samprati Maurya"
 msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[7]
-msgid "Salisuka Maurya"
+#: simulation/data/civs/maur.jsonAINames[5]
+msgid "Shalishuka Maurya"
 msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[8]
+#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Devavarman Maurya"
 msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[9]
-msgid "Satadhanvan Maurya"
+#: simulation/data/civs/maur.jsonAINames[7]
+msgid "Shatadhanvan Maurya"
 msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[10]
+#: simulation/data/civs/maur.jsonAINames[8]
 msgid "Brihadratha Maurya"
 msgstr ""
 
@@ -1812,8 +1792,8 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Description
-msgid "Allied land traders +15% trade gain."
-msgstr ""
+msgid "Allied Land Traders +15% trade gain."
+msgstr "Saveznički trgovci na kopnu + 15% -tni dobitak od trgovine."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Name
 msgid "Royal Road"
@@ -1878,7 +1858,7 @@ msgid "Xsayarsa II"
 msgstr ""
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Description
-msgid "Phoenician triremes gain the unique ability to train cavalry units."
+msgid "Phoenician triremes gain the unique ability to train cavalry."
 msgstr ""
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Name
@@ -2019,7 +1999,7 @@ msgstr ""
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Description
 msgid ""
 "The Ptolemies receive the Mercenary Camp, a Barracks that is constructed in "
-"neutral territory and trains mercenary soldiers."
+"neutral territory and trains mercenaries."
 msgstr ""
 
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Name
@@ -2059,7 +2039,7 @@ msgstr ""
 
 #: simulation/data/civs/ptol.jsonTeamBonuses[0].Description
 msgid "Allies +1.0 food trickle rate."
-msgstr ""
+msgstr "Saveznici +1.0 stopa lučenja hrane."
 
 #: simulation/data/civs/ptol.jsonTeamBonuses[0].Name
 msgid "Breadbasket of the Mediterranean"
@@ -2211,8 +2191,8 @@ msgstr ""
 #: simulation/data/civs/ptol.jsonStructures[1].Special
 msgid ""
 "Must be constructed in neutral territory. Has no territory radius effect. "
-"Trains all 'mercenary' units."
-msgstr "Mora biti sagrađen na neutralnom teritoriju. Nema utjecaja na opseg teritorija. Obučava sve \"plaćničke\" jedinice. "
+"Trains mercenaries."
+msgstr ""
 
 #: simulation/data/civs/ptol.jsonStructures[2].Name
 msgid "Lighthouse"
@@ -2279,7 +2259,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry −20% training time."
+msgid "Allied Citizen Infantry −10% training time."
 msgstr ""
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Name
@@ -2489,7 +2469,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Description
-msgid "Allied civil centers −20% resource costs."
+msgid "Allied Civil Centers −20% resource costs."
 msgstr ""
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Name
@@ -2711,7 +2691,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/sele.jsonStructures[1].Special
-msgid "Trains all cavalry units except Citizen-Militia Cavalry."
+msgid "Trains all cavalry except citizen-soldier cavalry."
 msgstr ""
 
 #: simulation/data/civs/sele.jsonStructures[2].Name
@@ -2779,7 +2759,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry spearmen +10% health."
+msgid "Allied Citizen Infantry Spearmen +10% health."
 msgstr ""
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Name

@@ -32,8 +32,12 @@ varying vec2 waterInfo;
 varying vec3 v;
 
 varying vec4 normalCoords;
+#if USE_REFLECTION
 varying vec3 reflectionCoords;
+#endif
+#if USE_REFRACTION
 varying vec3 refractionCoords;
+#endif
 varying vec2 losCoords;
 
 varying float fwaviness;
@@ -53,13 +57,17 @@ uniform sampler2D normalMap2;
 uniform vec4 waveParams1; // wavyEffect, BaseScale, Flattenism, Basebump
 uniform vec4 waveParams2; // Smallintensity, Smallbase, Bigmovement, Smallmovement
 
-uniform sampler2D reflectionMap;
+#if USE_REFLECTION
+	uniform sampler2D reflectionMap;
+#endif
 
 #if USE_REFRACTION
 	uniform sampler2D refractionMap;
 #endif
 #if USE_REAL_DEPTH
 	uniform sampler2D depthTex;
+	uniform float zNear;
+	uniform float zFar;
 #endif
 
 #if USE_SHADOWS_ON_WATER && USE_SHADOW
@@ -157,13 +165,13 @@ void main()
 	// Flatten them based on waviness.
 	vec3 n = normalize(mix(vec3(0.0, 1.0, 0.0), ww1, clamp(baseBump + fwaviness / flattenism, 0.0, 1.0)));
 
-	#if USE_FANCY_EFFECTS
-		vec4 fancyeffects = texture2D(waterEffectsTexNorm, gl_FragCoord.xy / screenSize);
-		n = mix(vec3(0.0, 1.0, 0.0), n, 0.5 + waterInfo.r / 2.0);
-		n.xz = mix(n.xz, fancyeffects.rb, fancyeffects.a / 2.0);
-	#else
-		n = mix(vec3(0.0, 1.0, 0.0), n, 0.5 + waterInfo.r / 2.0);
-	#endif
+#if USE_FANCY_EFFECTS
+	vec4 fancyeffects = texture2D(waterEffectsTexNorm, gl_FragCoord.xy / screenSize);
+	n = mix(vec3(0.0, 1.0, 0.0), n, 0.5 + waterInfo.r / 2.0);
+	n.xz = mix(n.xz, fancyeffects.rb, fancyeffects.a / 2.0);
+#else
+	n = mix(vec3(0.0, 1.0, 0.0), n, 0.5 + waterInfo.r / 2.0);
+#endif
 
 	n = vec3(-n.x, n.y, -n.z); // The final wave normal vector.
 
@@ -193,10 +201,6 @@ void main()
 
 	float depth;
 #if USE_REAL_DEPTH
-	// Don't change these two. They should match the values in the config (TODO: dec uniforms).
-	float zNear = 2.0;
-	float zFar = 4096.0;
-
 	// Compute real depth at the target point.
 	float water_b = gl_FragCoord.z;
 	float water_n = 2.0 * water_b - 1.0;
@@ -212,7 +216,6 @@ void main()
 	// fake depth computation: take the value at the vertex, add some if we are looking at a more oblique angle.
 	depth = waterDepth / (min(0.5, v.y) * 1.5 * min(0.5, v.y) * 2.0);
 #endif
-
 
 #if USE_REFRACTION
 	// for refraction we want to distort more as depth goes down.
@@ -266,26 +269,19 @@ void main()
 	float blurFactor = (distoFactor / 7.0);
 	refColor = (refColor + blurColor.rgb * blurFactor) / (1.0 + blurFactor);
 
-	// Apply water tint and murk color.
-	float extFact = max(0.0, 1.0 - (depth * fixedVy / murky));
-	float ColextFact = max(0.0, 1.0 - (depth * fixedVy / murky));
-	vec3 colll = mix(refColor * tint, refColor, ColextFact);
-
-
-	refrColor = mix(color, colll, extFact);
-#else
+#else // !USE_REFRACTION
 
 #if USE_FANCY_EFFECTS
 	depth = max(depth, fancyeffects.a);
 #endif
+	vec3 refColor = color;
+#endif
 
-	// Apply water tint and murk color only.
+	// Apply water tint and murk color.
 	float extFact = max(0.0, 1.0 - (depth * fixedVy / murky));
 	float ColextFact = max(0.0, 1.0 - (depth * fixedVy / murky));
-	vec3 colll = mix(color * tint, color, ColextFact);
-
+	vec3 colll = mix(refColor * tint, refColor, ColextFact);
 	refrColor = mix(color, colll, extFact);
-#endif
 
 	// Reflections
 	// 3 level of settings:
@@ -293,6 +289,7 @@ void main()
 	// -If a player has refraction OR reflection, we return a reflection of the actual skybox used.
 	// -If a player has reflection enabled, we also return a reflection of actual entities where applicable.
 
+	// reflMod reduces the intensity of reflections somewhat since they kind of wash refractions out otherwise.
 	float reflMod = 0.75;
 	vec3 eye = reflect(v, n);
 
@@ -306,29 +303,18 @@ void main()
 
 	reflColor = refTex.rgb;
 
-	if (refTex.a < 0.99)
-	{
-#endif
-
-		// Calculate where we intersect with the skycube.
-		Ray myRay = Ray(vec3(worldPos.x / 4.0, worldPos.y, worldPos.z / 4.0), eye);
-		vec3 start = vec3(-1500.0 + mapSize / 2.0, -100.0, -1500.0 + mapSize / 2.0);
-		vec3 end = vec3(1500.0 + mapSize / 2.0, 500.0, 1500.0 + mapSize / 2.0);
-		float tmin = IntersectBox(myRay, start, end);
-		vec4 newpos = vec4(-worldPos.x / 4.0, worldPos.y, -worldPos.z / 4.0, 1.0) + vec4(eye * tmin, 0.0) - vec4(-mapSize / 2.0, worldPos.y, -mapSize / 2.0, 0.0);
-		newpos *= skyBoxRot;
-		newpos.y *= 4.0;
-#if !USE_REFLECTION
-		reflColor = textureCube(skyCube, newpos.rgb).rgb;
-#else
-		// Interpolate between the sky color and nearby objects.
+	// Interpolate between the sky color and nearby objects.
+	// Only do this when alpha is rather low, or transparent leaves show up as extremely white.
+	if (refTex.a < 0.4)
 		reflColor = mix(textureCube(skyCube, (vec4(eye, 0.0) * skyBoxRot).xyz).rgb, refTex.rgb, refTex.a);
-	}
-	// reflMod is used to reduce the intensity of sky reflections, which otherwise are too extreme.
+
+	// Let actual objects be reflected fully.
 	reflMod = max(refTex.a, 0.75);
+#else
+	reflColor = textureCube(skyCube, (vec4(eye, 0.0) * skyBoxRot).xyz).rgb;
 #endif
 
-#else
+#else // !USE_REFLECTION && !USE_REFRACTION
 	// Simplest case for reflection, return a gradient of blue based on Y component.
 	reflColor = mix(vec3(0.76, 0.84, 0.92), vec3(0.24, 0.43, 0.71), -eye.y);
 #endif
@@ -350,7 +336,9 @@ void main()
 	color += specular;
 #endif
 
+#if USE_FOG
 	color = get_fog(color);
+#endif
 
 #if USE_FANCY_EFFECTS
 	vec4 FoamEffects = texture2D(waterEffectsTexOther, gl_FragCoord.xy / screenSize);
@@ -362,9 +350,9 @@ void main()
 	vec3 foaminterp = mix(foam1, foam2, moddedTime);
 	foaminterp *= mix(foam3, foam4, moddedTime);
 
-	foam1.x = foaminterp.x * WindCosSin.x - foaminterp.z * WindCosSin.y;
+	foam1.x = abs(foaminterp.x * WindCosSin.x) + abs(foaminterp.z * WindCosSin.y);
 
-	color += FoamEffects.r * FoamEffects.a * 0.4 + pow(foam1.x * (5.0 + waviness), (2.6 - waviness / 5.5));
+	color += FoamEffects.r * FoamEffects.a * 0.4 + pow(foam1.x * (3.0 + waviness), 2.6 - waviness / 5.5);
 #endif
 
 	float alpha = clamp(depth, 0.0, 1.0);

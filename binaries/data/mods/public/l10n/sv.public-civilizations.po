@@ -1,15 +1,17 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
 # 13975 <inactive+13975@transifex.com>, 2013
 # Amanda Ringqvist, 2014
-# Anders Persson <anders@utophia.se>, 2014
+# 0a7f9ff4c411567131ab21a7587f6066, 2014
 # Daniel Sandman <revoltism@gmail.com>, 2013
 # Erik Johansson <erik@feneur.com>, 2013,2015
+# Hans Kunkell <hansk@mailfence.com>, 2019
 # Jacob Carlsson <yejcob@gmail.com>, 2015
 # Jonatan Nyberg, 2016
+# Jonatan Nyberg, 2020
 # Kristoffer Grundström <hamnisdude@gmail.com>, 2016
 # liothe <lucy@liothe.se>, 2013
 # magicae, 2014
@@ -24,9 +26,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:07+0200\n"
-"PO-Revision-Date: 2019-04-03 15:35+0000\n"
-"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"POT-Creation-Date: 2020-01-17 08:08+0000\n"
+"PO-Revision-Date: 2020-02-18 07:40+0000\n"
+"Last-Translator: Jonatan Nyberg\n"
 "Language-Team: Swedish (http://www.transifex.com/wildfire-games/0ad/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +39,7 @@ msgstr ""
 #: simulation/data/civs/athen.jsonName
 #: simulation/data/civs/athen.jsonFactions[0].Name
 msgid "Athenians"
-msgstr "Athenare"
+msgstr "Atenare"
 
 #: simulation/data/civs/athen.jsonCivBonuses[0].Description
 msgid "Metal mining gathering rates increased by +10% for each passing age."
@@ -76,12 +78,12 @@ msgid ""
 msgstr "Grekerna var mycket framgångsrika i att hellenisera olika främlingar. Under den hellenistiska tiden var grekiskan \"lingua franca\" av den antika världen, och talades från Spanien till Indien."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Description
-msgid "Allied warships −25% construction time."
-msgstr "Allierade krigsskepp −25% konstruktions tid."
+msgid "Allied Warships −25% construction time."
+msgstr "Allierade krigsskepp −25 % konstruktionstid."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Name
 msgid "Delian League"
-msgstr "Delianska Förbundet"
+msgstr "Delianska förbundet"
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].History
 msgid ""
@@ -260,7 +262,7 @@ msgstr "Gymnasion"
 #: simulation/data/civs/athen.jsonStructures[1].Special
 msgid ""
 "Train champion units and research technologies pertaining to champion units."
-msgstr "Träna Mästarenheter och forska fram teknologier för mästarenheter."
+msgstr "Träna mästarsoldater och forska fram teknologier för mästarsoldater."
 
 #: simulation/data/civs/athen.jsonStructures[1].History
 msgid ""
@@ -326,7 +328,7 @@ msgid "Celtic religion and druidry inspired their warlike mindset. "
 msgstr "Keltiska religionen och druider inspirerade deras krigiska tänkande."
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Description
-msgid "Allied healers −20% resource costs."
+msgid "Allied Healers −20% resource costs."
 msgstr "Allierade läkare −20% resurskostnader."
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Name
@@ -403,7 +405,7 @@ msgstr "Britterna tog upp bruket att antingen göra permanenta märken på kropp
 
 #: simulation/data/civs/brit.jsonFactions[0].Technologies[1].Description
 msgid "Increases the height bonus of units garrisoned in a tower."
-msgstr "Ökar höjdbonusen för enheter som är garnisonerade i ett torn."
+msgstr "Ökar höjdbonusen för soldater som är garnisonerade i ett torn."
 
 #: simulation/data/civs/brit.jsonFactions[0].Technologies[1].Name
 msgid "Turos Maros"
@@ -515,7 +517,7 @@ msgstr "Ammianus Marcellinus beskrev hur svårt det skulle vara för ett utlänn
 
 #: simulation/data/civs/brit.jsonFactions[0].Description
 msgid "The Celts of the British Isles."
-msgstr "Kelterna av de Brittiska Öarna."
+msgstr "Kelterna av de Brittiska öarna."
 
 #: simulation/data/civs/brit.jsonStructures[0].Name
 msgid "Kennel"
@@ -556,7 +558,7 @@ msgid ""
 "The resource cost of training elephant-mounted (war elephant) or horse-"
 "mounted units (cavalry) is reduced by 5% per animal corralled (as "
 "appropriate)."
-msgstr "Resurskostnaden för att utbilda elefantburna (krigselefanter) eller hästburna enheter (kavalleri) minskas med 5% per djur som vallas (i lämpliga fall)."
+msgstr "Resurskostnaden för att utbilda elefantburna (krigselefanter) eller hästburna soldater (kavalleri) minskas med 5% per djur som vallas (i förekommande fall)."
 
 #: simulation/data/civs/cart.jsonCivBonuses[1].Name
 #: simulation/data/civs/ptol.jsonCivBonuses[2].Name
@@ -571,8 +573,8 @@ msgid ""
 msgstr "Inte olikt den iberiska halvön, var Nordafrika känt som häst-land, som kunde producera upp till 100.000 nya riddjur varje år. Det var också hem för den nordafrikanska skogselefanten."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Description
-msgid "Allied markets +10% international trade bonus."
-msgstr "Allierade marknader +10% internationell handelsbonus."
+msgid "Allied Markets +10% international trade bonus."
+msgstr "Allierade marknader +10 % internationell handelsbonus."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Name
 msgid "Trademasters"
@@ -728,7 +730,7 @@ msgstr "Keltisk ambassad"
 
 #: simulation/data/civs/cart.jsonStructures[1].Special
 msgid "Hire Celtic mercenaries."
-msgstr "Lej keltiska legosoldater."
+msgstr "Leja keltiska legosoldater."
 
 #: simulation/data/civs/cart.jsonStructures[1].History
 msgid "The Celts supplied fierce warrior mercenaries for Carthaginian armies."
@@ -740,7 +742,7 @@ msgstr "Italisk ambassad"
 
 #: simulation/data/civs/cart.jsonStructures[2].Special
 msgid "Hire Italian mercenaries."
-msgstr "Lej italienska legosoldater."
+msgstr "Leja italienska legosoldater."
 
 #: simulation/data/civs/cart.jsonStructures[2].History
 msgid ""
@@ -755,7 +757,7 @@ msgstr "Iberisk ambassad"
 
 #: simulation/data/civs/cart.jsonStructures[3].Special
 msgid "Hire Iberian mercenaries."
-msgstr "Lej iberiska legosoldater."
+msgstr "Leja iberiska legosoldater."
 
 #: simulation/data/civs/cart.jsonStructures[3].History
 msgid ""
@@ -778,8 +780,8 @@ msgid "Gauls"
 msgstr "Galler"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Description
-msgid "Allied structures −20% technology research time."
-msgstr "Allierade strukturer −20% teknik forskningstid."
+msgid "Allied Structures −20% technology research time."
+msgstr "Allierade strukturer −20 % tid för teknologiutveckling."
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Name
 msgid "Druidic Wisdom"
@@ -965,7 +967,7 @@ msgstr "Med undantag av alluviala slätter och floddalar är sten rik på den ib
 msgid ""
 "The resource cost of training horse-mounted units (cavalry) is reduced by 5%"
 " per animal corralled."
-msgstr "Resurskostnaden för att utbilda hästburna enheter (kavalleri) minskas med 5% för varje djur som vallas."
+msgstr "Resurskostnaden för att utbilda hästburna soldater (kavalleri) minskas med 5% för varje djur som vallas."
 
 #: simulation/data/civs/iber.jsonCivBonuses[1].Name
 msgid "Zaldi Saldoa"
@@ -978,8 +980,8 @@ msgid ""
 msgstr "I motsats till Numidia i Nordafrika var den iberiska halvön känd som \"hästland\", som kan producera upp till 100 000 nya fästen varje år."
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier javelinists −20% resource costs."
-msgstr "Allierad medborgare-soldat skärmytslingar −20% resurskostnader."
+msgid "Allied Citizen Javelinists −10% resource costs."
+msgstr ""
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Name
 msgid "Saripeko"
@@ -987,11 +989,11 @@ msgstr "Saripeko"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].History
 msgid ""
-"The Iberians were long known to provide mercenary soldiers to other nations "
-"to serve as auxiliaries to their armies in foreign wars. Carthage is the "
-"most well known example, and we have evidence of them serving in such a "
-"capacity in Aquitania."
-msgstr "Iberierna var länge kända för att ge legosoldater till andra nationer för att tjäna som hjälparter till sina arméer i utländska krig. Carthage är det mest kända exemplet, och vi har bevis på att de tjänar i en sådan egenskap i Aquitania."
+"The Iberians were long known to provide mercenaries to other nations to "
+"serve as auxiliaries to their armies in foreign wars. Carthage is the most "
+"well known example, and we have evidence of them serving in such a capacity "
+"in Aquitania."
+msgstr ""
 
 #: simulation/data/civs/iber.jsonAINames[0]
 #: simulation/data/civs/iber.jsonAINames[1]
@@ -1044,7 +1046,7 @@ msgstr "Iberiska stammarmän noterades för att förpacka gräsbuntar om axlarna
 
 #: simulation/data/civs/iber.jsonFactions[0].Technologies[1].Description
 msgid "Metal costs for units and technologies reduced by 50%."
-msgstr "Metall kostnaden för soldater och teknologier reduceras med 50%."
+msgstr "Metallkostnaden för soldater och teknologier reduceras med 50%."
 
 #: simulation/data/civs/iber.jsonFactions[0].Technologies[1].Name
 msgid "Maisu Burdina Langileak"
@@ -1118,7 +1120,7 @@ msgid ""
 "Defensive Aura - Gives all Iberian units and buildings within vision range "
 "of the monument a 10-15% attack boost. Build Limit: Only 5 may be built per "
 "map."
-msgstr "Defensiv Aura - ger alla iberiska enheter och byggnader inom monumentets synområde en 10-15% attack boost. Bygggräns: Endast 5 kan byggas per karta."
+msgstr "Defensiv Aura - ger alla iberiska soldater och byggnader inom monumentets synområde en 10-15% attack boost. Byggräns: endast 5 kan byggas per karta."
 
 #: simulation/data/civs/iber.jsonStructures[0].History
 msgid ""
@@ -1177,8 +1179,8 @@ msgid "Elephant Suppliers"
 msgstr "Elefantleverantörer"
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Description
-msgid "Allied elephants −20% resource costs and training time."
-msgstr "Allierade elefanter −20% resurskostnader och träningstid."
+msgid "Allied Elephants −20% resource costs and training time."
+msgstr "Allierade elefanter −20 % resurser och träningstid."
 
 #: simulation/data/civs/kush.jsonAINames[0]
 msgid "Kashta"
@@ -1349,11 +1351,11 @@ msgstr "Makedonier"
 msgid ""
 "Macedonian units have +10% attack bonus vs. Persian and Hellenic factions, "
 "but -5% attack debonus vs. Romans."
-msgstr "Makedonska enheter har + 10% attack bonus vs persiska och hellenska fraktioner, men -5% attack debonus vs romare."
+msgstr "Makedonska soldater har + 10% attack bonus vs persiska och hellenska fraktioner, men -5% attack debonus vs romare."
 
 #: simulation/data/civs/mace.jsonCivBonuses[0].Name
 msgid "Hellenic League"
-msgstr "Hellenistiska Förbundet"
+msgstr "Hellenistiska förbundet"
 
 #: simulation/data/civs/mace.jsonCivBonuses[0].History
 msgid ""
@@ -1405,7 +1407,7 @@ msgstr "Macedonierna och Diadochi myntade mynt av mycket hög kvalitet. I sin va
 #: simulation/data/civs/mace.jsonAINames[0]
 #: simulation/data/civs/mace.jsonFactions[0].Heroes[1].Name
 msgid "Alexander the Great"
-msgstr "Alexander den Store"
+msgstr "Alexander den store"
 
 #: simulation/data/civs/mace.jsonAINames[1]
 msgid "Philip II"
@@ -1462,7 +1464,7 @@ msgid ""
 "military units. This also applies to the Barracks of allied players (they "
 "receive 5 free units of their own culture for each new Barracks "
 "constructed)."
-msgstr "Varje efterföljande kasern byggs kommer med 5 gratis (slumpmässiga) makedonska militära enheter. Detta gäller också kaserner av allierade spelare (de får 5 gratis enheter av sin egen kultur för varje ny Barack konstruerad)."
+msgstr "Varje efterföljande kaserner konstruerade kommer med 5 gratis (slumpmässiga) makedonska militära soldater. Detta gäller också kasernerna av allierade spelare (de får 5 gratis soldater av sin egen kultur för varje ny kasernkonstruktion)."
 
 #: simulation/data/civs/mace.jsonFactions[0].Technologies[0].Name
 #: simulation/data/civs/sele.jsonCivBonuses[1].Name
@@ -1504,7 +1506,7 @@ msgstr "Samhällscentrum har dubbel hälsa och dubbla standardpilar."
 #: simulation/data/civs/ptol.jsonFactions[0].Technologies[0].Name
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[0].Name
 msgid "Hellenistic Metropolises"
-msgstr "Hellenistiska Metropoler"
+msgstr "Hellenistiska metropoler"
 
 #: simulation/data/civs/mace.jsonFactions[0].Technologies[2].History
 #: simulation/data/civs/ptol.jsonFactions[0].Technologies[0].History
@@ -1549,7 +1551,7 @@ msgid ""
 "his Asian possessions after the battle of Ipsos, he later won the Macedonian"
 " throne. Fearing lest they should be overpowered by Demetrios, the other "
 "Diadochi united against him and defeated him."
-msgstr "En av Diadochi, Makedoniens Konung (294-288 B.C.), Demetrios var känd som en av Alexanders modigaste och mest möjliga efterträdare. Som son till Antigonus I Monophthalmus kämpade han och vann många viktiga strider tidigt och proklamerades kungen tillsammans med sin far i 306 B.C. Förlorade sina asiatiska ägodelar efter slaget i Ipsos, vann han senare den makedonska tronen. Rädsla för att de inte skulle övermanas av Demetrios, den andra Diadochi förenade sig mot honom och besegrade honom."
+msgstr "En av Diadochi, Makedoniens konung (294-288 B.C.), Demetrios var känd som en av Alexanders modigaste och mest möjliga efterträdare. Som son till Antigonus I Monophthalmus kämpade han och vann många viktiga strider tidigt och proklamerades kung, tillsammans med sin far i 306 f.Kr. Förlorade sina asiatiska ägodelar efter slaget vid Ipsos,  han vann senare den makedonska tronen. Fruktar för att de inte skulle övermannas av Demetrios, den andra Diadochi förenade sig mot honom och besegrade honom."
 
 #: simulation/data/civs/mace.jsonFactions[0].Heroes[2].Name
 msgid "Demetrios the Besieger"
@@ -1557,7 +1559,7 @@ msgstr "Demetrius Belägraren"
 
 #: simulation/data/civs/mace.jsonFactions[0].Description
 msgid "A Hellenistic kingdom bordering the Greek city-states."
-msgstr "Ett Hellenistiskt kungarike bredvid de Grekiska stadsstaterna."
+msgstr "Ett hellenistiskt kungarike bredvid de grekiska stadsstaterna."
 
 #: simulation/data/civs/mace.jsonStructures[0].Special
 msgid ""
@@ -1575,7 +1577,7 @@ msgstr "Bibliotek"
 msgid ""
 "All Special Technologies are researched here. Building one reduces the cost "
 "of all other remaining technologies by 10%. Build limit: 1."
-msgstr "Alla specialteknologier forskas här. Att bygga en sänker kostnaden för alla övriga återstående teknologier med 10%. Bygggräns: 1."
+msgstr "Alla specialteknologier forskas här. Att bygga en sänker kostnaden för alla övriga återstående teknologier med 10%. Byggräns: 1."
 
 #: simulation/data/civs/mace.jsonStructures[1].History
 #: simulation/data/civs/ptol.jsonStructures[0].History
@@ -1584,19 +1586,7 @@ msgid ""
 "Alexander the Great founded libraries all over his new empire. These became "
 "a center of learning for an entirely new synthesized culture: the "
 "Hellenistic culture."
-msgstr "Alexander den Store grundade bibliotek över hela sitt nya imperium. Dessa blev ett centrum för lärande för en helt ny syntetiserad kultur: den hellenistiska kulturen."
-
-#: simulation/data/civs/mace.jsonStructures[2].Name
-msgid "Siege Workshop"
-msgstr "Belägrings Verkstad"
-
-#: simulation/data/civs/mace.jsonStructures[2].Special
-msgid "Constructs and upgrades all Macedonian siege engines."
-msgstr "Konstruerar och uppgraderar alla Makedonska belägringsvapen."
-
-#: simulation/data/civs/mace.jsonStructures[2].History
-msgid "The Macedonians were innovators in area of siegecraft."
-msgstr "Makedonierna var innovativa inom området för belägrinsvapen."
+msgstr "Alexander den store grundade bibliotek över hela sitt nya imperium. Dessa blev ett centrum för lärande för en helt ny syntetiserad kultur: den hellenistiska kulturen."
 
 #: simulation/data/civs/mace.jsonHistory
 msgid ""
@@ -1619,7 +1609,7 @@ msgstr "Mauryas har en + 10% befolkningsbonusbonus (t ex 330 pop-lock i stället
 
 #: simulation/data/civs/maur.jsonCivBonuses[0].Name
 msgid "Emperor of Emperors."
-msgstr "Kejsare av Kejsarna"
+msgstr "Kejsare av kejsare"
 
 #: simulation/data/civs/maur.jsonCivBonuses[0].History
 msgid ""
@@ -1637,7 +1627,7 @@ msgstr "Mauryas har tillgång till 4 mästare."
 
 #: simulation/data/civs/maur.jsonCivBonuses[1].Name
 msgid "Kṣhatriya Warrior Caste."
-msgstr "Kṣhatriya Krigarbord."
+msgstr "Kṣhatriya krigarbord."
 
 #: simulation/data/civs/maur.jsonCivBonuses[1].History
 msgid ""
@@ -1649,9 +1639,9 @@ msgstr "Kshatriya eller Kashtriya, som betyder krigare, är en av de fyra varnas
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Description
 msgid ""
-"Allied temples −50% resource costs and building time; temple technologies "
+"Allied Temples −50% resource costs and building time; Temple technologies "
 "−50% resource costs and research time."
-msgstr "Allierade tempel −50% resurskostnader och byggnadstid; tempelteknik –50% resurskostnader och forskningstid."
+msgstr ""
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Name
 msgid "Ashoka's Religious Support"
@@ -1668,43 +1658,35 @@ msgid "Chandragupta Maurya"
 msgstr "Chandragupta Maurya"
 
 #: simulation/data/civs/maur.jsonAINames[1]
+msgid "Bindusara Maurya"
+msgstr "Bindusara Maurya"
+
+#: simulation/data/civs/maur.jsonAINames[2]
 #: simulation/data/civs/maur.jsonFactions[0].Heroes[1].Name
 msgid "Ashoka the Great"
 msgstr "Ashoka den store"
 
-#: simulation/data/civs/maur.jsonAINames[2]
-msgid "Ashokavardhan Maurya"
-msgstr "Ashokavardhan Maurya"
-
 #: simulation/data/civs/maur.jsonAINames[3]
-msgid "Acharya Bhadrabahu"
-msgstr "Acharya Bhadrabahu"
+msgid "Dasharatha Maurya"
+msgstr ""
 
 #: simulation/data/civs/maur.jsonAINames[4]
-msgid "Bindusara Maurya"
-msgstr "Bindusara Maurya"
-
-#: simulation/data/civs/maur.jsonAINames[5]
-msgid "Dasaratha Maurya"
-msgstr "Dasaratha Maurya"
-
-#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Samprati Maurya"
 msgstr "Samprati Maurya"
 
-#: simulation/data/civs/maur.jsonAINames[7]
-msgid "Salisuka Maurya"
-msgstr "Salisuka Maurya"
+#: simulation/data/civs/maur.jsonAINames[5]
+msgid "Shalishuka Maurya"
+msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[8]
+#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Devavarman Maurya"
 msgstr "Devavarman Maurya"
 
-#: simulation/data/civs/maur.jsonAINames[9]
-msgid "Satadhanvan Maurya"
-msgstr "Satadhanvan Maurya"
+#: simulation/data/civs/maur.jsonAINames[7]
+msgid "Shatadhanvan Maurya"
+msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[10]
+#: simulation/data/civs/maur.jsonAINames[8]
 msgid "Brihadratha Maurya"
 msgstr "Brihadratha Maurya"
 
@@ -1712,7 +1694,7 @@ msgstr "Brihadratha Maurya"
 msgid ""
 "Capture up to 5 Gaia elephants and garrison them in the Elephant Stables to "
 "gain up to a 25% bonus in cost and train time of elephant units."
-msgstr "Fånga upp till 5 Gaia elefanter och garnisonera dem i Elephant Stables för att få upp till 25% bonus på kostnad och tågtid för elefantenheter."
+msgstr "Fånga upp till 5 Gaia elefanter och garnisonera dem i Elefantstallet för att få upp till 25% bonus på kostnad och träningstid för elefantsoldater."
 
 #: simulation/data/civs/maur.jsonFactions[0].Technologies[1].Description
 msgid "Greater range and faster train time for Mauryan infantry archers."
@@ -1789,7 +1771,7 @@ msgstr "Perser"
 msgid ""
 "The resource cost of training camel-mounted (trader) or horse-mounted units "
 "(cavalry) is reduced by 5% per animal (as appropriate) corralled."
-msgstr "Resurskostnaden för att utbilda kamelburna (handelsmän) eller hästburna (kavalleri) enheter minskas med 5% per djur som vallas (i lämpliga fall)."
+msgstr "Resurskostnaden för att utbilda kamelburna (handelsmän) eller hästburna soldater (kavalleri) minskas med 5% per djur som vallas (i förekommande fall)."
 
 #: simulation/data/civs/pers.jsonCivBonuses[0].Name
 msgid "Corral Camels and Horses"
@@ -1811,7 +1793,7 @@ msgstr "Perserna har +10% befolkningsgräns bonus (t.ex. 330 befolkning iställe
 
 #: simulation/data/civs/pers.jsonCivBonuses[1].Name
 msgid "Great King's Levy"
-msgstr "Stor Kunglig Uppbådelse"
+msgstr "Stor kunglig uppbådelse"
 
 #: simulation/data/civs/pers.jsonCivBonuses[1].History
 msgid ""
@@ -1824,12 +1806,12 @@ msgid ""
 msgstr "Perserna kunde och uppbådade faktiskt ett sort antal infanteri under krigstid på grund av den enorma storleken av Akemenidiska Riket och sättet på vilket det var organiserat. I allmänhet var persiska infanteriet välutbildat och slogs med stor uthållighet. Men de var också dåliga närstridskämpar. Med undantag av elitregementen, så var det Persiska infanteriet inte en stående professionell styrka."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Description
-msgid "Allied land traders +15% trade gain."
-msgstr "Allierade markhandelsmän +15% handelsvinst."
+msgid "Allied Land Traders +15% trade gain."
+msgstr ""
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Name
 msgid "Royal Road"
-msgstr "Kunglig Gata"
+msgstr "Kunglig gata"
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].History
 msgid ""
@@ -1890,8 +1872,8 @@ msgid "Xsayarsa II"
 msgstr "Xsayarsa II"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Description
-msgid "Phoenician triremes gain the unique ability to train cavalry units."
-msgstr "Feniciska triremer får unika förmågan att träna kavallerienheter."
+msgid "Phoenician triremes gain the unique ability to train cavalry."
+msgstr ""
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Name
 msgid "Naval Craftsmanship"
@@ -1906,7 +1888,7 @@ msgid ""
 "example, a canal was built in Egypt and a Persian navy was sent exploring "
 "the Indus river. According to Herodotus, some 300 ships in the Persian navy "
 "were retrofitted to carry horses and their riders."
-msgstr "Tidiga Akemenidiska härskare agerade för att göra Persien till den första asiatiska stormakten att kontrollera haven. Storkongungen uppträdde positivt till de olika sjöfolken för att säkra deras tjänster, men genomförde också olika marina initiativ. Under Dareios den Stores regeringstid, till exempel, byggdes en kanal i Egypten och en Persisk flotta skickades för att utforksa Indusfloden. Enligt Herodotus blev cirka 300 fartyg i Persiska flottan ombyggda i efterhand för att transportera hästar och deras ryttare."
+msgstr "Tidiga akemenidiska härskare agerade för att göra Persien till den första asiatiska stormakten att kontrollera haven. Storkongungen uppträdde positivt till de olika sjöfolken för att säkra deras tjänster, men genomförde också olika marina initiativ. Under Dareios den stores regeringstid, till exempel, byggdes en kanal i Egypten och en Persisk flotta skickades för att utforksa Indusfloden. Enligt Herodotus blev cirka 300 fartyg i persiska flottan ombyggda i efterhand för att transportera hästar och deras ryttare."
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[1].Description
 msgid ""
@@ -1916,7 +1898,7 @@ msgstr "Ökar hälsopoäng för alla strukturer, men byggtiden ökar lämpligt."
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[1].Name
 msgid "Persian Architecture"
-msgstr "Persisk Arkitektur"
+msgstr "Persisk arkitektur"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[1].History
 msgid ""
@@ -1942,7 +1924,7 @@ msgstr "+25 hälsa för kavalleri, men +10 i träningstid"
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[3].Name
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[3].Name
 msgid "Nisean War Horses"
-msgstr "Nisean Krigs Hästar"
+msgstr "Nisean krigshästar"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[3].History
 msgid ""
@@ -1992,7 +1974,7 @@ msgstr "Träna Kavalleri medborgarsoldater."
 
 #: simulation/data/civs/pers.jsonStructures[0].History
 msgid "The Persian Empire's best soldiers were Eastern horsemen."
-msgstr "Det Persiska Rikets bästa soldater var österländska ryttare."
+msgstr "Persiska rikets bästa soldater var österländska ryttare."
 
 #: simulation/data/civs/pers.jsonStructures[1].Name
 msgid "Apadana"
@@ -2031,8 +2013,8 @@ msgstr "Ptolemaier"
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Description
 msgid ""
 "The Ptolemies receive the Mercenary Camp, a Barracks that is constructed in "
-"neutral territory and trains mercenary soldiers."
-msgstr "Ptolemyerna mottar Mercenary Camp, en kasern som är konstruerad i neutralt territorium och utbildar legosoldater."
+"neutral territory and trains mercenaries."
+msgstr ""
 
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Name
 msgid "Mercenary Army"
@@ -2053,7 +2035,7 @@ msgstr "Den greco-makedonska Ptolemy-dynastin förlitade sig på ett stort antal
 
 #: simulation/data/civs/ptol.jsonCivBonuses[1].Description
 msgid "The Ptolemaic Egyptians receive 3 additional farming technologies."
-msgstr "Ptolemeiska Egyptierna får 3 ytterligare odlingsteknologier."
+msgstr "Ptolemeiska egyptierna får 3 ytterligare odlingsteknologier."
 
 #: simulation/data/civs/ptol.jsonCivBonuses[1].Name
 #: simulation/data/civs/ptol.jsonFactions[0].Technologies[2].Name
@@ -2075,7 +2057,7 @@ msgstr "Allierade +1.0 mat sipprande hastighet."
 
 #: simulation/data/civs/ptol.jsonTeamBonuses[0].Name
 msgid "Breadbasket of the Mediterranean"
-msgstr "Medelhavets Brödkorg"
+msgstr "Medelhavets brödkorg"
 
 #: simulation/data/civs/ptol.jsonTeamBonuses[0].History
 msgid ""
@@ -2166,14 +2148,14 @@ msgstr "Räckvidden för hjälteauran ökad med 50%."
 
 #: simulation/data/civs/ptol.jsonFactions[0].Technologies[1].Name
 msgid "Pharaonic Cult."
-msgstr "Faraonisk Kult."
+msgstr "Faraonisk kult."
 
 #: simulation/data/civs/ptol.jsonFactions[0].Technologies[1].History
 msgid ""
 "The Macedonian-Greek rulers of the Ptolemaic dynasty observed many ancient "
 "Egyptian traditions in order to satiate the local populace and ingratiate "
 "themselves to the powerful priestly class in the country."
-msgstr "Den makedonska-grekiska härskare av den ptolemaiska dynastin observerade många gamla egyptiska traditioner för att mätta den lokala befolkningen och gratulera sig till den mäktiga prästklassen i landet."
+msgstr "De makedonska-grekiska härskarna av den ptolemaiska dynastin observerade många gamla egyptiska traditioner för att mätta den lokala befolkningen och gratulera sig till den mäktiga prästklassen i landet."
 
 #: simulation/data/civs/ptol.jsonFactions[0].Technologies[2].Description
 msgid ""
@@ -2223,8 +2205,8 @@ msgstr "Stratópedo Misthophóron"
 #: simulation/data/civs/ptol.jsonStructures[1].Special
 msgid ""
 "Must be constructed in neutral territory. Has no territory radius effect. "
-"Trains all 'mercenary' units."
-msgstr "Måste byggas i neutralt territorium. Har ingen territorieeffekt. Tränar alla 'legosoldat' enheter."
+"Trains mercenaries."
+msgstr ""
 
 #: simulation/data/civs/ptol.jsonStructures[2].Name
 msgid "Lighthouse"
@@ -2291,8 +2273,8 @@ msgid ""
 msgstr "Romerska medborgarskapet var högt uppskattat i den antika världen. Grundläggande rättigheter och privilegier gavs romerska medborgare som nekades andra erövrade människor. Det sägs att skada en romersk medborgare var förknippad med att skada Rom själv, och skulle få hela Romans makt att falla på förövaren."
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry −20% training time."
-msgstr "Allierad medborgarsoldat infanteri −20% träningstid."
+msgid "Allied Citizen Infantry −10% training time."
+msgstr ""
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Name
 msgid "Conscription"
@@ -2367,7 +2349,7 @@ msgstr "Marcus Licinius Crassus"
 
 #: simulation/data/civs/rome.jsonFactions[0].Technologies[0].Description
 msgid "Roman heroes can convert enemy units with great cost."
-msgstr "Romerska hjältar kan konvertera fientliga enheter till en stor kostnad"
+msgstr "Romerska hjältar kan konvertera fiendens soldater till en stor kostnad."
 
 #: simulation/data/civs/rome.jsonFactions[0].Technologies[0].Name
 msgid "Divide et Impera"
@@ -2423,7 +2405,7 @@ msgstr "Scipio Africanus"
 
 #: simulation/data/civs/rome.jsonStructures[0].Name
 msgid "Entrenched Camp"
-msgstr "Befäst Läger"
+msgstr "Befäst läger"
 
 #: simulation/data/civs/rome.jsonStructures[0].Special
 msgid "Trains citizen-soldiers from neutral or enemy territory."
@@ -2501,8 +2483,8 @@ msgid ""
 msgstr "Seleucid och verkligen Successor warfare utvecklades under tredje och andra århundradet. Kontakt med östra uppstarter som parthians och ständiga uppror av perifera satrapier som Bactria orsakade seleuciderna att reformera sin militär och förändra sin taktik, speciellt i kavalleriet. Krig med romarna från väst och invasioner från galaterna tvingar också seleuciderna att reformera sina infanteribestanser för att vara mer flexibla."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Description
-msgid "Allied civil centers −20% resource costs."
-msgstr "Allierade samhällscentrum −20% resurskostnader."
+msgid "Allied Civil Centers −20% resource costs."
+msgstr ""
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Name
 msgid "Syrian Tetrapolis"
@@ -2635,11 +2617,11 @@ msgstr "Philip II Philoromaeus"
 msgid ""
 "Traditional Army unlocks Silver Shields and Scythed Chariots, Reform Army "
 "unlocks Romanized Heavy Swordsmen and Cataphracts."
-msgstr "Traditionell armé låser upp Silver Shields och Scythed Vagnar, Reform Army låser upp Romanized Heavy Swordsmen och Cataphracts."
+msgstr "Traditionell armé låser upp Silver Shields och Scythed Vagnar, Reformerad armé låser upp Romanized Heavy Swordsmen och Cataphracts."
 
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[1].Name
 msgid "Traditional Army vs. Reform Army"
-msgstr "Traditionell Armé mot Reformerad Armé"
+msgstr "Traditionell armé mot Reformerad armé"
 
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[2].Description
 msgid ""
@@ -2648,7 +2630,7 @@ msgstr "Ett enstaka köp av 20 indiska krigelefanter från Mauryan Empire."
 
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[2].Name
 msgid "Marriage Alliance"
-msgstr "Äktenskaps Alliance"
+msgstr "Äktenskaps allians"
 
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[2].History
 msgid ""
@@ -2723,8 +2705,8 @@ msgid ""
 msgstr "Den makedonska-grekiska dynastin som styrde östra delen av Alexanders tidigare imperium."
 
 #: simulation/data/civs/sele.jsonStructures[1].Special
-msgid "Trains all cavalry units except Citizen-Militia Cavalry."
-msgstr "Tränar alla kavallerienheter förutom medborgarsoldat kavalleri."
+msgid "Trains all cavalry except citizen-soldier cavalry."
+msgstr ""
 
 #: simulation/data/civs/sele.jsonStructures[2].Name
 msgid "Military Colony"
@@ -2781,7 +2763,7 @@ msgstr "Spartanska ranguppgraderingen i kasernerna kostar inga resurser förutom
 
 #: simulation/data/civs/spart.jsonCivBonuses[1].Name
 msgid "Laws of Lycurgus"
-msgstr "Lykurgos Lagar"
+msgstr "Lykurgos lagar"
 
 #: simulation/data/civs/spart.jsonCivBonuses[1].History
 msgid ""
@@ -2791,12 +2773,12 @@ msgid ""
 msgstr "Enligt konstitutionen, som skrevs av den mytiska lagstiftaren Lycurgus, inrättades Agoges institution, där spartaner utbildades från 6 års ålder för att vara överlägsna krigare för att försvara den spartanska staten."
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry spearmen +10% health."
-msgstr "Allierad medborgarsoldat infanterispjutman +10% hälsa."
+msgid "Allied Citizen Infantry Spearmen +10% health."
+msgstr ""
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Name
 msgid "Peloponnesian League"
-msgstr "Peloponnesiska Förbundet"
+msgstr "Peloponnesiska förbundet"
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].History
 msgid ""
@@ -2875,18 +2857,18 @@ msgstr "Spartanska kvinnor var några av de fria i den gamla världen. De kunde 
 
 #: simulation/data/civs/spart.jsonFactions[0].Technologies[1].Description
 msgid "Units in phalanx formation move faster."
-msgstr "Enheter i en falangformation går snabbare."
+msgstr "Soldater i en falangformation rör sig snabbare."
 
 #: simulation/data/civs/spart.jsonFactions[0].Technologies[1].Name
 msgid "Tyrtean Paeans"
-msgstr "Tyrtean Paeans"
+msgstr "Tyrteska peaner"
 
 #: simulation/data/civs/spart.jsonFactions[0].Technologies[1].History
 msgid ""
 "Paeans were battle hymns that were sung by the hoplites when they charged "
 "the enemy lines. One of the first known Paeans were composed by Tirteus, a "
 "warrior poet of Sparta, during the First Messenian War."
-msgstr "Paeans var stridshymner som sjungades av hopliterna när de anklagade fiendens linjer. En av de första kända Paeansna var sammansatt av Tirteus, en krigsdiktare till Sparta, under det första Messenian-kriget."
+msgstr "Peaner var stridshymner som sjungades av hopliterna när de anklagade fiendens linjer. En av de första kända Paeanerna var sammansatt av Tirteus, en krigsdiktare till Sparta, under det första Messenian-kriget."
 
 #: simulation/data/civs/spart.jsonFactions[0].Technologies[2].Description
 msgid "+25% health for spear infantry, but also +10% train time."

@@ -20,13 +20,13 @@
 
 // Atlas-specific PCH:
 
-#if HAVE_PCH
+#if CONFIG_ENABLE_PCH
 
 // These headers are included in over 60% of files.
 #include "tools/atlas/GameInterface/Messages.h"
 #include "ps/CStr.h"
 #include "ps/Game.h"
 
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
-#endif // HAVE_PCH
+#endif // CONFIG_ENABLE_PCH

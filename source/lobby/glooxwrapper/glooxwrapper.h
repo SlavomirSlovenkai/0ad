@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -29,9 +29,9 @@ different compiler versions (or the same version with different build flags):
 the STL types have different layouts, and new/delete can use different heaps.
 
 We want to let people build the game on Windows with any compiler version
-(VC2008, 2010, 2012, 2013, and debug vs release), without requiring them to
-rebuild the gloox library themselves. And we don't want to provide ~8 different
-prebuilt versions of the library.
+(any supported Visual Studio version, and debug vs release), without requiring
+them to rebuild the gloox library themselves. And we don't want to provide ~8
+different prebuilt versions of the library.
 
 glooxwrapper replaces the gloox API with a version that is safe to use across
 compiler versions. glooxwrapper and gloox must be compiled together with the
@@ -161,6 +161,9 @@ namespace glooxwrapper
 			glooxwrapper_free(m_Data);
 		}
 
+		/**
+		 * Gloox strings are UTF encoded, so don't forget to decode it before passing it to the GUI!
+		 */
 		std::string to_string() const
 		{
 			return std::string(m_Data, m_Size);
@@ -184,6 +187,16 @@ namespace glooxwrapper
 		bool operator!=(const char* str) const
 		{
 			return strcmp(m_Data, str) != 0;
+		}
+
+		bool operator==(const string& str) const
+		{
+			return strcmp(m_Data, str.m_Data) == 0;
+		}
+
+		bool operator<(const string& str) const
+		{
+			return strcmp(m_Data, str.m_Data) < 0;
 		}
 	};
 
@@ -348,10 +361,10 @@ namespace glooxwrapper
 	{
 	public:
 		virtual ~MUCRoomHandler() {}
-		virtual void handleMUCParticipantPresence(MUCRoom* room, const MUCRoomParticipant participant, const Presence& presence) = 0; // MUCRoom not supported
-		virtual void handleMUCMessage(MUCRoom* room, const Message& msg, bool priv) = 0; // MUCRoom not supported
-		virtual void handleMUCError(MUCRoom* room, gloox::StanzaError error) = 0; // MUCRoom not supported
-		virtual void handleMUCSubject(MUCRoom* room, const string& nick, const string& subject) = 0; // MUCRoom not supported
+		virtual void handleMUCParticipantPresence(MUCRoom& room, const MUCRoomParticipant participant, const Presence& presence) = 0;
+		virtual void handleMUCMessage(MUCRoom& room, const Message& msg, bool priv) = 0;
+		virtual void handleMUCError(MUCRoom& room, gloox::StanzaError error) = 0;
+		virtual void handleMUCSubject(MUCRoom& room, const string& nick, const string& subject) = 0;
 	};
 
 	class GLOOXWRAPPER_API RegistrationHandler
@@ -495,7 +508,8 @@ namespace glooxwrapper
 	private:
 		gloox::Message* m_Wrapped;
 		bool m_Owned;
-		glooxwrapper::JID* m_From;
+		glooxwrapper::JID m_From;
+		glooxwrapper::DelayedDelivery* m_DelayedDelivery;
 	public:
 		Message(gloox::Message* wrapped, bool owned);
 		~Message();
@@ -513,10 +527,14 @@ namespace glooxwrapper
 	private:
 		gloox::MUCRoom* m_Wrapped;
 		MUCRoomHandlerWrapper* m_HandlerWrapper;
+		bool m_Owned;
 	public:
+		MUCRoom(gloox::MUCRoom* room, bool owned);
 		MUCRoom(Client* parent, const JID& nick, MUCRoomHandler* mrh, MUCRoomConfigHandler* mrch = 0);
 		~MUCRoom();
 		const string nick() const;
+		const string name() const;
+		const string service() const;
 		void join(gloox::Presence::PresenceType type = gloox::Presence::Available, const string& status = "", int priority = 0);
 		void leave(const string& msg = "");
 		void send(const string& message);
@@ -585,6 +603,9 @@ namespace glooxwrapper
 		ConstTagList findTagList_clone(const string& expression) const; // like findTagList but each tag must be Tag::free()d
 	};
 
+	/**
+	 * See XEP-0166: Jingle and https://camaya.net/api/gloox/namespacegloox_1_1Jingle.html.
+	 */
 	namespace Jingle
 	{
 
@@ -605,27 +626,19 @@ namespace glooxwrapper
 
 		typedef list<const Plugin*> PluginList;
 
-		class GLOOXWRAPPER_API Content : public Plugin
-		{
-		public:
-			Content(const string& name, const PluginList& plugins);
-			Content();
-		};
-
-		class GLOOXWRAPPER_API ICEUDP : public Plugin
+		/**
+		 * See XEP-0176: Jingle ICE-UDP Transport Method
+		 */
+		class GLOOXWRAPPER_API ICEUDP
 		{
 		public:
 			struct Candidate {
 				string ip;
 				int port;
 			};
-
-			typedef std::list<Candidate> CandidateList;
-
-			ICEUDP(CandidateList& candidates);
-			ICEUDP();
-
-			const CandidateList candidates() const;
+		private:
+			// Class not implemented as it is not used.
+			ICEUDP() = delete;
 		};
 
 		class GLOOXWRAPPER_API Session
@@ -642,13 +655,16 @@ namespace glooxwrapper
 				bool m_Owned;
 			public:
 				Jingle(const gloox::Jingle::Session::Jingle* wrapped, bool owned) : m_Wrapped(wrapped), m_Owned(owned) {}
-
-				const PluginList plugins() const;
-
+				~Jingle()
+				{
+					if (m_Owned)
+						delete m_Wrapped;
+				}
 				ICEUDP::Candidate getCandidate() const;
 			};
 
-			Session(gloox::Jingle::Session* wrapped, bool owned) : m_Wrapped(wrapped), m_Owned(owned) {}
+			Session(gloox::Jingle::Session* wrapped, bool owned);
+			~Session();
 
 			bool sessionInitiate(char* ipStr, uint16_t port);
 		};
@@ -657,7 +673,7 @@ namespace glooxwrapper
 		{
 		public:
 			virtual ~SessionHandler() {}
-			virtual void handleSessionAction(gloox::Jingle::Action action, Session* session, const Session::Jingle* jingle) = 0;
+			virtual void handleSessionAction(gloox::Jingle::Action action, Session& session, const Session::Jingle& jingle) = 0;
 		};
 
 	}

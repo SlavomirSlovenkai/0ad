@@ -149,15 +149,6 @@ namespace Pathfinding
 	const int NAVCELL_SIZE_LOG2 = 0;
 
 	/**
-	 * For extending the goal outwards/inwards a little bit
-	 * NOTE: keep next to the definition of NAVCELL_SIZE to avoid init order problems
-	 *	between translation units.
-	 * TODO: figure out whether this is actually needed. It was added back in r8751 (in 2010) for unclear reasons
-	 * and it does not seem to really improve behavior today
-	 */
-	const entity_pos_t GOAL_DELTA = NAVCELL_SIZE/8;
-
-	/**
 	 * To make sure the long-range pathfinder is more strict than the short-range one,
 	 * we need to slightly over-rasterize. So we extend the clearance radius by 1.
 	 */
@@ -170,8 +161,8 @@ namespace Pathfinding
 	inline void NearestNavcell(entity_pos_t x, entity_pos_t z, u16& i, u16& j, u16 w, u16 h)
 	{
 		// Use NAVCELL_SIZE_INT to save the cost of dividing by a fixed
-		i = (u16)clamp((x / NAVCELL_SIZE_INT).ToInt_RoundToNegInfinity(), 0, w - 1);
-		j = (u16)clamp((z / NAVCELL_SIZE_INT).ToInt_RoundToNegInfinity(), 0, h - 1);
+		i = static_cast<u16>(Clamp((x / NAVCELL_SIZE_INT).ToInt_RoundToNegInfinity(), 0, w - 1));
+		j = static_cast<u16>(Clamp((z / NAVCELL_SIZE_INT).ToInt_RoundToNegInfinity(), 0, h - 1));
 	}
 
 	/**
@@ -381,7 +372,7 @@ public:
 			m_Obstructions = NONE;
 	}
 
-	bool IsPassable(fixed waterdepth, fixed steepness, fixed shoredist)
+	bool IsPassable(fixed waterdepth, fixed steepness, fixed shoredist) const
 	{
 		return ((m_MinDepth <= waterdepth && waterdepth <= m_MaxDepth) && (steepness < m_MaxSlope) && (m_MinShore <= shoredist && shoredist <= m_MaxShore));
 	}

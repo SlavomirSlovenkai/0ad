@@ -31,11 +31,6 @@ function hasSameRestrictionCategory(templateName1, templateName2)
 	return false;
 }
 
-function getPlayerHighlightColor(player)
-{
-	return "color:" + rgbToGuiColor(g_DisplayedPlayerColors[player], 160);
-}
-
 /**
  * Returns a "color:255 0 0 Alpha" string based on how many resources are needed.
  */
@@ -149,7 +144,7 @@ function formatBatchTrainingString(buildingsCountToTrainFullBatch, fullBatchSize
 		fullBatchesString = fullBatchSize;
 
 	// We need to display the batch details part if there is either more than
-	// one building with full batch or one building with the full batch and
+	// one structure with full batch or one structure with the full batch and
 	// another with a partial batch
 	let batchString;
 	if (buildingsCountToTrainFullBatch > 1 ||
@@ -188,20 +183,23 @@ function jumpCamera(index)
 		return;
 
 	let threshold = Engine.ConfigDB_GetValue("user", "gui.session.camerajump.threshold");
+	let cameraPivot = Engine.GetCameraPivot();
 	if (g_JumpCameraLast &&
-	    Math.abs(Engine.CameraGetX() - position.x) < threshold &&
-	    Math.abs(Engine.CameraGetZ() - position.z) < threshold)
+	    Math.abs(cameraPivot.x - position.x) < threshold &&
+	    Math.abs(cameraPivot.z - position.z) < threshold)
+	{
 		Engine.CameraMoveTo(g_JumpCameraLast.x, g_JumpCameraLast.z);
+	}
 	else
 	{
-		g_JumpCameraLast = { "x": Engine.CameraGetX(), "z": Engine.CameraGetZ() };
+		g_JumpCameraLast = cameraPivot;
 		Engine.CameraMoveTo(position.x, position.z);
 	}
 }
 
 function setJumpCamera(index)
 {
-	g_JumpCameraPositions[index] = { "x": Engine.CameraGetX(), "z": Engine.CameraGetZ() };
+	g_JumpCameraPositions[index] = Engine.GetCameraPivot();
 }
 
 /**

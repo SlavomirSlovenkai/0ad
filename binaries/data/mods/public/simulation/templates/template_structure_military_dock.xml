@@ -23,14 +23,14 @@
   </Health>
   <Identity>
     <GenericName>Dock</GenericName>
+    <SelectionGroupName>template_structure_military_dock</SelectionGroupName>
     <Tooltip>Build upon a shoreline to construct naval vessels and to open sea trade. Research naval improvements.</Tooltip>
     <Classes datatype="tokens">Naval NavalMarket</Classes>
     <VisibleClasses datatype="tokens">Economic Village Market Dock</VisibleClasses>
     <Icon>structures/dock.png</Icon>
   </Identity>
   <Loot>
-    <food>30</food>
-    <wood>30</wood>
+    <wood>40</wood>
   </Loot>
   <Market>
     <TradeType>land naval</TradeType>

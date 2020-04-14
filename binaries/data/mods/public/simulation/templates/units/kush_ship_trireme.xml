@@ -8,9 +8,9 @@
   </Cost>
   <Identity>
     <Civ>kush</Civ>
-    <GenericName>Ptolemaic Mercenary Trireme</GenericName>
-    <SpecificName>shry ‘3</SpecificName>
     <Classes datatype="tokens">KushTrireme</Classes>
+    <GenericName>Ptolemaic Mercenary Trireme</GenericName>
+    <SpecificName>shry ʿȝ</SpecificName>
     <Icon>units/ptol_ship_trireme.png</Icon>
   </Identity>
   <VisualActor>

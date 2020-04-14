@@ -20,9 +20,9 @@
   </group>
   <group>
     <variant frequency="1" name="Idle"/>
+    <variant file="biped/attack_capture.xml"/>
     <variant file="biped/attack_ranged_archer_hip.xml"/>
     <variant file="biped/female_base_walk.xml"/>
-    <variant file="biped/attack_ranged_archer.xml"/>
     <variant file="biped/female_death.xml"/>
   </group>
   <material>player_trans_spec.xml</material>

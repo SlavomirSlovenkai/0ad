@@ -2,18 +2,21 @@
 <Entity parent="template_unit_siege">
   <Attack>
     <Ranged>
-      <Hack>0.0</Hack>
-      <Pierce>10.0</Pierce>
-      <Crush>100.0</Crush>
+      <Damage>
+        <Hack>0.0</Hack>
+        <Pierce>10.0</Pierce>
+        <Crush>100.0</Crush>
+      </Damage>
       <MaxRange>80.0</MaxRange>
       <MinRange>26.0</MinRange>
-      <PrepareTime>4000</PrepareTime>
-      <RepeatTime>5000</RepeatTime>
+      <PrepareTime>6000</PrepareTime>
+      <RepeatTime>7000</RepeatTime>
       <Delay>0</Delay>
       <Projectile>
         <Speed>37.5</Speed>
         <Spread>4.0</Spread>
         <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
         <ImpactActorName>props/units/weapons/rock_explosion.xml</ImpactActorName>
         <ImpactAnimationLifetime>0.1</ImpactAnimationLifetime>
@@ -22,9 +25,11 @@
         <Shape>Circular</Shape>
         <Range>10</Range>
         <FriendlyFire>false</FriendlyFire>
-        <Hack>0.0</Hack>
-        <Pierce>15.0</Pierce>
-        <Crush>35.0</Crush>
+        <Damage>
+          <Hack>0.0</Hack>
+          <Pierce>15.0</Pierce>
+          <Crush>35.0</Crush>
+        </Damage>
       </Splash>
       <PreferredClasses datatype="tokens">Structure</PreferredClasses>
     </Ranged>
@@ -47,8 +52,8 @@
     <Max>250</Max>
   </Health>
   <Identity>
+    <VisibleClasses datatype="tokens">Ranged StoneThrower</VisibleClasses>
     <GenericName>Siege Catapult</GenericName>
-    <VisibleClasses datatype="tokens">Catapult Ranged</VisibleClasses>
   </Identity>
   <Loot>
     <xp>300</xp>

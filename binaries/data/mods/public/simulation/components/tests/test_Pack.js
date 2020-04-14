@@ -2,14 +2,18 @@ Engine.LoadHelperScript("Player.js");
 Engine.LoadHelperScript("Sound.js");
 Engine.LoadHelperScript("Transform.js");
 Engine.LoadHelperScript("ValueModification.js");
-Engine.LoadComponentScript("interfaces/TechnologyManager.js");
-Engine.LoadComponentScript("interfaces/AuraManager.js");
+Engine.LoadComponentScript("interfaces/ModifiersManager.js");
 Engine.LoadComponentScript("interfaces/Capturable.js");
+Engine.LoadComponentScript("interfaces/Foundation.js");
 Engine.LoadComponentScript("interfaces/GarrisonHolder.js");
 Engine.LoadComponentScript("interfaces/Guard.js");
 Engine.LoadComponentScript("interfaces/Health.js");
 Engine.LoadComponentScript("interfaces/Pack.js");
 Engine.LoadComponentScript("interfaces/Player.js");
+Engine.LoadComponentScript("interfaces/Promotion.js");
+Engine.LoadComponentScript("interfaces/Repairable.js");
+Engine.LoadComponentScript("interfaces/ResourceGatherer.js");
+Engine.LoadComponentScript("interfaces/StatusEffectsReceiver.js");
 Engine.LoadComponentScript("interfaces/Timer.js");
 Engine.LoadComponentScript("interfaces/UnitAI.js");
 Engine.LoadComponentScript("Pack.js");
@@ -30,10 +34,6 @@ AddMock(ent, IID_Ownership, {
 
 AddMock(SYSTEM_ENTITY, IID_PlayerManager, {
 	"GetPlayerByID": id => 11
-});
-
-AddMock(11, IID_Player, {
-	"GetTimeMultiplier": () => 1
 });
 
 AddMock(ent, IID_Sound, {

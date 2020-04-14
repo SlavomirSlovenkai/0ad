@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -121,8 +121,9 @@ public:
 
 	virtual ~MUCRoomHandlerWrapper() {}
 
-	virtual void handleMUCParticipantPresence(gloox::MUCRoom* UNUSED(room), const gloox::MUCRoomParticipant participant, const gloox::Presence& presence)
+	virtual void handleMUCParticipantPresence(gloox::MUCRoom* room, const gloox::MUCRoomParticipant participant, const gloox::Presence& presence)
 	{
+		glooxwrapper::MUCRoom roomWrapper(room, false);
 		glooxwrapper::MUCRoomParticipant part;
 		glooxwrapper::JID nick(*participant.nick);
 		glooxwrapper::JID jid(*participant.jid);
@@ -139,8 +140,7 @@ public:
 		part.status = participant.status;
 		part.alternate = participant.alternate ? &alternate : NULL;
 
-		/* MUCRoom not supported */
-		m_Wrapped->handleMUCParticipantPresence(NULL, part, glooxwrapper::Presence(presence.presence()));
+		m_Wrapped->handleMUCParticipantPresence(roomWrapper, part, glooxwrapper::Presence(presence.presence()));
 
 		/* gloox 1.0 leaks some JIDs (fixed in 1.0.1), so clean them up */
 #if GLOOXVERSION == 0x10000
@@ -150,12 +150,11 @@ public:
 #endif
 	}
 
-	virtual void handleMUCMessage(gloox::MUCRoom* UNUSED(room), const gloox::Message& msg, bool priv)
+	virtual void handleMUCMessage(gloox::MUCRoom* room, const gloox::Message& msg, bool priv)
 	{
+		glooxwrapper::MUCRoom roomWrapper(room, false);
 		glooxwrapper::Message msgWrapper(const_cast<gloox::Message*>(&msg), false);
-
-		/* MUCRoom not supported */
-		m_Wrapped->handleMUCMessage(NULL, msgWrapper, priv);
+		m_Wrapped->handleMUCMessage(roomWrapper, msgWrapper, priv);
 	}
 
 	virtual bool handleMUCRoomCreation(gloox::MUCRoom* UNUSED(room))
@@ -164,10 +163,10 @@ public:
 		return false;
 	}
 
-	virtual void handleMUCSubject(gloox::MUCRoom* UNUSED(room), const std::string& nick, const std::string& subject)
+	virtual void handleMUCSubject(gloox::MUCRoom* room, const std::string& nick, const std::string& subject)
 	{
-		/* MUCRoom not supported */
-		m_Wrapped->handleMUCSubject(NULL, nick, subject);
+		glooxwrapper::MUCRoom roomWrapper(room, false);
+		m_Wrapped->handleMUCSubject(roomWrapper, nick, subject);
 	}
 
 	virtual void handleMUCInviteDecline(gloox::MUCRoom* UNUSED(room), const gloox::JID& UNUSED(invitee), const std::string& UNUSED(reason))
@@ -175,10 +174,10 @@ public:
 		/* Not supported */
 	}
 
-	virtual void handleMUCError(gloox::MUCRoom* UNUSED(room), gloox::StanzaError error)
+	virtual void handleMUCError(gloox::MUCRoom* room, gloox::StanzaError error)
 	{
-		/* MUCRoom not supported */
-		m_Wrapped->handleMUCError(NULL, error);
+		glooxwrapper::MUCRoom roomWrapper(room, false);
+		m_Wrapped->handleMUCError(roomWrapper, error);
 	}
 
 	virtual void handleMUCInfo(gloox::MUCRoom* UNUSED(room), int UNUSED(features), const std::string& UNUSED(name), const gloox::DataForm* UNUSED(infoForm))
@@ -282,9 +281,17 @@ public:
 	SessionHandlerWrapper(glooxwrapper::Jingle::SessionHandler* wrapped, bool owned)
 		: m_Wrapped(wrapped), m_Owned(owned) {}
 
+	~SessionHandlerWrapper()
+	{
+		if (m_Owned)
+			delete m_Wrapped;
+	}
+
 	virtual void handleSessionAction(gloox::Jingle::Action action, gloox::Jingle::Session* session, const gloox::Jingle::Session::Jingle* jingle)
 	{
-		m_Wrapped->handleSessionAction(action, new glooxwrapper::Jingle::Session(session, false), new glooxwrapper::Jingle::Session::Jingle(jingle, false));
+		glooxwrapper::Jingle::Session sessionWrapper(session, false);
+		glooxwrapper::Jingle::Session::Jingle jingleWrapper(jingle, false);
+		m_Wrapped->handleSessionAction(action, sessionWrapper, jingleWrapper);
 	}
 
 	virtual void handleSessionActionError(gloox::Jingle::Action UNUSED(action), gloox::Jingle::Session* UNUSED(session), const gloox::Error* UNUSED(error))
@@ -374,8 +381,8 @@ void glooxwrapper::Client::disconnect()
 
 void glooxwrapper::Client::registerStanzaExtension(glooxwrapper::StanzaExtension* ext)
 {
-	gloox::StanzaExtension* stanza = new StanzaExtensionWrapper(ext, true);
-	m_Wrapped->registerStanzaExtension(stanza);
+	// ~StanzaExtensionFactory() deletes this new StanzaExtensionWrapper
+	m_Wrapped->registerStanzaExtension(new StanzaExtensionWrapper(ext, true));
 }
 
 void glooxwrapper::Client::registerConnectionListener(glooxwrapper::ConnectionListener* hnd)
@@ -526,16 +533,18 @@ glooxwrapper::string glooxwrapper::JID::resource() const
 
 
 glooxwrapper::Message::Message(gloox::Message* wrapped, bool owned)
-	: m_Wrapped(wrapped), m_Owned(owned)
+	: m_Wrapped(wrapped),
+	  m_Owned(owned),
+	  m_From(m_Wrapped->from()),
+	  m_DelayedDelivery(m_Wrapped->when() ? new glooxwrapper::DelayedDelivery(m_Wrapped->when()) : nullptr)
 {
-	m_From = new glooxwrapper::JID(m_Wrapped->from());
 }
 
 glooxwrapper::Message::~Message()
 {
 	if (m_Owned)
 		delete m_Wrapped;
-	delete m_From;
+	delete m_DelayedDelivery;
 }
 
 gloox::Message::MessageType glooxwrapper::Message::subtype() const
@@ -545,7 +554,7 @@ gloox::Message::MessageType glooxwrapper::Message::subtype() const
 
 const glooxwrapper::JID& glooxwrapper::Message::from() const
 {
-	return *m_From;
+	return m_From;
 }
 
 glooxwrapper::string glooxwrapper::Message::body() const
@@ -565,28 +574,42 @@ glooxwrapper::string glooxwrapper::Message::thread() const
 
 const glooxwrapper::DelayedDelivery* glooxwrapper::Message::when() const
 {
-	const gloox::DelayedDelivery* wrapped = m_Wrapped->when();
-	if (wrapped == 0)
-		return 0;
-	return new glooxwrapper::DelayedDelivery(wrapped);
+	return m_DelayedDelivery;
 }
 
+glooxwrapper::MUCRoom::MUCRoom(gloox::MUCRoom* room, bool owned)
+	: m_Wrapped(room), m_Owned(owned), m_HandlerWrapper(nullptr)
+{
+}
 
 glooxwrapper::MUCRoom::MUCRoom(Client* parent, const JID& nick, MUCRoomHandler* mrh, MUCRoomConfigHandler* UNUSED(mrch))
 {
 	m_HandlerWrapper = new MUCRoomHandlerWrapper(mrh);
 	m_Wrapped = new gloox::MUCRoom(parent ? parent->getWrapped() : NULL, nick.getWrapped(), m_HandlerWrapper);
+	m_Owned = true;
 }
 
 glooxwrapper::MUCRoom::~MUCRoom()
 {
-	delete m_Wrapped;
+	if (m_Owned)
+		delete m_Wrapped;
+
 	delete m_HandlerWrapper;
 }
 
 const glooxwrapper::string glooxwrapper::MUCRoom::nick() const
 {
 	return m_Wrapped->nick();
+}
+
+const glooxwrapper::string glooxwrapper::MUCRoom::name() const
+{
+	return m_Wrapped->name();
+}
+
+const glooxwrapper::string glooxwrapper::MUCRoom::service() const
+{
+	return m_Wrapped->service();
 }
 
 void glooxwrapper::MUCRoom::join(gloox::Presence::PresenceType type, const string& status, int priority)
@@ -788,32 +811,6 @@ const glooxwrapper::Jingle::Plugin glooxwrapper::Jingle::Plugin::findPlugin(int 
 	return glooxwrapper::Jingle::Plugin(m_Wrapped->findPlugin(type), false);
 }
 
-glooxwrapper::Jingle::Content::Content(const string& name, const PluginList& plugins)
-	: glooxwrapper::Jingle::Plugin(NULL, false)
-{
-	gloox::Jingle::PluginList glooxPluginList;
-	for (const glooxwrapper::Jingle::Plugin* const& plugin: plugins)
-		glooxPluginList.push_back(plugin->getWrapped());
-
-	m_Wrapped = new gloox::Jingle::Content(name.to_string(), glooxPluginList);
-	m_Owned = true;
-}
-
-glooxwrapper::Jingle::Content::Content()
-	: glooxwrapper::Jingle::Plugin(NULL, false)
-{
-	m_Wrapped = new gloox::Jingle::Content();
-	m_Owned = true;
-}
-
-const glooxwrapper::Jingle::PluginList glooxwrapper::Jingle::Session::Jingle::plugins() const
-{
-	glooxwrapper::Jingle::PluginList pluginListWrapper;
-	for (const gloox::Jingle::Plugin* const& plugin : m_Wrapped->plugins())
-		pluginListWrapper.push_back(new glooxwrapper::Jingle::Plugin(const_cast<gloox::Jingle::Plugin*>(plugin), false));
-	return pluginListWrapper;
-}
-
 glooxwrapper::Jingle::ICEUDP::Candidate glooxwrapper::Jingle::Session::Jingle::getCandidate() const
 {
 	const gloox::Jingle::Content* content = static_cast<const gloox::Jingle::Content*>(m_Wrapped->plugins().front());
@@ -828,11 +825,22 @@ glooxwrapper::Jingle::ICEUDP::Candidate glooxwrapper::Jingle::Session::Jingle::g
 	return glooxwrapper::Jingle::ICEUDP::Candidate{glooxCandidate.ip, glooxCandidate.port};
 }
 
+glooxwrapper::Jingle::Session::Session(gloox::Jingle::Session* wrapped, bool owned)
+	: m_Wrapped(wrapped), m_Owned(owned)
+{
+}
+
+glooxwrapper::Jingle::Session::~Session()
+{
+	if (m_Owned)
+		delete m_Wrapped;
+}
+
 bool glooxwrapper::Jingle::Session::sessionInitiate(char* ipStr, u16 port)
 {
-	gloox::Jingle::ICEUDP::CandidateList* candidateList = new gloox::Jingle::ICEUDP::CandidateList();
+	gloox::Jingle::ICEUDP::CandidateList candidateList;
 
-	candidateList->push_back(gloox::Jingle::ICEUDP::Candidate
+	candidateList.push_back(gloox::Jingle::ICEUDP::Candidate
 	{
 		"1", // component_id,
 		"1", // foundation
@@ -848,49 +856,13 @@ bool glooxwrapper::Jingle::Session::sessionInitiate(char* ipStr, u16 port)
 		gloox::Jingle::ICEUDP::ServerReflexive
 	});
 
-	gloox::Jingle::PluginList* pluginList = new gloox::Jingle::PluginList();
-	pluginList->push_back(new gloox::Jingle::ICEUDP(/*local_pwd*/"", /*local_ufrag*/"", *candidateList));
-	return m_Wrapped->sessionInitiate(new gloox::Jingle::Content(std::string("game-data"), *pluginList));
-}
+	// sessionInitiate deletes the new Content, and
+	// the Plugin destructor inherited by Content frees the ICEUDP plugin.
 
-glooxwrapper::Jingle::ICEUDP::ICEUDP(glooxwrapper::Jingle::ICEUDP::CandidateList& candidates)
-	: glooxwrapper::Jingle::Plugin(NULL, false)
-{
-	gloox::Jingle::ICEUDP::CandidateList glooxCandidates;
-	for (const glooxwrapper::Jingle::ICEUDP::Candidate& candidate : candidates)
-		glooxCandidates.push_back(gloox::Jingle::ICEUDP::Candidate
-			{
-				"1", // component_id,
-				"1", // foundation
-				"0", // candidate_generation
-				"1", // candidate_id
-				candidate.ip.to_string(),
-				"0", // network
-				candidate.port,
-				0, // priority
-				"udp",
-				"", // base_ip
-				0, // base_port
-				gloox::Jingle::ICEUDP::ServerReflexive
-			});
+	gloox::Jingle::PluginList pluginList;
+	pluginList.push_back(new gloox::Jingle::ICEUDP(/*local_pwd*/"", /*local_ufrag*/"", candidateList));
 
-	m_Wrapped = new gloox::Jingle::ICEUDP(/*local_pwd*/"", /*local_ufrag*/"", glooxCandidates);
-	m_Owned = true;
-}
-
-glooxwrapper::Jingle::ICEUDP::ICEUDP()
-	: glooxwrapper::Jingle::Plugin(NULL, false)
-{
-	m_Wrapped = new gloox::Jingle::ICEUDP();
-	m_Owned = true;
-}
-
-const glooxwrapper::Jingle::ICEUDP::CandidateList glooxwrapper::Jingle::ICEUDP::candidates() const
-{
-	glooxwrapper::Jingle::ICEUDP::CandidateList candidateListWrapper;
-	for (const gloox::Jingle::ICEUDP::Candidate& candidate : static_cast<const gloox::Jingle::ICEUDP*>(m_Wrapped)->candidates())
-		candidateListWrapper.push_back(glooxwrapper::Jingle::ICEUDP::Candidate{candidate.ip, candidate.port});
-	return candidateListWrapper;
+	return m_Wrapped->sessionInitiate(new gloox::Jingle::Content(std::string("game-data"), pluginList));
 }
 
 glooxwrapper::SessionManager::SessionManager(Client* parent, Jingle::SessionHandler* sh)
@@ -907,12 +879,17 @@ glooxwrapper::SessionManager::~SessionManager()
 
 void glooxwrapper::SessionManager::registerPlugins()
 {
+	// This calls m_factory.registerPlugin (see jinglesessionmanager.cpp), hence
+	// ~PluginFactory() will delete these new plugin templates.
 	m_Wrapped->registerPlugin(new gloox::Jingle::Content());
 	m_Wrapped->registerPlugin(new gloox::Jingle::ICEUDP());
 }
 
 glooxwrapper::Jingle::Session glooxwrapper::SessionManager::createSession(const JID& callee)
 {
+	// The wrapped gloox SessionManager keeps track of this session and deletes it on ~SessionManager().
 	gloox::Jingle::Session* glooxSession = m_Wrapped->createSession(callee.getWrapped(), m_HandlerWrapper);
+
+	// Hence the glooxwrapper::Jingle::Session may not own the gloox::Jingle::Session.
 	return glooxwrapper::Jingle::Session(glooxSession, false);
 }

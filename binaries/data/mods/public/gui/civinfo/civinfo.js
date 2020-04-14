@@ -3,11 +3,6 @@
  */
 const g_CivData = loadCivData(true, false);
 
-/**
- * Callback function name on closing gui via Engine.PopGuiPage().
- */
-var g_Callback = "";
-
 var g_SelectedCiv = "";
 
 /**
@@ -15,9 +10,6 @@ var g_SelectedCiv = "";
  */
 function init(data = {})
 {
-	if (data.callback)
-		g_Callback = data.callback;
-
 	var civList = Object.keys(g_CivData).map(civ => ({ "name": g_CivData[civ].Name, "code": civ })).sort(sortNameIgnoreCase);
 	var civSelection = Engine.GetGUIObjectByName("civSelection");
 
@@ -89,21 +81,18 @@ function subHeading(obj)
 		string += '[icon="iconInfo" tooltip="' + escapeQuotation(obj.History) + '" tooltip_style="civInfoTooltip"]';
 	if (obj.Description)
 		string += '\n     ' + obj.Description;
-	return coloredText(string + "\n", "white");
+	// Translation: insert an itemization symbol for each entry.
+	return sprintf(translate("• %(string)s"), { "string": string }) + "\n";
 }
 
 function switchToStrucTreePage()
 {
-	Engine.PopGuiPage();
-	Engine.PushGuiPage("page_structree.xml", { "civ": g_SelectedCiv, "callback": g_Callback });
+	Engine.PopGuiPage({ "civ": g_SelectedCiv, "nextPage": "page_structree.xml" });
 }
 
-function close()
+function closePage()
 {
-	if (g_Callback)
-		Engine.PopGuiPageCB({ "civ": g_SelectedCiv, "page": "page_civinfo.xml" });
-	else
-		Engine.PopGuiPage();
+	Engine.PopGuiPage({ "civ": g_SelectedCiv, "page": "page_civinfo.xml" });
 }
 
 /**
@@ -128,21 +117,21 @@ function selectCiv(code)
 	for (let bonus of civInfo.CivBonuses)
 		bonusCaption += subHeading(bonus);
 
-	// Team Bonuses
+	// Team bonuses
 	bonusCaption += heading(translatePlural("Team Bonus", "Team Bonuses", civInfo.TeamBonuses.length), 12) + '\n';
 	for (let bonus of civInfo.TeamBonuses)
 		bonusCaption += subHeading(bonus);
 
 	Engine.GetGUIObjectByName("civBonuses").caption = bonusCaption;
 
-	// Special techs
+	// Special technologies
 	var techCaption = heading(translate("Special Technologies"), 12) + '\n';
 	for (let faction of civInfo.Factions)
 		for (let technology of faction.Technologies)
 			techCaption += subHeading(technology);
 
-	// Special buildings
-	techCaption += heading(translatePlural("Special Building", "Special Buildings", civInfo.Structures.length), 12) + '\n';
+	// Special structures
+	techCaption += heading(translatePlural("Special Structure", "Special Structures", civInfo.Structures.length), 12) + '\n';
 	for (let structure of civInfo.Structures)
 		techCaption += subHeading(structure);
 

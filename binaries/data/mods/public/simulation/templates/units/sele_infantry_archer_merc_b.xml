@@ -2,7 +2,7 @@
 <Entity parent="template_unit_infantry_ranged_archer">
   <Builder>
     <Entities datatype="tokens">
-      structures/sele_military_colony
+      structures/sele_tower_artillery
       structures/sele_library
     </Entities>
   </Builder>
@@ -14,12 +14,12 @@
   </Cost>
   <Identity>
     <Civ>sele</Civ>
+    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <Lang>greek</Lang>
     <SelectionGroupName>units/sele_infantry_archer_merc_b</SelectionGroupName>
     <GenericName>Syrian Archer</GenericName>
     <SpecificName>Toxótēs Syrías</SpecificName>
-    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
-    <Icon>units/hele_infantry_archer.png</Icon>
+    <Icon>units/sele_infantry_archer.png</Icon>
     <RequiredTechnology>phase_town</RequiredTechnology>
   </Identity>
   <Promotion>

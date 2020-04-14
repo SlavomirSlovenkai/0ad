@@ -7,9 +7,11 @@
   </Armour>
   <Attack>
     <Ranged>
-      <Hack>0.0</Hack>
-      <Pierce>16.0</Pierce>
-      <Crush>0.0</Crush>
+      <Damage>
+        <Hack>0.0</Hack>
+        <Pierce>16.0</Pierce>
+        <Crush>0.0</Crush>
+      </Damage>
       <MaxRange>72.0</MaxRange>
       <MinRange>0.0</MinRange>
       <PrepareTime>1200</PrepareTime>
@@ -19,6 +21,7 @@
         <Speed>75.0</Speed>
         <Spread>1.5</Spread>
         <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <PreferredClasses datatype="tokens">Human</PreferredClasses>
@@ -48,7 +51,6 @@
     <PopulationBonus>10</PopulationBonus>
     <BuildTime>500</BuildTime>
     <Resources>
-      <wood>0</wood>
       <stone>1000</stone>
     </Resources>
   </Cost>
@@ -67,32 +69,23 @@
     <SpawnEntityOnDeath>decay|rubble/rubble_stone_6x6</SpawnEntityOnDeath>
   </Health>
   <Identity>
-    <GenericName>Fortress</GenericName>
-    <Tooltip>Train heroes, champions, and siege weapons. Research siege weapon improvements.</Tooltip>
     <Classes datatype="tokens">Defensive Fortress GarrisonFortress</Classes>
     <VisibleClasses datatype="tokens">City</VisibleClasses>
+    <GenericName>Fortress</GenericName>
+    <SelectionGroupName>template_structure_military_fortress</SelectionGroupName>
     <Icon>structures/fortress.png</Icon>
     <RequiredTechnology>phase_city</RequiredTechnology>
+    <Tooltip>Train Champions and Heroes and research technologies. Garrison Soldiers for additional arrows.</Tooltip>
   </Identity>
   <Loot>
     <xp>100</xp>
-    <wood>0</wood>
-    <stone>65</stone>
+    <stone>200</stone>
   </Loot>
   <Obstruction>
     <Static width="25.0" depth="25.0"/>
   </Obstruction>
   <ProductionQueue>
     <BatchTimeModifier>0.8</BatchTimeModifier>
-    <Entities datatype="tokens">
-      units/{civ}_siege_ballista_packed
-      units/{civ}_siege_scorpio_packed
-      units/{civ}_siege_oxybeles_packed
-      units/{civ}_siege_lithobolos_packed
-      units/{civ}_siege_polybolos_packed
-      units/{civ}_siege_ram
-      units/{civ}_siege_tower
-    </Entities>
     <Technologies datatype="tokens">
       attack_soldiers_will
     </Technologies>

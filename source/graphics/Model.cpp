@@ -1,4 +1,4 @@
-/* Copyright (C) 2016 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@
 #include "lib/sysdep/rtl.h"
 #include "ps/Profile.h"
 #include "ps/CLogger.h"
-#include "renderer/Renderer.h"
+#include "renderer/RenderingOptions.h"
 #include "simulation2/Simulation2.h"
 #include "simulation2/components/ICmpTerrain.h"
 
@@ -362,12 +362,12 @@ void CModel::ValidatePosition()
 	// per-vertex work is a single matrix*vec multiplication.
 	// For GPU skinning, we try to minimise CPU work by doing most computation
 	// in the vertex shader instead.
-	// Using g_Renderer.m_Options to detect CPU vs GPU is a bit hacky,
+	// Using g_RenderingOptions to detect CPU vs GPU is a bit hacky,
 	// and this doesn't allow the setting to change at runtime, but there isn't
 	// an obvious cleaner way to determine what data needs to be computed,
 	// and GPU skinning is a rarely-used experimental feature anyway.
-	bool worldSpaceBoneMatrices = !g_Renderer.m_Options.m_GPUSkinning;
-	bool computeBlendMatrices = !g_Renderer.m_Options.m_GPUSkinning;
+	bool worldSpaceBoneMatrices = !g_RenderingOptions.GetGPUSkinning();
+	bool computeBlendMatrices = !g_RenderingOptions.GetGPUSkinning();
 
 	if (m_BoneMatrices && worldSpaceBoneMatrices)
 	{
@@ -450,7 +450,7 @@ void CModel::ValidatePosition()
 // return false on error, else true
 bool CModel::SetAnimation(CSkeletonAnim* anim, bool once)
 {
-	m_Anim = NULL; // in case something fails
+	m_Anim = nullptr; // in case something fails
 
 	if (anim)
 	{
@@ -459,32 +459,25 @@ bool CModel::SetAnimation(CSkeletonAnim* anim, bool once)
 		if (once)
 			m_Flags |= MODELFLAG_NOLOOPANIMATION;
 
-		if (!m_BoneMatrices && anim->m_AnimDef)
+		// Not rigged or animation is not valid.
+		if (!m_BoneMatrices || !anim->m_AnimDef)
+			return false;
+
+		if (anim->m_AnimDef->GetNumKeys() != m_pModelDef->GetNumBones())
 		{
-			// not boned, can't animate
+			LOGERROR("Mismatch between model's skeleton and animation's skeleton (%s.dae has %lu model bones while the animation %s has %lu animation keys.)",
+				m_pModelDef->GetName().string8().c_str() ,
+				static_cast<unsigned long>(m_pModelDef->GetNumBones()), 
+				anim->m_Name.c_str(),
+				static_cast<unsigned long>(anim->m_AnimDef->GetNumKeys()));
 			return false;
 		}
 
-		if (m_BoneMatrices && !anim->m_AnimDef)
-		{
-			// boned, but animation isn't valid
-			// (e.g. the default (static) idle animation on an animated unit)
-			return false;
-		}
-
-		if (anim->m_AnimDef && anim->m_AnimDef->GetNumKeys() != m_pModelDef->GetNumBones())
-		{
-			// mismatch between model's skeleton and animation's skeleton
-			LOGERROR("Mismatch between model's skeleton and animation's skeleton (%lu model bones != %lu animation keys)",
-					(unsigned long)m_pModelDef->GetNumBones(), (unsigned long)anim->m_AnimDef->GetNumKeys());
-			return false;
-		}
-
-		// reset the cached bounds when the animation is changed
+		// Reset the cached bounds when the animation is changed.
 		m_ObjectBounds.SetEmpty();
 		InvalidateBounds();
 
-		// start anim from beginning
+		// Start anim from beginning.
 		m_AnimTime = 0;
 	}
 

@@ -1,4 +1,4 @@
-/* Copyright (C) 2015 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -18,11 +18,56 @@
 #ifndef INCLUDED_POSTPROCMANAGER
 #define INCLUDED_POSTPROCMANAGER
 
-
 #include "graphics/ShaderTechnique.h"
+#include "ps/CStr.h"
+
+#include <vector>
 
 class CPostprocManager
 {
+public:
+	CPostprocManager();
+	~CPostprocManager();
+
+	// Create all buffers/textures in GPU memory and set default effect.
+	// @note Must be called before using in the renderer. May be called multiple times.
+	void Initialize();
+
+	// Update the size of the screen
+	void Resize();
+
+	// Returns a list of xml files found in shaders/effects/postproc.
+	static std::vector<CStrW> GetPostEffects();
+
+	// Returns the name of the current effect.
+	const CStrW& GetPostEffect() const
+	{
+		return m_PostProcEffect;
+	}
+
+	// Sets the current effect.
+	void SetPostEffect(const CStrW& name);
+
+	// Triggers update of shaders and FBO if needed.
+	void UpdateAntiAliasingTechnique();
+
+	void SetDepthBufferClipPlanes(float nearPlane, float farPlane);
+
+	// Clears the two color buffers and depth buffer, and redirects all rendering
+	// to our textures instead of directly to the system framebuffer.
+	// @note CPostprocManager must be initialized first
+	void CaptureRenderOutput();
+
+	// First renders blur textures, then calls ApplyEffect for each effect pass,
+	// ping-ponging the buffers at each step.
+	// @note CPostprocManager must be initialized first
+	void ApplyPostproc();
+
+	// Blits the final postprocessed texture to the system framebuffer. The system framebuffer
+	// is selected as the output buffer. Should be called before silhouette rendering.
+	// @note CPostprocManager must be initialized first
+	void ReleaseRenderOutput();
+
 private:
 
 	// Two framebuffers, that we flip between at each shader pass.
@@ -33,6 +78,7 @@ private:
 
 	// The framebuffers share a depth/stencil texture.
 	GLuint m_DepthTex;
+	float m_NearPlane, m_FarPlane;
 
 	// A framebuffer and textures x2 for each blur level we render.
 	GLuint m_BloomFbo, m_BlurTex2a, m_BlurTex2b, m_BlurTex4a, m_BlurTex4b, m_BlurTex8a, m_BlurTex8b;
@@ -44,6 +90,9 @@ private:
 	// (i.e. while we do allocate the buffers, no effects are rendered).
 	CStrW m_PostProcEffect;
 	CShaderTechniquePtr m_PostProcTech;
+
+	CStr m_AAName;
+	CShaderTechniquePtr m_AATech;
 
 	// The current screen dimensions in pixels.
 	int m_Width, m_Height;
@@ -75,45 +124,6 @@ private:
 	// Delete existing buffers/textures and create them again, using a new screen size if needed.
 	// (the textures are also attached to the framebuffers)
 	void RecreateBuffers();
-
-public:
-	CPostprocManager();
-	~CPostprocManager();
-
-	// Create all buffers/textures in GPU memory and set default effect.
-	// @note Must be called before using in the renderer. May be called multiple times.
-	void Initialize();
-
-	// Update the size of the screen
-	void Resize();
-
-	// Returns a list of xml files found in shaders/effects/postproc.
-	static std::vector<CStrW> GetPostEffects();
-
-	// Returns the name of the current effect.
-	inline const CStrW& GetPostEffect() const
-	{
-		return m_PostProcEffect;
-	}
-
-	// Sets the current effect.
-	void SetPostEffect(const CStrW& name);
-
-	// Clears the two color buffers and depth buffer, and redirects all rendering
-	// to our textures instead of directly to the system framebuffer.
-	// @note CPostprocManager must be initialized first
-	void CaptureRenderOutput();
-
-	// First renders blur textures, then calls ApplyEffect for each effect pass,
-	// ping-ponging the buffers at each step.
-	// @note CPostprocManager must be initialized first
-	void ApplyPostproc();
-
-	// Blits the final postprocessed texture to the system framebuffer. The system framebuffer
-	// is selected as the output buffer. Should be called before silhouette rendering.
-	// @note CPostprocManager must be initialized first
-	void ReleaseRenderOutput();
 };
 
-
-#endif //INCLUDED_POSTPROCMANAGER
+#endif // INCLUDED_POSTPROCMANAGER

@@ -6,22 +6,15 @@
   <Identity>
     <Civ>gaul</Civ>
     <SpecificName>Dunon</SpecificName>
-    <Tooltip>Train Gallic heroes and champions. Construct siege rams.</Tooltip>
   </Identity>
   <ProductionQueue>
     <Entities datatype="tokens">
+      units/{civ}_champion_infantry
+      units/{civ}_champion_cavalry
       units/{civ}_hero_brennus
       units/{civ}_hero_viridomarus
       units/{civ}_hero_vercingetorix
-      units/{civ}_champion_cavalry
-      units/{civ}_champion_infantry
     </Entities>
-    <Technologies datatype="tokens">
-      siege_attack
-      siege_armor
-      siege_cost_metal
-      siege_cost_wood
-    </Technologies>
   </ProductionQueue>
   <Sound>
     <SoundGroups>
@@ -30,7 +23,7 @@
     </SoundGroups>
   </Sound>
   <VisualActor>
-    <Actor>structures/gauls/fortress_gallic.xml</Actor>
+    <Actor>structures/gauls/fortress.xml</Actor>
   </VisualActor>
   <WallPiece>
     <Length>16.8</Length>

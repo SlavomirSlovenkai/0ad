@@ -1,5 +1,5 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
@@ -16,12 +16,13 @@
 # Roman Beňo <romanko.sk@gmail.com>, 2014
 # Roman 'Kaktuxista' Benji <romanbeno273@gmail.com>, 2014
 # Angen <slavomir.slovenkai@gmail.com>, 2017-2018
+# Zuzana Miadoková <akara.horse@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:07+0200\n"
-"PO-Revision-Date: 2019-04-14 07:31+0000\n"
-"Last-Translator: T Hanax <nospam@hanax.eu>\n"
+"POT-Creation-Date: 2020-01-17 08:08+0000\n"
+"PO-Revision-Date: 2020-01-17 15:06+0000\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/wildfire-games/0ad/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,8 +72,8 @@ msgid ""
 msgstr "Gréci boli veľmi úspešní v helenizácii rôznych cudzincov. Počas helénskeho obdobia bola gréčtina medzinárodným jazykom, ktorým sa hovorilo od Španielska až po Indiu."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Description
-msgid "Allied warships −25% construction time."
-msgstr "Spriatelené lode -25% trvania výstavby"
+msgid "Allied Warships −25% construction time."
+msgstr "Spojenecké bojové lode -25% čas výstavby"
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Name
 msgid "Delian League"
@@ -321,8 +322,8 @@ msgid "Celtic religion and druidry inspired their warlike mindset. "
 msgstr "Keltské náboženstvo a druidstvo podporovalo ich bojovný spôsob myslenia."
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Description
-msgid "Allied healers −20% resource costs."
-msgstr "Spriatelení liečitelia -20% ceny surovín"
+msgid "Allied Healers −20% resource costs."
+msgstr "Spojenecký ĺiečitelia -20% cena výstavby"
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Name
 msgid "Druids"
@@ -566,8 +567,8 @@ msgid ""
 msgstr "Rovnako ako Pyrenejský polostrov bola severná Afrika známa ako  krajina koní, schopná vychovať až 100 000 jazdeckých koní ročne. Tiež bola domovom severoafrického lesného slona."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Description
-msgid "Allied markets +10% international trade bonus."
-msgstr "Spriatelené trhy +10% medzinárodný obchodný bonus"
+msgid "Allied Markets +10% international trade bonus."
+msgstr "Spriatelené trhy +10% medzinárodný obchodný bonus."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Name
 msgid "Trademasters"
@@ -773,8 +774,8 @@ msgid "Gauls"
 msgstr "Galovia"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Description
-msgid "Allied structures −20% technology research time."
-msgstr "Spriatelené budovy -20% času výskumu technológií."
+msgid "Allied Structures −20% technology research time."
+msgstr "Spojenecké budovy -20% času technologickej výučby"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Name
 msgid "Druidic Wisdom"
@@ -973,7 +974,7 @@ msgid ""
 msgstr "Rovnako ako Numíbia, aj Pyrenejský polostrov bol známy ako \"krajina koní\", schopná vychovať až 100,000 jazdeckých koní ročne."
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier javelinists −20% resource costs."
+msgid "Allied Citizen Javelinists −10% resource costs."
 msgstr ""
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Name
@@ -982,11 +983,11 @@ msgstr "Saripeko"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].History
 msgid ""
-"The Iberians were long known to provide mercenary soldiers to other nations "
-"to serve as auxiliaries to their armies in foreign wars. Carthage is the "
-"most well known example, and we have evidence of them serving in such a "
-"capacity in Aquitania."
-msgstr "Iberi dlhodobo poskytovali žoldnierov ostatným národom, aby slúžili ako pomocné sily v zahraničných vojnách. Najznámejším príkladom boli Kartáginci, dokonca o ich službách v Aquitánii máme aj dôkazy."
+"The Iberians were long known to provide mercenaries to other nations to "
+"serve as auxiliaries to their armies in foreign wars. Carthage is the most "
+"well known example, and we have evidence of them serving in such a capacity "
+"in Aquitania."
+msgstr ""
 
 #: simulation/data/civs/iber.jsonAINames[0]
 #: simulation/data/civs/iber.jsonAINames[1]
@@ -1134,21 +1135,21 @@ msgstr "Iberi boli ľudia zahadného pôvodu a jazyka so silnou tradíciou v jaz
 
 #: simulation/data/civs/kush.jsonName
 msgid "Kushites"
-msgstr ""
+msgstr "Kušiti"
 
 #: simulation/data/civs/kush.jsonCivBonuses[0].Name
 msgid "The Pyramids of Meroe"
-msgstr ""
+msgstr "Merojské pyramídy"
 
 #: simulation/data/civs/kush.jsonCivBonuses[0].Description
 msgid ""
 "Building a Kushite pyramid increases Civic Center territory influence by "
 "+10% for each one built."
-msgstr ""
+msgstr "Postavenie Kušitskej pyramídy zvyšuje teritoriálny vplyv občianskeho centra o +10% za každú postavenú pyramídu."
 
 #: simulation/data/civs/kush.jsonCivBonuses[1].Name
 msgid "Mineral Deposits"
-msgstr ""
+msgstr "Ložiská minerálov"
 
 #: simulation/data/civs/kush.jsonCivBonuses[1].Description
 msgid ""
@@ -1172,8 +1173,8 @@ msgid "Elephant Suppliers"
 msgstr "Dodávateľ slonov"
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Description
-msgid "Allied elephants −20% resource costs and training time."
-msgstr "Spriatelené slony -20% ceny surovín a času tréningu."
+msgid "Allied Elephants −20% resource costs and training time."
+msgstr "Spojenecké slony -20% cena surovín a doba tréningu"
 
 #: simulation/data/civs/kush.jsonAINames[0]
 msgid "Kashta"
@@ -1221,11 +1222,11 @@ msgstr ""
 
 #: simulation/data/civs/kush.jsonAINames[11]
 msgid "Harsiotef"
-msgstr ""
+msgstr "Harsiotef"
 
 #: simulation/data/civs/kush.jsonAINames[12]
 msgid "Shanakdakhete"
-msgstr ""
+msgstr "Shanakdakhete"
 
 #: simulation/data/civs/kush.jsonAINames[13]
 msgid "Amanishakheto"
@@ -1257,11 +1258,11 @@ msgstr "Samotný Veľkňaz bude viesť tvojich kňazov - nech mú Amun žehná,"
 
 #: simulation/data/civs/kush.jsonFactions[0].Heroes[0].Name
 msgid "Nastasen"
-msgstr ""
+msgstr "Nastasen"
 
 #: simulation/data/civs/kush.jsonFactions[0].Heroes[1].Name
 msgid "Arakamani"
-msgstr ""
+msgstr "Arakamani"
 
 #: simulation/data/civs/kush.jsonFactions[0].Heroes[2].Name
 msgid "Amanirenas"
@@ -1269,7 +1270,7 @@ msgstr "Amanirenas"
 
 #: simulation/data/civs/kush.jsonFactions[0].Name
 msgid "Kushite Africans"
-msgstr ""
+msgstr "Kušitskí Afričania"
 
 #: simulation/data/civs/kush.jsonFactions[0].Description
 msgid ""
@@ -1304,7 +1305,7 @@ msgstr ""
 
 #: simulation/data/civs/kush.jsonStructures[2].Name
 msgid "Kushite Pyramids"
-msgstr ""
+msgstr "Kušitské pyramídy"
 
 #: simulation/data/civs/kush.jsonStructures[2].Special
 msgid ""
@@ -1315,7 +1316,7 @@ msgstr ""
 
 #: simulation/data/civs/kush.jsonStructures[2].History
 msgid "The Kushites built over 200 pyramids in Nubia."
-msgstr ""
+msgstr "Kušiti postavili v Núbii viac ako 200 pyramíd."
 
 #: simulation/data/civs/kush.jsonHistory
 msgid ""
@@ -1581,18 +1582,6 @@ msgid ""
 "Hellenistic culture."
 msgstr "Alexander Veľký zakladal knižnice po celom území svojej novej ríše. Tieto sa stali strediskom vzdelanosti pre celú novú kultúru, ktorá sa nazýva helénska."
 
-#: simulation/data/civs/mace.jsonStructures[2].Name
-msgid "Siege Workshop"
-msgstr "Obliehacia dielňa"
-
-#: simulation/data/civs/mace.jsonStructures[2].Special
-msgid "Constructs and upgrades all Macedonian siege engines."
-msgstr "Stavia a vylepšuje všetky macedónske obliehacie stroje."
-
-#: simulation/data/civs/mace.jsonStructures[2].History
-msgid "The Macedonians were innovators in area of siegecraft."
-msgstr "Macedónci boli inovátormi v oblasti techník obliehania."
-
 #: simulation/data/civs/mace.jsonHistory
 msgid ""
 "Macedonia was an ancient Greek kingdom, centered in the northeastern part of"
@@ -1644,9 +1633,9 @@ msgstr "Kšatrija alebo Kaštrija, čo znamená bojovník, je jednou zo štyroch
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Description
 msgid ""
-"Allied temples −50% resource costs and building time; temple technologies "
+"Allied Temples −50% resource costs and building time; Temple technologies "
 "−50% resource costs and research time."
-msgstr ""
+msgstr "Spojenecké chrámy -50% cena a čas výstavby Chrámové technológie -50% cena a čas výučby"
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Name
 msgid "Ashoka's Religious Support"
@@ -1663,43 +1652,35 @@ msgid "Chandragupta Maurya"
 msgstr "Čandragupta Maurja"
 
 #: simulation/data/civs/maur.jsonAINames[1]
+msgid "Bindusara Maurya"
+msgstr "Bindusara Maurja"
+
+#: simulation/data/civs/maur.jsonAINames[2]
 #: simulation/data/civs/maur.jsonFactions[0].Heroes[1].Name
 msgid "Ashoka the Great"
 msgstr "Ašóka Veľký"
 
-#: simulation/data/civs/maur.jsonAINames[2]
-msgid "Ashokavardhan Maurya"
-msgstr "Ašóka Maurja"
-
 #: simulation/data/civs/maur.jsonAINames[3]
-msgid "Acharya Bhadrabahu"
-msgstr "Acharya Bhadrabahu"
+msgid "Dasharatha Maurya"
+msgstr ""
 
 #: simulation/data/civs/maur.jsonAINames[4]
-msgid "Bindusara Maurya"
-msgstr "Bindusara Maurja"
-
-#: simulation/data/civs/maur.jsonAINames[5]
-msgid "Dasaratha Maurya"
-msgstr "Dasaratha Maurja"
-
-#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Samprati Maurya"
 msgstr "Samprati Maurja"
 
-#: simulation/data/civs/maur.jsonAINames[7]
-msgid "Salisuka Maurya"
-msgstr "Salisuka Maurja"
+#: simulation/data/civs/maur.jsonAINames[5]
+msgid "Shalishuka Maurya"
+msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[8]
+#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Devavarman Maurya"
 msgstr "Devavarman Maurja"
 
-#: simulation/data/civs/maur.jsonAINames[9]
-msgid "Satadhanvan Maurya"
-msgstr "Satadhanvan Maurja"
+#: simulation/data/civs/maur.jsonAINames[7]
+msgid "Shatadhanvan Maurya"
+msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[10]
+#: simulation/data/civs/maur.jsonAINames[8]
 msgid "Brihadratha Maurya"
 msgstr "Brihadratha Maurja"
 
@@ -1819,8 +1800,8 @@ msgid ""
 msgstr "Peržania mohli a aj odviedli obrovské množstvo pešiakov počas vojny vzhľadom k samotnej veľkosti Achajmenskej ríše a spôsobom jej zriadenia. Vo všeobecnosti perzská pechota bola dobre trénovaná a bojovala s veľkou húževnatosťou. Avšak aj napriek tomu jej členovia boli slabí v boji nablízko. Navyše, s výnimkou elitných plukov, táto pechota nebola stálou profesionálnou silou."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Description
-msgid "Allied land traders +15% trade gain."
-msgstr ""
+msgid "Allied Land Traders +15% trade gain."
+msgstr "Spojeneckí pozemní obchodníci +15% zisk."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Name
 msgid "Royal Road"
@@ -1885,8 +1866,8 @@ msgid "Xsayarsa II"
 msgstr "Xsayarsa II"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Description
-msgid "Phoenician triremes gain the unique ability to train cavalry units."
-msgstr "Fenické trirémy získavajú jedinečnú schopnosť trénovať jednotky jazdy."
+msgid "Phoenician triremes gain the unique ability to train cavalry."
+msgstr ""
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Name
 msgid "Naval Craftsmanship"
@@ -2026,7 +2007,7 @@ msgstr "Ptolemaiovci"
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Description
 msgid ""
 "The Ptolemies receive the Mercenary Camp, a Barracks that is constructed in "
-"neutral territory and trains mercenary soldiers."
+"neutral territory and trains mercenaries."
 msgstr ""
 
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Name
@@ -2218,8 +2199,8 @@ msgstr "Stratópedo Misthophóron"
 #: simulation/data/civs/ptol.jsonStructures[1].Special
 msgid ""
 "Must be constructed in neutral territory. Has no territory radius effect. "
-"Trains all 'mercenary' units."
-msgstr "Musí sa postaviť na neutrálnom území. Nemá žiadny územný vplyv. Trénuje všetky \"žoldnierske\" jednotky."
+"Trains mercenaries."
+msgstr ""
 
 #: simulation/data/civs/ptol.jsonStructures[2].Name
 msgid "Lighthouse"
@@ -2286,7 +2267,7 @@ msgid ""
 msgstr "Rímske občianstvo bolo v starovekom svete vysoko cenené. Základné práva a privilégiá odopierané ostatným podmaneným národom boli pre občanov Ríma samozrejmosťou. Zvyklo sa hovoriť, že poškodiť rímskeho občana je ako poškodiť Rím samotný a spôsobilo by to dopad celej jeho moci na páchateľa. "
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry −20% training time."
+msgid "Allied Citizen Infantry −10% training time."
 msgstr ""
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Name
@@ -2496,8 +2477,8 @@ msgid ""
 msgstr "Seleucidské a vskutku Následnícke vedenie vojny sa v priebehu 3. a 2. storočia významne vyvinulo. Kontakt s východnými zbohatlíkmi ako sú Partovia a neustále vzbury podradných kráľovstiev ako napríklad Bactria donútili Seleucidov zreformovať svoje vojenské sily a zmeniť taktiku hlavne v oblasti kavalérie. Vojna si Rimanmi zo Západu a invázie Galov zase boli príčinami reformovania peších plukov za účelom nadobudnutia ich lepšej flexibility."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Description
-msgid "Allied civil centers −20% resource costs."
-msgstr ""
+msgid "Allied Civil Centers −20% resource costs."
+msgstr "Spojenecké občianske centrá -20% ceny surovín."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Name
 msgid "Syrian Tetrapolis"
@@ -2718,8 +2699,8 @@ msgid ""
 msgstr "Macedónsko-grécka dynastia vládnuca východnej časti bývalej Alexandrovej ríše."
 
 #: simulation/data/civs/sele.jsonStructures[1].Special
-msgid "Trains all cavalry units except Citizen-Militia Cavalry."
-msgstr "Trénuje všetky jazdecké jednotky okrem občianskej domobrannej jazdy."
+msgid "Trains all cavalry except citizen-soldier cavalry."
+msgstr ""
 
 #: simulation/data/civs/sele.jsonStructures[2].Name
 msgid "Military Colony"
@@ -2786,7 +2767,7 @@ msgid ""
 msgstr "Na základe Ústavy napísanej mýtickým zákonodarcom Lykurgom sa pre agóge zriadili špeciálna inštitúcia, v ktorej boli Sparťania už od 6 rokov trénovaní, aby sa z nich stali prvotriedni bojovníci schopní obraňovať svoj štát."
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry spearmen +10% health."
+msgid "Allied Citizen Infantry Spearmen +10% health."
 msgstr ""
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Name

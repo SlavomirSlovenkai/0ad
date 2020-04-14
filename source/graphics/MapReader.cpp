@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -41,6 +41,7 @@
 #include "renderer/WaterManager.h"
 #include "simulation2/Simulation2.h"
 #include "simulation2/components/ICmpCinemaManager.h"
+#include "simulation2/components/ICmpGarrisonHolder.h"
 #include "simulation2/components/ICmpObstruction.h"
 #include "simulation2/components/ICmpOwnership.h"
 #include "simulation2/components/ICmpPlayer.h"
@@ -102,7 +103,7 @@ void CMapReader::LoadMap(const VfsPath& pathname, JSRuntime* rt,  JS::HandleValu
 
 	// check oldest supported version
 	if (file_format_version < FILE_READ_VERSION)
-		throw PSERROR_File_InvalidVersion();
+		throw PSERROR_Game_World_MapLoadFailed("Could not load terrain file - too old version!");
 
 	// delete all existing entities
 	if (pSimulation2)
@@ -372,7 +373,8 @@ void CMapSummaryReader::GetMapSettings(const ScriptInterface& scriptInterface, J
 	JSContext* cx = scriptInterface.GetContext();
 	JSAutoRequest rq(cx);
 
-	scriptInterface.Eval("({})", ret);
+	ScriptInterface::CreateObject(cx, ret);
+
 	if (m_ScriptSettings.empty())
 		return;
 
@@ -415,6 +417,7 @@ private:
 	int el_tracks;
 	int el_template, el_player;
 	int el_position, el_orientation, el_obstruction;
+	int el_garrison;
 	int el_actor;
 	int at_x, at_y, at_z;
 	int at_group, at_group2;
@@ -451,7 +454,7 @@ void CXMLReader::Init(const VfsPath& xml_filename)
 	node_idx = entity_idx = 0;
 
 	if (xmb_file.Load(g_VFS, xml_filename, "scenario") != PSRETURN_OK)
-		throw PSERROR_File_ReadFailed();
+		throw PSERROR_Game_World_MapLoadFailed("Could not read map XML file!");
 
 	// define the elements and attributes that are frequently used in the XML file,
 	// so we don't need to do lots of string construction and comparison when
@@ -464,6 +467,7 @@ void CXMLReader::Init(const VfsPath& xml_filename)
 	EL(template);
 	EL(player);
 	EL(position);
+	EL(garrison);
 	EL(orientation);
 	EL(obstruction);
 	EL(actor);
@@ -945,6 +949,7 @@ int CXMLReader::ReadEntities(XMBElement parent, double end_time)
 
 		CStrW TemplateName;
 		int PlayerID = 0;
+		std::vector<entity_id_t> Garrison;
 		CFixedVector3D Position;
 		CFixedVector3D Orientation;
 		long Seed = -1;
@@ -993,6 +998,17 @@ int CXMLReader::ReadEntities(XMBElement parent, double end_time)
 				ControlGroup = attrs.GetNamedItem(at_group).ToInt();
 				ControlGroup2 = attrs.GetNamedItem(at_group2).ToInt();
 			}
+			// <garrison>
+			else if (element_name == el_garrison)
+			{
+				XMBElementList garrison = setting.GetChildNodes();
+				Garrison.reserve(garrison.size());
+				for (const XMBElement& garr_ent : garrison)
+				{
+					XMBAttributeList attrs = garr_ent.GetAttributes();
+					Garrison.push_back(attrs.GetNamedItem(at_uid).ToInt());
+				}
+			}
 			// <actor>
 			else if (element_name == el_actor)
 			{
@@ -1027,6 +1043,16 @@ int CXMLReader::ReadEntities(XMBElement parent, double end_time)
 			CmpPtr<ICmpOwnership> cmpOwnership(sim, ent);
 			if (cmpOwnership)
 				cmpOwnership->SetOwner(PlayerID);
+
+			if (!Garrison.empty())
+			{
+				CmpPtr<ICmpGarrisonHolder> cmpGarrisonHolder(sim, ent);
+				if (cmpGarrisonHolder)
+					cmpGarrisonHolder->SetInitEntities(Garrison);
+				else
+					LOGERROR("CXMLMapReader::ReadEntities() entity '%d' of player '%d' has no GarrisonHolder component and thus cannot garrison units.", ent, PlayerID);
+				Garrison.clear();
+			}
 
 			CmpPtr<ICmpObstruction> cmpObstruction(sim, ent);
 			if (cmpObstruction)

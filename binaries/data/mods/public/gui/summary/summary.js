@@ -17,7 +17,7 @@ var g_TypeColors = {
 };
 
 /**
- * Colors, captions and format used for units, buildings, etc. types
+ * Colors, captions and format used for units, structures, etc. types
  */
 var g_SummaryTypes = {
 	"percent": {
@@ -418,7 +418,7 @@ function updatePanelData(panelInfo)
 		boxSize.right = rowPlayerObjectWidth;
 		rowPlayerObject.size = boxSize;
 
-		setOutcomeIcon(playerState.state, playerOutcome);
+		setOutcomeIcon(playerState.state, Engine.GetGUIObjectByName(playerOutcome));
 
 		playerNameColumn = Engine.GetGUIObjectByName(playerNameColumn);
 		playerNameColumn.caption = g_GameData.sim.playerStates[i + 1].name;
@@ -443,8 +443,7 @@ function continueButton()
 		"charts": g_SelectedChart
 	};
 	if (g_GameData.gui.isInGame)
-		Engine.PopGuiPageCB({
-			"explicitResume": 0,
+		Engine.PopGuiPage({
 			"summarySelectedData": summarySelectedData
 		});
 	else if (g_GameData.gui.dialog)

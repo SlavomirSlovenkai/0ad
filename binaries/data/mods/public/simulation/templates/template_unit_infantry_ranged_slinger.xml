@@ -6,16 +6,19 @@
   </Armour>
   <Attack>
     <Ranged>
-      <Hack>0</Hack>
-      <Pierce>9.5</Pierce>
-      <Crush>1.0</Crush>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>9.2</Pierce>
+        <Crush>0.9</Crush>
+      </Damage>
       <MaxRange>48.0</MaxRange>
       <MinRange>0.0</MinRange>
       <PrepareTime>500</PrepareTime>
       <RepeatTime>1000</RepeatTime>
       <Projectile>
         <Speed>62.5</Speed>
-        <Spread>3.0</Spread>
+        <Spread>3.5</Spread>
+        <Gravity>29.81</Gravity>
       </Projectile>
     </Ranged>
   </Attack>
@@ -26,7 +29,7 @@
     </Resources>
   </Cost>
   <Identity>
-    <VisibleClasses datatype="tokens">Sling</VisibleClasses>
+    <VisibleClasses datatype="tokens">Slinger</VisibleClasses>
     <GenericName>Slinger</GenericName>
   </Identity>
   <Loot>
@@ -35,4 +38,9 @@
   <UnitMotion>
     <WalkSpeed op="mul">1.2</WalkSpeed>
   </UnitMotion>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/sling_attack.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
 </Entity>

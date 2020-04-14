@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 #include "ps/Filesystem.h"
 #include "ps/GameSetup/GameSetup.h"
 #include "ps/GameSetup/Paths.h"
+#include "ps/Pyrogenesis.h"
 #include "scriptinterface/ScriptInterface.h"
 #include "scriptinterface/ScriptRuntime.h"
 
@@ -143,11 +144,14 @@ JS::Value Mod::GetEngineInfo(const ScriptInterface& scriptInterface)
 	JSContext* cx = scriptInterface.GetContext();
 	JSAutoRequest rq(cx);
 
-	JS::RootedValue metainfo(cx);
 	JS::RootedValue mods(cx, Mod::GetLoadedModsWithVersions(scriptInterface));
-	scriptInterface.Eval("({})", &metainfo);
-	scriptInterface.SetProperty(metainfo, "engine_version", std::string(engine_version));
-	scriptInterface.SetProperty(metainfo, "mods", mods);
+	JS::RootedValue metainfo(cx);
+
+	ScriptInterface::CreateObject(
+		cx,
+		&metainfo,
+		"engine_version", engine_version,
+		"mods", mods);
 
 	scriptInterface.FreezeObject(metainfo, true);
 

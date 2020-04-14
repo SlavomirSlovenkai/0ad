@@ -1,4 +1,4 @@
-/* Copyright (C) 2015 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -19,11 +19,11 @@
 
 #include "OverlayRenderer.h"
 
-#include <boost/unordered_map.hpp>
 #include "graphics/LOSTexture.h"
 #include "graphics/Overlay.h"
 #include "graphics/Terrain.h"
 #include "graphics/TextureManager.h"
+#include "lib/hash.h"
 #include "lib/ogl.h"
 #include "maths/MathUtil.h"
 #include "maths/Quaternion.h"
@@ -34,9 +34,11 @@
 #include "renderer/VertexArray.h"
 #include "renderer/VertexBuffer.h"
 #include "renderer/VertexBufferManager.h"
-#include "simulation2/Simulation2.h"
 #include "simulation2/components/ICmpWaterManager.h"
+#include "simulation2/Simulation2.h"
 #include "simulation2/system/SimContext.h"
+
+#include <unordered_map>
 
 /**
  * Key used to group quads into batches for more efficient rendering. Currently groups by the combination
@@ -55,6 +57,17 @@ struct QuadBatchKey
 
 	CTexturePtr m_Texture;
 	CTexturePtr m_TextureMask;
+};
+
+struct QuadBatchHash
+{
+	std::size_t operator()(const QuadBatchKey& d) const
+	{
+		size_t seed = 0;
+		hash_combine(seed, d.m_Texture);
+		hash_combine(seed, d.m_TextureMask);
+		return seed;
+	}
 };
 
 /**
@@ -79,7 +92,7 @@ public:
 
 struct OverlayRendererInternals
 {
-	typedef boost::unordered_map<QuadBatchKey, QuadBatchData> QuadBatchMap;
+	using QuadBatchMap = std::unordered_map<QuadBatchKey, QuadBatchData, QuadBatchHash>;
 
 	OverlayRendererInternals();
 	~OverlayRendererInternals(){ }
@@ -176,14 +189,6 @@ void OverlayRendererInternals::Initialize()
 	}
 	quadIndices.Upload();
 	quadIndices.FreeBackingStore();
-}
-
-static size_t hash_value(const QuadBatchKey& d)
-{
-	size_t seed = 0;
-	boost::hash_combine(seed, d.m_Texture);
-	boost::hash_combine(seed, d.m_TextureMask);
-	return seed;
 }
 
 OverlayRenderer::OverlayRenderer()
@@ -419,7 +424,7 @@ void OverlayRenderer::RenderTexturedOverlayLines()
 	glDepthMask(0);
 
 	const char* shaderName;
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 		shaderName = "arb/overlayline";
 	else
 		shaderName = "fixed:overlayline";
@@ -503,7 +508,7 @@ void OverlayRenderer::RenderQuadOverlays()
 	glDepthMask(0);
 
 	const char* shaderName;
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 		shaderName = "arb/overlayline";
 	else
 		shaderName = "fixed:overlayline";
@@ -589,8 +594,8 @@ void OverlayRenderer::RenderForegroundOverlays(const CCamera& viewCamera)
 	glEnable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 
-	CVector3D right = -viewCamera.m_Orientation.GetLeft();
-	CVector3D up = viewCamera.m_Orientation.GetUp();
+	CVector3D right = -viewCamera.GetOrientation().GetLeft();
+	CVector3D up = viewCamera.GetOrientation().GetUp();
 
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -600,7 +605,7 @@ void OverlayRenderer::RenderForegroundOverlays(const CCamera& viewCamera)
 	CShaderProgramPtr shader;
 	CShaderTechniquePtr tech;
 
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 	{
 		tech = g_Renderer.GetShaderManager().LoadEffect(str_foreground_overlay);
 		tech->BeginPass();
@@ -609,7 +614,7 @@ void OverlayRenderer::RenderForegroundOverlays(const CCamera& viewCamera)
 
 	float uvs[8] = { 0,1, 1,1, 1,0, 0,0 };
 
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 		shader->TexCoordPointer(GL_TEXTURE0, 2, GL_FLOAT, sizeof(float)*2, &uvs[0]);
 	else
 		glTexCoordPointer(2, GL_FLOAT, sizeof(float)*2, &uvs);
@@ -618,12 +623,13 @@ void OverlayRenderer::RenderForegroundOverlays(const CCamera& viewCamera)
 	{
 		SOverlaySprite* sprite = m->sprites[i];
 
-		if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+		if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 			shader->BindTexture(str_baseTex, sprite->m_Texture);
 		else
 			sprite->m_Texture->Bind();
 
-		shader->Uniform(str_colorMul, sprite->m_Color);
+		if (shader)
+			shader->Uniform(str_colorMul, sprite->m_Color);
 
 		CVector3D pos[4] = {
 			sprite->m_Position + right*sprite->m_X0 + up*sprite->m_Y0,
@@ -632,7 +638,7 @@ void OverlayRenderer::RenderForegroundOverlays(const CCamera& viewCamera)
 			sprite->m_Position + right*sprite->m_X0 + up*sprite->m_Y1
 		};
 
-		if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+		if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 			shader->VertexPointer(3, GL_FLOAT, sizeof(float)*3, &pos[0].X);
 		else
 			glVertexPointer(3, GL_FLOAT, sizeof(float)*3, &pos[0].X);
@@ -643,7 +649,7 @@ void OverlayRenderer::RenderForegroundOverlays(const CCamera& viewCamera)
 		g_Renderer.GetStats().m_OverlayTris += 2;
 	}
 
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 		tech->EndPass();
 
 	glDisableClientState(GL_VERTEX_ARRAY);
@@ -723,7 +729,7 @@ void OverlayRenderer::RenderSphereOverlays()
 #if CONFIG2_GLES
 #warning TODO: implement OverlayRenderer::RenderSphereOverlays for GLES
 #else
-	if (g_Renderer.GetRenderPath() != CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() != RenderPath::SHADER)
 		return;
 
 	if (m->spheres.empty())

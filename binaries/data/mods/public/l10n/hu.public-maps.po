@@ -1,13 +1,14 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
 # Hammer Andrew <andrewhammer87@gmail.com>, 2017
-# Balázs Meskó <meskobalazs@gmail.com>, 2015-2019
+# Balázs Meskó <meskobalazs@gmail.com>, 2015-2020
 # Balázs Úr, 2015-2016
 # Bence Erős <ebence88@gmail.com>, 2015
 # Boross Péter <borosspet@web.de>, 2015-2016
+# Farkas Máté <nyugatkeleti@gmail.com>, 2019
 # Gyuris Gellért <bubu@ujevangelizacio.hu>, 2014-2016
 # Kristóf Kófiás <kristof.kofias@gmail.com>, 2014
 # lkishalmi <laszlo.kishalmi@gmail.com>, 2015
@@ -18,9 +19,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-05-27 10:00+0200\n"
-"PO-Revision-Date: 2019-05-27 15:47+0000\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"POT-Creation-Date: 2020-01-17 08:09+0000\n"
+"PO-Revision-Date: 2020-02-03 19:01+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/wildfire-games/0ad/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -195,14 +196,17 @@ msgid "Canyon"
 msgstr "Kanyon"
 
 #: maps/random/continent.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Description
 msgid "All players starts on a continent surrounded by water."
 msgstr "Mindegyik játékos egy vízzel körülvett kontinensen kezd."
 
 #: maps/random/continent.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Name
 msgid "Continent"
 msgstr "Kontinens"
 
 #: maps/random/corinthian_isthmus.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Description
 #: maps/skirmishes/Corinthian Isthmus (2).xml:Description:39
 #: maps/skirmishes/Corinthian Isthmus (4).xml:Description:40
 msgid ""
@@ -245,6 +249,22 @@ msgid ""
 "the Boii were defeated by the rising power of the Dacians, hence leading to "
 "the reemergence of the Geto-Dacian Confederation under King Burebista."
 msgstr "A játékosok a Duna folyó partján kezdenek, a kelta Boii törzs Pannónia felé történő terjeszkedésének időszaka után. A föld uralmának megszilárdítására törekedve, kelta erősítések kerültek kiküldésre, hogy kiűzzék a megmaradt idegen kultúrákat. A játékosok nem csak egymás közt harcolnak a hatalomért, hanem ezekkel a hódítókkal is fel kell venniük a harcot. Végül, a Boii törzset legyőzték a dákok, amely a géta-dák szövetség felemelkedéséhez vezetett, Boirebisztasz király alatt."
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Description
+msgid "Bright daylight illuminates the scene."
+msgstr "Napvilág világítja meg a jelenetet."
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Name
+msgid "Day"
+msgstr "Nappal"
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Description
+msgid "Attackers are covered by the darkness of the night."
+msgstr "A támadókat az éj sötétje fedi."
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Name
+msgid "Night"
+msgstr "Éjszaka"
 
 #: maps/random/danubius.jsonsettings.Name
 msgid "Danubius"
@@ -317,7 +337,7 @@ msgstr "Kialudt vulkán"
 
 #: maps/random/fields_of_meroe.jsonsettings.Description
 msgid ""
-"The \"Island of Meroe\", a vast peninsula flanked by the Nile and Atbarah "
+"The \"Island of Meroë\", a vast peninsula flanked by the Nile and Atbarah "
 "rivers, formed the heartland of ancient Kush. Where the harsh deserts start "
 "making way for the semi-arid savannahs and small acacia forests dot the "
 "landscape. The area is rich in resources and the ever-present Nile brings "
@@ -325,7 +345,7 @@ msgid ""
 msgstr "„Meroé szigete” egy nagy félsziget, amelyet a Nílus és Atbara folyók határolják. Ez adta az ókori kusita királyság hátországát, ahol a zord sivatagokat felváltják a félsivatagos szavannák, és kis akáciaerdők tarkítják a tájat. A terület nyersanyagokban gazdag, és a mindig jelenlévő Nílus életet ad, de a folyó túlsó oldalán súlyos fenyegetések ólálkodnak."
 
 #: maps/random/fields_of_meroe.jsonsettings.Name
-msgid "Fields of Meroe"
+msgid "Fields of Meroë"
 msgstr "Meroé mezői"
 
 #: maps/random/flood.jsonsettings.Description
@@ -542,10 +562,12 @@ msgid "Lower Nubia"
 msgstr "Alsó-Núbia"
 
 #: maps/random/mainland.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Description
 msgid "A typical map without any water."
 msgstr "Egy tipikus vízmentes tájegység."
 
 #: maps/random/mainland.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Name
 msgid "Mainland"
 msgstr "Szárazföld"
 
@@ -678,6 +700,22 @@ msgid ""
 "inadvisable to disable treasures, since there is no gatherable wood. Not "
 "recommended for inexperienced players.[/color]"
 msgstr "A játékosok egy hideg sarkvidéki területen kezdenek, növényzet nélkül. A tenger gazdag halakban és bálnákban, míg a törékeny jeges föld vadászható rozmárokkal és halálos farkasokkal teli. Ezeket a farkasok, amelyek farkaséhesek a zord klíma miatt, a zsákmány szaga vonzotta ide, és ilyesztő számban vannak jelen. Egy bölcs és erős uralkodó nem csak az ellenségei felett arat győzelmet, hanem a bestiák számát is kordában tartja, különben aláássa a gazdaságát, amely a bukását okozza. [color=\"red\"]Figyelmeztetés: Nem tanácsos kikapcsolni a kincseket, mert nincs begyűjthető fa. Nem ajánlott a tapasztalatlan játékosoknak.[/color]"
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Description
+msgid "Scattered sunlight illuminates the scenery in a vivid red tone."
+msgstr "A szórt napfény élénk vörös színnel világítja meg a tájat."
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Name
+msgid "Dawn"
+msgstr "Hajnal"
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Description
+msgid "The scenery is illuminated by direct or indirect sunlight."
+msgstr "A tájat közvetlen vagy közvetett napfény világítja meg."
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Name
+msgid "Daylight"
+msgstr "Nappali fény"
 
 #: maps/random/polar_sea.jsonsettings.Name
 msgid "Polar Sea"
@@ -860,20 +898,94 @@ msgid "The Nile"
 msgstr "A Nílus"
 
 #: maps/random/unknown.jsonsettings.Description
-msgid "The unknown. Warning: May be a naval map."
-msgstr "Az ismeretlen. Figyelmeztetés: lehet hogy tengeri térkép."
+msgid "The unknown."
+msgstr "Az ismeretlen."
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Name
+msgid "Isthmus"
+msgstr "Isthmus"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Description
+msgid "A small central river."
+msgstr "Egy kicsi központi folyó."
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Name
+msgid "Central River"
+msgstr "Központi folyó"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Description
+msgid ""
+"Players are aligned on a strip of land with seas bordering on one or both "
+"sides that may hold islands."
+msgstr "A játékosok egy földcsíkon vannak elhelyezve, melyet tenger határol egy vagy két oldalon, és szigeteket is tartalmazhat."
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Name
+msgid "Edge Seas"
+msgstr "Peremtengerek"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Description
+msgid "Land shaped like a concrescent moon around a central lake."
+msgstr "Holdsarló alakú földterület egy központi tó körül."
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Name
+msgid "Gulf"
+msgstr "Öböl"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Description
+msgid "Mainland style with some small random lakes."
+msgstr "Szárazföld jellegű, apró és véletlenszerű tavakkal."
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Name
+msgid "Lakes"
+msgstr "Tava"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Description
+msgid ""
+"A large hill encompasses the map and leaves players only a small passage to "
+"the two neighboring players."
+msgstr "Egy nagy hegy zárja körül a térképet, a szomszédos játékosokat pedig szűk hágók választják el."
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Name
+msgid "Passes"
+msgstr "Hágó"
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Description
+msgid ""
+"The land is enclosed by a hill that leaves a small area per player connected"
+" to the large central place."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Name
+msgid "Lowlands"
+msgstr "Alföldek"
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Description
+msgid "A huge sea is dividing the map into two halves."
+msgstr "Egy nagy tenger választja két félre a térképet."
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Name
+msgid "Naval: Central Sea"
+msgstr "Tengeri: Központi tenger"
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Description
+msgid "Players are scattered across island chains and disconnected islands."
+msgstr "A játékosok szigetláncokon és különálló szigeteken vannak elszórva."
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Name
+msgid "Naval: Archipelago"
+msgstr "Tengeri: Szigetvilág"
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Description
+msgid "A central lake with rivers possibly separating neighboring players."
+msgstr "Egy központi tó folyókkal, melyek elvághatják egymástól a szomszédos játékosokat"
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Name
+msgid "Naval: Lake and rivers"
+msgstr "Tengeri: Tó és folyók"
 
 #: maps/random/unknown.jsonsettings.Name
 msgid "Unknown"
 msgstr "Ismeretlen"
-
-#: maps/random/unknown_land.jsonsettings.Description
-msgid "The unknown."
-msgstr "Az ismeretlen."
-
-#: maps/random/unknown_land.jsonsettings.Name
-msgid "Unknown Land"
-msgstr "Ismeretlen vidék"
 
 #: maps/random/volcanic_lands.jsonsettings.Description
 msgid "A charred dead land where players start around a smoking volcano."
@@ -935,7 +1047,7 @@ msgstr "Az első hullám %(time)s percen belül fog indulni!"
 msgid "An enemy wave is attacking!"
 msgstr "Egy ellenséges hullám támad!"
 
-#: maps/random/survivalofthefittest_triggers.js:289
+#: maps/random/survivalofthefittest_triggers.js:288
 #, javascript-format
 msgid "%(player)s has been defeated (lost civic center)."
 msgstr "%(player)s vesztett (elvesztette a városházát)."
@@ -1042,47 +1154,6 @@ msgstr "Tavasz Árkádiában, Görögországban. A tavaszi esők megöntözték 
 #: maps/scenarios/WallTest.xml:PlayerData[0].Name:27
 #: maps/scenarios/Walls.xml:PlayerData[0].Name:27
 #: maps/scenarios/reservoir.xml:PlayerData[0].Name:27
-#: maps/skirmishes/Acropolis Bay (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[0].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[0].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[0].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[0].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[0].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[0].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[0].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[0].Name:39
 msgid "Player 1"
 msgstr "1. játékos"
 
@@ -1106,48 +1177,7 @@ msgstr "1. játékos"
 #: Islands.xml:PlayerData[1].Name:39 maps/scenarios/Tropical
 #: Island.xml:PlayerData[1].Name:39
 #: maps/scenarios/WallTest.xml:PlayerData[1].Name:27
-#: maps/scenarios/Walls.xml:PlayerData[1].Name:27 maps/skirmishes/Acropolis
-#: Bay (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[1].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[1].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[1].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[1].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[2].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[1].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[1].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[1].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[1].Name:39
+#: maps/scenarios/Walls.xml:PlayerData[1].Name:27
 msgid "Player 2"
 msgstr "2. játékos"
 
@@ -1376,25 +1406,7 @@ msgstr "Inváziós erő"
 #: Oases.xml:PlayerData[2].Name:27 maps/scenarios/Sandbox -
 #: Britons.xml:PlayerData[2].Name:39 maps/scenarios/Sandbox -
 #: Gauls.xml:PlayerData[3].Name:40 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[2].Name:27 maps/skirmishes/Barcania
-#: (3).xml:PlayerData[2].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[2].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Gallic Fields
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Gambia River
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[2].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[2].Name:39
+#: Oasis.xml:PlayerData[2].Name:27
 msgid "Player 3"
 msgstr "3. játékos"
 
@@ -1431,22 +1443,7 @@ msgstr "Egy kis sivatagi térkép. Minden játékos egy kis oázis közelében k
 #: maps/scenarios/Gold_Rush.xml:PlayerData[3].Name:27
 #: maps/scenarios/Necropolis.xml:PlayerData[3].Name:39 maps/scenarios/Saharan
 #: Oases.xml:PlayerData[3].Name:27 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[3].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[3].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[3].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[3].Name:39
+#: Oasis.xml:PlayerData[3].Name:27
 msgid "Player 4"
 msgstr "4. játékos"
 
@@ -1580,10 +1577,10 @@ msgstr "Ez a pálya Napata ókori városának rekonstrukcióját mutatja. [color
 
 #: maps/scenarios/Necropolis.xml:Description:39
 msgid ""
-"4 players duke it out over the vast Nile Delta. Each city starts out nestled atop a large acropolis, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
+"Four players duke it out over the vast Nile Delta. Each city starts out nestled atop a large plateau, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
 "\n"
 "Scouts say the nearby branches of the Nile River are shallow and fordable in multiple locations, so should only serve as a minor barrier between enemy factions."
-msgstr "4 játékos kitartóan küzd a hatalmas Nílus-deltában. Minden város egy nagy akropoliszon befészkelve kezdi, de a nyersanyagok szűkösek, arra sarkallva a játékosokat, hogy terjesszék ki nyersanyagforrás utáni kutatásukat a környező vidékre.\n\nA felderítők szerint a Nílus folyó közeli ágai sekélyek és több helyen átgázolhatóak, tehát csupán egy kis akadályt képeznek az ellenséges csoportok között."
+msgstr "Négy játékos kitartóan küzd a hatalmas Nílus-deltában. Minden város egy nagy fennsíkon befészkelve kezdi, de a nyersanyagok szűkösek, arra sarkallva a játékosokat, hogy terjesszék ki nyersanyagforrás utáni kutatásukat a környező vidékre.\n\nA felderítők szerint a Nílus folyó közeli ágai sekélyek és több helyen átgázolhatóak, tehát csupán egy kis akadályt képeznek az ellenséges csoportok között."
 
 #: maps/scenarios/Necropolis.xml:Name:39
 msgid "Necropolis"
@@ -2049,7 +2046,7 @@ msgstr "Minden egység a játékból."
 
 #: maps/scenarios/WallTest.xml:Description:27
 #: maps/scenarios/_default.xml:Description:28 maps/scenarios/temperate
-#: map.xml:Description:27 maps/scenarios/test-foundation.xml:Description:40
+#: map.xml:Description:27
 msgid "Give an interesting description of your map."
 msgstr "Adj meg egy érdekes leírást a térképedről."
 
@@ -2070,11 +2067,10 @@ msgid "We Are Legion"
 msgstr "Mi vagyunk a légió"
 
 #: maps/scenarios/We are Legion.xml:Description:27
-msgid "A quick battle demo map using Roman legionnaires."
+msgid "A quick battle demo map using Roman legionaries."
 msgstr "Egy gyors ütközet demó térkép római legionáriusok használatával."
 
 #: maps/scenarios/_default.xml:Name:28
-#: maps/scenarios/test-foundation.xml:Name:40
 msgid "Unnamed map"
 msgstr "Névtelen térkép"
 
@@ -2106,24 +2102,34 @@ msgstr "Hajók demó"
 msgid "Base Temperate Map"
 msgstr "Alap mérsékelt térkép"
 
-#: maps/scenarios/unit_motion_integration_test.xml:Name:28
-msgid "Unit Motion Integration Test"
-msgstr ""
+#: maps/scenarios/test-foundation.xml:Description:40
+msgid ""
+"This map is designed to help artists and modders find the adequate "
+"foundation for a specific building. This map is not meant to be playable."
+msgstr "Ez a térkép arra lett tervezve, hogy segítsen a művészeknek és moddereknek, hogy megfelelő alapzatot találjanak az egyes épületeknek. Ez a térkép nem úgy készült, hogy játszható legyen."
 
-#: maps/scenarios/unit_motion_integration_test.xml:Description:28
+#: maps/scenarios/test-foundation.xml:Name:40
+msgid "Foundation Testing Map"
+msgstr "Alapzat tesztelési térkép"
+
+#: maps/scenarios/unit_motion_integration_test.xml:Description:40
 msgid ""
 "This map is designed to test some basic unit movement cases. It will involve"
 " unitAI, unitMotion and the relevant pathfinders and thus acts as an "
 "integrated test map. Look for things such as stuck units, wrong animations, "
 "and weird pathing."
-msgstr ""
+msgstr "Ez a térkép alapvető egységmozgási esetek tesztelésére készült. Tartalmazza a unitAI-t, a unitMotiont és a releváns útkeresőket, így integrált teszttérképként szolgál. Keress elakadt egységeket, hibás animációkat és furcsa útkereséseket."
+
+#: maps/scenarios/unit_motion_integration_test.xml:Name:40
+msgid "Unit Motion Integration Test"
+msgstr "Egységmozgás integrációs teszt"
 
 #: maps/skirmishes/Acropolis Bay (2).xml:Description:39
 msgid ""
-"Each player starts the match atop a large flat plateau, otherwise known as an acropolis.\n"
+"Each player starts the match atop a large flat plateau.\n"
 "\n"
-"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed acropolis commanding the valley below."
-msgstr "Minden játékos egy nagy fennsíkon ‒ más néven akropoliszon ‒ kezdi a játszmát.\n\nKeleten egy nagy öböl terül el halászati lehetőséggel. Nyugaton egy zord hátország található, melyet egy gazdátlan akropolisz határoz meg a völgy fölött."
+"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed plateau commanding the valley below."
+msgstr "Minden játékos egy nagy fennsíkon kezdi a játszmát.\n\nKeleten egy nagy öböl terül el halászati lehetőséggel. Nyugaton egy zord hátország található, melyet egy gazdátlan fennsík határoz meg a völgy fölött."
 
 #: maps/skirmishes/Acropolis Bay (2).xml:Name:39
 msgid "Acropolis Bay (2)"
@@ -2149,6 +2155,17 @@ msgstr "Az Alpok délceg csúcsai és völgyei.\n\nMinden játékos egy biztons�
 #: maps/skirmishes/Alpine_Valleys_(2).xml:Name:39
 msgid "Alpine Valleys (2)"
 msgstr "Alpesi völgyek (2)"
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Description:40
+msgid ""
+"Skirmish high in the Atlas mountains, where snowcapped mountains loom over "
+"desert oases. A wild landscape awaits; every player will experience "
+"different advantages and challenges based on their location."
+msgstr "Csatázz az Atlasz hegység magaslatain, ahol hófödte hegycsúcsok magasodnak a sivatagi oázisok fölé. Vadregényes táj vár; minden játékos különböző előnyökkel és kihívásokkal rendelkezik, a helyzetétől függően."
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Name:40
+msgid "Atlas Valleys (8)"
+msgstr "Atlasz völgyei (8)"
 
 #: maps/skirmishes/Bactria (2).xml:Description:39
 msgid ""
@@ -2190,11 +2207,11 @@ msgid ""
 "as the Butana Steppe."
 msgstr "A Szaharától délre, a Nílustól keletre, fekszik egy félszáraz régió, amely ma Butána sztyepp néven ismert."
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[0].Name:40
 msgid "West Player"
 msgstr "Nyugati játékos"
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
 msgid "East Player"
 msgstr "Keleti játékos"
 
@@ -2302,27 +2319,27 @@ msgstr "A párbajok sziklái (3v3)"
 msgid "Egypt (3v3)"
 msgstr "Egyiptom (3v3)"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[0].Name:40
 msgid "Alexandria"
 msgstr "Alexandria"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
 msgid "Theben"
 msgstr "Théba"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
 msgid "Siwa"
 msgstr "Szíva"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
 msgid "Sinai"
 msgstr "Sínai-félsziget"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
 msgid "Memphis"
 msgstr "Memphisz"
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[6].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
 msgid "Cyrene"
 msgstr "Küréné"
 
@@ -2342,6 +2359,14 @@ msgid ""
 "- Eastern desert: mount Sinai, deep Wadi, Red Sea reefs\n"
 "- Western desert: Oasis Charga and Siwa, Qattara Depression\n"
 msgstr "Harcolj az ókori Egyiptom maradványaiért!\n\nA játékosok teljes városokkal és kis hadseregekkel kezdenek, és különböző előnyökkel és hátrányokkal indulnak. Légy óvatos, 7 hatalmas erőd van, és portyázó banditák.\n\nA 0 A.D. előtti utolsó században Egyiptom megosztott a hellén (Alexandria, melyet a szeleukidák képviselnek) és a hagyományos hatások között (Memphisz, melyet a ptolemaiosziak képviselnek). Thébát, a Nílus déli részénmár elfoglalták a kusiták. Észak-nyugaton El-Dzsabal el-Ahdar, ahol Küréné földközi-tengeri városa állt, a rómaiak invázióra készülnek. A keleti sivatagtól, a Tih fennsíktól és a Sínai-hegytől érkező ellenségek (a perzsák képviselik) előre nyomulnak a Szíva-oázis felé. A délnyugati sivatagban található Khárga-oázis (Karthágó képviseli) is szeretne egy szeletet a tortából.\nHelyszínek:\n- Alexandria: könyvtár, kikötő\n- Memphisz: nekropolisz, piramisok, Ápisz-szentély\n- Théba: templomnegyed, Királyok völgye\n- Küréné: mediterrán macchiák, olajfaligetek\n- Fajjúm: krokodilszentély, nílusi gát\n- Keleti sivatag: Sínai-hegy, mély kiszáradt medrek, vörös-tengeri zátony\n- Nyugati sivatag: Khárga- és Szíva-oázisok, Kattara-mélyföld\n"
+
+#: maps/skirmishes/Farmland (2).xml:Description:40
+msgid "Farmland in Eastern Europe."
+msgstr "Kelet-Európai termőföld."
+
+#: maps/skirmishes/Farmland (2).xml:Name:40
+msgid "Farmland (2)"
+msgstr "Termőföld (2)"
 
 #: maps/skirmishes/Forest Battle (4).xml:Description:40
 msgid ""
@@ -2380,8 +2405,8 @@ msgstr "Gambia folyó (3)"
 #: maps/skirmishes/Golden Island (2).xml:Description:40
 msgid ""
 "A ring of land borders a resource-rich island in the Mediterranean. Players "
-"can access the center via a narrow strip of land or via boat."
-msgstr "Egy földgyűrű határol egy nyersanyagokban gazdag szigetet a Földközi-tengeren. A játékosok a sziget közepét egy szűk földsávon, vagy csónakkal érhetik el."
+"can access the center via a narrow strip of shallow water or via boat."
+msgstr "Egy földgyűrű határol egy nyersanyagokban gazdag szigetet a Földközi-tengeren. A játékosok a sziget közepét a szűken sekély vízen, vagy csónakkal érhetik el."
 
 #: maps/skirmishes/Golden Island (2).xml:Name:40
 msgid "Golden Island (2)"
@@ -2401,10 +2426,10 @@ msgstr "Arany oázis (2)"
 #: maps/skirmishes/Greek Acropolis (2).xml:Description:39
 #: maps/skirmishes/Greek Acropolis Night (2).xml:Description:39
 msgid ""
-"Two factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Two factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
-msgstr "Két csoport egy sziklás fennsíkon vagy akropoliszon találja magát biztonságban befészkelve.\n\nDerítsd fel a vidékez a szabad kincsek után és az új nyersanyagforrások biztosítása érdekében."
+msgstr "Két csoport egy sziklás fennsíkon találja magát biztonságban befészkelve.\n\nDerítsd fel a vidéket a szabad kincsek után, és az új nyersanyagforrások biztosítása érdekében."
 
 #: maps/skirmishes/Greek Acropolis (2).xml:Name:39
 msgid "Greek Acropolis (2)"
@@ -2412,10 +2437,10 @@ msgstr "Görög akropolisz (2)"
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Description:39
 msgid ""
-"Three factions find themselves perched safely atop large rocky plateaus, or acropolises, whereas the fourth one is separated from their foes by a river branch.\n"
+"Three factions find themselves perched safely atop large rocky plateaus, whereas the fourth one is separated from their foes by a river branch.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources.."
-msgstr "Három csoport egy sziklás fennsíkon vagy akropoliszon találja magát biztonságban befészkelve, míg a negyediket egy folyó ága választja el az ellenfeleitől.\n\nDerítsd fel a vidékez a szabad kincsek után és az új nyersanyagforrások biztosítása érdekében."
+msgstr "Három csoport egy sziklás fennsíkon találja magát biztonságban befészkelve, míg a negyediket egy folyó ága választja el az ellenfeleitől.\n\nDerítsd fel a vidékez a szabad kincsek után és az új nyersanyagforrások biztosítása érdekében."
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Name:39
 msgid "Greek Acropolis (4)"
@@ -2527,6 +2552,30 @@ msgstr "Hajótöröttként a hideg északon 2 játékos küzd a sziget fölötti
 msgid "Northern Island (2)"
 msgstr "Északi sziget (2)"
 
+#: maps/skirmishes/Obedska_Bog_(4).xml:Description:40
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Description:40
+msgid ""
+"A lazy river meanders through these Serbian wetlands. Stone is scarce, but many lumps of bog iron sit waiting to be found.\n"
+"\n"
+"*This map makes heavy use of grass actors which may adversely affect performance."
+msgstr "Egy lusta folyó kanyarog ezeken a szerb lápokon. A kő ritka, de számos vaslelőhely vár arra, hogy megtalálják.\n\n*Ez a térkép nagy számban használ füveket, ami negatívan hathat a teljesítményre."
+
+#: maps/skirmishes/Obedska_Bog_(4).xml:Name:40
+msgid "Obedska Bog (4)"
+msgstr "Obedszka lapvidék (4)"
+
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Name:40
+msgid "Obedska Bog Night (4)"
+msgstr "Obedszka lápvidék éjszaka (4)"
+
+#: maps/skirmishes/Oceanside (2).xml:Description:40
+msgid "A Lush temperate biome along an ocean. "
+msgstr "Egy buja mérsékelt övi biom az óceán mellett."
+
+#: maps/skirmishes/Oceanside (2).xml:Name:40
+msgid "Oceanside (2)"
+msgstr "Óceán part (2)"
+
 #: maps/skirmishes/Persian Highlands (4).xml:Description:39
 msgid ""
 "A dry central basin rich in minerals surrounded by rocky hills and "
@@ -2569,6 +2618,19 @@ msgstr "Az Atlasz hegység déli oldalán található Észak-Afrikában.\n\nNém
 #: maps/skirmishes/Sahel (4).xml:Name:39
 msgid "Sahel (4)"
 msgstr "Száhil öv (4)"
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Description:40
+msgid ""
+"The diverse rainforests nestled in the Sahyadri mountain range of the west coast of India. It goes without saying, wood is abundant.\n"
+"\n"
+"Iberian players do not get full circuit walls, but 5 strategically placed wall towers.\n"
+"\n"
+"WARNING: This map uses a lot of floral actors on account of being a rainforest. Expect a drop in framerate, this is taxing on most mid range computers."
+msgstr ""
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Name:40
+msgid "Sahyadri Buttes (5)"
+msgstr "Szahjadri-hegység (5)"
 
 #: maps/skirmishes/Savanna River.xml:Description:39
 msgid "A large savanna is bisected by a narrow jungle stream."
@@ -2630,12 +2692,20 @@ msgstr "Hegyekkel és sivatagokkal körülvett oázis. A vízparton fekvő term�
 msgid "Team Oasis (2v2)"
 msgstr "Csapat oázis (2v2)"
 
+#: maps/skirmishes/Temperate Roadway (2).xml:Description:40
+msgid "Temperate zone map with plentiful resources. Map Size: Small"
+msgstr "Mérsékelt övi térkép számos nyersanyaggal. Térképméret: kicsi."
+
+#: maps/skirmishes/Temperate Roadway (2).xml:Name:40
+msgid "Temperate Roadway (2)"
+msgstr "Mérsékelt övi folyosó (2)"
+
 #: maps/skirmishes/Thessalian Plains (4).xml:Description:39
 msgid ""
 "The rolling Thessalian plain is traversed with narrow streams, easily "
 "forded. Wide-open spaces allow for massive expansion, while each player "
-"starts the match safe atop a large acropolis."
-msgstr "A thesszáliai alföldet szűk folyók keresztezik, melyeken könnyű átgázolni. A tág terek gyors terjeszkedést tesznek lehetővé. Minden játékos a mérkőzést egy biztonságos és nagy akropoliszon kezdi."
+"starts the match safe atop a large plateau."
+msgstr "A thesszáliai alföldet szűk folyók keresztezik, melyeken könnyű átgázolni. A tág terek gyors terjeszkedést tesznek lehetővé. Minden játékos a mérkőzést egy biztonságos és nagy fennsíkon kezdi."
 
 #: maps/skirmishes/Thessalian Plains (4).xml:Name:39
 msgid "Thessalian Plains (4)"
@@ -2643,10 +2713,10 @@ msgstr "Thesszáliai alföld (4)"
 
 #: maps/skirmishes/Tuscan Acropolis (4).xml:Description:40
 msgid ""
-"Four factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Four factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
-msgstr "Négy csoport egy sziklás fennsíkon vagy akropoliszon találja magát biztonságban befészkelve.\n\nDerítsd fel a vidékez a szabad kincsek után és az új nyersanyagforrások biztosítása érdekében."
+msgstr "Négy csoport egy sziklás fennsíkon találja magát biztonságban befészkelve.\n\nDerítsd fel a vidéket a szabad kincsek után, és az új nyersanyagforrások biztosítása érdekében."
 
 #: maps/skirmishes/Tuscan Acropolis (4).xml:Name:40
 msgid "Tuscan Acropolis (4)"
@@ -2661,6 +2731,17 @@ msgstr "Egy hatalmas trópusi térkép két tengerrel keleten és nyugaton. Kiv�
 #: maps/skirmishes/Two Seas (6).xml:Name:40
 msgid "Two Seas (6)"
 msgstr "Két tenger (6)"
+
+#: maps/skirmishes/Vesuvius_(6).xml:Description:40
+msgid ""
+"Skirmish as ash lightly falls around this recently erupted volcano. the "
+"scorched landscape offers little food, though the blasted forests are still "
+"laden with useful wood. "
+msgstr "Csatázz, miközben hamu hullik a nemrég kitört vulkánból. A felperzselt táj kevés élelmet kínál, de a letarolt erdők még mindig tele vannak hasznos fával."
+
+#: maps/skirmishes/Vesuvius_(6).xml:Name:40
+msgid "Vesuvius (6)"
+msgstr "Vesuvius (6)"
 
 #: maps/skirmishes/Via Augusta (4).xml:Description:40
 msgid ""

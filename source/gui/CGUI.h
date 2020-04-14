@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -23,65 +23,47 @@
 #ifndef INCLUDED_CGUI
 #define INCLUDED_CGUI
 
-#include "GUITooltip.h"
-#include "GUIbase.h"
-
+#include "gui/GUITooltip.h"
+#include "gui/ObjectTypes/CGUIDummyObject.h"
+#include "gui/SettingTypes/CGUIColor.h"
+#include "gui/SGUIIcon.h"
+#include "gui/SGUIStyle.h"
 #include "lib/input.h"
 #include "ps/Shapes.h"
 #include "ps/XML/Xeromyces.h"
 #include "scriptinterface/ScriptInterface.h"
 
-#include <boost/unordered_set.hpp>
-
-ERROR_TYPE(GUI, JSOpenFailed);
+#include <map>
+#include <unordered_set>
+#include <vector>
 
 extern const double SELECT_DBLCLICK_RATE;
 
-/**
- * Contains a list of values for new defaults to objects.
- */
-struct SGUIStyle
-{
-	std::map<CStr, CStrW> m_SettingsDefaults;
-};
-
-class JSObject; // The GUI stores a JSObject*, so needs to know that JSObject exists
-class IGUIObject;
 class CGUISpriteInstance;
-struct SGUIText;
-struct CColor;
-struct SGUIText;
-struct SGUIIcon;
-class CGUIString;
 class CGUISprite;
+class IGUIObject;
 struct SGUIImageEffects;
 struct SGUIScrollBarStyle;
-class GUITooltip;
 
 /**
  * The main object that represents a whole GUI page.
- *
- * No interfacial functions throws.
  */
 class CGUI
 {
 	NONCOPYABLE(CGUI);
 
-	friend class IGUIObject;
-	friend class CInternalCGUIAccessorBase;
-
 private:
 	// Private typedefs
-	typedef IGUIObject *(*ConstructObjectFunction)();
+	using ConstructObjectFunction = IGUIObject* (*)(CGUI&);
 
 public:
 	CGUI(const shared_ptr<ScriptRuntime>& runtime);
 	~CGUI();
 
 	/**
-	 * Initializes the GUI, needs to be called before the GUI is used
+	 * Informs the GUI page which GUI object types may be constructed from XML.
 	 */
-	void Initialize();
+	void AddObjectTypes();
 
 	/**
 	 * Performs processing that should happen every frame
@@ -92,9 +74,17 @@ public:
 	/**
 	 * Sends a specified script event to every object
 	 *
-	 * @param EventName String representation of event name
+	 * @param eventName String representation of event name
 	 */
-	void SendEventToAll(const CStr& EventName);
+	void SendEventToAll(const CStr& eventName);
+
+	/**
+	 * Sends a specified script event to every object
+	 *
+	 * @param eventName String representation of event name
+	 * @param paramData JS::HandleValueArray storing the arguments passed to the event handler.
+	 */
+	void SendEventToAll(const CStr& eventName, const JS::HandleValueArray& paramData);
 
 	/**
 	 * Displays the whole GUI
@@ -115,23 +105,6 @@ public:
 	void DrawSprite(const CGUISpriteInstance& Sprite, int CellID, const float& Z, const CRect& Rect, const CRect& Clipping = CRect());
 
 	/**
-	 * Draw a SGUIText object
-	 *
-	 * @param Text Text object.
-	 * @param DefaultColor Color used if no tag applied.
-	 * @param pos position
-	 * @param z z value.
-	 * @param clipping
-	 */
-	void DrawText(SGUIText& Text, const CColor& DefaultColor, const CPos& pos, const float& z, const CRect& clipping);
-
-	/**
-	 * Clean up, call this to clean up all memory allocated
-	 * within the GUI.
-	 */
-	void Destroy();
-
-	/**
 	 * The replacement of Process(), handles an SDL_Event_
 	 *
 	 * @param ev SDL Event, like mouse/keyboard input
@@ -147,7 +120,29 @@ public:
 	 * @param Filename Name of file
 	 * @param Paths Set of paths; all XML and JS files loaded will be added to this
 	 */
-	void LoadXmlFile(const VfsPath& Filename, boost::unordered_set<VfsPath>& Paths);
+	void LoadXmlFile(const VfsPath& Filename, std::unordered_set<VfsPath>& Paths);
+
+	/**
+	 * Called after all XML files linked in the page file were loaded.
+	 */
+	void LoadedXmlFiles();
+
+	/**
+	 * Allows the JS side to modify the hotkey setting assigned to a GUI object.
+	 */
+	void SetObjectHotkey(IGUIObject* pObject, const CStr& hotkeyTag);
+	void UnsetObjectHotkey(IGUIObject* pObject, const CStr& hotkeyTag);
+
+	/**
+	 * Allows the JS side to add or remove global hotkeys.
+	 */
+	void SetGlobalHotkey(const CStr& hotkeyTag, JS::HandleValue function);
+	void UnsetGlobalHotkey(const CStr& hotkeyTag);
+
+	/**
+	 * Return the object which is an ancestor of every other GUI object.
+	 */
+	CGUIDummyObject& GetBaseObject() { return m_BaseObject; };
 
 	/**
 	 * Checks if object exists and return true or false accordingly
@@ -157,20 +152,29 @@ public:
 	 */
 	bool ObjectExists(const CStr& Name) const;
 
-
 	/**
-	 * Returns the GUI object with the desired name, or NULL
+	 * Returns the GUI object with the desired name, or nullptr
 	 * if no match is found,
 	 *
 	 * @param Name String name of object
-	 * @return Matching object, or NULL
+	 * @return Matching object, or nullptr
 	 */
 	IGUIObject* FindObjectByName(const CStr& Name) const;
 
 	/**
-	 * Returns the GUI object under the mouse, or NULL if none.
+	 * Returns the GUI object under the mouse, or nullptr if none.
 	 */
-	IGUIObject* FindObjectUnderMouse() const;
+	IGUIObject* FindObjectUnderMouse();
+
+	/**
+	 * Returns the current screen coordinates of the cursor.
+	 */
+	const CPos& GetMousePos() const { return m_MousePos; };
+
+	/**
+	 * Returns the currently pressed mouse buttons.
+	 */
+	const unsigned int& GetMouseButtons() { return m_MouseButtons; };
 
 	const SGUIScrollBarStyle* GetScrollBarStyle(const CStr& style) const;
 
@@ -203,66 +207,44 @@ public:
 	void UpdateResolution();
 
 	/**
-	 * Generate a SGUIText object from the inputted string.
-	 * The function will break down the string and its
-	 * tags to calculate exactly which rendering queries
-	 * will be sent to the Renderer. Also, horizontal alignment
-	 * is taken into acount in this method but NOT vertical alignment.
-	 *
-	 * Done through the CGUI since it can communicate with
-	 *
-	 * @param Text Text to generate SGUIText object from
-	 * @param Font Default font, notice both Default color and default font
-	 *		  can be changed by tags.
-	 * @param Width Width, 0 if no word-wrapping.
-	 * @param BufferZone space between text and edge, and space between text and images.
-	 * @param pObject Optional parameter for error output. Used *only* if error parsing fails,
-	 *		  and we need to be able to output which object the error occurred in to aid the user.
-	 */
-	SGUIText GenerateText(const CGUIString& Text, const CStrW& Font, const float& Width, const float& BufferZone, const IGUIObject* pObject = NULL);
-
-
-	/**
 	 * Check if an icon exists
 	 */
-	bool IconExists(const CStr& str) const { return (m_Icons.count(str) != 0); }
+	bool HasIcon(const CStr& name) const { return (m_Icons.find(name) != m_Icons.end()); }
 
 	/**
-	 * Get Icon (a copy, can never be changed)
+	 * Get Icon (a const reference, can never be changed)
 	 */
-	SGUIIcon GetIcon(const CStr& str) const { return m_Icons.find(str)->second; }
+	const SGUIIcon& GetIcon(const CStr& name) const { return m_Icons.at(name); }
 
 	/**
-	 * Get pre-defined color (if it exists)
-	 * Returns false if it fails.
+	 * Check if a style exists
 	 */
-	bool GetPreDefinedColor(const CStr& name, CColor& Output) const;
+	bool HasStyle(const CStr& name) const { return (m_Styles.find(name) != m_Styles.end()); }
+
+	/**
+	 * Get Style if it exists, otherwise throws an exception.
+	 */
+	const SGUIStyle& GetStyle(const CStr& name) const { return m_Styles.at(name); }
+
+	/**
+	 * Check if a predefined color of that name exists.
+	 */
+	bool HasPreDefinedColor(const CStr& name) const { return (m_PreDefinedColors.find(name) != m_PreDefinedColors.end()); }
+
+	/**
+	 * Resolve the predefined color if it exists, otherwise throws an exception.
+	 */
+	const CGUIColor& GetPreDefinedColor(const CStr& name) const { return m_PreDefinedColors.at(name); }
 
 	shared_ptr<ScriptInterface> GetScriptInterface() { return m_ScriptInterface; };
 	JS::Value GetGlobalObject() { return m_ScriptInterface->GetGlobalObject(); };
 
 private:
-
 	/**
-	 * Updates the object pointers, needs to be called each
-	 * time an object has been added or removed.
-	 *
-	 * This function is atomic, meaning if it throws anything, it will
-	 * have seen it through that nothing was ultimately changed.
-	 *
-	 * @throws PSERROR_GUI that is thrown from IGUIObject::AddToPointersMap().
+	 * The CGUI takes ownership of the child object and links the parent with the child.
+	 * Returns false on failure to take over ownership of the child object.
 	 */
-	void UpdateObjects();
-
-	/**
-	 * Adds an object to the GUI's object database
-	 * Private, since you can only add objects through
-	 * XML files. Why? Because it enables the GUI to
-	 * be much more encapsulated and safe.
-	 *
-	 * @throws	Rethrows PSERROR_GUI from IGUIObject::AddChild().
-	 */
-	void AddObject(IGUIObject* pObject);
+	bool AddObject(IGUIObject& parent, IGUIObject& child);
 
 	/**
 	 * You input the name of the object type, and let's
@@ -274,20 +256,34 @@ private:
 	 */
 	IGUIObject* ConstructObject(const CStr& str);
 
+public:
 	/**
 	 * Get Focused Object.
 	 */
 	IGUIObject* GetFocusedObject() { return m_FocusedObject; }
 
-public:
 	/**
 	 * Change focus to new object.
 	 * Will send LOST_FOCUS/GOT_FOCUS messages as appropriate.
-	 * pObject can be NULL to remove all focus.
+	 * pObject can be nullptr to remove all focus.
 	 */
 	void SetFocusedObject(IGUIObject* pObject);
 
+	/**
+	 * Reads a string value and modifies the given value of type T if successful.
+	 * Does not change the value upon conversion failure.
+	 *
+	 * @param pGUI The GUI page which may contain data relevant to the parsing
+	 *             (for example predefined colors).
+	 * @param Value The value in string form, like "0 0 100% 100%"
+	 * @param tOutput Parsed value of type T
+	 * @return True at success.
+	 */
+	template <typename T>
+	static bool ParseString(const CGUI* pGUI, const CStrW& Value, T& tOutput);
+
 private:
+
 	//--------------------------------------------------------
 	/** @name XML Reading Xeromyces specific subroutines
 	 *
@@ -350,7 +346,7 @@ private:
 	 *
 	 * @see LoadXmlFile()
 	 */
-	void Xeromyces_ReadRootObjects(XMBElement Element, CXeromyces* pFile, boost::unordered_set<VfsPath>& Paths);
+	void Xeromyces_ReadRootObjects(XMBElement Element, CXeromyces* pFile, std::unordered_set<VfsPath>& Paths);
 
 	/**
 	 * Reads in the root element \<sprites\> (the DOMElement).
@@ -409,7 +405,7 @@ private:
 	 *
 	 * @see LoadXmlFile()
 	 */
-	void Xeromyces_ReadObject(XMBElement Element, CXeromyces* pFile, IGUIObject* pParent, std::vector<std::pair<CStr, CStr> >& NameSubst, boost::unordered_set<VfsPath>& Paths, u32 nesting_depth);
+	void Xeromyces_ReadObject(XMBElement Element, CXeromyces* pFile, IGUIObject* pParent, std::vector<std::pair<CStr, CStr> >& NameSubst, std::unordered_set<VfsPath>& Paths, u32 nesting_depth);
 
 	/**
 	 * Reads in the element \<repeat\>, which repeats its child \<object\>s
@@ -417,7 +413,7 @@ private:
 	 * 'var' enclosed in square brackets) in its descendants' names with "[0]",
 	 * "[1]", etc.
 	 */
-	void Xeromyces_ReadRepeat(XMBElement Element, CXeromyces* pFile, IGUIObject* pParent, std::vector<std::pair<CStr, CStr> >& NameSubst, boost::unordered_set<VfsPath>& Paths, u32 nesting_depth);
+	void Xeromyces_ReadRepeat(XMBElement Element, CXeromyces* pFile, IGUIObject* pParent, std::vector<std::pair<CStr, CStr> >& NameSubst, std::unordered_set<VfsPath>& Paths, u32 nesting_depth);
 
 	/**
 	 * Reads in the element \<script\> (the XMBElement) and executes
@@ -430,7 +426,7 @@ private:
 	 *
 	 * @see LoadXmlFile()
 	 */
-	void Xeromyces_ReadScript(XMBElement Element, CXeromyces* pFile, boost::unordered_set<VfsPath>& Paths);
+	void Xeromyces_ReadScript(XMBElement Element, CXeromyces* pFile, std::unordered_set<VfsPath>& Paths);
 
 	/**
 	 * Reads in the element \<sprite\> (the XMBElement) and stores the
@@ -559,14 +555,6 @@ private:
 	// Tooltip
 	GUITooltip m_Tooltip;
 
-	/**
-	 * This is a bank of custom colors, it is simply a look up table that
-	 * will return a color object when someone inputs the name of that
-	 * color. Of course the colors have to be declared in XML, there are
-	 * no hard-coded values.
-	 */
-	std::map<CStr, CColor>	m_PreDefinedColors;
-
 	//@}
 	//--------------------------------------------------------
 	/** @name Objects */
@@ -577,7 +565,7 @@ private:
 	 * Base Object, all its children are considered parentless
 	 * because this is not a real object per se.
 	 */
-	IGUIObject* m_BaseObject;
+	CGUIDummyObject m_BaseObject;
 
 	/**
 	 * Focused object!
@@ -608,32 +596,62 @@ private:
 	 * IGUIObjects by name... For instance m_ObjectTypes["button"]
 	 * is filled with a function that will "return new CButton();"
 	 */
-	std::map<CStr, ConstructObjectFunction>	m_ObjectTypes;
+	std::map<CStr, ConstructObjectFunction> m_ObjectTypes;
 
 	/**
 	 * Map from hotkey names to objects that listen to the hotkey.
 	 * (This is an optimisation to avoid recursing over the whole GUI
 	 * tree every time a hotkey is pressed).
-	 * Currently this is only set at load time - dynamic changes to an
-	 * object's hotkey property will be ignored.
 	 */
 	std::map<CStr, std::vector<IGUIObject*> > m_HotkeyObjects;
 
+	/**
+	 * Map from hotkey names to functions that are triggered if the hotkey is pressed.
+	 * Contrary to object hotkeys, this allows for only one global function per hotkey name.
+	 */
+	std::map<CStr, JS::PersistentRootedValue> m_GlobalHotkeys;
+
+	/**
+	 * XML and JS can subscribe handlers to events identified by these names.
+	 * Store in static const members to avoid string copies, gain compile errors when misspelling and
+	 * to allow reuse in other classes.
+	 */
+	static const CStr EventNameLoad;
+	static const CStr EventNameTick;
+	static const CStr EventNamePress;
+	static const CStr EventNameRelease;
+	static const CStr EventNameMouseRightPress;
+	static const CStr EventNameMouseLeftPress;
+	static const CStr EventNameMouseMiddlePress;
+	static const CStr EventNameMouseWheelDown;
+	static const CStr EventNameMouseWheelUp;
+	static const CStr EventNameMouseLeftDoubleClick;
+	static const CStr EventNameMouseLeftRelease;
+	static const CStr EventNameMouseMiddleDoubleClick;
+	static const CStr EventNameMouseMiddleRelease;
+	static const CStr EventNameMouseRightDoubleClick;
+	static const CStr EventNameMouseRightRelease;
+
 	//--------------------------------------------------------
 	//	Databases
+	//	These are loaded from XML files and marked as noncopyable and const to
+	//	rule out unintentional modification and copy, especially during Draw calls.
 	//--------------------------------------------------------
 
+	// Colors
+	std::map<CStr, const CGUIColor> m_PreDefinedColors;
+
 	// Sprites
-	std::map<CStr, CGUISprite*> m_Sprites;
+	std::map<CStr, const CGUISprite*> m_Sprites;
 
 	// Styles
-	std::map<CStr, SGUIStyle> m_Styles;
+	std::map<CStr, const SGUIStyle> m_Styles;
 
 	// Scroll-bar styles
-	std::map<CStr, SGUIScrollBarStyle> m_ScrollBarStyles;
+	std::map<CStr, const SGUIScrollBarStyle> m_ScrollBarStyles;
 
 	// Icons
-	std::map<CStr, SGUIIcon> m_Icons;
+	std::map<CStr, const SGUIIcon> m_Icons;
 };
 
 #endif // INCLUDED_CGUI

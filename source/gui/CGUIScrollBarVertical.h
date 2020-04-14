@@ -1,4 +1,4 @@
-/* Copyright (C) 2015 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -16,29 +16,15 @@
  */
 
 /*
-A GUI ScrollBar
-
---Overview--
-
 	A GUI Scrollbar, this class doesn't present all functionality
 	to the scrollbar, it just controls the drawing and a wrapper
 	for interaction with it.
-
---Usage--
-
-	Used in everywhere scrollbars are needed, like in a combobox for instance.
-
---More info--
-
-	Check GUI.h
-
 */
 
 #ifndef INCLUDED_CGUISCROLLBARVERTICAL
 #define INCLUDED_CGUISCROLLBARVERTICAL
 
 #include "IGUIScrollBar.h"
-#include "GUI.h"
 
 /**
  * Vertical implementation of IGUIScrollBar
@@ -48,7 +34,7 @@ A GUI ScrollBar
 class CGUIScrollBarVertical : public IGUIScrollBar
 {
 public:
-	CGUIScrollBarVertical();
+	CGUIScrollBarVertical(CGUI& pGUI);
 	virtual ~CGUIScrollBarVertical();
 
 public:

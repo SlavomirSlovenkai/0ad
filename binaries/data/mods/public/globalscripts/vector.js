@@ -30,6 +30,13 @@ Vector2D.prototype.set = function(x, y)
 	return this;
 };
 
+Vector2D.prototype.setFrom = function(v)
+{
+	this.x = v.x;
+	this.y = v.y;
+	return this;
+};
+
 Vector2D.prototype.add = function(v)
 {
 	this.x += v.x;
@@ -240,6 +247,11 @@ Vector2D.sum = function(vectorList)
 	return sum;
 };
 
+Vector2D.dot = function(v1, v2)
+{
+	return v1.x * v2.x + v1.y * v2.y;
+};
+
 /////////////////////////////////////////////////////////////////////
 //	Vector3D
 //
@@ -429,8 +441,3 @@ Vector3D.div = function(v, f)
 {
 	return new Vector3D(v.x / f, v.y / f, v.z / f);
 };
-
-
-// make the prototypes easily accessible to C++
-const Vector2Dprototype = Vector2D.prototype;
-const Vector3Dprototype = Vector3D.prototype;

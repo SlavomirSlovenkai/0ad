@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -30,6 +30,8 @@
 #include "simulation2/helpers/Render.h"
 #include "simulation2/system/Component.h"
 
+#include <memory>
+
 class CCmpRangeOverlayRenderer : public ICmpRangeOverlayRenderer
 {
 public:
@@ -37,6 +39,7 @@ public:
 	{
 		componentManager.SubscribeToMessageType(MT_Deserialized);
 		componentManager.SubscribeToMessageType(MT_OwnershipChanged);
+		componentManager.SubscribeToMessageType(MT_PlayerColorChanged);
 	}
 
 	DEFAULT_COMPONENT_ALLOCATOR(RangeOverlayRenderer)
@@ -46,11 +49,7 @@ public:
 		m_Color = CColor(0.f, 0.f, 0.f, 1.f);
 	}
 
-	~CCmpRangeOverlayRenderer()
-	{
-		for (const RangeOverlayData& rangeOverlay : m_RangeOverlayData)
-			delete rangeOverlay.second;
-	}
+	~CCmpRangeOverlayRenderer() = default;
 
 	static std::string GetSchema()
 	{
@@ -78,8 +77,6 @@ public:
 
 	void ResetRangeOverlays()
 	{
-		for (const RangeOverlayData& rangeOverlay : m_RangeOverlayData)
-			delete rangeOverlay.second;
 		m_RangeOverlayData.clear();
 		UpdateMessageSubscriptions();
 		m_Enabled = false;
@@ -91,13 +88,14 @@ public:
 			return;
 
 		SOverlayDescriptor rangeOverlayDescriptor;
-		SOverlayTexturedLine* rangeOverlay = nullptr;
 		rangeOverlayDescriptor.m_Radius = radius;
-		rangeOverlayDescriptor.m_LineTexture = CStrIntern(TEXTUREBASEPATH + texture);
-		rangeOverlayDescriptor.m_LineTextureMask = CStrIntern(TEXTUREBASEPATH + textureMask);
+		rangeOverlayDescriptor.m_LineTexture = CStrIntern(TEXTURE_BASE_PATH + texture);
+		rangeOverlayDescriptor.m_LineTextureMask = CStrIntern(TEXTURE_BASE_PATH + textureMask);
 		rangeOverlayDescriptor.m_LineThickness = thickness;
 
-		m_RangeOverlayData.push_back({ rangeOverlayDescriptor, rangeOverlay });
+		m_RangeOverlayData.push_back({
+			rangeOverlayDescriptor, std::unique_ptr<SOverlayTexturedLine>()
+		});
 		m_Enabled = true;
 		UpdateMessageSubscriptions();
 	}
@@ -111,11 +109,7 @@ public:
 			const CMessageInterpolate& msgData = static_cast<const CMessageInterpolate&> (msg);
 
 			for (RangeOverlayData& rangeOverlay : m_RangeOverlayData)
-			{
-				delete rangeOverlay.second;
-				rangeOverlay.second = new SOverlayTexturedLine;
-				UpdateRangeOverlay(&rangeOverlay.first, *rangeOverlay.second, msgData.offset);
-			}
+				UpdateRangeOverlay(rangeOverlay, msgData.offset);
 
 			UpdateMessageSubscriptions();
 
@@ -123,6 +117,7 @@ public:
 		}
 		case MT_Deserialized:
 		case MT_OwnershipChanged:
+		case MT_PlayerColorChanged:
 		{
 			UpdateColor();
 			break;
@@ -130,11 +125,17 @@ public:
 		case MT_RenderSubmit:
 		{
 			const CMessageRenderSubmit& msgData = static_cast<const CMessageRenderSubmit&> (msg);
-			RenderSubmit(msgData.collector);
+			RenderSubmit(msgData.collector, msgData.frustum, msgData.culling);
 			break;
 		}
 		}
 	}
+
+private:
+	struct RangeOverlayData {
+		SOverlayDescriptor descriptor;
+		std::unique_ptr<SOverlayTexturedLine> line;
+	};
 
 	virtual void UpdateColor()
 	{
@@ -184,18 +185,22 @@ public:
 		}
 	}
 
-	void RenderSubmit(SceneCollector& collector)
+	void RenderSubmit(SceneCollector& collector, const CFrustum& frustum, bool culling)
 	{
 		if (!m_RangeOverlayData.size())
 			return;
 
 		for (const RangeOverlayData& rangeOverlay : m_RangeOverlayData)
-			if (rangeOverlay.second)
-				collector.Submit(rangeOverlay.second);
+		{
+			if (!rangeOverlay.line)
+				continue;
+			if (culling && !rangeOverlay.line->IsVisibleInFrustum(frustum))
+				continue;
+			collector.Submit(rangeOverlay.line.get());
+		}
 	}
 
-private:
-	void UpdateRangeOverlay(const SOverlayDescriptor* overlayDescriptor, SOverlayTexturedLine& overlay, float frameOffset)
+	void UpdateRangeOverlay(RangeOverlayData& rangeOverlay, const float frameOffset)
 	{
 		if (!CRenderer::IsInitialised())
 			return;
@@ -208,19 +213,19 @@ private:
 		CVector2D origin;
 		cmpPosition->GetInterpolatedPosition2D(frameOffset, origin.X, origin.Y, rotY);
 
-		overlay.m_SimContext = &GetSimContext();
-		overlay.m_Color = m_Color;
-		overlay.CreateOverlayTexture(overlayDescriptor);
+		rangeOverlay.line = std::unique_ptr<SOverlayTexturedLine>(new SOverlayTexturedLine);
+		rangeOverlay.line->m_SimContext = &GetSimContext();
+		rangeOverlay.line->m_Color = m_Color;
+		rangeOverlay.line->CreateOverlayTexture(&rangeOverlay.descriptor);
 
-		SimRender::ConstructTexturedLineCircle(overlay, origin, overlayDescriptor->m_Radius);
+		SimRender::ConstructTexturedLineCircle(*rangeOverlay.line.get(), origin, rangeOverlay.descriptor.m_Radius);
 	}
 
 	bool m_EnabledInterpolate;
 	bool m_EnabledRenderSubmit;
 	bool m_Enabled;
 
-	const char* TEXTUREBASEPATH = "art/textures/selection/";
-	typedef std::pair<SOverlayDescriptor, SOverlayTexturedLine*> RangeOverlayData;
+	const char* TEXTURE_BASE_PATH = "art/textures/selection/";
 	std::vector<RangeOverlayData> m_RangeOverlayData;
 	CColor m_Color;
 };

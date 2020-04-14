@@ -7,8 +7,12 @@ Formation.prototype.Schema =
 	"<element name='Icon'>" +
 		"<text/>" +
 	"</element>" +
-	"<element name='RequiredMemberCount' a:help='Minimum number of entities the formation should contain'>" +
-		"<data type='nonNegativeInteger'/>" +
+	"<element name='RequiredMemberCount' a:help='Minimum number of entities the formation should contain (at least 2)'>" +
+		"<data type='integer'>" +
+		  "<param name='minInclusive'>"+
+		    "2"+
+		  "</param>"+
+		"</data>" +
 	"</element>" +
 	"<element name='DisabledTooltip' a:help='Tooltip shown when the formation is disabled'>" +
 		"<text/>" +
@@ -62,13 +66,8 @@ Formation.prototype.Schema =
 	"<element name='UnitSeparationDepthMultiplier' a:help='Place the units in the formation closer or further to each other. The standard separation is the footprint size.'>" +
 		"<ref name='nonNegativeDecimal'/>" +
 	"</element>" +
-	"<element name='Animations' a:help='Give a list of animations to use for the particular formation members, based on their positions'>" +
-		"<zeroOrMore>" +
-			"<element a:help='The name of the default animation (walk, idle, attack_ranged...) that will be transformed in the formation-specific ResetMoveAnimation'>" +
-				"<anyName/>" +
-				"<text a:help='example text: \"1..1,1..-1:animation1;2..2,1..-1;animation2\", this will set animation1 for the first row, and animation2 for the second row. The first part of the numbers (1..1 and 2..2) means the row range. Every row between (and including) those values will switch animations. The second part of the numbers (1..-1) denote the columns inside those rows that will be affected. Note that in both cases, you can use -1 for the last row/column, -2 for the second to last, etc.'/>" +
-			"</element>" +
-		"</zeroOrMore>" +
+	"<element name='Animations' a:help='Give a list of animation variants to use for the particular formation members, based on their positions'>" +
+		"<text a:help='example text: \"1..1,1..-1:animation1;2..2,1..-1;animation2\", this will set animation1 for the first row, and animation2 for the second row. The first part of the numbers (1..1 and 2..2) means the row range. Every row between (and including) those values will switch animations. The second part of the numbers (1..-1) denote the columns inside those rows that will be affected. Note that in both cases, you can use -1 for the last row/column, -2 for the second to last, etc.'/>" +
 	"</element>";
 
 var g_ColumnDistanceThreshold = 128; // distance at which we'll switch between column/box formations
@@ -90,12 +89,10 @@ Formation.prototype.Init = function()
 	this.maxRows = +(this.template.MaxRows || 0);
 	this.centerGap = +(this.template.CenterGap || 0);
 
-	var animations = this.template.Animations;
-	this.animations = {};
-	for (var animationName in animations)
+	this.animations = [];
+	if (this.template.Animations)
 	{
-		var differentAnimations = animations[animationName].split(/\s*;\s*/);
-		this.animations[animationName] = [];
+		let differentAnimations = this.template.Animations.split(/\s*;\s*/);
 		// loop over the different rectangulars that will map to different animations
 		for (var rectAnimation of differentAnimations)
 		{
@@ -106,7 +103,7 @@ Formation.prototype.Init = function()
 			var minRow, maxRow, minColumn, maxColumn;
 			[minRow, maxRow] = rows.split(/\s*\.\.\s*/);
 			[minColumn, maxColumn] = columns.split(/\s*\.\.\s*/);
-			this.animations[animationName].push({
+			this.animations.push({
 				"minRow": +minRow,
 				"maxRow": +maxRow,
 				"minColumn": +minColumn,
@@ -115,6 +112,8 @@ Formation.prototype.Init = function()
 			});
 		}
 	}
+
+	this.lastOrderVariant = undefined;
 
 	this.members = []; // entity IDs currently belonging to this formation
 	this.memberPositions = {};
@@ -206,16 +205,14 @@ Formation.prototype.GetPrimaryMember = function()
 /**
  * Get the formation animation for a certain member of this formation
  * @param entity The entity ID to get the animation for
- * @param defaultAnimation The name of the default wanted animation for the entity
- * E.g. "walk", "idle" ...
  * @return The name of the transformed animation as defined in the template
- * E.g. "walk_testudo_row1"
+ * E.g. "testudo_row1" or undefined if does not exist
  */
-Formation.prototype.GetFormationAnimation = function(entity, defaultAnimation)
+Formation.prototype.GetFormationAnimation = function(entity)
 {
-	var animationGroup = this.animations[defaultAnimation];
-	if (!animationGroup || this.columnar || !this.memberPositions[entity])
-		return defaultAnimation;
+	var animationGroup = this.animations;
+	if (!animationGroup.length || this.columnar || !this.memberPositions[entity])
+		return undefined;
 	var row = this.memberPositions[entity].row;
 	var column = this.memberPositions[entity].column;
 	for (var i = 0; i < animationGroup.length; ++i)
@@ -246,7 +243,7 @@ Formation.prototype.GetFormationAnimation = function(entity, defaultAnimation)
 
 		return animationGroup[i].animation;
 	}
-	return defaultAnimation;
+	return undefined;
 };
 
 /**
@@ -254,15 +251,14 @@ Formation.prototype.GetFormationAnimation = function(entity, defaultAnimation)
  */
 Formation.prototype.SetInPosition = function(ent)
 {
-	if (this.inPosition.indexOf(ent) != -1)
-		return;
-
-	// Rotate the entity to the right angle
-	var cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
-	var cmpEntPosition = Engine.QueryInterface(ent, IID_Position);
+	// Rotate the entity to the right angle.
+	let cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
+	let cmpEntPosition = Engine.QueryInterface(ent, IID_Position);
 	if (cmpEntPosition && cmpEntPosition.IsInWorld() && cmpPosition && cmpPosition.IsInWorld())
 		cmpEntPosition.TurnTo(cmpPosition.GetRotation().y);
 
+	if (this.inPosition.indexOf(ent) != -1)
+		return;
 	this.inPosition.push(ent);
 };
 
@@ -303,7 +299,7 @@ Formation.prototype.SetMembers = function(ents)
 		if (cmpAuras && cmpAuras.HasFormationAura())
 		{
 			this.formationMembersWithAura.push(ent);
-			cmpAuras.ApplyFormationBonus(ents);
+			cmpAuras.ApplyFormationAura(ents);
 		}
 	}
 
@@ -318,46 +314,49 @@ Formation.prototype.SetMembers = function(ents)
 /**
  * Remove the given list of entities.
  * The entities must already be members of this formation.
+ * @param {boolean} rename - Whether the removal was part of an entity rename
+	(prevents disbanding of the formation when under the member limit).
  */
-Formation.prototype.RemoveMembers = function(ents)
+Formation.prototype.RemoveMembers = function(ents, renamed = false)
 {
 	this.offsets = undefined;
 	this.members = this.members.filter(function(e) { return ents.indexOf(e) == -1; });
 	this.inPosition = this.inPosition.filter(function(e) { return ents.indexOf(e) == -1; });
 
-	for (var ent of ents)
+	for (let ent of ents)
 	{
-		var cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
+		let cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
 		cmpUnitAI.UpdateWorkOrders();
 		cmpUnitAI.SetFormationController(INVALID_ENTITY);
 	}
 
-	for (var ent of this.formationMembersWithAura)
+	for (let ent of this.formationMembersWithAura)
 	{
-		var cmpAuras = Engine.QueryInterface(ent, IID_Auras);
-		cmpAuras.RemoveFormationBonus(ents);
+		let cmpAuras = Engine.QueryInterface(ent, IID_Auras);
+		cmpAuras.RemoveFormationAura(ents);
 
 		// the unit with the aura is also removed from the formation
 		if (ents.indexOf(ent) !== -1)
-			cmpAuras.RemoveFormationBonus(this.members);
+			cmpAuras.RemoveFormationAura(this.members);
 	}
 
 	this.formationMembersWithAura = this.formationMembersWithAura.filter(function(e) { return ents.indexOf(e) == -1; });
 
 	// If there's nobody left, destroy the formation
-	if (this.members.length == 0)
+	// unless this is a rename where we can have 0 members temporarily.
+	if (this.members.length < +this.template.RequiredMemberCount && !renamed)
 	{
-		Engine.DestroyEntity(this.entity);
+		this.Disband();
 		return;
 	}
+
+	this.ComputeMotionParameters();
 
 	if (!this.rearrange)
 		return;
 
-	this.ComputeMotionParameters();
-
 	// Rearrange the remaining members
-	this.MoveMembersIntoFormation(true, true);
+	this.MoveMembersIntoFormation(true, true, this.lastOrderVariant);
 };
 
 Formation.prototype.AddMembers = function(ents)
@@ -368,7 +367,7 @@ Formation.prototype.AddMembers = function(ents)
 	for (let ent of this.formationMembersWithAura)
 	{
 		let cmpAuras = Engine.QueryInterface(ent, IID_Auras);
-		cmpAuras.ApplyFormationBonus(ents);
+		cmpAuras.ApplyFormationAura(ents);
 	}
 
 	this.members = this.members.concat(ents);
@@ -377,16 +376,23 @@ Formation.prototype.AddMembers = function(ents)
 	{
 		let cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
 		cmpUnitAI.SetFormationController(this.entity);
+		if (!cmpUnitAI.GetOrders().length)
+			cmpUnitAI.SetNextState("FORMATIONMEMBER.IDLE");
 
 		let cmpAuras = Engine.QueryInterface(ent, IID_Auras);
 		if (cmpAuras && cmpAuras.HasFormationAura())
 		{
 			this.formationMembersWithAura.push(ent);
-			cmpAuras.ApplyFormationBonus(this.members);
+			cmpAuras.ApplyFormationAura(this.members);
 		}
 	}
 
-	this.MoveMembersIntoFormation(true, true);
+	this.ComputeMotionParameters();
+
+	if (!this.rearrange)
+		return;
+
+	this.MoveMembersIntoFormation(true, true, this.lastOrderVariant);
 };
 
 /**
@@ -398,7 +404,7 @@ Formation.prototype.FindInPosition = function()
 	for (var i = 0; i < this.members.length; ++i)
 	{
 		var cmpUnitMotion = Engine.QueryInterface(this.members[i], IID_UnitMotion);
-		if (!cmpUnitMotion.IsMoving())
+		if (!cmpUnitMotion.IsMoveRequested())
 		{
 			// Verify that members are stopped in FORMATIONMEMBER.WALKING
 			var cmpUnitAI = Engine.QueryInterface(this.members[i], IID_UnitAI);
@@ -422,7 +428,7 @@ Formation.prototype.Disband = function()
 	for (var ent of this.formationMembersWithAura)
 	{
 		var cmpAuras = Engine.QueryInterface(ent, IID_Auras);
-		cmpAuras.RemoveFormationBonus(this.members);
+		cmpAuras.RemoveFormationAura(this.members);
 	}
 
 
@@ -436,12 +442,13 @@ Formation.prototype.Disband = function()
 
 /**
  * Set all members to form up into the formation shape.
- * If moveCenter is true, the formation center will be reinitialised
+ * @param {boolean} moveCenter - The formation center will be reinitialised
  * to the center of the units.
- * If force is true, all individual orders of the formation units are replaced,
+ * @param {boolean} force - All individual orders of the formation units are replaced,
  * otherwise the order to walk into formation is just pushed to the front.
+ * @param {string | undefined} variant - Variant to be passed as order parameter.
  */
-Formation.prototype.MoveMembersIntoFormation = function(moveCenter, force)
+Formation.prototype.MoveMembersIntoFormation = function(moveCenter, force, variant)
 {
 	if (!this.members.length)
 		return;
@@ -478,6 +485,7 @@ Formation.prototype.MoveMembersIntoFormation = function(moveCenter, force)
 		}
 	}
 
+	this.lastOrderVariant = variant;
 	// Switch between column and box if necessary
 	var cmpUnitAI = Engine.QueryInterface(this.entity, IID_UnitAI);
 	var walkingDistance = cmpUnitAI.ComputeWalkingDistance();
@@ -488,12 +496,16 @@ Formation.prototype.MoveMembersIntoFormation = function(moveCenter, force)
 		this.offsets = undefined;
 	}
 
+	let offsetsChanged = false;
 	var newOrientation = this.GetEstimatedOrientation(avgpos);
 	var dSin = Math.abs(newOrientation.sin - this.oldOrientation.sin);
 	var dCos = Math.abs(newOrientation.cos - this.oldOrientation.cos);
 	// If the formation existed, only recalculate positions if the turning agle is somewhat biggish
 	if (!this.offsets || dSin > 1 || dCos > 1)
+	{
 		this.offsets = this.ComputeFormationOffsets(active, positions);
+		offsetsChanged = true;
+	}
 
 	this.oldOrientation = newOrientation;
 
@@ -514,7 +526,9 @@ Formation.prototype.MoveMembersIntoFormation = function(moveCenter, force)
 		{
 			"target": this.entity,
 			"x": offset.x,
-			"z": offset.y
+			"z": offset.y,
+			"offsetsChanged": offsetsChanged,
+			"variant": variant
 		};
 		cmpUnitAI.AddOrder("FormationWalk", data, !force);
 		xMax = Math.max(xMax, offset.x);
@@ -908,10 +922,15 @@ Formation.prototype.ShapeUpdate = function()
 	{
 		this.offsets = undefined;
 		this.columnar = columnar;
-		this.MoveMembersIntoFormation(false, true);
+		this.MoveMembersIntoFormation(false, true, this.lastOrderVariant);
 		// (disable moveCenter so we can't get stuck in a loop of switching
 		// shape causing center to change causing shape to switch back)
 	}
+};
+
+Formation.prototype.ResetOrderVariant = function()
+{
+	this.lastOrderVariant = undefined;
 };
 
 Formation.prototype.OnGlobalOwnershipChanged = function(msg)
@@ -925,26 +944,19 @@ Formation.prototype.OnGlobalOwnershipChanged = function(msg)
 
 Formation.prototype.OnGlobalEntityRenamed = function(msg)
 {
-	if (this.members.indexOf(msg.entity) != -1)
-	{
-		this.offsets = undefined;
-		var cmpNewUnitAI = Engine.QueryInterface(msg.newentity, IID_UnitAI);
-		if (cmpNewUnitAI)
-		{
-			this.members[this.members.indexOf(msg.entity)] = msg.newentity;
-			this.memberPositions[msg.newentity] = this.memberPositions[msg.entity];
-		}
+	if (this.members.indexOf(msg.entity) == -1)
+		return;
 
-		var cmpOldUnitAI = Engine.QueryInterface(msg.entity, IID_UnitAI);
-		cmpOldUnitAI.SetFormationController(INVALID_ENTITY);
+	// Save rearranging to temporarily set it to false.
+	let temp = this.rearrange;
+	this.rearrange = false;
 
-		if (cmpNewUnitAI)
-			cmpNewUnitAI.SetFormationController(this.entity);
+	// First remove the old member to be able to reuse its position.
+	this.RemoveMembers([msg.entity], true);
+	this.AddMembers([msg.newentity]);
+	this.memberPositions[msg.newentity] = this.memberPositions[msg.entity];
 
-		// Because the renamed entity might have different characteristics,
-		// (e.g. packed vs. unpacked siege), we need to recompute motion parameters
-		this.ComputeMotionParameters();
-	}
+	this.rearrange = temp;
 };
 
 Formation.prototype.RegisterTwinFormation = function(entity)

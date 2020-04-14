@@ -2,26 +2,31 @@
 <Entity parent="template_unit_siege">
   <Attack>
     <Ranged>
-      <Hack>0.0</Hack>
-      <Pierce>150.0</Pierce>
-      <Crush>25.0</Crush>
+      <Damage>
+        <Hack>0.0</Hack>
+        <Pierce>150.0</Pierce>
+        <Crush>25.0</Crush>
+      </Damage>
       <MaxRange>80.0</MaxRange>
       <MinRange>26.0</MinRange>
-      <PrepareTime>3000</PrepareTime>
-      <RepeatTime>4000</RepeatTime>
+      <PrepareTime>5000</PrepareTime>
+      <RepeatTime>6000</RepeatTime>
       <Delay>0</Delay>
       <Splash>
         <Shape>Linear</Shape>
         <Range>8.0</Range>
         <FriendlyFire>false</FriendlyFire>
-        <Hack>0.0</Hack>
-        <Pierce>75.0</Pierce>
-        <Crush>5.0</Crush>
+        <Damage>
+          <Hack>0.0</Hack>
+          <Pierce>75.0</Pierce>
+          <Crush>5.0</Crush>
+        </Damage>
       </Splash>
       <Projectile>
         <Speed>150.0</Speed>
         <Spread>2.0</Spread>
         <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <PreferredClasses datatype="tokens">Human Siege</PreferredClasses>
@@ -46,8 +51,8 @@
     <Max>200</Max>
   </Health>
   <Identity>
+    <VisibleClasses datatype="tokens">Ranged BoltShooter</VisibleClasses>
     <GenericName>Bolt Shooter</GenericName>
-    <VisibleClasses datatype="tokens">BoltShooter Ranged</VisibleClasses>
   </Identity>
   <Loot>
     <xp>200</xp>

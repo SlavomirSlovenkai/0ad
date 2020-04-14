@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -288,6 +288,40 @@ template<> void ScriptInterface::ToJSVal<const char*>(JSContext* cx, JS::Mutable
 		ret.setUndefined();
 }
 
+#define TOJSVAL_CHAR(N) \
+template<> void ScriptInterface::ToJSVal<wchar_t[N]>(JSContext* cx, JS::MutableHandleValue ret, const wchar_t (&val)[N]) \
+{ \
+	ToJSVal(cx, ret, static_cast<const wchar_t*>(val)); \
+} \
+template<> void ScriptInterface::ToJSVal<char[N]>(JSContext* cx, JS::MutableHandleValue ret, const char (&val)[N]) \
+{ \
+	ToJSVal(cx, ret, static_cast<const char*>(val)); \
+}
+
+TOJSVAL_CHAR(3)
+TOJSVAL_CHAR(5)
+TOJSVAL_CHAR(6)
+TOJSVAL_CHAR(7)
+TOJSVAL_CHAR(8)
+TOJSVAL_CHAR(9)
+TOJSVAL_CHAR(10)
+TOJSVAL_CHAR(11)
+TOJSVAL_CHAR(12)
+TOJSVAL_CHAR(13)
+TOJSVAL_CHAR(14)
+TOJSVAL_CHAR(15)
+TOJSVAL_CHAR(16)
+TOJSVAL_CHAR(17)
+TOJSVAL_CHAR(18)
+TOJSVAL_CHAR(19)
+TOJSVAL_CHAR(20)
+TOJSVAL_CHAR(24)
+TOJSVAL_CHAR(29)
+TOJSVAL_CHAR(33)
+TOJSVAL_CHAR(35)
+TOJSVAL_CHAR(256)
+#undef TOJSVAL_CHAR
+
 template<> void ScriptInterface::ToJSVal<CStrW>(JSContext* cx, JS::MutableHandleValue ret, const CStrW& val)
 {
 	ToJSVal(cx, ret, static_cast<const std::wstring&>(val));
@@ -345,3 +379,6 @@ template<> bool ScriptInterface::FromJSVal<CVector2D>(JSContext* cx, JS::HandleV
 
 	return true;
 }
+
+#undef FAIL
+#undef WARN_IF_NOT

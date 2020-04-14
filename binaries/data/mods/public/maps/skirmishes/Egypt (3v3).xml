@@ -45,9 +45,7 @@
   "Name": "Egypt (3v3)",
   "Description": "Fight for the remains of ancient Egypt!\n\nPlayers start with full grown cities and small armies, each having distinct advantages and drawbacks. Take care, there are 7 mighty forts and marauding bandids!\n\nIt is the last century before 0 A.D. Egypt is internally divided between hellenistic (Alexandria, represented by Seleucids) and traditional influences (Memphis, represented by Ptolemies). Thebes in the southern clime of river Nile has already been taken over by the Kush. In the north western Al-Dschabal al-Achdar, where the mediterranean city of Cyrene is located the Romans are preparing their invasion. From the eastern desert at-Tih and mount Sinai enemies (represented by Persians) are pushing forward and the oasis Siwa. Charga (represented by Carthage) in the south western desert are trying to get a share of the pie as well.\nLocations:\n- Alexandria: library, harbor\n- Memphis: Necropolis, pyramids, Apis shrine\n- Thebes: temple district, Valley of the Kings \n- Cyrene: mediterranean Macchie, olive groves\n- Fayyum: crocodile shrine, nile dam\n- Eastern desert: mount Sinai, deep Wadi, Red Sea reefs\n- Western desert: Oasis Charga and Siwa, Qattara Depression\n",
   "PlayerData": [
-    null,
     {
-      "AI": "petra",
       "Civ": "sele",
       "Color": {
         "b": 98,
@@ -55,22 +53,9 @@
         "r": 0
       },
       "Name": "Alexandria",
-      "StartingCamera": {
-        "Position": {
-          "x": 797.781,
-          "y": 26.8894,
-          "z": 1738.21
-        },
-        "Rotation": {
-          "x": -144.999,
-          "y": 76.088,
-          "z": -179.999
-        }
-      },
       "Team": 0
     },
     {
-      "AI": "petra",
       "Civ": "kush",
       "Color": {
         "b": 16,
@@ -81,7 +66,6 @@
       "Team": 0
     },
     {
-      "AI": "petra",
       "Civ": "cart",
       "Color": {
         "b": 128,
@@ -92,7 +76,6 @@
       "Team": 1
     },
     {
-      "AI": "petra",
       "Civ": "pers",
       "Color": {
         "b": 5,
@@ -103,7 +86,6 @@
       "Team": 1
     },
     {
-      "AI": "petra",
       "Civ": "ptol",
       "Color": {
         "b": 170,
@@ -114,7 +96,6 @@
       "Team": 0
     },
     {
-      "AI": "petra",
       "Civ": "rome",
       "Color": {
         "b": 0,
@@ -20175,13 +20156,13 @@
 			<Actor seed="10220"/>
 		</Entity>
 		<Entity uid="4858">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="976.78052" z="1289.20862"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4859">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="976.86951" z="1281.11353"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
@@ -20223,13 +20204,13 @@
 			<Actor seed="3077"/>
 		</Entity>
 		<Entity uid="4866">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="897.68628" z="1195.47596"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4867">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="905.46454" z="1195.56678"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
@@ -20313,49 +20294,49 @@
 			<Actor seed="53700"/>
 		</Entity>
 		<Entity uid="4881">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1035.36597" z="1218.92566"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4883">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1028.61438" z="1218.79554"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4886">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1021.84351" z="1218.76636"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4888">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1015.05896" z="1218.65723"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4889">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1029.0995" z="1206.33765"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4890">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1035.85108" z="1206.46778"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4891">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1022.32862" z="1206.30848"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="4892">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1015.54407" z="1206.19935"/>
 			<Orientation y="-0.04552"/>
 			<Actor seed="57668"/>
@@ -25164,37 +25145,37 @@
 			<Actor seed="53304"/>
 		</Entity>
 		<Entity uid="5802">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="287.30964" z="1247.07105"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="51962"/>
 		</Entity>
 		<Entity uid="5803">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="290.30704" z="1249.23719"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="7220"/>
 		</Entity>
 		<Entity uid="5804">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="293.85926" z="1251.95496"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="14964"/>
 		</Entity>
 		<Entity uid="5805">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="348.45383" z="1375.30274"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="56518"/>
 		</Entity>
 		<Entity uid="5806">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="352.69034" z="1374.26014"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="58870"/>
 		</Entity>
 		<Entity uid="5807">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="355.93674" z="1371.29908"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="50126"/>
@@ -25212,13 +25193,13 @@
 			<Actor seed="29020"/>
 		</Entity>
 		<Entity uid="5810">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="409.05536" z="1303.91077"/>
 			<Orientation y="4.86854"/>
 			<Actor seed="63766"/>
 		</Entity>
 		<Entity uid="5811">
-			<Template>actor|flora/trees/lumbardypoplar.xml</Template>
+			<Template>actor|flora/trees/poplar_lombardy.xml</Template>
 			<Position x="409.34632" z="1307.39039"/>
 			<Orientation y="2.35621"/>
 			<Actor seed="39272"/>
@@ -30494,7 +30475,7 @@
 			<Actor seed="31662"/>
 		</Entity>
 		<Entity uid="6959">
-			<Template>actor|structures/carthaginians/mausoleum.xml</Template>
+			<Template>actor|structures/carthaginians/cenotaph.xml</Template>
 			<Position x="170.14573" z="587.4286"/>
 			<Orientation y="3.23717"/>
 			<Actor seed="59448"/>
@@ -31964,7 +31945,7 @@
 			<Actor seed="44080"/>
 		</Entity>
 		<Entity uid="7420">
-			<Template>structures/mace_theatron</Template>
+			<Template>structures/mace_theater</Template>
 			<Player>6</Player>
 			<Position x="376.20093" z="1362.60206"/>
 			<Orientation y="7.07476"/>
@@ -35059,7 +35040,7 @@
 			<Actor seed="26052"/>
 		</Entity>
 		<Entity uid="8176">
-			<Template>structures/mace_theatron</Template>
+			<Template>structures/mace_theater</Template>
 			<Player>1</Player>
 			<Position x="771.4969" z="1518.23096"/>
 			<Orientation y="3.49378"/>
@@ -35295,13 +35276,13 @@
 			<Actor seed="45628"/>
 		</Entity>
 		<Entity uid="8221">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="758.51679" z="1716.7815"/>
 			<Orientation y="3.87295"/>
 			<Actor seed="20320"/>
 		</Entity>
 		<Entity uid="8222">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="762.21467" z="1713.22706"/>
 			<Orientation y="2.31437"/>
 			<Actor seed="61194"/>
@@ -35326,7 +35307,7 @@
 			<Actor seed="35014"/>
 		</Entity>
 		<Entity uid="8230">
-			<Template>structures/athen_gymnasion</Template>
+			<Template>structures/athen_gymnasium</Template>
 			<Player>1</Player>
 			<Position x="833.33484" z="1537.30042"/>
 			<Orientation y="-0.80987"/>
@@ -37832,25 +37813,25 @@
 			<Actor seed="7508"/>
 		</Entity>
 		<Entity uid="8804">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1598.7223" z="531.08326"/>
 			<Orientation y="-2.15375"/>
 			<Actor seed="7548"/>
 		</Entity>
 		<Entity uid="8805">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1602.62452" z="524.46778"/>
 			<Orientation y="-3.72942"/>
 			<Actor seed="7548"/>
 		</Entity>
 		<Entity uid="8806">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1610.62867" z="529.54224"/>
 			<Orientation y="-0.56542"/>
 			<Actor seed="7548"/>
 		</Entity>
 		<Entity uid="8807">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1606.51587" z="536.13514"/>
 			<Orientation y="-5.31461"/>
 			<Actor seed="7548"/>
@@ -43771,13 +43752,13 @@
 			<Actor seed="52474"/>
 		</Entity>
 		<Entity uid="10163">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="815.38923" z="755.13855"/>
 			<Orientation y="1.60094"/>
 			<Actor seed="22964"/>
 		</Entity>
 		<Entity uid="10164">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="808.37177" z="755.86927"/>
 			<Orientation y="0.05364"/>
 			<Actor seed="22964"/>
@@ -45141,13 +45122,13 @@
 			<Actor seed="38702"/>
 		</Entity>
 		<Entity uid="10415">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="795.735" z="701.12653"/>
 			<Orientation y="-1.61516"/>
 			<Actor seed="22964"/>
 		</Entity>
 		<Entity uid="10416">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="828.96082" z="701.28095"/>
 			<Orientation y="1.60094"/>
 			<Actor seed="22964"/>
@@ -55087,140 +55068,140 @@
 			<Actor seed="63554"/>
 		</Entity>
 		<Entity uid="12177">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="349.92618" z="1332.0846"/>
 			<Orientation y="-2.09487"/>
 			<Actor seed="12406"/>
 		</Entity>
 		<Entity uid="12178">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="348.60154" z="1333.81336"/>
 			<Orientation y="-2.1446"/>
 			<Actor seed="45312"/>
 		</Entity>
 		<Entity uid="12179">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="346.67887" z="1335.47107"/>
 			<Orientation y="-2.20151"/>
 			<Actor seed="27138"/>
 		</Entity>
 		<Entity uid="12180">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="345.01972" z="1336.70411"/>
 			<Orientation y="-2.24872"/>
 			<Actor seed="64382"/>
 		</Entity>
 		<Entity uid="12181">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="347.03254" z="1338.85596"/>
 			<Orientation y="-2.26375"/>
 			<Actor seed="7150"/>
 		</Entity>
 		<Entity uid="12182">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="348.69242" z="1340.91504"/>
 			<Orientation y="-2.27677"/>
 			<Actor seed="40150"/>
 		</Entity>
 		<Entity uid="12183">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="350.63053" z="1343.05176"/>
 			<Orientation y="-2.28223"/>
 			<Actor seed="53460"/>
 		</Entity>
 		<Entity uid="12184">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="352.48926" z="1344.87537"/>
 			<Orientation y="-2.28542"/>
 			<Actor seed="30864"/>
 		</Entity>
 		<Entity uid="12185">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="348.58094" z="1337.60706"/>
 			<Orientation y="-2.22007"/>
 			<Actor seed="65178"/>
 		</Entity>
 		<Entity uid="12186">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="350.76673" z="1339.4662"/>
 			<Orientation y="-2.2219"/>
 			<Actor seed="39844"/>
 		</Entity>
 		<Entity uid="12187">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="352.3459" z="1341.11463"/>
 			<Orientation y="-2.22738"/>
 			<Actor seed="49766"/>
 		</Entity>
 		<Entity uid="12188">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="354.2699" z="1342.98633"/>
 			<Orientation y="-2.23638"/>
 			<Actor seed="12902"/>
 		</Entity>
 		<Entity uid="12189">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="350.33002" z="1335.75"/>
 			<Orientation y="-2.16321"/>
 			<Actor seed="7158"/>
 		</Entity>
 		<Entity uid="12190">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="352.17725" z="1337.63123"/>
 			<Orientation y="-2.1738"/>
 			<Actor seed="32634"/>
 		</Entity>
 		<Entity uid="12191">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="354.01838" z="1339.15174"/>
 			<Orientation y="-2.17733"/>
 			<Actor seed="3500"/>
 		</Entity>
 		<Entity uid="12192">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="355.74714" z="1340.82532"/>
 			<Orientation y="-2.18541"/>
 			<Actor seed="27844"/>
 		</Entity>
 		<Entity uid="12193">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="351.8206" z="1334.00794"/>
 			<Orientation y="-2.11448"/>
 			<Actor seed="5842"/>
 		</Entity>
 		<Entity uid="12194">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="353.67634" z="1335.45252"/>
 			<Orientation y="-2.12226"/>
 			<Actor seed="38276"/>
 		</Entity>
 		<Entity uid="12195">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="355.30375" z="1337.24817"/>
 			<Orientation y="-2.13526"/>
 			<Actor seed="43580"/>
 		</Entity>
 		<Entity uid="12196">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="357.21811" z="1339.23804"/>
 			<Orientation y="-2.14798"/>
@@ -90502,13 +90483,13 @@
 			<Actor seed="21746"/>
 		</Entity>
 		<Entity uid="19067">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="960.52558" z="798.48914"/>
 			<Orientation y="4.73763"/>
 			<Actor seed="20678"/>
 		</Entity>
 		<Entity uid="19068">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="960.40986" z="809.56513"/>
 			<Orientation y="1.6033"/>
 			<Actor seed="21236"/>
@@ -94716,7 +94697,7 @@
 			<Actor seed="38754"/>
 		</Entity>
 		<Entity uid="19851">
-			<Template>units/rome_centurio_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_04</Template>
 			<Player>6</Player>
 			<Position x="344.14228" z="1329.54102"/>
 			<Orientation y="3.6082"/>
@@ -95549,7 +95530,7 @@
 			<Actor seed="47306"/>
 		</Entity>
 		<Entity uid="20020">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="403.59739" z="1536.38904"/>
 			<Orientation y="2.35621"/>
@@ -99375,49 +99356,49 @@
 			<Actor seed="21656"/>
 		</Entity>
 		<Entity uid="20752">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="639.70136" z="1482.57618"/>
 			<Orientation y="2.22272"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20753">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="636.0901" z="1477.75733"/>
 			<Orientation y="0.62365"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20754">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="628.96009" z="1468.61817"/>
 			<Orientation y="3.77854"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20755">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="625.30958" z="1463.91028"/>
 			<Orientation y="5.31827"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20756">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="658.24402" z="1468.3069"/>
 			<Orientation y="2.22272"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20757">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="654.63276" z="1463.48804"/>
 			<Orientation y="0.62366"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20758">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="647.50275" z="1454.34888"/>
 			<Orientation y="3.77854"/>
 			<Actor seed="28638"/>
 		</Entity>
 		<Entity uid="20759">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="643.85224" z="1449.641"/>
 			<Orientation y="5.31827"/>
 			<Actor seed="28638"/>
@@ -99621,13 +99602,13 @@
 			<Actor seed="46768"/>
 		</Entity>
 		<Entity uid="20841">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1328.51575" z="1077.33985"/>
 			<Orientation y="0.45806"/>
 			<Actor seed="57668"/>
 		</Entity>
 		<Entity uid="20842">
-			<Template>actor|props/structures/ptolemies/ptol_military_settlement_obelisk.xml</Template>
+			<Template>actor|props/special/eyecandy/obelisk_04.xml</Template>
 			<Position x="1333.0088" z="1084.90711"/>
 			<Orientation y="-4.25644"/>
 			<Actor seed="57668"/>
@@ -110289,28 +110270,28 @@
 			<Actor seed="5120"/>
 		</Entity>
 		<Entity uid="22862">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="342.76395" z="1334.59375"/>
 			<Orientation y="-2.24872"/>
 			<Actor seed="64382"/>
 		</Entity>
 		<Entity uid="22863">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="344.4231" z="1333.36072"/>
 			<Orientation y="-2.20151"/>
 			<Actor seed="27138"/>
 		</Entity>
 		<Entity uid="22864">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="346.34577" z="1331.70301"/>
 			<Orientation y="-2.14461"/>
 			<Actor seed="45312"/>
 		</Entity>
 		<Entity uid="22865">
-			<Template>units/rome_legionnaire_imperial</Template>
+			<Template>units/rome_champion_infantry_swordsman_03</Template>
 			<Player>6</Player>
 			<Position x="347.67042" z="1329.97425"/>
 			<Orientation y="-2.09487"/>

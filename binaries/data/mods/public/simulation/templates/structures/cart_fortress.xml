@@ -6,7 +6,6 @@
   </Footprint>
   <Identity>
     <Civ>cart</Civ>
-    <GenericName>Blockhouse Fort</GenericName>
     <SpecificName>Ḥamet</SpecificName>
   </Identity>
   <Obstruction>
@@ -14,18 +13,11 @@
   </Obstruction>
   <ProductionQueue>
     <Entities datatype="tokens">
+      units/{civ}_champion_elephant
       units/{civ}_hero_hamilcar
       units/{civ}_hero_hannibal
       units/{civ}_hero_maharbal
-      units/{civ}_champion_elephant
     </Entities>
-    <Technologies datatype="tokens">
-      siege_attack
-      siege_armor
-      siege_cost_metal
-      siege_cost_wood
-      siege_bolt_accuracy
-    </Technologies>
   </ProductionQueue>
   <VisualActor>
     <FoundationActor>structures/carthaginians/fndn_fortress.xml</FoundationActor>

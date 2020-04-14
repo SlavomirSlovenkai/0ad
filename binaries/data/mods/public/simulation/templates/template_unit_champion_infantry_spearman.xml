@@ -6,9 +6,11 @@
   </Armour>
   <Attack>
     <Melee>
-      <Hack>6.0</Hack>
-      <Pierce>5.0</Pierce>
-      <Crush>0.0</Crush>
+      <Damage>
+        <Hack>6.0</Hack>
+        <Pierce>5.0</Pierce>
+        <Crush>0.0</Crush>
+      </Damage>
       <MaxRange>4.5</MaxRange>
       <PrepareTime>500</PrepareTime>
       <RepeatTime>900</RepeatTime>
@@ -30,13 +32,18 @@
     <Max>200</Max>
   </Health>
   <Identity>
+    <VisibleClasses datatype="tokens">Melee Spearman</VisibleClasses>
     <GenericName>Champion Spearman</GenericName>
-    <VisibleClasses datatype="tokens">Melee Spear</VisibleClasses>
     <Tooltip>Counters: 3x vs. Cavalry.</Tooltip>
     <Formations datatype="tokens">
       special/formations/testudo
     </Formations>
   </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_melee>attack/weapon/spear_attack.xml</attack_melee>
+    </SoundGroups>
+  </Sound>
   <UnitMotion>
     <WalkSpeed op="mul">1.3</WalkSpeed>
   </UnitMotion>

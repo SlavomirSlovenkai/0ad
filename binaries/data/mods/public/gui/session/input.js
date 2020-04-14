@@ -29,9 +29,8 @@ const INPUT_BATCHTRAINING = 6;
 const INPUT_PRESELECTEDACTION = 7;
 const INPUT_BUILDING_WALL_CLICK = 8;
 const INPUT_BUILDING_WALL_PATHING = 9;
-const INPUT_MASSTRIBUTING = 10;
-const INPUT_UNIT_POSITION_START = 11;
-const INPUT_UNIT_POSITION = 12;
+const INPUT_UNIT_POSITION_START = 10;
+const INPUT_UNIT_POSITION = 11;
 
 var inputState = INPUT_NORMAL;
 
@@ -164,8 +163,8 @@ function updateBuildingPlacementPreview()
 
 			if (placementSupport.attack && placementSupport.attack.Ranged)
 			{
-				// building can be placed here, and has an attack
-				// show the range advantage in the tooltip
+				// Structure can be placed here, and has an attack.
+				// Show the range advantage in the tooltip.
 				var cmd = {
 					"x": placementSupport.position.x,
 					"z": placementSupport.position.z,
@@ -224,12 +223,9 @@ function determineAction(x, y, fromMinimap)
 		return undefined;
 
 	// If the selection isn't friendly units, no action
-	var allOwnedByPlayer = selection.every(ent => {
-		var entState = GetEntityState(ent);
-		return entState && entState.player == g_ViewedPlayer;
-	});
-
-	if (!g_DevSettings.controlAll && !allOwnedByPlayer)
+	if (!selection.every(ownsEntity) &&
+	    !(g_SimState.players[g_ViewedPlayer] &&
+	      g_SimState.players[g_ViewedPlayer].controlsAll))
 		return undefined;
 
 	var target = undefined;
@@ -279,6 +275,19 @@ function determineAction(x, y, fromMinimap)
 	return { "type": "none", "cursor": "", "target": target };
 }
 
+function ownsEntity(ent)
+{
+	let entState = GetEntityState(ent);
+	return entState && entState.player == g_ViewedPlayer;
+}
+
+function isSnapToEdgesEnabled()
+{
+	let config = Engine.ConfigDB_GetValue("user", "gui.session.snaptoedges");
+	let hotkeyPressed = Engine.HotkeyIsPressed("session.snaptoedges");
+	return hotkeyPressed == (config == "disabled");
+}
+
 function tryPlaceBuilding(queued)
 {
 	if (placementSupport.mode !== "building")
@@ -308,7 +317,7 @@ function tryPlaceBuilding(queued)
 		"autocontinue": true,
 		"queued": queued
 	});
-	Engine.GuiInterfaceCall("PlaySound", { "name": "order_repair", "entity": selection[0] });
+	Engine.GuiInterfaceCall("PlaySound", { "name": "order_build", "entity": selection[0] });
 
 	if (!queued)
 		placementSupport.Reset();
@@ -365,7 +374,7 @@ function tryPlaceWall(queued)
 	if (hasWallSegment)
 	{
 		Engine.PostNetworkCommand(cmd);
-		Engine.GuiInterfaceCall("PlaySound", { "name": "order_repair", "entity": selection[0] });
+		Engine.GuiInterfaceCall("PlaySound", { "name": "order_build", "entity": selection[0] });
 	}
 
 	return true;
@@ -479,7 +488,7 @@ function handleInputBeforeGui(ev, hoveredObject)
 	// Close the menu when interacting with the game world
 	if (!mouseIsOverObject && (ev.type =="mousebuttonup" || ev.type == "mousebuttondown")
 		&& (ev.button == SDL_BUTTON_LEFT || ev.button == SDL_BUTTON_RIGHT))
-		closeMenu();
+		g_Menu.close();
 
 	// State-machine processing:
 	//
@@ -641,7 +650,7 @@ function handleInputBeforeGui(ev, hoveredObject)
 			case "mousemotion":
 				placementSupport.wallEndPosition = Engine.GetTerrainAtScreenPoint(ev.x, ev.y);
 
-				// Update the building placement preview, and by extension, the list of snapping candidate entities for both (!)
+				// Update the structure placement preview, and by extension, the list of snapping candidate entities for both (!)
 				// the ending point and the starting point to snap to.
 				//
 				// TODO: Note that here, we need to fetch all similar entities, including any offscreen ones, to support the case
@@ -720,11 +729,14 @@ function handleInputBeforeGui(ev, hoveredObject)
 				placementSupport.SetDefaultAngle();
 			}
 
-			var snapData = Engine.GuiInterfaceCall("GetFoundationSnapData", {
-				"template": placementSupport.template,
-				"x": placementSupport.position.x,
-				"z": placementSupport.position.z
-			});
+			let snapData = Engine.GuiInterfaceCall("GetFoundationSnapData", {
+ 				"template": placementSupport.template,
+ 				"x": placementSupport.position.x,
+				"z": placementSupport.position.z,
+				"angle": placementSupport.angle,
+				"snapToEdges": isSnapToEdgesEnabled() && Engine.GetEdgesOfStaticObstructionsOnScreenNearTo(
+					placementSupport.position.x, placementSupport.position.z)
+ 			});
 			if (snapData)
 			{
 				placementSupport.angle = snapData.angle;
@@ -738,7 +750,7 @@ function handleInputBeforeGui(ev, hoveredObject)
 		case "mousebuttonup":
 			if (ev.button == SDL_BUTTON_LEFT)
 			{
-				// If shift is down, let the player continue placing another of the same building
+				// If shift is down, let the player continue placing another of the same structure.
 				var queued = Engine.HotkeyIsPressed("session.queue");
 				if (tryPlaceBuilding(queued))
 				{
@@ -767,14 +779,6 @@ function handleInputBeforeGui(ev, hoveredObject)
 		}
 		break;
 
-	case INPUT_MASSTRIBUTING:
-		if (ev.type == "hotkeyup" && ev.hotkey == "session.masstribute")
-		{
-			g_FlushTributing();
-			inputState = INPUT_NORMAL;
-		}
-		break;
-
 	case INPUT_BATCHTRAINING:
 		if (ev.type == "hotkeyup" && ev.hotkey == "session.batchtrain")
 		{
@@ -794,17 +798,6 @@ function handleInputAfterGui(ev)
 
 	if (ev.hotkey === undefined)
 		ev.hotkey = null;
-
-	// Handle the time-warp testing features, restricted to single-player
-	if (!g_IsNetworked && Engine.GetGUIObjectByName("devTimeWarp").checked)
-	{
-		if (ev.type == "hotkeydown" && ev.hotkey == "session.timewarp.fastforward")
-			Engine.SetSimRate(20.0);
-		else if (ev.type == "hotkeyup" && ev.hotkey == "session.timewarp.fastforward")
-			Engine.SetSimRate(1.0);
-		else if (ev.type == "hotkeyup" && ev.hotkey == "session.timewarp.rewind")
-			Engine.RewindTimeWarp();
-	}
 
 	if (ev.hotkey == "session.highlightguarding")
 	{
@@ -850,6 +843,8 @@ function handleInputAfterGui(ev)
 			}
 			else if (ev.button == SDL_BUTTON_RIGHT)
 			{
+				if (!controlsPlayer(g_ViewedPlayer))
+					break;
 				g_DragStart = new Vector2D(ev.x, ev.y);
 				inputState = INPUT_UNIT_POSITION_START;
 			}
@@ -1060,11 +1055,13 @@ function handleInputAfterGui(ev)
 					return true;
 				}
 
-				var snapData = Engine.GuiInterfaceCall("GetFoundationSnapData", {
-					"template": placementSupport.template,
-					"x": placementSupport.position.x,
-					"z": placementSupport.position.z,
-				});
+				let snapData = Engine.GuiInterfaceCall("GetFoundationSnapData", {
+ 					"template": placementSupport.template,
+ 					"x": placementSupport.position.x,
+ 					"z": placementSupport.position.z,
+					"snapToEdges": isSnapToEdgesEnabled() && Engine.GetEdgesOfStaticObstructionsOnScreenNearTo(
+						placementSupport.position.x, placementSupport.position.z)
+ 				});
 				if (snapData)
 				{
 					placementSupport.angle = snapData.angle;
@@ -1088,6 +1085,24 @@ function handleInputAfterGui(ev)
 				else
 				{
 					placementSupport.position = Engine.GetTerrainAtScreenPoint(ev.x, ev.y);
+
+					if (isSnapToEdgesEnabled())
+					{
+						let snapData = Engine.GuiInterfaceCall("GetFoundationSnapData", {
+							"template": placementSupport.template,
+							"x": placementSupport.position.x,
+							"z": placementSupport.position.z,
+							"snapToEdges": Engine.GetEdgesOfStaticObstructionsOnScreenNearTo(
+								placementSupport.position.x, placementSupport.position.z)
+						});
+						if (snapData)
+						{
+							placementSupport.angle = snapData.angle;
+							placementSupport.position.x = snapData.x;
+							placementSupport.position.z = snapData.z;
+						}
+					}
+
 					g_DragStart = new Vector2D(ev.x, ev.y);
 					inputState = INPUT_BUILDING_CLICK;
 				}
@@ -1217,21 +1232,6 @@ function positionUnitsFreehandSelectionMouseUp(ev)
 	return true;
 }
 
-function handleMinimapEvent(target)
-{
-	// Partly duplicated from handleInputAfterGui(), but with the input being
-	// world coordinates instead of screen coordinates.
-
-	if (inputState != INPUT_NORMAL)
-		return false;
-
-	let action = determineAction(undefined, undefined, true);
-	if (!action)
-		return false;
-
-	return handleUnitAction(target, action);
-}
-
 function handleUnitAction(target, action)
 {
 	if (!g_UnitActions[action.type] || !g_UnitActions[action.type].execute)
@@ -1293,8 +1293,8 @@ function startBuildingPlacement(buildTemplate, playerState)
 		return;
 
 	// TODO: we should clear any highlight selection rings here. If the mouse was over an entity before going onto the GUI
-	// to start building a structure, then the highlight selection rings are kept during the construction of the building.
-	// Gives the impression that somehow the hovered-over entity has something to do with the building you're constructing.
+	// to start building a structure, then the highlight selection rings are kept during the construction of the structure.
+	// Gives the impression that somehow the hovered-over entity has something to do with the structure you're building.
 
 	placementSupport.Reset();
 
@@ -1352,6 +1352,14 @@ function getBuildingsWhichCanTrainEntity(entitiesToCheck, trainEntType)
 	});
 }
 
+function initBatchTrain()
+{
+	registerConfigChangeHandler(changes => {
+		if (changes.has("gui.session.batchtrainingsize"))
+			updateDefaultBatchSize();
+	});
+}
+
 function getDefaultBatchTrainingSize()
 {
 	let num = +Engine.ConfigDB_GetValue("user", "gui.session.batchtrainingsize");
@@ -1380,7 +1388,7 @@ function addTrainingByPosition(position)
 	let trainableEnts = getAllTrainableEntitiesFromSelection();
 
 	let entToTrain = trainableEnts[position];
-	// When we have no building to train or the position is invalid
+	// When we have no structure to train units or the position is invalid
 	if (!entToTrain)
 		return;
 
@@ -1405,10 +1413,10 @@ function addTrainingToQueue(selection, trainEntType, playerState)
 	{
 		if (inputState == INPUT_BATCHTRAINING)
 		{
-			// Check if we are training in the same building(s) as the last batch
+			// Check if we are training in the same structure(s) as the last batch
 			// NOTE: We just check if the arrays are the same and if the order is the same
 			// If the order changed, we have a new selection and we should create a new batch.
-			// If we're already creating a batch of this unit (in the same building(s)), then just extend it
+			// If we're already creating a batch of this unit (in the same structure(s)), then just extend it
 			// (if training limits allow)
 			if (g_BatchTrainingEntities.length == selection.length &&
 			    g_BatchTrainingEntities.every((ent, i) => ent == selection[i]) &&
@@ -1452,7 +1460,7 @@ function addTrainingToQueue(selection, trainEntType, playerState)
 	}
 	else
 	{
-		// Non-batched - just create a single entity in each building
+		// Non-batched - just create a single entity in each structure
 		// (but no more than entity limit allows)
 		let buildingsForTraining = appropriateBuildings;
 		if (canBeAddedCount !== undefined)
@@ -1484,15 +1492,15 @@ function getTrainingStatus(selection, trainEntType, playerState)
 	else
 		canBeAddedCount = getEntityLimitAndCount(playerState, trainEntType).canBeAddedCount;
 
-	// We need to calculate count after the next increment if it's possible
+	// We need to calculate count after the next increment if possible.
 	if ((canBeAddedCount == undefined || canBeAddedCount > nextBatchTrainingCount * appropriateBuildings.length) &&
 	    Engine.HotkeyIsPressed("session.batchtrain"))
 		nextBatchTrainingCount += getBatchTrainingSize();
 
 	nextBatchTrainingCount = Math.max(nextBatchTrainingCount, 1);
 
-	// If training limits don't allow us to train batchTrainingCount in each appropriate building
-	// train as many full batches as we can and remainer in one more building.
+	// If training limits don't allow us to train batchedSize in each appropriate structure,
+	// train as many full batches as we can and the remainder in one more structure.
 	let buildingsCountToTrainFullBatch = appropriateBuildings.length;
 	let remainderToTrain = 0;
 	if (canBeAddedCount !== undefined &&
@@ -1509,12 +1517,12 @@ function flushTrainingBatch()
 {
 	let batchedSize = g_NumberOfBatches * getBatchTrainingSize();
 	let appropriateBuildings = getBuildingsWhichCanTrainEntity(g_BatchTrainingEntities, g_BatchTrainingType);
-	// If training limits don't allow us to train batchedSize in each appropriate building
+	// If training limits don't allow us to train batchedSize in each appropriate structure.
 	if (g_BatchTrainingEntityAllowedCount !== undefined &&
 		g_BatchTrainingEntityAllowedCount < batchedSize * appropriateBuildings.length)
 	{
-		// Train as many full batches as we can
-		let buildingsCountToTrainFullBatch = Math.floor( g_BatchTrainingEntityAllowedCount / batchedSize);
+		// Train as many full batches as we can.
+		let buildingsCountToTrainFullBatch = Math.floor(g_BatchTrainingEntityAllowedCount / batchedSize);
 		Engine.PostNetworkCommand({
 			"type": "train",
 			"entities": appropriateBuildings.slice(0, buildingsCountToTrainFullBatch),
@@ -1522,13 +1530,15 @@ function flushTrainingBatch()
 			"count": batchedSize
 		});
 
-		// Train remainer in one more building
-		Engine.PostNetworkCommand({
-			"type": "train",
-			"entities": [appropriateBuildings[buildingsCountToTrainFullBatch]],
-			"template": g_BatchTrainingType,
-			"count": g_BatchTrainingEntityAllowedCount % batchedSize
-		});
+		// Train remainer in one more structure.
+		let remainer = g_BatchTrainingEntityAllowedCount % batchedSize;
+		if (remainer)
+			Engine.PostNetworkCommand({
+				"type": "train",
+				"entities": [appropriateBuildings[buildingsCountToTrainFullBatch]],
+				"template": g_BatchTrainingType,
+				"count": remainer
+			});
 	}
 	else
 		Engine.PostNetworkCommand({

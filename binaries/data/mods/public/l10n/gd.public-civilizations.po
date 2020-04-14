@@ -1,9 +1,9 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
-# GunChleoc, 2014-2018
+# GunChleoc, 2014-2018,2020
 # GunChleoc, 2014
 # GunChleoc, 2014-2016
 # Michael Bauer, 2014
@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:07+0200\n"
-"PO-Revision-Date: 2019-05-29 12:28+0000\n"
+"POT-Creation-Date: 2020-01-17 08:08+0000\n"
+"PO-Revision-Date: 2020-01-28 09:22+0000\n"
 "Last-Translator: GunChleoc\n"
 "Language-Team: Gaelic, Scottish (http://www.transifex.com/wildfire-games/0ad/language/gd/)\n"
 "MIME-Version: 1.0\n"
@@ -63,8 +63,8 @@ msgid ""
 msgstr "Bhiodh na Greugaich uabhasach soirbheachail le Greugachadh iomadh choigreach. ri linn a’ Ghreugachais, bhiodh a’ Ghreugais na lingua franca aig an t‑saoghail àrsaidh is bhathar ’ga bruidhinn gu farsaing on Spàinn gu na h‑Innseachan."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Description
-msgid "Allied warships −25% construction time."
-msgstr "-25% air ùine togail nan longan-cogaidh caidreabhach."
+msgid "Allied Warships −25% construction time."
+msgstr "−25% air ùine togail nan longan-cogaidh caidreabhach."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Name
 msgid "Delian League"
@@ -199,7 +199,7 @@ msgstr "Seo an ceann-feachd a thug air muinntir na h-Àithne gun coiseadh iad an
 
 #: simulation/data/civs/athen.jsonFactions[0].Heroes[1].History
 msgid "Pericles was the foremost Athenian politician of the 5th Century B.C."
-msgstr "- ’B e Pericles am prìomh neach-polataigs aig Baile na h-Àithne ron 5mh linn RC."
+msgstr "’B e Pericles am prìomh neach-polataigs aig Baile na h-Àithne ron 5mh linn RC."
 
 #: simulation/data/civs/athen.jsonFactions[0].Heroes[2].History
 #: simulation/data/civs/maur.jsonFactions[0].Technologies[0].History
@@ -285,7 +285,7 @@ msgstr "Na Breatannaich"
 #: simulation/data/civs/brit.jsonCivBonuses[0].Description
 #: simulation/data/civs/gaul.jsonCivBonuses[0].Description
 msgid "Enhanced food gained from ranching and farming. "
-msgstr "Leasachadh air a’ bhiadh a gheibh thu o àiteach no sprèidh."
+msgstr "Leasachadh air a’ bhiadh a gheibh thu o àiteach no sprèidh. "
 
 #: simulation/data/civs/brit.jsonCivBonuses[0].Name
 #: simulation/data/civs/gaul.jsonCivBonuses[0].Name
@@ -295,7 +295,7 @@ msgstr "Ardiosmanae"
 #: simulation/data/civs/brit.jsonCivBonuses[0].History
 #: simulation/data/civs/gaul.jsonCivBonuses[0].History
 msgid "Represents Celtic farming methods. "
-msgstr "Riochdaichidh seo dòighean àitich Cheilteach."
+msgstr "Riochdaichidh seo dòighean àitich Cheilteach. "
 
 #: simulation/data/civs/brit.jsonCivBonuses[1].Description
 #: simulation/data/civs/gaul.jsonCivBonuses[1].Description
@@ -310,11 +310,11 @@ msgstr "Diathan Ceiltich"
 #: simulation/data/civs/brit.jsonCivBonuses[1].History
 #: simulation/data/civs/gaul.jsonCivBonuses[1].History
 msgid "Celtic religion and druidry inspired their warlike mindset. "
-msgstr "Bhrosnaich creideamh ’s draoidhean nan Ceilteach an cumadh-inntinn cogail."
+msgstr "Bhrosnaich creideamh ’s draoidhean nan Ceilteach an cumadh-inntinn cogail. "
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Description
-msgid "Allied healers −20% resource costs."
-msgstr "-20% air cosgaisean stòrais nan lighichean caidreabhach."
+msgid "Allied Healers −20% resource costs."
+msgstr "−20% air cosgaisean stòrais nan lighichean caidreabhach."
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Name
 msgid "Druids"
@@ -558,7 +558,7 @@ msgid ""
 msgstr "Coltach ris an rubha Ibèireach, bhiodh taobh a tuath Afraga cliùiteach mar thìr nan each agus comasach air 100,000 each ùra a sholar gach bliadhna. ’S e an dachaigh aig an ailbhean coille Afraga tuathach a bh’ ann cuideachd."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Description
-msgid "Allied markets +10% international trade bonus."
+msgid "Allied Markets +10% international trade bonus."
 msgstr "+10% air buannachd malairt eadar-nàiseanta nam margaidean caidreabhach."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Name
@@ -655,7 +655,7 @@ msgstr "Cha bhiodh duine san t-saoghal àrsaidh cho eòlach air càite an rachad
 
 #: simulation/data/civs/cart.jsonFactions[0].Technologies[1].Description
 msgid "Civic Centers, Temples, and Houses -25% build time."
-msgstr "Thèid ionadan sìobhalta, teampaill is taighean a thogail nas luaithe le -25%."
+msgstr "Thèid ionadan sìobhalta, teampaill is taighean a thogail nas luaithe le −25%."
 
 #: simulation/data/civs/cart.jsonFactions[0].Technologies[1].Name
 msgid "Colonization"
@@ -765,8 +765,8 @@ msgid "Gauls"
 msgstr "Muinntir na Gaille"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Description
-msgid "Allied structures −20% technology research time."
-msgstr "-20% air ùine rannsachadh theicneolasan nan togalaichean caidreabhach."
+msgid "Allied Structures −20% technology research time."
+msgstr "−20% air ùine rannsachadh theicneolasan nan togalaichean caidreabhach."
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Name
 msgid "Druidic Wisdom"
@@ -965,8 +965,8 @@ msgid ""
 msgstr "Coltach ri Nuimidia taobh a tuath Afraga, bhiodh an rubha Ibèireach cliùiteach mar thìr nan each agus comasach air 100,000 each ùra a sholar gach bliadhna."
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier javelinists −20% resource costs."
-msgstr "-20% air cosgaisean stòrais nan gathadairean-dùthcha caidreabhach."
+msgid "Allied Citizen Javelinists −10% resource costs."
+msgstr "−10% air cosgaisean stòrais nan gathadairean-dùthcha caidreabhach."
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Name
 msgid "Saripeko"
@@ -974,10 +974,10 @@ msgstr "Saripeko"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].History
 msgid ""
-"The Iberians were long known to provide mercenary soldiers to other nations "
-"to serve as auxiliaries to their armies in foreign wars. Carthage is the "
-"most well known example, and we have evidence of them serving in such a "
-"capacity in Aquitania."
+"The Iberians were long known to provide mercenaries to other nations to "
+"serve as auxiliaries to their armies in foreign wars. Carthage is the most "
+"well known example, and we have evidence of them serving in such a capacity "
+"in Aquitania."
 msgstr "Bhiodh na h-Ibèirich a sholar saighdearan-duaise do dhùthchannan eile àm fhada ach an cuireadh iad taic do na feachdan aca ann an cogaidhean cèine. Is Cartago am ball-eisimpleir as ainmeile agus tha fianais againn gum frithealaich iad ann an Aquitàinia."
 
 #: simulation/data/civs/iber.jsonAINames[0]
@@ -1164,8 +1164,8 @@ msgid "Elephant Suppliers"
 msgstr "Solaraichean ailbheanan"
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Description
-msgid "Allied elephants −20% resource costs and training time."
-msgstr "-20% air cosgaisean stòrais ’s ùine trèanaidh nan ailbheanan caidreabhach."
+msgid "Allied Elephants −20% resource costs and training time."
+msgstr "−20% air cosgaisean stòrais ’s ùine trèanaidh nan ailbheanan caidreabhach."
 
 #: simulation/data/civs/kush.jsonAINames[0]
 msgid "Kashta"
@@ -1231,7 +1231,7 @@ msgstr "Ailtireachd-laighe"
 msgid ""
 "+50% HP and -50% build time for Civic Centers, Temples, Pyramids and "
 "Wonders."
-msgstr "+50% de puingean-beatha agus -50% air an ùine togail airson ionadan sìobhalta for, teampallan, pioramaidean is mìorbhailean."
+msgstr "+50% de puingean-beatha agus −50% air an ùine togail airson ionadan sìobhalta, teampallan, pioramaidean is mìorbhailean."
 
 #: simulation/data/civs/kush.jsonFactions[0].Technologies[1].Description
 msgid "Allow to train elite rank healers"
@@ -1550,7 +1550,7 @@ msgstr "Rìoghachd Ghreugach ri taobh nam stàit-bhailtean Greugach."
 msgid ""
 "The Hellenization civ bonus. Building a Theatron increases the territory "
 "effect of all buildings by 25%. Build limit: 1."
-msgstr "Buannachd sìobhaltas a’ Ghreugachais. Thèid a’ bhuaidh ranntair air gach togalach a mheudachadh le 25% ma thogas tu tèatron. Cuingeachadh togail: 1"
+msgstr "Buannachd sìobhaltas a’ Ghreugachais. Thèid a’ bhuaidh ranntair air gach togalach a mheudachadh le 25% ma thogas tu tèatron. Cuingeachadh togail: 1."
 
 #: simulation/data/civs/mace.jsonStructures[1].Name
 #: simulation/data/civs/ptol.jsonStructures[0].Name
@@ -1562,7 +1562,7 @@ msgstr "Leabhar-lann"
 msgid ""
 "All Special Technologies are researched here. Building one reduces the cost "
 "of all other remaining technologies by 10%. Build limit: 1."
-msgstr "Thèid gach teicneolas sònraichte a rannsachadh an-seo. Nuair a thogas tu fear, bidh na teicneolasan eile uile nas saoire le 10%. Cuingeachadh togail: 1"
+msgstr "Thèid gach teicneolas sònraichte a rannsachadh an-seo. Nuair a thogas tu fear, bidh na teicneolasan eile uile nas saoire le 10%. Cuingeachadh togail: 1."
 
 #: simulation/data/civs/mace.jsonStructures[1].History
 #: simulation/data/civs/ptol.jsonStructures[0].History
@@ -1572,18 +1572,6 @@ msgid ""
 "a center of learning for an entirely new synthesized culture: the "
 "Hellenistic culture."
 msgstr "Stèidhich Alasdair Mòr leabharlannan air feadh na h-impireachd ùire aige. Chaidh iad ’nan ionadan ionnsachaidh do cho-chultar ùr: A’ Ghreugachas."
-
-#: simulation/data/civs/mace.jsonStructures[2].Name
-msgid "Siege Workshop"
-msgstr "Ceàrdach sèistidh"
-
-#: simulation/data/civs/mace.jsonStructures[2].Special
-msgid "Constructs and upgrades all Macedonian siege engines."
-msgstr "Togaidh is àrdachaidh seo na h‑uile inneal-sèiste Masadonach."
-
-#: simulation/data/civs/mace.jsonStructures[2].History
-msgid "The Macedonians were innovators in area of siegecraft."
-msgstr "Bhiodh na Masadonaich math air innealan-sèiste ùra a thionnsgnadh."
 
 #: simulation/data/civs/mace.jsonHistory
 msgid ""
@@ -1636,9 +1624,9 @@ msgstr "Is “gaisgeach” as ciall dha Kshatriya no Kashtriya agus ’s e fear 
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Description
 msgid ""
-"Allied temples −50% resource costs and building time; temple technologies "
+"Allied Temples −50% resource costs and building time; Temple technologies "
 "−50% resource costs and research time."
-msgstr "-50% air cosgaisean stòrais is ùine togail nan teampall caidreabhach; -50% air cosgaisean stòrais is ùine rannsachaidh nan teicneolasan annta."
+msgstr "−50% air cosgaisean stòrais is ùine togail nan teampall caidreabhach; −50% air cosgaisean stòrais is ùine rannsachaidh nan teicneolasan annta."
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Name
 msgid "Ashoka's Religious Support"
@@ -1655,43 +1643,35 @@ msgid "Chandragupta Maurya"
 msgstr "Chandragupta Mauraidhea"
 
 #: simulation/data/civs/maur.jsonAINames[1]
+msgid "Bindusara Maurya"
+msgstr "Bindusara Mauraidhea"
+
+#: simulation/data/civs/maur.jsonAINames[2]
 #: simulation/data/civs/maur.jsonFactions[0].Heroes[1].Name
 msgid "Ashoka the Great"
 msgstr "Aśoka Mòr"
 
-#: simulation/data/civs/maur.jsonAINames[2]
-msgid "Ashokavardhan Maurya"
-msgstr "Ashokavardhan Mauraidhea"
-
 #: simulation/data/civs/maur.jsonAINames[3]
-msgid "Acharya Bhadrabahu"
-msgstr "Acharya Bhadrabahu"
+msgid "Dasharatha Maurya"
+msgstr "Dasharatha Mauraidhea"
 
 #: simulation/data/civs/maur.jsonAINames[4]
-msgid "Bindusara Maurya"
-msgstr "Bindusara Mauraidhea"
-
-#: simulation/data/civs/maur.jsonAINames[5]
-msgid "Dasaratha Maurya"
-msgstr "Dasaratha Mauraidhea"
-
-#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Samprati Maurya"
 msgstr "Samprati Mauraidhea"
 
-#: simulation/data/civs/maur.jsonAINames[7]
-msgid "Salisuka Maurya"
-msgstr "Salisuka Mauraidhea"
+#: simulation/data/civs/maur.jsonAINames[5]
+msgid "Shalishuka Maurya"
+msgstr "Salishuka Mauraidhea"
 
-#: simulation/data/civs/maur.jsonAINames[8]
+#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Devavarman Maurya"
 msgstr "Devavarman Mauraidhea"
 
-#: simulation/data/civs/maur.jsonAINames[9]
-msgid "Satadhanvan Maurya"
-msgstr "Satadhanvan Mauraidhea"
+#: simulation/data/civs/maur.jsonAINames[7]
+msgid "Shatadhanvan Maurya"
+msgstr "Shatadhanvan Mauraidhea"
 
-#: simulation/data/civs/maur.jsonAINames[10]
+#: simulation/data/civs/maur.jsonAINames[8]
 msgid "Brihadratha Maurya"
 msgstr "Brihadratha Mauraidhea"
 
@@ -1811,7 +1791,7 @@ msgid ""
 msgstr "Thogadh na Pearsaich mòran choisridh rè àm a’ chogaidh ’s b’ urrainn dhaibh seo a dhèanamh air sàilleibh meud is rian na h-impireachd Achaemeanach. Fhuaireadh coisridh nam Pearsach deagh thrèanadh san fharsaingeachd ’s rinneadh iad sabaid le righneas mòr. Ged a bha seo fìor, cha robh iad math air sabaid glè dhlùth. Cuideachd, cha bhiodh coisridh nam Pearsach ’nam feachd seasmhachd ’s proifeiseanta ach rèisimeidean nan seann-ghaisgeach."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Description
-msgid "Allied land traders +15% trade gain."
+msgid "Allied Land Traders +15% trade gain."
 msgstr "Buannaichidh luchd-malairt tìre caidreabhach +15% air a’ mhalart."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Name
@@ -1877,8 +1857,8 @@ msgid "Xsayarsa II"
 msgstr "Xsayarsa II"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Description
-msgid "Phoenician triremes gain the unique ability to train cavalry units."
-msgstr "Buannaichidh longan trì-ràmhach nam Pheniceach an comas sònraichte gun gabh aonadan eachraidh a thrèanadh annta."
+msgid "Phoenician triremes gain the unique ability to train cavalry."
+msgstr "Buannaichidh longan trì-ràmhach nam Pheniceach an comas sònraichte gun gabh eachraidh a thrèanadh annta."
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Name
 msgid "Naval Craftsmanship"
@@ -1979,7 +1959,7 @@ msgstr "Trèanaich eachraidh-dùthcha."
 
 #: simulation/data/civs/pers.jsonStructures[0].History
 msgid "The Persian Empire's best soldiers were Eastern horsemen."
-msgstr "B’ e marcaichean on taobh an ear a bh’ anns na saighdearan a b’ fhearr aig impireachd nam Pearsach"
+msgstr "B’ e marcaichean on taobh an ear a bh’ anns na saighdearan a b’ fhearr aig impireachd nam Pearsach."
 
 #: simulation/data/civs/pers.jsonStructures[1].Name
 msgid "Apadana"
@@ -2018,7 +1998,7 @@ msgstr "Na Ptolamaich"
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Description
 msgid ""
 "The Ptolemies receive the Mercenary Camp, a Barracks that is constructed in "
-"neutral territory and trains mercenary soldiers."
+"neutral territory and trains mercenaries."
 msgstr "Gheibh na Ptolamaich an campa shaighdearan-duaise, seo taigh-feachd a thogar air ranntair neo-phàirteach agus a nì trèanadh air saighdearan-duaise."
 
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Name
@@ -2201,7 +2181,7 @@ msgid ""
 "Maximum of 1 built. All Special Technologies and some regular city-phase "
 "technologies are researched here. Building one reduces the cost of all other"
 " remaining technologies by 10%."
-msgstr "Thèid gach teicneolas sònraichte ’s cuid a theicneolasan àbhaisteach aig linn nam mòr-bhailtean a rannsachadh an-seo. Nuair a thogas tu fear, bidh na teicneolasan eile uile nas saoire le 10%. Cuingeachadh togail: 1"
+msgstr "Thèid gach teicneolas sònraichte ’s cuid a theicneolasan àbhaisteach aig linn nam mòr-bhailtean a rannsachadh an-seo. Nuair a thogas tu fear, bidh na teicneolasan eile uile nas saoire le 10%. Cuingeachadh togail: 1."
 
 #: simulation/data/civs/ptol.jsonStructures[1].Name
 msgid "Stratópedo Misthophóron"
@@ -2210,8 +2190,8 @@ msgstr "Stratópedo Misthophóron"
 #: simulation/data/civs/ptol.jsonStructures[1].Special
 msgid ""
 "Must be constructed in neutral territory. Has no territory radius effect. "
-"Trains all 'mercenary' units."
-msgstr "Chan fhaod thu a thogail ach air ranntair neo-phàirteach. Chan eil buaidh aige air leud do ranntair. Trèanaichidh e gach saighdear-duaise."
+"Trains mercenaries."
+msgstr "Chan fhaod thu a thogail ach air ranntair neo-phàirteach. Chan eil buaidh aige air leud do ranntair. Trèanaichidh e saighdearan-duaise."
 
 #: simulation/data/civs/ptol.jsonStructures[2].Name
 msgid "Lighthouse"
@@ -2278,8 +2258,8 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry −20% training time."
-msgstr "-20% air ùine trèanaidh na coisridh-dhùthcha caidreabhaich."
+msgid "Allied Citizen Infantry −10% training time."
+msgstr "Gheibh coisridh-dhùthcha caidreabhach −10% air an ùine trèanaidh."
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Name
 msgid "Conscription"
@@ -2488,8 +2468,8 @@ msgid ""
 msgstr "Chaidh cleasan-cogaidh nan Seleucaich ’s an iar-theachdaichean a leasachadh rè nan 3s is 2na linntean. On a thachair iad ri sluaghan ùra o thaobh an ear mar muinntir Phartia agus ri linn ar-a-mach cunbhalach nan satrap iomallach mar Bactria, rinn na Seleucaich ath-leasachadh air an airm aca agus dh’atharraich iad an innleachd aca, gu h-àraidh a thaobh an eachraidh. Thug cogadh an aghaidh nan Ròmanach o thaobh an iar agus briseadh a-steach nan Galatach air na Seleucaich gun ath-leasaicheadh iad a’ choisridh aca cuideachd ach am bhiodh i na bu shùbailte."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Description
-msgid "Allied civil centers −20% resource costs."
-msgstr "-20% air cosgaisean stòrais nan ionadan sìobhalta caidreabhach."
+msgid "Allied Civil Centers −20% resource costs."
+msgstr "−20% air cosgaisean stòrais nan ionadan sìobhalta caidreabhach."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Name
 msgid "Syrian Tetrapolis"
@@ -2710,8 +2690,8 @@ msgid ""
 msgstr "An sliochd Greugach is Masadonach a riaghlaich an impireachd a bha aig Alastair san ear roimhe."
 
 #: simulation/data/civs/sele.jsonStructures[1].Special
-msgid "Trains all cavalry units except Citizen-Militia Cavalry."
-msgstr "Trèanaichidh e na h-uile aonad eachraidh ach mailisidh-dùthcha."
+msgid "Trains all cavalry except citizen-soldier cavalry."
+msgstr "Trèinidh e eachraidh seach eachdraidh-dùthcha."
 
 #: simulation/data/civs/sele.jsonStructures[2].Name
 msgid "Military Colony"
@@ -2778,7 +2758,7 @@ msgid ""
 msgstr ""
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry spearmen +10% health."
+msgid "Allied Citizen Infantry Spearmen +10% health."
 msgstr "+10% a shlàinte airson sleaghairean coisridh-dùthcha nan caidreabhach."
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Name

@@ -1,5 +1,5 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
@@ -10,12 +10,13 @@
 # Samuel <srandiny@gmail.com>, 2015-2016
 # Samuel <srandiny@gmail.com>, 2017
 # Eggar Tirtayasa <eggar4tirtayasa@gmail.com>, 2014
+# Ulzeta Ulzeta <julyusputra@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-05-27 10:00+0200\n"
-"PO-Revision-Date: 2019-05-27 15:47+0000\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"POT-Creation-Date: 2020-01-17 08:09+0000\n"
+"PO-Revision-Date: 2020-01-28 13:46+0000\n"
+"Last-Translator: Ulzeta Ulzeta <julyusputra@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/wildfire-games/0ad/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +64,7 @@ msgstr "Lembah Alpen"
 msgid ""
 "High bluffs overlook the terrain below. Bountiful resources await on the "
 "cliffs, but beware of enemies planning an ambush."
-msgstr "Tebing tinggi melampaui daerah di bawah. Sumberdaya melimpah menunggu di atas tebing, tapi hati-hati dengan musuh yang merencanakan serangan mendadak."
+msgstr "Tebing tinggi melampaui daerah di bawah. Sumber daya melimpah menunggu di atas tebing, tapi hati-hati dengan musuh yang merencanakan serangan mendadak."
 
 #: maps/random/ambush.jsonsettings.Name
 msgid "Ambush"
@@ -131,7 +132,7 @@ msgid ""
 "Bahrain is never left unoccupied for long. But now, with the previous "
 "occupants gone, the land prepares for war. Will you be the next Ruler of "
 "Bahrain?"
-msgstr "Bahrain, pusat dari peradaban Dilmun yang jatuh pada 800 SM, telah diambil alih oleh Sumeria, Assur, Babilonia, Persia dan orang-orang di masa mendatang. Sebuah pulau yang secara strategis terletak di Sinus Persicus (Teluk Persia) dan juga pusat perdagangan mutiara karena pemancingan mutiaranya yang hebat, Bahrain tidak pernah ditinggalkan tanpa pemilik untuk waktu lama. Tapi sekarang, dengan pemilik sebelumnya yang telah pergi, tanah ini siap untuk diperebutkan. Apakah Anda dapat menjadi pemimpin Bahrain selanjutnya?"
+msgstr "Bahrain, pusat dari peradaban Dilmun yang jatuh pada 800 SM, telah diambil alih oleh Sumeria, Asyur, Babilonia, Persia dan orang-orang di masa mendatang. Sebuah pulau yang secara strategis terletak di Sinus Persicus (Teluk Persia) dan juga pusat perdagangan mutiara karena pemancingan mutiaranya yang hebat, Bahrain tidak pernah ditinggalkan tanpa pemilik untuk waktu lama. Tapi sekarang, dengan pemilik sebelumnya yang telah pergi, tanah ini siap untuk diperebutkan. Apakah Anda dapat menjadi pemimpin Bahrain selanjutnya?"
 
 #: maps/random/bahrain.jsonsettings.Name
 msgid "Bahrain"
@@ -190,14 +191,17 @@ msgid "Canyon"
 msgstr "Ngarai"
 
 #: maps/random/continent.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Description
 msgid "All players starts on a continent surrounded by water."
 msgstr "Semua pemain mulai di pulau yang dikelilingi air."
 
 #: maps/random/continent.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Name
 msgid "Continent"
 msgstr "Benua"
 
 #: maps/random/corinthian_isthmus.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Description
 #: maps/skirmishes/Corinthian Isthmus (2).xml:Description:39
 #: maps/skirmishes/Corinthian Isthmus (4).xml:Description:40
 msgid ""
@@ -240,6 +244,22 @@ msgid ""
 "the Boii were defeated by the rising power of the Dacians, hence leading to "
 "the reemergence of the Geto-Dacian Confederation under King Burebista."
 msgstr "Pemain mulai di sepanjang pinggiran sungai Danube pada masa ekspansi ke Panonia oleh suku Kelt Boii. Mencoba untuk memperkuat kuasa mereka di tanah ini, bala bantuan kelt telah dikirim untuk menendang keluar budaya asing yang tersisa. Pemain tidak saja memperkuat diri untuk melawan satu sama lain, tapi juga untuk mengalahkan para penyerang ini. Nantinya, suku Boii akan dikalahkan oleh bangsa Dacia yang baru bangkit, karena itu akan muncul kembali Konfederasi Geto-Dacia di bawah pimpinan Raja Burebista."
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Description
+msgid "Bright daylight illuminates the scene."
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Name
+msgid "Day"
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Description
+msgid "Attackers are covered by the darkness of the night."
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Name
+msgid "Night"
+msgstr ""
 
 #: maps/random/danubius.jsonsettings.Name
 msgid "Danubius"
@@ -312,7 +332,7 @@ msgstr "Gunung Berapi Punah"
 
 #: maps/random/fields_of_meroe.jsonsettings.Description
 msgid ""
-"The \"Island of Meroe\", a vast peninsula flanked by the Nile and Atbarah "
+"The \"Island of Meroë\", a vast peninsula flanked by the Nile and Atbarah "
 "rivers, formed the heartland of ancient Kush. Where the harsh deserts start "
 "making way for the semi-arid savannahs and small acacia forests dot the "
 "landscape. The area is rich in resources and the ever-present Nile brings "
@@ -320,7 +340,7 @@ msgid ""
 msgstr ""
 
 #: maps/random/fields_of_meroe.jsonsettings.Name
-msgid "Fields of Meroe"
+msgid "Fields of Meroë"
 msgstr ""
 
 #: maps/random/flood.jsonsettings.Description
@@ -335,7 +355,7 @@ msgstr "Banjir"
 
 #: maps/random/fortress.jsonsettings.Description
 msgid "Players start in a ready-made fortress with piles of resources."
-msgstr "Pemain mulai di dalam benteng yang telah dibangun dengan tumpukan sumberdaya."
+msgstr "Pemain mulai di dalam benteng yang telah dibangun dengan tumpukan sumber daya."
 
 #: maps/random/fortress.jsonsettings.Name
 msgid "Fortress"
@@ -398,7 +418,7 @@ msgid ""
 "western civilization. Yet the land lacks unity, countless city-states vie "
 "for dominance. Will you lead your polis to glory and greatness or see it "
 "fall into oblivion, erased from the histories?"
-msgstr ""
+msgstr "Hellas, rumah dari orang Yunani dan melalui mereka lahirlah pondasi dari peradaban barat. Namun wilayah itu memiliki persatuan yang kurang, negara-kota yang tidak terhitung bersaing untuk dominasi. Dapatkah Anda membawa kotamu ke kejayaan dan keagungan atau melihatnya jatuh dalam kegelapan, dihapus dari sejarah?"
 
 #: maps/random/hellas.jsonsettings.Name
 msgid "Hellas"
@@ -466,7 +486,7 @@ msgid ""
 "This is where Kings were made... and unmade! Abutting a rich floodplain "
 "downstream from the 4th cataract, this area became the breadbasket of "
 "ancient Kush."
-msgstr ""
+msgstr "Memulai di dekat tepi Sungai Nil yang subur, pemain mengepung Kota Napata yang memiliki pertahanan kuat yang terletak di kaki Bukit Jebel Barkal, \"Gunung Suci\". Dia adalah rumah Selatan Amun dan menurut legenda Kush dan Mesir, tempat kelahiran umat manusia. Dikenal sebagai Singgasana Dua Wilayah, ibu kota agama kuno Napata terletak di bayang-bayangnya. Di sinilah tempat para raja dibentuk... dan dihancurkan! Berbatasan dengan dataran banjir yang subur dari air terjun keempat, area ini adalah keranjang roti dari Kush kuno."
 
 #: maps/random/jebel_barkal.jsonsettings.Name
 msgid "Jebel Barkal"
@@ -537,10 +557,12 @@ msgid "Lower Nubia"
 msgstr ""
 
 #: maps/random/mainland.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Description
 msgid "A typical map without any water."
 msgstr "Peta biasa tanpa air."
 
 #: maps/random/mainland.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Name
 msgid "Mainland"
 msgstr "Pulau Utama"
 
@@ -672,6 +694,22 @@ msgid ""
 "undermine his economy and cause his downfall. [color=\"red\"]Warning: It is "
 "inadvisable to disable treasures, since there is no gatherable wood. Not "
 "recommended for inexperienced players.[/color]"
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Description
+msgid "Scattered sunlight illuminates the scenery in a vivid red tone."
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Name
+msgid "Dawn"
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Description
+msgid "The scenery is illuminated by direct or indirect sunlight."
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Name
+msgid "Daylight"
 msgstr ""
 
 #: maps/random/polar_sea.jsonsettings.Name
@@ -855,20 +893,94 @@ msgid "The Nile"
 msgstr "Sungai Nil"
 
 #: maps/random/unknown.jsonsettings.Description
-msgid "The unknown. Warning: May be a naval map."
+msgid "The unknown."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Name
+msgid "Isthmus"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Description
+msgid "A small central river."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Name
+msgid "Central River"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Description
+msgid ""
+"Players are aligned on a strip of land with seas bordering on one or both "
+"sides that may hold islands."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Name
+msgid "Edge Seas"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Description
+msgid "Land shaped like a concrescent moon around a central lake."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Name
+msgid "Gulf"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Description
+msgid "Mainland style with some small random lakes."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Name
+msgid "Lakes"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Description
+msgid ""
+"A large hill encompasses the map and leaves players only a small passage to "
+"the two neighboring players."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Name
+msgid "Passes"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Description
+msgid ""
+"The land is enclosed by a hill that leaves a small area per player connected"
+" to the large central place."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Name
+msgid "Lowlands"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Description
+msgid "A huge sea is dividing the map into two halves."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Name
+msgid "Naval: Central Sea"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Description
+msgid "Players are scattered across island chains and disconnected islands."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Name
+msgid "Naval: Archipelago"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Description
+msgid "A central lake with rivers possibly separating neighboring players."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Name
+msgid "Naval: Lake and rivers"
 msgstr ""
 
 #: maps/random/unknown.jsonsettings.Name
 msgid "Unknown"
 msgstr "Tidak diketahui"
-
-#: maps/random/unknown_land.jsonsettings.Description
-msgid "The unknown."
-msgstr ""
-
-#: maps/random/unknown_land.jsonsettings.Name
-msgid "Unknown Land"
-msgstr "Tanah Tak diketahui"
 
 #: maps/random/volcanic_lands.jsonsettings.Description
 msgid "A charred dead land where players start around a smoking volcano."
@@ -930,7 +1042,7 @@ msgstr "Gelombang pertama akan dimulai dalam %(time)s!"
 msgid "An enemy wave is attacking!"
 msgstr "Gelombang musuh menyerang!"
 
-#: maps/random/survivalofthefittest_triggers.js:289
+#: maps/random/survivalofthefittest_triggers.js:288
 #, javascript-format
 msgid "%(player)s has been defeated (lost civic center)."
 msgstr ""
@@ -1010,7 +1122,7 @@ msgid ""
 "Springtime in Arcadia, Greece. Spring rains have gorged what would otherwise be dry creek beds throughout the rest of the year, dividing the lands between two warring tribes. \n"
 "\n"
 "Players start on either side of a mountainous region rich in resources. Extra starting buildings help players jumpstart building their new colonies."
-msgstr ""
+msgstr "Musim semi di Arcadia, Yunani. Hujan musim semi meliputi tanah yang seharusnya dasar sungai kering selama sisa tahun, memisahkan daratan antara dua suku yang berperang.\n\nPemain mulai di salah satu sisi gunung yang kaya akan sumber daya. Bangunan tambahan membantu pemain untuk meningkatkan pembangunan koloni mereka."
 
 #: maps/scenarios/Arcadia.xml:PlayerData[0].Name:39
 #: maps/scenarios/Belgian_Bog_night.xml:PlayerData[0].Name:39
@@ -1035,47 +1147,6 @@ msgstr ""
 #: maps/scenarios/WallTest.xml:PlayerData[0].Name:27
 #: maps/scenarios/Walls.xml:PlayerData[0].Name:27
 #: maps/scenarios/reservoir.xml:PlayerData[0].Name:27
-#: maps/skirmishes/Acropolis Bay (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[0].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[0].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[0].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[0].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[0].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[0].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[0].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[0].Name:39
 msgid "Player 1"
 msgstr "Pemain 1"
 
@@ -1099,48 +1170,7 @@ msgstr "Pemain 1"
 #: Islands.xml:PlayerData[1].Name:39 maps/scenarios/Tropical
 #: Island.xml:PlayerData[1].Name:39
 #: maps/scenarios/WallTest.xml:PlayerData[1].Name:27
-#: maps/scenarios/Walls.xml:PlayerData[1].Name:27 maps/skirmishes/Acropolis
-#: Bay (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[1].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[1].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[1].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[1].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[2].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[1].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[1].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[1].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[1].Name:39
+#: maps/scenarios/Walls.xml:PlayerData[1].Name:27
 msgid "Player 2"
 msgstr "Pemain 2"
 
@@ -1353,7 +1383,7 @@ msgid ""
 "A deep rocky canyon slicing through the desert. Good for multiplayer.\n"
 "\n"
 "2 teams of 2 players. 1 player on each team starts with a base and resources. The other player starts with only a large army to assist their teammate."
-msgstr "Tebing berbatu yang dalam melintasi gurun. Cocok untuk main bersama.\n\n2 regu berisi 2 pemain. 1 pemain pada tiap regu mulai dengan markas dan sumberdaya. Pemain lain mulai hanya dengan pasukan besar untuk membantu teman regunya."
+msgstr "Tebing berbatu yang dalam melintasi gurun. Cocok untuk main bersama.\n\n2 regu berisi 2 pemain. 1 pemain pada tiap regu mulai dengan markas dan sumber daya. Pemain lain mulai hanya dengan pasukan besar untuk membantu teman regunya."
 
 #: maps/scenarios/Death Canyon - Invasion Force.xml:PlayerData[1].Name:39
 #: maps/scenarios/Death Canyon - Invasion Force.xml:PlayerData[3].Name:39
@@ -1369,25 +1399,7 @@ msgstr "Pasukan Penyerang"
 #: Oases.xml:PlayerData[2].Name:27 maps/scenarios/Sandbox -
 #: Britons.xml:PlayerData[2].Name:39 maps/scenarios/Sandbox -
 #: Gauls.xml:PlayerData[3].Name:40 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[2].Name:27 maps/skirmishes/Barcania
-#: (3).xml:PlayerData[2].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[2].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Gallic Fields
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Gambia River
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[2].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[2].Name:39
+#: Oasis.xml:PlayerData[2].Name:27
 msgid "Player 3"
 msgstr "Pemain 3"
 
@@ -1424,22 +1436,7 @@ msgstr "Peta gurun kecil. Tiap pemain mulai dekat oase di dekat gurun suram dan 
 #: maps/scenarios/Gold_Rush.xml:PlayerData[3].Name:27
 #: maps/scenarios/Necropolis.xml:PlayerData[3].Name:39 maps/scenarios/Saharan
 #: Oases.xml:PlayerData[3].Name:27 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[3].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[3].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[3].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[3].Name:39
+#: Oasis.xml:PlayerData[3].Name:27
 msgid "Player 4"
 msgstr "Pemain 4"
 
@@ -1476,7 +1473,7 @@ msgid ""
 "A wide-open map with a central rocky region rich in Minerals (Metal "
 "Resource). This map may be played if the other more detailed maps cause "
 "uncomfortable lag."
-msgstr "Peta luas dan terbuka dengan pusat berbatu yang kaya akan Mineral (Sumberdaya Logam). Peta ini dapat dimainkan jika peta satunya yang lebih detail menyebabkan lag."
+msgstr "Peta luas dan terbuka dengan pusat berbatu yang kaya akan Mineral (Sumber Daya Logam). Peta ini dapat dimainkan jika peta satunya yang lebih detail menyebabkan lag."
 
 #: maps/scenarios/Gold_Rush.xml:Name:27
 msgid "Gold Rush"
@@ -1535,7 +1532,7 @@ msgid ""
 "Multiplayer map. Each player starts out on a small island with minimal resources situated off the coast of a large land mass.\n"
 "\n"
 "This is a WFG community-designed map by: SMST, NOXAS1, and Yodaspirine."
-msgstr "Peta main bersama. Tiap pemain mulai pada pulau kecil dengan sumberdaya sedikit di pinggir pantai dari pulau besar.\n\nIni adalah peta rancangan komunitas WFT yang dibuat oleh: SMST, NOXAS1, dan Yodaspirine."
+msgstr "Peta main bersama. Tiap pemain mulai pada pulau kecil dengan sumber daya sedikit di pinggir pantai dari pulau besar.\n\nIni adalah peta rancangan komunitas WFT yang dibuat oleh: SMST, NOXAS1, dan Yodaspirine."
 
 #: maps/scenarios/Miletus.xml:PlayerData[0].Name:27
 #: maps/scenarios/Miletus.xml:Name:27
@@ -1559,7 +1556,7 @@ msgstr "Demo Main Bersama"
 msgid ""
 "Small map with lots of resources and some water, for testing gameplay in "
 "non-competitive multiplayer matches."
-msgstr "Peta kecil dengan banyak sumberdaya dan air, untuk menguji permainan di pertandingan main bersama non-kompetitif."
+msgstr "Peta kecil dengan banyak sumber daya dan air, untuk menguji permainan di pertandingan main bersama non-kompetitif."
 
 #: maps/scenarios/Napata Reconstruction.xml:Name:40
 msgid "Napata Reconstruction"
@@ -1573,7 +1570,7 @@ msgstr ""
 
 #: maps/scenarios/Necropolis.xml:Description:39
 msgid ""
-"4 players duke it out over the vast Nile Delta. Each city starts out nestled atop a large acropolis, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
+"Four players duke it out over the vast Nile Delta. Each city starts out nestled atop a large plateau, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
 "\n"
 "Scouts say the nearby branches of the Nile River are shallow and fordable in multiple locations, so should only serve as a minor barrier between enemy factions."
 msgstr ""
@@ -1642,11 +1639,11 @@ msgstr "Polynesia"
 
 #: maps/scenarios/Resource_demo.xml:Name:27
 msgid "Resource demo"
-msgstr "Demo Sumberdaya"
+msgstr "Demo sumber daya"
 
 #: maps/scenarios/Resource_demo.xml:Description:27
 msgid "Demo map for resource gathering."
-msgstr "Peta demo untuk pengumpulan sumberdaya."
+msgstr "Peta demo untuk pengumpulan sumber daya."
 
 #: maps/scenarios/Saharan Oases.xml:Description:27
 msgid ""
@@ -1680,7 +1677,7 @@ msgstr "Tautalus"
 #: maps/scenarios/Sandbox - Athenians.xml:Description:39
 msgid ""
 "Play with the Athenians faction in a non-threatening sandbox environment."
-msgstr "Main dengan faksi Athena di lingkungan sandbox."
+msgstr "Main dengan bangsa Athena di lingkungan sandbox."
 
 #: maps/scenarios/Sandbox - Athenians.xml:PlayerData[0].Name:39
 msgid "The Athenians"
@@ -1712,7 +1709,7 @@ msgstr "Sandbox - Bangsa Athena"
 #: maps/scenarios/Sandbox - Britons.xml:Description:39 maps/scenarios/Sandbox
 #: - Gauls.xml:Description:40
 msgid "Play around with the Gallic faction in an idyllic sandbox setting."
-msgstr "Main-main dengan faksi Galia di pengaturan sandbox diam"
+msgstr "Main dengan bangsa Gaul di pengaturan sandbox yang santai."
 
 #: maps/scenarios/Sandbox - Britons.xml:PlayerData[3].Name:39
 #: maps/scenarios/Sandbox - Gauls.xml:PlayerData[4].Name:40
@@ -1772,7 +1769,7 @@ msgstr ""
 #: maps/scenarios/Sandbox - Macedonians.xml:Description:39
 msgid ""
 "Play with the Macedonians faction in a non-threatening sandbox environment."
-msgstr "Bermain dengan faksi Makedon di lingkungan sandbox yang aman."
+msgstr "Bermain dengan bangsa Makedon di lingkungan sandbox yang aman."
 
 #: maps/scenarios/Sandbox - Macedonians.xml:PlayerData[0].Name:39
 msgid "The Macedonians"
@@ -1784,7 +1781,7 @@ msgstr "Sandbox- Makedonia"
 
 #: maps/scenarios/Sandbox - Mauryas.xml:Description:39
 msgid "Mauryan Indian faction showcase map."
-msgstr "Peta pameran faksi India Maurya."
+msgstr "Peta pameran bangsa Maurya India."
 
 #: maps/scenarios/Sandbox - Mauryas.xml:PlayerData[0].Name:39
 msgid "Mauryan Indians"
@@ -1875,7 +1872,7 @@ msgstr "Sandbox - Bangsa Seleukia"
 #: maps/scenarios/Sandbox - Spartans.xml:Description:39
 msgid ""
 "Play with the Spartans faction in a non-threatening sandbox environment."
-msgstr "Bermain dengan faksi Sparta di lingkungan sandbox yang aman."
+msgstr "Bermain dengan bangsa Sparta di lingkungan sandbox yang aman."
 
 #: maps/scenarios/Sandbox - Spartans.xml:Name:39
 msgid "Sandbox - The Spartans"
@@ -2042,7 +2039,7 @@ msgstr "Semua unit di permainan."
 
 #: maps/scenarios/WallTest.xml:Description:27
 #: maps/scenarios/_default.xml:Description:28 maps/scenarios/temperate
-#: map.xml:Description:27 maps/scenarios/test-foundation.xml:Description:40
+#: map.xml:Description:27
 msgid "Give an interesting description of your map."
 msgstr "Berikan deskripsi menarik tentang peta anda."
 
@@ -2063,11 +2060,10 @@ msgid "We Are Legion"
 msgstr "Kamilah Legiun"
 
 #: maps/scenarios/We are Legion.xml:Description:27
-msgid "A quick battle demo map using Roman legionnaires."
-msgstr "Peta demo pertempuran cepat menggunakan legiun Romawi."
+msgid "A quick battle demo map using Roman legionaries."
+msgstr ""
 
 #: maps/scenarios/_default.xml:Name:28
-#: maps/scenarios/test-foundation.xml:Name:40
 msgid "Unnamed map"
 msgstr "Peta tanpa nama"
 
@@ -2099,11 +2095,17 @@ msgstr "Demo Kapal"
 msgid "Base Temperate Map"
 msgstr ""
 
-#: maps/scenarios/unit_motion_integration_test.xml:Name:28
-msgid "Unit Motion Integration Test"
+#: maps/scenarios/test-foundation.xml:Description:40
+msgid ""
+"This map is designed to help artists and modders find the adequate "
+"foundation for a specific building. This map is not meant to be playable."
 msgstr ""
 
-#: maps/scenarios/unit_motion_integration_test.xml:Description:28
+#: maps/scenarios/test-foundation.xml:Name:40
+msgid "Foundation Testing Map"
+msgstr ""
+
+#: maps/scenarios/unit_motion_integration_test.xml:Description:40
 msgid ""
 "This map is designed to test some basic unit movement cases. It will involve"
 " unitAI, unitMotion and the relevant pathfinders and thus acts as an "
@@ -2111,11 +2113,15 @@ msgid ""
 "and weird pathing."
 msgstr ""
 
+#: maps/scenarios/unit_motion_integration_test.xml:Name:40
+msgid "Unit Motion Integration Test"
+msgstr ""
+
 #: maps/skirmishes/Acropolis Bay (2).xml:Description:39
 msgid ""
-"Each player starts the match atop a large flat plateau, otherwise known as an acropolis.\n"
+"Each player starts the match atop a large flat plateau.\n"
 "\n"
-"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed acropolis commanding the valley below."
+"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed plateau commanding the valley below."
 msgstr ""
 
 #: maps/skirmishes/Acropolis Bay (2).xml:Name:39
@@ -2142,6 +2148,17 @@ msgstr ""
 #: maps/skirmishes/Alpine_Valleys_(2).xml:Name:39
 msgid "Alpine Valleys (2)"
 msgstr "Lembah Alpine (2)"
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Description:40
+msgid ""
+"Skirmish high in the Atlas mountains, where snowcapped mountains loom over "
+"desert oases. A wild landscape awaits; every player will experience "
+"different advantages and challenges based on their location."
+msgstr ""
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Name:40
+msgid "Atlas Valleys (8)"
+msgstr ""
 
 #: maps/skirmishes/Bactria (2).xml:Description:39
 msgid ""
@@ -2183,11 +2200,11 @@ msgid ""
 "as the Butana Steppe."
 msgstr ""
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[0].Name:40
 msgid "West Player"
 msgstr ""
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
 msgid "East Player"
 msgstr ""
 
@@ -2274,7 +2291,7 @@ msgid ""
 "Each player starts the match with a free farmstead and free storehouse.\n"
 "\n"
 "Virgin resources lie to the lowlands on either side of the plateau. The lowlands also offer opportunity for expansion and strategic maneuvering."
-msgstr ""
+msgstr "Dua pemain bertarung di pepohonan Dataran Tinggi Deccan di India Tengah.\n\nSetiap pemain memulai pertandingan dengan sebuah lumbung dan gudang gratis.\n\nSumber daya yang tidak tersentuh berada di dataran rendah di kedua sisi dataran tinggi. Dataran rendah juga memberikan kesempatan untuk memperluas wilayah dan manuver strategis."
 
 #: maps/skirmishes/Deccan Plateau (2).xml:Name:39
 msgid "Deccan Plateau (2)"
@@ -2295,27 +2312,27 @@ msgstr "Tebing Duel (3v3)"
 msgid "Egypt (3v3)"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[0].Name:40
 msgid "Alexandria"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
 msgid "Theben"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
 msgid "Siwa"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
 msgid "Sinai"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
 msgid "Memphis"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[6].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
 msgid "Cyrene"
 msgstr ""
 
@@ -2334,6 +2351,14 @@ msgid ""
 "- Fayyum: crocodile shrine, nile dam\n"
 "- Eastern desert: mount Sinai, deep Wadi, Red Sea reefs\n"
 "- Western desert: Oasis Charga and Siwa, Qattara Depression\n"
+msgstr ""
+
+#: maps/skirmishes/Farmland (2).xml:Description:40
+msgid "Farmland in Eastern Europe."
+msgstr ""
+
+#: maps/skirmishes/Farmland (2).xml:Name:40
+msgid "Farmland (2)"
 msgstr ""
 
 #: maps/skirmishes/Forest Battle (4).xml:Description:40
@@ -2373,7 +2398,7 @@ msgstr "Sungai Gambia (3)"
 #: maps/skirmishes/Golden Island (2).xml:Description:40
 msgid ""
 "A ring of land borders a resource-rich island in the Mediterranean. Players "
-"can access the center via a narrow strip of land or via boat."
+"can access the center via a narrow strip of shallow water or via boat."
 msgstr ""
 
 #: maps/skirmishes/Golden Island (2).xml:Name:40
@@ -2394,7 +2419,7 @@ msgstr "Oase Emas (2)"
 #: maps/skirmishes/Greek Acropolis (2).xml:Description:39
 #: maps/skirmishes/Greek Acropolis Night (2).xml:Description:39
 msgid ""
-"Two factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Two factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
 msgstr ""
@@ -2405,7 +2430,7 @@ msgstr "Acropolis Yunani (2)"
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Description:39
 msgid ""
-"Three factions find themselves perched safely atop large rocky plateaus, or acropolises, whereas the fourth one is separated from their foes by a river branch.\n"
+"Three factions find themselves perched safely atop large rocky plateaus, whereas the fourth one is separated from their foes by a river branch.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources.."
 msgstr ""
@@ -2488,7 +2513,7 @@ msgid ""
 "All players start on the Western end of the map, with a vast unclaimed wilderness lying open before them ripe for conquest and depredation.\n"
 "\n"
 "Stone and Metal resources are in abundance, especially Stone, but Wood is somewhat scarce."
-msgstr "Kawasan Kapadokia di Tengah Anatolia Timur.\n\nSemua pemain mulai di ujung barat peta, dengan alam liar luas tak berpemilik terbuka lebar sebelum mereka dihancurkan oleh penjajahan dan eksploitasi.\n\nSumberdaya Batu dan Logam sangat banyak di sini, terutama Batu, tapi Kayu agak langka."
+msgstr "Kawasan Kapadokia di Tengah Anatolia Timur.\n\nSemua pemain mulai di ujung barat peta, dengan alam liar luas tak berpemilik terbuka lebar sebelum mereka dihancurkan oleh penjajahan dan eksploitasi.\n\nSumber daya Batu dan Logam sangat banyak di sini, terutama Batu, tapi Kayu agak langka."
 
 #: maps/skirmishes/Neareastern Badlands (2).xml:Name:39
 msgid "Neareastern Badlands (2)"
@@ -2503,7 +2528,7 @@ msgid ""
 "An Egyptian desert map bisected by the broad Nile River. Organic resources "
 "cluster near the river, while mineral resources can be found in the desert "
 "hinterlands."
-msgstr "Sebuah peta gurun pasir Mesir yang terbagi dua oleh Sungai Nil yang lebar. Sumberdaya organik berkumpul di dekat sungai, sementara sumberdaya mineral dapat ditemukan di dalam gurun pasir."
+msgstr "Sebuah peta gurun pasir Mesir yang terbagi dua oleh Sungai Nil yang lebar. Sumber daya organik berkumpul di dekat sungai, sementara sumber daya mineral dapat ditemukan di dalam gurun pasir."
 
 #: maps/skirmishes/Nile River (4).xml:Name:39
 msgid "Nile River (4)"
@@ -2519,6 +2544,30 @@ msgstr "Terdampar di Utara yang dingin, 2 pemain berperang untuk kekuasaan selur
 #: maps/skirmishes/Northern Island (2).xml:Name:40
 msgid "Northern Island (2)"
 msgstr "Pulau Utara (2)"
+
+#: maps/skirmishes/Obedska_Bog_(4).xml:Description:40
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Description:40
+msgid ""
+"A lazy river meanders through these Serbian wetlands. Stone is scarce, but many lumps of bog iron sit waiting to be found.\n"
+"\n"
+"*This map makes heavy use of grass actors which may adversely affect performance."
+msgstr ""
+
+#: maps/skirmishes/Obedska_Bog_(4).xml:Name:40
+msgid "Obedska Bog (4)"
+msgstr ""
+
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Name:40
+msgid "Obedska Bog Night (4)"
+msgstr ""
+
+#: maps/skirmishes/Oceanside (2).xml:Description:40
+msgid "A Lush temperate biome along an ocean. "
+msgstr ""
+
+#: maps/skirmishes/Oceanside (2).xml:Name:40
+msgid "Oceanside (2)"
+msgstr ""
 
 #: maps/skirmishes/Persian Highlands (4).xml:Description:39
 msgid ""
@@ -2562,6 +2611,19 @@ msgstr ""
 #: maps/skirmishes/Sahel (4).xml:Name:39
 msgid "Sahel (4)"
 msgstr "Sahel (4)"
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Description:40
+msgid ""
+"The diverse rainforests nestled in the Sahyadri mountain range of the west coast of India. It goes without saying, wood is abundant.\n"
+"\n"
+"Iberian players do not get full circuit walls, but 5 strategically placed wall towers.\n"
+"\n"
+"WARNING: This map uses a lot of floral actors on account of being a rainforest. Expect a drop in framerate, this is taxing on most mid range computers."
+msgstr ""
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Name:40
+msgid "Sahyadri Buttes (5)"
+msgstr ""
 
 #: maps/skirmishes/Savanna River.xml:Description:39
 msgid "A large savanna is bisected by a narrow jungle stream."
@@ -2623,11 +2685,19 @@ msgstr "Sebuah oase dikelilingi oleh gunung-gunung dan gurun pasir. Lahan pertan
 msgid "Team Oasis (2v2)"
 msgstr "Oasis Regu (2v2)"
 
+#: maps/skirmishes/Temperate Roadway (2).xml:Description:40
+msgid "Temperate zone map with plentiful resources. Map Size: Small"
+msgstr ""
+
+#: maps/skirmishes/Temperate Roadway (2).xml:Name:40
+msgid "Temperate Roadway (2)"
+msgstr ""
+
 #: maps/skirmishes/Thessalian Plains (4).xml:Description:39
 msgid ""
 "The rolling Thessalian plain is traversed with narrow streams, easily "
 "forded. Wide-open spaces allow for massive expansion, while each player "
-"starts the match safe atop a large acropolis."
+"starts the match safe atop a large plateau."
 msgstr ""
 
 #: maps/skirmishes/Thessalian Plains (4).xml:Name:39
@@ -2636,7 +2706,7 @@ msgstr "Dataran Thessalia (4)"
 
 #: maps/skirmishes/Tuscan Acropolis (4).xml:Description:40
 msgid ""
-"Four factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Four factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
 msgstr ""
@@ -2654,6 +2724,17 @@ msgstr "Peta tropis luas dengan dua lautan di Timur dan Barat. Cocok untuk dua t
 #: maps/skirmishes/Two Seas (6).xml:Name:40
 msgid "Two Seas (6)"
 msgstr "Dua Lautan (6)"
+
+#: maps/skirmishes/Vesuvius_(6).xml:Description:40
+msgid ""
+"Skirmish as ash lightly falls around this recently erupted volcano. the "
+"scorched landscape offers little food, though the blasted forests are still "
+"laden with useful wood. "
+msgstr ""
+
+#: maps/skirmishes/Vesuvius_(6).xml:Name:40
+msgid "Vesuvius (6)"
+msgstr ""
 
 #: maps/skirmishes/Via Augusta (4).xml:Description:40
 msgid ""

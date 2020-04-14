@@ -16,6 +16,11 @@ Upgrade.prototype.Schema =
 					"</element>" +
 				"</optional>" +
 				"<optional>" +
+					"<element name='Variant' a:help='The name of the variant to switch to when upgrading'>" +
+						"<text/>" +
+					"</element>" +
+				"</optional>" +
+				"<optional>" +
 					"<element name='Tooltip' a:help='This will be added to the tooltip to help the player choose why to upgrade.'>" +
 						"<text/>" +
 					"</element>" +
@@ -232,6 +237,7 @@ Upgrade.prototype.Upgrade = function(template)
 	}
 
 	this.upgrading = template;
+	this.SetUpgradeAnimationVariant();
 
 	// Prevent cheating
 	this.ChangeUpgradedEntityCount(1);
@@ -259,6 +265,15 @@ Upgrade.prototype.CancelUpgrade = function(owner)
 	this.expendedResources = {};
 	this.ChangeUpgradedEntityCount(-1);
 
+	// Do not update visual actor if the animation didn't change.
+	let choice = this.upgradeTemplates[this.upgrading];
+	if (choice && this.template[choice].Variant)
+	{
+		let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
+		if (cmpVisual)
+			cmpVisual.SelectAnimation("idle", false, 1.0);
+	}
+
 	this.upgrading = false;
 	this.CancelTimer();
 	this.SetElapsedTime(0);
@@ -275,9 +290,7 @@ Upgrade.prototype.GetUpgradeTime = function(templateArg)
 	if (!this.template[choice].Time)
 		return 0;
 
-	let cmpPlayer = QueryPlayerIDInterface(this.owner, IID_Player);
-	return ApplyValueModificationsToEntity("Upgrade/Time", +this.template[choice].Time, this.entity) *
-		cmpPlayer.GetTimeMultiplier();
+	return ApplyValueModificationsToEntity("Upgrade/Time", +this.template[choice].Time, this.entity);
 };
 
 Upgrade.prototype.GetElapsedTime = function()
@@ -295,6 +308,21 @@ Upgrade.prototype.GetProgress = function()
 Upgrade.prototype.SetElapsedTime = function(time)
 {
 	this.elapsedTime = time;
+	Engine.PostMessage(this.entity, MT_UpgradeProgressUpdate, null);
+};
+
+Upgrade.prototype.SetUpgradeAnimationVariant = function()
+{
+	let choice = this.upgradeTemplates[this.upgrading];
+
+	if (!choice || !this.template[choice].Variant)
+		return;
+
+	let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
+	if (!cmpVisual)
+		return;
+
+	cmpVisual.SelectAnimation(this.template[choice].Variant, false, 1.0);
 };
 
 Upgrade.prototype.UpgradeProgress = function(data, lateness)

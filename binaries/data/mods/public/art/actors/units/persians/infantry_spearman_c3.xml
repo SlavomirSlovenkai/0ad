@@ -2,12 +2,12 @@
 <actor version="1">
   <castshadow/>
   <group>
-    <variant file="biped/base_hoplite.xml">
+    <variant>
       <mesh>skeletal/new/m_armor_pants_tunic_short.dae</mesh>
       <props>
         <prop actor="props/units/heads/new/head_pers_a.xml" attachpoint="head"/>
-        <prop actor="props/units/heads/pers_kidaris_loose_all.xml" attachpoint="helmet"/>
-        <prop actor="props/units/shields/pers_round_kardakes.xml" attachpoint="shield_arm"/>
+        <prop actor="props/units/helmets/pers_kidaris_loose_all.xml" attachpoint="helmet"/>
+        <prop actor="props/units/shields/aspis_pers_kardakes.xml" attachpoint="shield_arm"/>
         <prop actor="props/units/weapons/spear_hoplite.xml" attachpoint="weapon_R"/>
       </props>
     </variant>
@@ -25,7 +25,10 @@
     </variant>
   </group>
   <group>
-    <variant frequency="1" name="Idle"/>
+    <variant file="biped/base_hoplite_fast.xml"/>
+    <variant file="biped/formations/phalanx_front.xml"/>
+    <variant file="biped/formations/phalanx_mid.xml"/>
+    <variant file="biped/formations/phalanx_back.xml"/>
     <variant file="biped/attack_capture.xml"/>
     <variant file="biped/death_infantry.xml"/>
   </group>

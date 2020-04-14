@@ -1,4 +1,4 @@
-/* Copyright (C) 2015 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -21,19 +21,20 @@
 
 #include "graphics/ShaderManager.h"
 #include "graphics/TextureManager.h"
-#include "gui/GUIutil.h"
+#include "gui/CGUI.h"
+#include "gui/CGUISprite.h"
+#include "gui/GUIMatrix.h"
+#include "gui/SettingTypes/CGUIColor.h"
 #include "i18n/L10n.h"
 #include "lib/ogl.h"
-#include "lib/utf8.h"
 #include "lib/res/h_mgr.h"
 #include "lib/tex/tex.h"
+#include "lib/utf8.h"
 #include "ps/CLogger.h"
 #include "ps/Filesystem.h"
 #include "renderer/Renderer.h"
 
-
 using namespace GUIRenderer;
-
 
 DrawCalls::DrawCalls()
 {
@@ -57,7 +58,7 @@ DrawCalls& DrawCalls::operator=(const DrawCalls&)
 }
 
 
-void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, const CRect& Size, int CellID, std::map<CStr, CGUISprite*>& Sprites)
+void GUIRenderer::UpdateDrawCallCache(const CGUI& pGUI, DrawCalls& Calls, const CStr& SpriteName, const CRect& Size, int CellID, std::map<CStr, const CGUISprite*>& Sprites)
 {
 	// This is called only when something has changed (like the size of the
 	// sprite), so it doesn't need to be particularly efficient.
@@ -72,7 +73,7 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 		return;
 
 
-	std::map<CStr, CGUISprite*>::iterator it(Sprites.find(SpriteName));
+	std::map<CStr, const CGUISprite*>::iterator it(Sprites.find(SpriteName));
 	if (it == Sprites.end())
 	{
 		/*
@@ -98,19 +99,15 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 		if (SpriteName.Find("stretched:") != -1)
 		{
 			// TODO: Should check (nicely) that this is a valid file?
-			SGUIImage* Image = new SGUIImage;
+			SGUIImage* Image = new SGUIImage();
 
 			Image->m_TextureName = TextureName;
 			// Allow grayscale images for disabled portraits
 			if (SpriteName.Find("grayscale:") != -1)
 			{
-				Image->m_Effects = new SGUIImageEffects;
+				Image->m_Effects = std::make_shared<SGUIImageEffects>();
 				Image->m_Effects->m_Greyscale = true;
 			}
-
-			CClientArea ca(CRect(0, 0, 0, 0), CRect(0, 0, 100, 100));
-			Image->m_Size = ca;
-			Image->m_TextureSize = ca;
 
 			Sprite->AddImage(Image);
 
@@ -119,18 +116,14 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 		else if (SpriteName.Find("cropped:") != -1)
 		{
 			// TODO: Should check (nicely) that this is a valid file?
-			SGUIImage* Image = new SGUIImage;
+			SGUIImage* Image = new SGUIImage();
 
 			CStr info = SpriteName.AfterLast("cropped:").BeforeFirst(":");
 			double xRatio = info.BeforeFirst(",").ToDouble();
 			double yRatio = info.AfterLast(",").ToDouble();
+			Image->m_TextureSize = CGUISize(CRect(0, 0, 0, 0), CRect(0, 0, 100/xRatio, 100/yRatio));
 
 			Image->m_TextureName = TextureName;
-
-			CClientArea ca(CRect(0, 0, 0, 0), CRect(0, 0, 100, 100));
-			CClientArea cb(CRect(0, 0, 0, 0), CRect(0, 0, 100/xRatio, 100/yRatio));
-			Image->m_Size = ca;
-			Image->m_TextureSize = cb;
 
 			Sprite->AddImage(Image);
 
@@ -139,16 +132,9 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 		if (SpriteName.Find("color:") != -1)
 		{
 			CStrW value = wstring_from_utf8(SpriteName.AfterLast("color:").BeforeFirst(":"));
-			CColor color;
 
-			// Check color is valid
-			if (!GUI<CColor>::ParseString(value, color))
-			{
-				LOGERROR("GUI: Error parsing sprite 'color' (\"%s\")", utf8_from_wstring(value));
-				return;
-			}
-
-			SGUIImage* Image = new SGUIImage;
+			SGUIImage* Image = new SGUIImage();
+			CGUIColor* color;
 
 			// If we are using a mask, this is an effect.
 			// Otherwise we can fallback to the "back color" attribute
@@ -156,15 +142,18 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 			if (SpriteName.Find("textureAsMask:") != -1)
 			{
 				Image->m_TextureName = TextureName;
-				Image->m_Effects = new SGUIImageEffects;
-				Image->m_Effects->m_SolidColor = color;
+				Image->m_Effects = std::make_shared<SGUIImageEffects>();
+				color = &Image->m_Effects->m_SolidColor;
 			}
 			else
-				Image->m_BackColor = color;
+				color = &Image->m_BackColor;
 
-			CClientArea ca(CRect(0, 0, 0, 0), CRect(0, 0, 100, 100));
-			Image->m_Size = ca;
-			Image->m_TextureSize = ca;
+			// Check color is valid
+			if (!CGUI::ParseString<CGUIColor>(&pGUI, value, *color))
+			{
+				LOGERROR("GUI: Error parsing sprite 'color' (\"%s\")", utf8_from_wstring(value));
+				return;
+			}
 
 			Sprite->AddImage(Image);
 
@@ -190,7 +179,7 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 	{
 		SDrawCall Call(*cit); // pointers are safe since we never modify sprites/images after startup
 
-		CRect ObjectSize = (*cit)->m_Size.GetClientArea(Size);
+		CRect ObjectSize = (*cit)->m_Size.GetSize(Size);
 
 		if (ObjectSize.GetWidth() == 0.0 || ObjectSize.GetHeight() == 0.0)
 		{
@@ -229,8 +218,8 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 			Call.m_EnableBlending = !(fabs((*cit)->m_BackColor.a - 1.0f) < 0.0000001f);
 		}
 
-		Call.m_BackColor = (*cit)->m_BackColor;
-		Call.m_BorderColor = (*cit)->m_Border ? (*cit)->m_BorderColor : CColor();
+		Call.m_BackColor = &(*cit)->m_BackColor;
+		Call.m_BorderColor = (*cit)->m_Border ? &(*cit)->m_BorderColor : nullptr;
 		Call.m_DeltaZ = (*cit)->m_DeltaZ;
 
 		if (!Call.m_HasTexture)
@@ -239,7 +228,7 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 		}
 		else if ((*cit)->m_Effects)
 		{
-			if ((*cit)->m_Effects->m_AddColor != CColor())
+			if ((*cit)->m_Effects->m_AddColor != CGUIColor())
 			{
 				Call.m_Shader = g_Renderer.GetShaderManager().LoadEffect(str_gui_add);
 				Call.m_ShaderColorParameter = (*cit)->m_Effects->m_AddColor;
@@ -252,7 +241,7 @@ void GUIRenderer::UpdateDrawCallCache(DrawCalls& Calls, const CStr& SpriteName, 
 			{
 				Call.m_Shader = g_Renderer.GetShaderManager().LoadEffect(str_gui_grayscale);
 			}
-			else if ((*cit)->m_Effects->m_SolidColor != CColor())
+			else if ((*cit)->m_Effects->m_SolidColor != CGUIColor())
 			{
 				Call.m_Shader = g_Renderer.GetShaderManager().LoadEffect(str_gui_solid_mask);
 				Call.m_ShaderColorParameter = (*cit)->m_Effects->m_SolidColor;
@@ -285,7 +274,7 @@ CRect SDrawCall::ComputeTexCoords() const
 	// the screen. The texture is positioned to make those blocks line up.
 
 	// Get the screen's position/size for the block
-	CRect BlockScreen = m_Image->m_TextureSize.GetClientArea(m_ObjectSize);
+	CRect BlockScreen = m_Image->m_TextureSize.GetSize(m_ObjectSize);
 
 	if (m_Image->m_FixedHAspectRatio)
 		BlockScreen.right = BlockScreen.left + BlockScreen.GetHeight() * m_Image->m_FixedHAspectRatio;
@@ -352,11 +341,10 @@ void GUIRenderer::Draw(DrawCalls& Calls, float Z)
 
 	glDisable(GL_BLEND);
 
-	// Set LOD bias so mipmapped textures are prettier
-#if CONFIG2_GLES
-#warning TODO: implement GUI LOD bias for GLES
-#else
-	glTexEnvf(GL_TEXTURE_FILTER_CONTROL, GL_TEXTURE_LOD_BIAS, -1.f);
+#if !CONFIG2_GLES
+	// Set LOD bias so mipmapped textures are prettier in FFP mode.
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::FIXED)
+		glTexEnvf(GL_TEXTURE_FILTER_CONTROL, GL_TEXTURE_LOD_BIAS, -1.f);
 #endif
 
 	// Iterate through each DrawCall, and execute whatever drawing code is being called
@@ -409,7 +397,7 @@ void GUIRenderer::Draw(DrawCalls& Calls, float Z)
 		}
 		else
 		{
-			shader->Uniform(str_color, cit->m_BackColor);
+			shader->Uniform(str_color, *cit->m_BackColor);
 
 			if (cit->m_EnableBlending)
 			{
@@ -437,9 +425,9 @@ void GUIRenderer::Draw(DrawCalls& Calls, float Z)
 			shader->VertexPointer(3, GL_FLOAT, 3*sizeof(float), &data[0]);
 			glDrawArrays(GL_TRIANGLES, 0, 6);
 
-			if (cit->m_BorderColor != CColor())
+			if (cit->m_BorderColor != nullptr)
 			{
-				shader->Uniform(str_color, cit->m_BorderColor);
+				shader->Uniform(str_color, *cit->m_BorderColor);
 
 				data.clear();
 				ADD(Verts.left + 0.5f, Verts.top + 0.5f, Z + cit->m_DeltaZ);
@@ -458,9 +446,8 @@ void GUIRenderer::Draw(DrawCalls& Calls, float Z)
 		glDisable(GL_BLEND);
 	}
 
-#if CONFIG2_GLES
-#warning TODO: implement GUI LOD bias for GLES
-#else
-	glTexEnvf(GL_TEXTURE_FILTER_CONTROL, GL_TEXTURE_LOD_BIAS, 0.f);
+#if !CONFIG2_GLES
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::FIXED)
+		glTexEnvf(GL_TEXTURE_FILTER_CONTROL, GL_TEXTURE_LOD_BIAS, 0.f);
 #endif
 }

@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -38,14 +38,16 @@
 #include "ps/CLogger.h"
 #include "ps/ConfigDB.h"
 #include "ps/Filesystem.h"
+#include "ps/GameSetup/Config.h"
 #include "ps/Profile.h"
+#include "ps/scripting/JSInterface_Debug.h"
 #include "ps/UserReport.h"
 #include "ps/VideoMode.h"
-#include "ps/GameSetup/Config.h"
 
-#ifdef SDL_VIDEO_DRIVER_X11
+// TODO: Support OpenGL platforms which don’t use GLX as well.
+#if defined(SDL_VIDEO_DRIVER_X11) && !CONFIG2_GLES
 #include <GL/glx.h>
-#include "SDL_syswm.h"
+#include <SDL_syswm.h>
 
 // Define the GLX_MESA_query_renderer macros if built with
 // an old Mesa (<10.0) that doesn't provide them
@@ -67,6 +69,7 @@
 
 #endif
 
+static void ReportSDL(const ScriptInterface& scriptInterface, JS::HandleValue settings);
 static void ReportGLLimits(const ScriptInterface& scriptInterface, JS::HandleValue settings);
 
 #if ARCH_X86_X64
@@ -75,20 +78,26 @@ void ConvertCaches(const ScriptInterface& scriptInterface, x86_x64::IdxCache idx
 	JSContext* cx = scriptInterface.GetContext();
 	JSAutoRequest rq(cx);
 
-	scriptInterface.Eval("[]", ret);
+	ScriptInterface::CreateArray(cx, ret);
+
 	for (size_t idxLevel = 0; idxLevel < x86_x64::Cache::maxLevels; ++idxLevel)
 	{
 		const x86_x64::Cache* pcache = x86_x64::Caches(idxCache+idxLevel);
 		if (pcache->m_Type == x86_x64::Cache::kNull || pcache->m_NumEntries == 0)
 			continue;
+
 		JS::RootedValue cache(cx);
-		scriptInterface.Eval("({})", &cache);
-		scriptInterface.SetProperty(cache, "type", static_cast<u32>(pcache->m_Type));
-		scriptInterface.SetProperty(cache, "level", static_cast<u32>(pcache->m_Level));
-		scriptInterface.SetProperty(cache, "associativity", static_cast<u32>(pcache->m_Associativity));
-		scriptInterface.SetProperty(cache, "linesize", static_cast<u32>(pcache->m_EntrySize));
-		scriptInterface.SetProperty(cache, "sharedby", static_cast<u32>(pcache->m_SharedBy));
-		scriptInterface.SetProperty(cache, "totalsize",static_cast<u32>(pcache->TotalSize()));
+
+		ScriptInterface::CreateObject(
+			cx,
+			&cache,
+			"type", static_cast<u32>(pcache->m_Type),
+			"level", static_cast<u32>(pcache->m_Level),
+			"associativity", static_cast<u32>(pcache->m_Associativity),
+			"linesize", static_cast<u32>(pcache->m_EntrySize),
+			"sharedby", static_cast<u32>(pcache->m_SharedBy),
+			"totalsize", static_cast<u32>(pcache->TotalSize()));
+
 		scriptInterface.SetPropertyInt(ret, idxLevel, cache);
 	}
 }
@@ -98,19 +107,25 @@ void ConvertTLBs(const ScriptInterface& scriptInterface, JS::MutableHandleValue 
 	JSContext* cx = scriptInterface.GetContext();
 	JSAutoRequest rq(cx);
 
-	scriptInterface.Eval("[]", ret);
+	ScriptInterface::CreateArray(cx, ret);
+
 	for(size_t i = 0; ; i++)
 	{
 		const x86_x64::Cache* ptlb = x86_x64::Caches(x86_x64::TLB+i);
 		if (!ptlb)
 			break;
+
 		JS::RootedValue tlb(cx);
-		scriptInterface.Eval("({})", &tlb);
-		scriptInterface.SetProperty(tlb, "type", static_cast<u32>(ptlb->m_Type));
-		scriptInterface.SetProperty(tlb, "level", static_cast<u32>(ptlb->m_Level));
-		scriptInterface.SetProperty(tlb, "associativity", static_cast<u32>(ptlb->m_Associativity));
-		scriptInterface.SetProperty(tlb, "pagesize", static_cast<u32>(ptlb->m_EntrySize));
-		scriptInterface.SetProperty(tlb, "entries", static_cast<u32>(ptlb->m_NumEntries));
+
+		ScriptInterface::CreateObject(
+			cx,
+			&tlb,
+			"type", static_cast<u32>(ptlb->m_Type),
+			"level", static_cast<u32>(ptlb->m_Level),
+			"associativity", static_cast<u32>(ptlb->m_Associativity),
+			"pagesize", static_cast<u32>(ptlb->m_EntrySize),
+			"entries", static_cast<u32>(ptlb->m_NumEntries));
+
 		scriptInterface.SetPropertyInt(ret, i, tlb);
 	}
 }
@@ -205,6 +220,8 @@ void RunHardwareDetection()
 	JSContext* cx = scriptInterface.GetContext();
 	JSAutoRequest rq(cx);
 
+	JSI_Debug::RegisterScriptFunctions(scriptInterface); // Engine.DisplayErrorDialog
+
 	scriptInterface.RegisterFunction<void, bool, &SetDisableAudio>("SetDisableAudio");
 	scriptInterface.RegisterFunction<void, bool, &SetDisableS3TC>("SetDisableS3TC");
 	scriptInterface.RegisterFunction<void, bool, &SetDisableShadows>("SetDisableShadows");
@@ -234,7 +251,7 @@ void RunHardwareDetection()
 	// includes some fields that aren't directly useful for the hwdetect script)
 
 	JS::RootedValue settings(cx);
-	scriptInterface.Eval("({})", &settings);
+	ScriptInterface::CreateObject(cx, &settings);
 
 	scriptInterface.SetProperty(settings, "os_unix", OS_UNIX);
 	scriptInterface.SetProperty(settings, "os_bsd", OS_BSD);
@@ -268,6 +285,8 @@ void RunHardwareDetection()
 
 	scriptInterface.SetProperty(settings, "snd_card", snd_card);
 	scriptInterface.SetProperty(settings, "snd_drv_ver", snd_drv_ver);
+
+	ReportSDL(scriptInterface, settings);
 
 	ReportGLLimits(scriptInterface, settings);
 
@@ -337,7 +356,7 @@ void RunHardwareDetection()
 	scriptInterface.SetProperty(settings, "timer_resolution", timer_Resolution());
 	
 	// The version should be increased for every meaningful change.
-	const int reportVersion = 12;
+	const int reportVersion = 13;
 
 	// Send the same data to the reporting system
 	g_UserReporter.SubmitReport(
@@ -349,6 +368,23 @@ void RunHardwareDetection()
 	// Run the detection script:
 	JS::RootedValue global(cx, scriptInterface.GetGlobalObject());
 	scriptInterface.CallFunctionVoid(global, "RunHardwareDetection", settings);
+}
+
+static void ReportSDL(const ScriptInterface& scriptInterface, JS::HandleValue settings)
+{
+	SDL_version build, runtime;
+	SDL_VERSION(&build);
+
+	char version[16];
+	snprintf(version, ARRAY_SIZE(version), "%d.%d.%d", build.major, build.minor, build.patch);
+	scriptInterface.SetProperty(settings, "sdl_build_version", version);
+
+	SDL_GetVersion(&runtime);
+	snprintf(version, ARRAY_SIZE(version), "%d.%d.%d", runtime.major, runtime.minor, runtime.patch);
+	scriptInterface.SetProperty(settings, "sdl_runtime_version", version);
+
+	const char* backend = GetSDLSubsystem(g_VideoMode.GetWindow());
+	scriptInterface.SetProperty(settings, "sdl_video_backend", backend ? backend : "unknown");
 }
 
 static void ReportGLLimits(const ScriptInterface& scriptInterface, JS::HandleValue settings)
@@ -697,7 +733,8 @@ static void ReportGLLimits(const ScriptInterface& scriptInterface, JS::HandleVal
 #endif // CONFIG2_GLES
 
 
-#ifdef SDL_VIDEO_DRIVER_X11
+// TODO: Support OpenGL platforms which don’t use GLX as well.
+#if defined(SDL_VIDEO_DRIVER_X11) && !CONFIG2_GLES
 
 #define GLXQCR_INTEGER(id) do { \
 	unsigned int i = UINT_MAX; \

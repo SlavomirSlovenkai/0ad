@@ -5,9 +5,9 @@
   </Auras>
   <Identity>
     <Civ>brit</Civ>
-    <GenericName>Boudicca (Sword)</GenericName>
-    <SpecificName>Boadicea</SpecificName>
-    <Gender>female</Gender>
+    <GenericName>Boudicca</GenericName>
+    <SpecificName>Boudica</SpecificName>
+    <Phenotype>female</Phenotype>
     <Icon>units/brit_hero_boudicca.png</Icon>
   </Identity>
   <VisualActor>

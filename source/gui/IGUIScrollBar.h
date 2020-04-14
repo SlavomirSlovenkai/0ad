@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -16,28 +16,18 @@
  */
 
 /*
-A GUI ScrollBar
-
---Overview--
-
 	A GUI Scrollbar, this class doesn't present all functionality
 	to the scrollbar, it just controls the drawing and a wrapper
 	for interaction with it.
-
---Usage--
-
-	Used in everywhere scrollbars are needed, like in a combobox for instance.
-
---More info--
-
-	Check GUI.h
-
 */
 
 #ifndef INCLUDED_IGUISCROLLBAR
 #define INCLUDED_IGUISCROLLBAR
 
-#include "GUI.h"
+#include "gui/CGUISprite.h"
+
+class IGUIScrollBarOwner;
+struct SGUIMessage;
 
 /**
  * The GUI Scroll-bar style. Tells us how scroll-bars look and feel.
@@ -49,6 +39,11 @@ A GUI ScrollBar
  */
 struct SGUIScrollBarStyle
 {
+	// CGUISpriteInstance makes this NONCOPYABLE implicitly, make it explicit
+	NONCOPYABLE(SGUIScrollBarStyle);
+	MOVABLE(SGUIScrollBarStyle);
+	SGUIScrollBarStyle() = default;
+
 	//--------------------------------------------------------
 	/** @name General Settings */
 	//--------------------------------------------------------
@@ -155,7 +150,9 @@ struct SGUIScrollBarStyle
 class IGUIScrollBar
 {
 public:
-	IGUIScrollBar();
+	NONCOPYABLE(IGUIScrollBar);
+
+	IGUIScrollBar(CGUI& pGUI);
 	virtual ~IGUIScrollBar();
 
 public:
@@ -239,18 +236,6 @@ public:
 	 * @param pOwner Pointer to host object.
 	 */
 	void SetHostObject(IGUIScrollBarOwner* pOwner) { m_pHostObject = pOwner; }
-
-	/**
-	 * Get GUI pointer
-	 * @return CGUI pointer
-	 */
-	CGUI* GetGUI() const;
-
-	/**
-	 * Set GUI pointer
-	 * @param pGUI pointer to CGUI object.
-	 */
-	void SetGUI(CGUI* pGUI) { m_pGUI = pGUI; }
 
 	/**
 	 * Set Width
@@ -391,17 +376,17 @@ protected:
 	/**
 	 * Pointer to scroll bar style used.
 	 */
-	SGUIScrollBarStyle *m_pStyle;
+	SGUIScrollBarStyle* m_pStyle;
 
 	/**
 	 * Host object, prerequisite!
 	 */
-	IGUIScrollBarOwner *m_pHostObject;
+	IGUIScrollBarOwner* m_pHostObject;
 
 	/**
 	 * Reference to CGUI object, these cannot work stand-alone
 	 */
-	CGUI *m_pGUI;
+	CGUI& m_pGUI;
 
 	/**
 	 * Mouse position when bar was pressed

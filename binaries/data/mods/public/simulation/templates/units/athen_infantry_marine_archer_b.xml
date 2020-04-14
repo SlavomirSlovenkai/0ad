@@ -2,8 +2,9 @@
 <Entity parent="template_unit_infantry_ranged_archer">
   <Builder>
     <Entities datatype="tokens">
-      structures/athen_gymnasion
-      structures/athen_theatron
+      structures/athen_tower_artillery
+      structures/athen_gymnasium
+      structures/athen_theater
       structures/athen_prytaneion
       structures/athen_royal_stoa
     </Entities>
@@ -16,12 +17,12 @@
   </Cost>
   <Identity>
     <Civ>athen</Civ>
+    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <Lang>greek</Lang>
     <SelectionGroupName>units/athen_infantry_marine_archer_b</SelectionGroupName>
-    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <GenericName>Cretan Mercenary Archer</GenericName>
     <SpecificName>Toxótēs Krētikós</SpecificName>
-    <Icon>units/hele_infantry_archer.png</Icon>
+    <Icon>units/mace_infantry_archer.png</Icon>
     <RequiredTechnology>hellenes/special_iphicratean_reforms</RequiredTechnology>
   </Identity>
   <Promotion>

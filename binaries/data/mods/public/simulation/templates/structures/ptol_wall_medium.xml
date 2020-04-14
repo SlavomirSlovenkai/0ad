@@ -19,8 +19,7 @@
   </GarrisonHolder>
   <Identity>
     <Civ>ptol</Civ>
-    <SelectionGroupName>structures/ptol_wallset_stone</SelectionGroupName>
-    <SpecificName>h-n-njwt</SpecificName>
+    <SpecificName>Teichos</SpecificName>
   </Identity>
   <Obstruction>
     <Static width="26.0" depth="8.0"/>

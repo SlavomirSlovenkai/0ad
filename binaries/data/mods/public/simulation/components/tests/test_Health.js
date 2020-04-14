@@ -1,5 +1,4 @@
-Engine.LoadComponentScript("interfaces/TechnologyManager.js");
-Engine.LoadComponentScript("interfaces/AuraManager.js");
+Engine.LoadComponentScript("interfaces/ModifiersManager.js");
 Engine.LoadHelperScript("Player.js");
 Engine.LoadHelperScript("ValueModification.js");
 
@@ -64,7 +63,7 @@ var change = cmpHealth.Reduce(25);
 TS_ASSERT_EQUALS(injured_flag, true);
 
 TS_ASSERT_EQUALS(change.killed, false);
-TS_ASSERT_EQUALS(change.change, -25);
+TS_ASSERT_EQUALS(change.HPchange, -25);
 TS_ASSERT_EQUALS(cmpHealth.GetHitpoints(), 25);
 TS_ASSERT_EQUALS(cmpHealth.GetMaxHitpoints(), 50);
 TS_ASSERT_EQUALS(cmpHealth.IsInjured(), true);
@@ -107,7 +106,7 @@ TS_ASSERT_EQUALS(corpse_entity, "corpse|test");
 TS_ASSERT_EQUALS(injured_flag, false);
 
 TS_ASSERT_EQUALS(change.killed, true);
-TS_ASSERT_EQUALS(change.change, -50);
+TS_ASSERT_EQUALS(change.HPchange, -50);
 TS_ASSERT_EQUALS(cmpHealth.GetHitpoints(), 0);
 TS_ASSERT_EQUALS(cmpHealth.GetMaxHitpoints(), 50);
 TS_ASSERT_EQUALS(cmpHealth.IsInjured(), false);
@@ -122,7 +121,7 @@ TS_ASSERT_EQUALS(cmpHealth.IsInjured(), false);
 // Check that we can't die twice.
 change = cmpHealth.Reduce(50);
 TS_ASSERT_EQUALS(change.killed, false);
-TS_ASSERT_EQUALS(change.change, 0);
+TS_ASSERT_EQUALS(change.HPchange, 0);
 TS_ASSERT_EQUALS(cmpHealth.GetHitpoints(), 0);
 TS_ASSERT_EQUALS(cmpHealth.GetMaxHitpoints(), 50);
 TS_ASSERT_EQUALS(cmpHealth.IsInjured(), false);
@@ -132,7 +131,7 @@ cmpHealth = setEntityUp();
 // Check that we still die with > Max HP of damage.
 change = cmpHealth.Reduce(60);
 TS_ASSERT_EQUALS(change.killed, true);
-TS_ASSERT_EQUALS(change.change, -50);
+TS_ASSERT_EQUALS(change.HPchange, -50);
 TS_ASSERT_EQUALS(cmpHealth.GetHitpoints(), 0);
 TS_ASSERT_EQUALS(cmpHealth.GetMaxHitpoints(), 50);
 TS_ASSERT_EQUALS(cmpHealth.IsInjured(), false);

@@ -266,20 +266,35 @@ CMessage* CMessageTerritoryPositionChanged::FromJSVal(const ScriptInterface& scr
 
 ////////////////////////////////
 
-JS::Value CMessageMotionChanged::ToJSVal(const ScriptInterface& scriptInterface) const
+const std::array<const char*, CMessageMotionUpdate::UpdateType::LENGTH> CMessageMotionUpdate::UpdateTypeStr = { {
+	"likelySuccess", "likelyFailure", "obstructed"
+} };
+
+JS::Value CMessageMotionUpdate::ToJSVal(const ScriptInterface& scriptInterface) const
 {
 	TOJSVAL_SETUP();
-	SET_MSG_PROPERTY(starting);
-	SET_MSG_PROPERTY(error);
+	JS::RootedValue prop(cx);
+
+	if (!JS_SetProperty(cx, obj, UpdateTypeStr[updateType], JS::TrueHandleValue))
+		return JS::UndefinedValue();
+
 	return JS::ObjectValue(*obj);
 }
 
-CMessage* CMessageMotionChanged::FromJSVal(const ScriptInterface& scriptInterface, JS::HandleValue val)
+CMessage* CMessageMotionUpdate::FromJSVal(const ScriptInterface& scriptInterface, JS::HandleValue val)
 {
 	FROMJSVAL_SETUP();
-	GET_MSG_PROPERTY(bool, starting);
-	GET_MSG_PROPERTY(bool, error);
-	return new CMessageMotionChanged(starting, error);
+	GET_MSG_PROPERTY(std::wstring, updateString);
+
+	if (updateString == L"likelySuccess")
+		return new CMessageMotionUpdate(CMessageMotionUpdate::LIKELY_SUCCESS);
+	if (updateString == L"likelyFailure")
+		return new CMessageMotionUpdate(CMessageMotionUpdate::LIKELY_FAILURE);
+	if (updateString == L"obstructed")
+		return new CMessageMotionUpdate(CMessageMotionUpdate::OBSTRUCTED);
+
+	LOGWARNING("CMessageMotionUpdate::FromJSVal passed wrong updateString");
+	return NULL;
 }
 
 ////////////////////////////////

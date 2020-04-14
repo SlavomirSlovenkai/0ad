@@ -2,16 +2,16 @@
 <Entity parent="template_unit">
   <Attack>
     <Capture>
-      <Value>5</Value>
+      <Capture>5</Capture>
       <MaxRange>4</MaxRange>
       <RepeatTime>1000</RepeatTime>
       <RestrictedClasses datatype="tokens">Field Palisade SiegeWall StoneWall</RestrictedClasses>
     </Capture>
   </Attack>
   <Identity>
+    <Classes datatype="tokens">Human</Classes>
+    <VisibleClasses datatype="tokens">Soldier Champion</VisibleClasses>
     <GenericName>Champion Unit</GenericName>
-    <Classes datatype="tokens">Organic Human</Classes>
-    <VisibleClasses datatype="tokens">Champion Soldier</VisibleClasses>
     <RequiredTechnology>phase_city</RequiredTechnology>
   </Identity>
   <Loot>
@@ -23,8 +23,8 @@
   </Loot>
   <Sound>
     <SoundGroups>
-      <attack_impact_ranged>attack/impact/arrow_metal.xml</attack_impact_ranged>
-      <attack_ranged>attack/weapon/arrowfly.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/arrow_impact.xml</attack_impact_ranged>
+      <attack_ranged>attack/weapon/bow_attack.xml</attack_ranged>
     </SoundGroups>
   </Sound>
 </Entity>

@@ -35,11 +35,14 @@
  * Each region is a vertex in the hierarchical pathfinder's graph.
  * When two regions in adjacent chunks are connected by passable navcells,
  * the graph contains an edge between the corresponding two vertexes.
- * (There will never be an edge between two regions in the same chunk.)
+ * By design, there can never be an edge between two regions in the same chunk.
  *
- * Since regions are typically fairly large, it is possible to determine
- * connectivity between any two navcells by mapping them onto their appropriate
- * region and then doing a relatively small graph search.
+ * Those fixed-size chunks are used to efficiently compute "global regions" by effectively flood-filling.
+ * Those can then be used to immediately determine if two reachables points are connected.
+ *
+ * The main use of this class is to convert an arbitrary PathGoal to a reachable navcell.
+ * This happens in MakeGoalReachable.
+ *
  */
 
 #ifdef TEST
@@ -57,6 +60,8 @@ class HierarchicalPathfinder
 	friend class TestHierarchicalPathfinder;
 #endif
 public:
+	typedef u32 GlobalRegionID;
+
 	struct RegionID
 	{
 		u8 ci, cj; // chunk ID
@@ -82,6 +87,14 @@ public:
 		{
 			return ((ci == b.ci) && (cj == b.cj) && (r == b.r));
 		}
+
+		// Returns the distance from the center to the point (i, j)
+		inline u32 DistanceTo(u16 i, u16 j) const
+		{
+			return (ci * CHUNK_SIZE + CHUNK_SIZE/2 - i) * (ci * CHUNK_SIZE + CHUNK_SIZE/2 - i) +
+			       (cj * CHUNK_SIZE + CHUNK_SIZE/2 - j) * (cj * CHUNK_SIZE + CHUNK_SIZE/2 - j);
+		}
+
 	};
 
 	HierarchicalPathfinder();
@@ -98,6 +111,9 @@ public:
 
 	RegionID Get(u16 i, u16 j, pass_class_t passClass) const;
 
+	GlobalRegionID GetGlobalRegion(u16 i, u16 j, pass_class_t passClass) const;
+	GlobalRegionID GetGlobalRegion(RegionID region, pass_class_t passClass) const;
+
 	/**
 	 * Updates @p goal so that it's guaranteed to be reachable from the navcell
 	 * @p i0, @p j0 (which is assumed to be on a passable navcell).
@@ -107,8 +123,10 @@ public:
 	 *
 	 * In the case of a non-point reachable goal, it is replaced with a point goal
 	 * at the reachable navcell of the goal which is nearest to the starting navcell.
+	 *
+	 * @returns true if the goal was reachable, false otherwise.
 	 */
-	void MakeGoalReachable(u16 i0, u16 j0, PathGoal& goal, pass_class_t passClass) const;
+	bool MakeGoalReachable(u16 i0, u16 j0, PathGoal& goal, pass_class_t passClass) const;
 
 	/**
 	 * Updates @p i, @p j (which is assumed to be an impassable navcell)
@@ -163,27 +181,64 @@ private:
 #endif
 	};
 
+	const Chunk& GetChunk(u8 ci, u8 cj, pass_class_t passClass) const
+	{
+		return m_Chunks.at(passClass).at(cj * m_ChunksW + ci);
+	}
+
 	typedef std::map<RegionID, std::set<RegionID> > EdgesMap;
 
 	void ComputeNeighbors(EdgesMap& edges, Chunk& a, Chunk& b, bool transpose, bool opposite) const;
 	void RecomputeAllEdges(pass_class_t passClass, EdgesMap& edges);
 	void UpdateEdges(u8 ci, u8 cj, pass_class_t passClass, EdgesMap& edges);
 
-	void FindReachableRegions(RegionID from, std::set<RegionID>& reachable, pass_class_t passClass) const;
-
-	void FindPassableRegions(std::set<RegionID>& regions, pass_class_t passClass) const;
+	void UpdateGlobalRegions(const std::map<pass_class_t, std::vector<RegionID> >& needNewGlobalRegionMap);
 
 	/**
-	 * Updates @p iGoal and @p jGoal to the navcell that is the nearest to the
-	 * initial goal coordinates, in one of the given @p regions.
-	 * (Assumes @p regions is non-empty.)
+	 * Returns all reachable regions, optionally ordered in a specific manner.
 	 */
-	void FindNearestNavcellInRegions(const std::set<RegionID>& regions, u16& iGoal, u16& jGoal, pass_class_t passClass) const;
+	template<typename Ordering>
+	void FindReachableRegions(RegionID from, std::set<RegionID, Ordering>& reachable, pass_class_t passClass) const;
 
-	const Chunk& GetChunk(u8 ci, u8 cj, pass_class_t passClass) const
+	struct SortByCenterToPoint
 	{
-		return m_Chunks.at(passClass).at(cj * m_ChunksW + ci);
-	}
+		SortByCenterToPoint(u16 i, u16 j): gi(i), gj(j) {};
+		bool operator()(const HierarchicalPathfinder::RegionID& a, const HierarchicalPathfinder::RegionID& b) const
+		{
+			if (a.DistanceTo(gi, gj) < b.DistanceTo(gi, gj))
+				return true;
+			if (a.DistanceTo(gi, gj) > b.DistanceTo(gi, gj))
+				return false;
+			return a.r < b.r;
+		}
+		u16 gi, gj;
+	};
+
+	void FindNearestNavcellInRegions(const std::set<RegionID, SortByCenterToPoint>& regions,
+									 u16& iGoal, u16& jGoal, pass_class_t passClass) const;
+
+	struct InterestingRegion {
+		RegionID region;
+		u16 bestI;
+		u16 bestJ;
+	};
+
+	struct SortByBestToPoint
+	{
+		SortByBestToPoint(u16 i, u16 j): gi(i), gj(j) {};
+		bool operator()(const InterestingRegion& a, const InterestingRegion& b) const
+		{
+			if ((a.bestI - gi) * (a.bestI - gi) + (a.bestJ - gj) * (a.bestJ - gj) < (b.bestI - gi) * (b.bestI - gi) + (b.bestJ - gj) * (b.bestJ - gj))
+				return true;
+			if ((a.bestI - gi) * (a.bestI - gi) + (a.bestJ - gj) * (a.bestJ - gj) > (b.bestI - gi) * (b.bestI - gi) + (b.bestJ - gj) * (b.bestJ - gj))
+				return false;
+			return a.region.r < b.region.r;
+		}
+		u16 gi, gj;
+	};
+
+	// Returns the region along with the best cell for optimisation.
+	void FindGoalRegionsAndBestNavcells(u16 i0, u16 j0, u16 gi, u16 gj, const PathGoal& goal, std::set<InterestingRegion, SortByBestToPoint>& regions, pass_class_t passClass) const;
 
 	void FillRegionOnGrid(const RegionID& region, pass_class_t passClass, u16 value, Grid<u16>& grid) const;
 
@@ -192,6 +247,9 @@ private:
 	std::map<pass_class_t, std::vector<Chunk> > m_Chunks;
 
 	std::map<pass_class_t, EdgesMap> m_Edges;
+
+	std::map<pass_class_t, std::map<RegionID, GlobalRegionID> > m_GlobalRegions;
+	GlobalRegionID m_NextGlobalRegionID;
 
 	// Passability classes for which grids will be updated when calling Update
 	std::map<std::string, pass_class_t> m_PassClassMasks;

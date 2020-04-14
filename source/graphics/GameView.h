@@ -61,18 +61,12 @@ public:
 	CVector3D GetCameraPosition() const;
 	CVector3D GetCameraRotation() const;
 	float GetCameraZoom() const;
-	float GetNear() const;
-	float GetFar() const;
-	float GetFOV() const;
 
-	void SetCamera(CVector3D Pos, float RotX, float RotY, float Zoom);
+	void SetCamera(const CVector3D& pos, float rotX, float rotY, float zoom);
 	void MoveCameraTarget(const CVector3D& target);
 	void ResetCameraTarget(const CVector3D& target);
-	void CameraFollow(entity_id_t entity, bool firstPerson);
+	void FollowEntity(entity_id_t entity, bool firstPerson);
 	entity_id_t GetFollowedEntity();
-
-	// Set projection of current camera using near, far, and FOV values
-	void SetCameraProjection();
 
 	#define DECLARE_BOOLEAN_SETTING(NAME) \
 	bool Get##NAME##Enabled() const; \
@@ -99,9 +93,6 @@ private:
 
 	// Checks whether lighting environment has changed and update vertex data if necessary.
 	void CheckLightEnv();
-
-	CVector3D GetSmoothPivot(CCamera &camera) const;
-	void ResetCameraAngleZoom();
 
 	CGameViewImpl* m;
 };

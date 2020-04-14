@@ -72,7 +72,7 @@
 		{
 			"Name": "Ashoka's Religious Support",
 			"History": "Ashoka the Great sent embassies West to spread knowledge of the Buddha.",
-			"Description": "Allied temples −50% resource costs and building time; temple technologies −50% resource costs and research time."
+			"Description": "Allied Temples −50% resource costs and building time; Temple technologies −50% resource costs and research time."
 		}
 	],
 	"Structures":
@@ -98,7 +98,7 @@
 	],
 	"WallSets":
 	[
-		"other/wallset_palisade",
+		"structures/wallset_palisade",
 		"structures/maur_wallset_stone"
 	],
 	"StartEntities":
@@ -136,22 +136,20 @@
 		"special/formations/column_open",
 		"special/formations/line_open",
 		"special/formations/flank",
+		"special/formations/battle_line",
 		"special/formations/skirmish",
-		"special/formations/wedge",
-		"special/formations/battle_line"
+		"special/formations/wedge"
 	],
 	"AINames":
 	[
 		"Chandragupta Maurya",
-		"Ashoka the Great",
-		"Ashokavardhan Maurya",
-		"Acharya Bhadrabahu",
 		"Bindusara Maurya",
-		"Dasaratha Maurya",
+		"Ashoka the Great",
+		"Dasharatha Maurya",
 		"Samprati Maurya",
-		"Salisuka Maurya",
+		"Shalishuka Maurya",
 		"Devavarman Maurya",
-		"Satadhanvan Maurya",
+		"Shatadhanvan Maurya",
 		"Brihadratha Maurya"
 	],
 	"SkirmishReplacements":

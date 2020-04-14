@@ -2,7 +2,6 @@
 <Entity parent="template_unit_infantry_ranged_slinger">
   <Builder>
     <Entities datatype="tokens">
-      structures/brit_crannog
       structures/brit_kennel
       structures/brit_rotarymill
     </Entities>
@@ -11,8 +10,8 @@
     <Civ>brit</Civ>
     <SelectionGroupName>units/brit_infantry_slinger_b</SelectionGroupName>
     <GenericName>Celtic Slinger</GenericName>
-    <SpecificName>Iaosae</SpecificName>
-    <Icon>units/celt_infantry_slinger.png</Icon>
+    <SpecificName>Talmoris</SpecificName>
+    <Icon>units/gaul_infantry_slinger.png</Icon>
   </Identity>
   <Promotion>
     <Entity>units/brit_infantry_slinger_a</Entity>

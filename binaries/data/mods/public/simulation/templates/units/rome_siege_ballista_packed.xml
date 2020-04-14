@@ -2,12 +2,16 @@
 <Entity parent="template_unit_siege_stonethrower">
   <Attack>
     <Ranged>
-      <Pierce op="mul">1.1</Pierce>
-      <Crush op="mul">1.1</Crush>
-      <MaxRange op="add">8.0</MaxRange>
-      <Splash>
+      <Damage>
         <Pierce op="mul">1.1</Pierce>
         <Crush op="mul">1.1</Crush>
+      </Damage>
+      <MaxRange op="add">8</MaxRange>
+      <Splash>
+        <Damage>
+          <Pierce op="mul">1.1</Pierce>
+          <Crush op="mul">1.1</Crush>
+        </Damage>
       </Splash>
     </Ranged>
   </Attack>
@@ -25,6 +29,6 @@
     <State>packed</State>
   </Pack>
   <VisualActor>
-    <Actor>units/romans/siege_rock_pivot_packed.xml</Actor>
+    <Actor>units/romans/siege_rock_packed.xml</Actor>
   </VisualActor>
 </Entity>

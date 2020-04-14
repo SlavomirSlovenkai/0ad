@@ -1,15 +1,16 @@
 # Translation template for Pyrogenesis - Mod Selector.
-# Copyright (C) 2018 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the Pyrogenesis - Mod Selector project.
 # 
 # Translators:
-# Gags98 <gagspapikyan@gmail.com>, 2016
+# Gagik Papikyan <gagspapikyan@gmail.com>, 2016
+# Vahe Avagyan <vahe-a@outlook.fr>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2018-12-31 09:46+0100\n"
-"PO-Revision-Date: 2018-12-31 15:46+0000\n"
-"Last-Translator: Gags98 <gagspapikyan@gmail.com>\n"
+"POT-Creation-Date: 2020-02-21 08:09+0000\n"
+"PO-Revision-Date: 2020-02-21 14:00+0000\n"
+"Last-Translator: Gagik Papikyan <gagspapikyan@gmail.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/wildfire-games/0ad/language/hy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,16 +18,16 @@ msgstr ""
 "Language: hy\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gui/common/functions_msgbox.js:57
+#: gui/common/functions_msgbox.js:25
 #, javascript-format
 msgid ""
 "Opening %(url)s\n"
 " in default web browser. Please wait…"
-msgstr ""
+msgstr "Բացում %(url)s \n հիմնական համացանցային դիտարկիչով։ Խնդրում ենք սպասեք..."
 
-#: gui/common/functions_msgbox.js:60
+#: gui/common/functions_msgbox.js:28
 msgid "Opening page"
-msgstr ""
+msgstr "Էջի բացում"
 
 #: gui/common/l10n.js:9
 msgctxt "filesize unit"
@@ -58,16 +59,16 @@ msgstr ""
 #. project.org/formatparse/datetime for a guide to the meaning of the letters.
 #: gui/common/l10n.js:46
 msgid "mm:ss"
-msgstr ""
+msgstr "mm:ss"
 
 #: gui/common/l10n.js:46
 msgid "HH:mm:ss"
-msgstr ""
+msgstr "HH:mm:ss"
 
 #: gui/common/l10n.js:143
 msgctxt "enumeration"
 msgid ", "
-msgstr ""
+msgstr ","
 
 #: gui/common/mod.js:17
 #, javascript-format
@@ -77,7 +78,7 @@ msgstr ""
 
 #: gui/common/mod.js:20
 msgid ", "
-msgstr ""
+msgstr ","
 
 #: gui/common/mod.js:28
 #, javascript-format
@@ -164,7 +165,7 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
-#: gui/modio/modio.js:136 gui/modmod/modmod.xml:(caption):184
+#: gui/modio/modio.js:136 gui/modmod/modmod.xml:(caption):181
 msgid "Cancel"
 msgstr "Չեղարկել"
 
@@ -211,7 +212,7 @@ msgstr ""
 
 #: gui/modio/modio.js:332
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #. Translation: Average download speed, used to give the user a very rough and
 #. naive idea of the download time. For example: 123.4 KiB/s
@@ -220,28 +221,30 @@ msgstr ""
 msgid "%(number)s %(unit)s/s"
 msgstr ""
 
-#: gui/modmod/modmod.js:102 gui/modmod/modmod.js:233
+#: gui/modmod/modmod.js:107 gui/modmod/modmod.js:254 gui/modmod/modmod.js:275
 msgid "Filter"
 msgstr "Զտիչ"
 
-#: gui/modmod/modmod.js:286
+#: gui/modmod/modmod.js:118 gui/modmod/modmod.js:407
+msgctxt "mod activation"
+msgid "Enable"
+msgstr "Միացնել"
+
+#: gui/modmod/modmod.js:317
 #, javascript-format
 msgid "Dependency not met: %(dep)s"
 msgstr ""
 
-#: gui/modmod/modmod.js:292
+#: gui/modmod/modmod.js:323
 msgid "All dependencies met"
 msgstr ""
 
-#: gui/modmod/modmod.js:370
-msgid "Enable"
-msgstr "Միացնել"
-
-#: gui/modmod/modmod.js:370
+#: gui/modmod/modmod.js:408
+msgctxt "mod activation"
 msgid "Disable"
 msgstr ""
 
-#: gui/modmod/modmod.js:380
+#: gui/modmod/modmod.js:416
 msgid "No mod has been selected."
 msgstr "Խաղի ոչ մի ձևափոխություն ընտրված չէ։"
 
@@ -259,7 +262,7 @@ msgstr ""
 
 #: gui/msgbox/msgbox.js:25
 msgid "OK"
-msgstr ""
+msgstr "Եղավ"
 
 #. Translation: Label of a button that when pressed opens the Terms and
 #. Conditions in the default webbrowser.
@@ -276,13 +279,13 @@ msgstr ""
 msgid "mod.io Mods"
 msgstr ""
 
-#: gui/modio/modio.xml:(caption):25 gui/modmod/modmod.xml:(caption):56
+#: gui/modio/modio.xml:(caption):25 gui/modmod/modmod.xml:(caption):55
 msgid "Available Mods"
 msgstr "Խաղի հասանելի ձևափոխություներ"
 
 #: gui/modio/modio.xml:(caption):73
 msgid "Back"
-msgstr ""
+msgstr "Գաղտնաբառ"
 
 #: gui/modio/modio.xml:(caption):78
 msgid "Refresh List"
@@ -292,18 +295,18 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: gui/modio/modio.xml:(heading):53 gui/modmod/modmod.xml:(heading):76
-#: gui/modmod/modmod.xml:(heading):116
+#: gui/modio/modio.xml:(heading):53 gui/modmod/modmod.xml:(heading):75
+#: gui/modmod/modmod.xml:(heading):115
 msgid "Name"
 msgstr "Անուն"
 
-#: gui/modio/modio.xml:(heading):56 gui/modmod/modmod.xml:(heading):79
-#: gui/modmod/modmod.xml:(heading):119
+#: gui/modio/modio.xml:(heading):56 gui/modmod/modmod.xml:(heading):78
+#: gui/modmod/modmod.xml:(heading):118
 msgid "Version"
 msgstr "Տարբերակ"
 
-#: gui/modio/modio.xml:(heading):59 gui/modmod/modmod.xml:(heading):85
-#: gui/modmod/modmod.xml:(heading):125
+#: gui/modio/modio.xml:(heading):59 gui/modmod/modmod.xml:(heading):84
+#: gui/modmod/modmod.xml:(heading):124
 msgid "Mod Label"
 msgstr "Խաղի ձևափոխության պիտակ"
 
@@ -311,8 +314,8 @@ msgstr "Խաղի ձևափոխության պիտակ"
 msgid "File Size"
 msgstr ""
 
-#: gui/modio/modio.xml:(heading):65 gui/modmod/modmod.xml:(heading):88
-#: gui/modmod/modmod.xml:(heading):128
+#: gui/modio/modio.xml:(heading):65 gui/modmod/modmod.xml:(heading):87
+#: gui/modmod/modmod.xml:(heading):127
 msgid "Dependencies"
 msgstr ""
 
@@ -320,55 +323,51 @@ msgstr ""
 msgid "Modifications"
 msgstr "Փոփոխություններ"
 
-#: gui/modmod/modmod.xml:(caption):37
+#: gui/modmod/modmod.xml:(caption):36
 msgid "Negate"
 msgstr "Ժխտել"
 
-#: gui/modmod/modmod.xml:(caption):49
+#: gui/modmod/modmod.xml:(caption):48
 msgid "Description"
 msgstr "Նկարագրություն"
 
-#: gui/modmod/modmod.xml:(caption):100
+#: gui/modmod/modmod.xml:(caption):99
 msgid "Enabled Mods"
 msgstr "Միացնել խաղի ձևափոխություները"
 
 #: gui/modmod/modmod.xml:(caption):167
-msgid "Enable/Disable"
-msgstr ""
-
-#: gui/modmod/modmod.xml:(caption):170
 msgid "Visit Website"
 msgstr ""
 
-#: gui/modmod/modmod.xml:(caption):179
+#: gui/modmod/modmod.xml:(caption):176
 msgid "Quit"
 msgstr "Ելք"
 
-#: gui/modmod/modmod.xml:(caption):189
+#: gui/modmod/modmod.xml:(caption):186
 msgid "Help"
 msgstr ""
 
-#: gui/modmod/modmod.xml:(caption):194
+#: gui/modmod/modmod.xml:(caption):191
 msgid "Download Mods"
 msgstr ""
 
-#: gui/modmod/modmod.xml:(caption):199
+#: gui/modmod/modmod.xml:(caption):196
 msgid "Save Configuration"
 msgstr "Պահպանել կարգավորումը"
 
-#: gui/modmod/modmod.xml:(caption):204
+#: gui/modmod/modmod.xml:(caption):201
 msgid "Start Mods"
 msgstr "Սկսել խաղի ձևափոխություները"
 
-#: gui/modmod/modmod.xml:(heading):82 gui/modmod/modmod.xml:(heading):122
+#: gui/modmod/modmod.xml:(heading):81 gui/modmod/modmod.xml:(heading):121
 msgid "(Folder)"
 msgstr "(Թղթապանակ)"
 
-#: gui/modmod/modmod.xml:(heading):91 gui/modmod/modmod.xml:(heading):131
+#: gui/modmod/modmod.xml:(heading):90 gui/modmod/modmod.xml:(heading):130
 msgid "Website"
-msgstr "Կայքէջ"
+msgstr "Կայք"
 
-#: gui/modmod/modmod.xml:(tooltip):146 gui/modmod/modmod.xml:(tooltip):160
+#: gui/modmod/modmod.xml:(tooltip):145 gui/modmod/modmod.xml:(tooltip):159
 msgid ""
 "Change the order in which mods are launched. This should match the mods "
 "dependencies."
@@ -380,7 +379,7 @@ msgstr ""
 
 #: gui/modmod/help/help.xml:(caption):21
 msgid "Close"
-msgstr ""
+msgstr "Պակել"
 
 #: gui/modmod/help/help.xml:(caption):25
 msgid "Modding Guide"
@@ -392,15 +391,15 @@ msgstr ""
 
 #: gui/termsdialog/termsdialog.xml:(caption):15
 msgid "Language"
-msgstr ""
+msgstr "Լեզու"
 
 #: gui/termsdialog/termsdialog.xml:(caption):33
 msgid "Decline"
-msgstr ""
+msgstr "Չեղարկել"
 
 #: gui/termsdialog/termsdialog.xml:(caption):38
 msgid "Accept"
-msgstr ""
+msgstr "Հաստատել"
 
 #: gui/modio/Disclaimer.txt:1
 msgid "0 A.D. Empires Ascendant mod.io Disclaimer"

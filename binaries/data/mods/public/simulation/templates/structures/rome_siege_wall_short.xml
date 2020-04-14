@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_defensive_wall_short">
   <Armour>
-    <Hack>15.0</Hack>
-    <Pierce>35.0</Pierce>
-    <Crush>5.0</Crush>
+    <Hack>15</Hack>
+    <Pierce>35</Pierce>
+    <Crush>5</Crush>
     <Foundation>
-      <Hack>4.0</Hack>
-      <Pierce>7.0</Pierce>
-      <Crush>3.0</Crush>
+      <Hack>4</Hack>
+      <Pierce>7</Pierce>
+      <Crush>3</Crush>
     </Foundation>
   </Armour>
   <BuildRestrictions>
@@ -30,13 +30,13 @@
     <Civ>rome</Civ>
     <SelectionGroupName>structures/rome_wallset_siege</SelectionGroupName>
     <GenericName>Siege Wall</GenericName>
-    <SpecificName>Murus Circummunitionis</SpecificName>
+    <SpecificName>Mūrus Circummūnītiōnis</SpecificName>
     <Classes datatype="tokens">SiegeWall</Classes>
     <Icon>structures/siege_wall.png</Icon>
     <Tooltip>A wooden and turf palisade buildable in enemy and neutral territories.</Tooltip>
   </Identity>
   <Loot>
-    <wood>15</wood>
+    <wood>4</wood>
     <stone>0</stone>
   </Loot>
   <Obstruction>

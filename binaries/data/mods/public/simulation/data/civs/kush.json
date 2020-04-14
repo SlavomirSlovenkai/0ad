@@ -73,7 +73,7 @@
 	[
 		{
 			"Name": "Elephant Suppliers",
-			"Description": "Allied elephants −20% resource costs and training time."
+			"Description": "Allied Elephants −20% resource costs and training time."
 		}
 	],
 	"Structures":
@@ -129,7 +129,7 @@
 	],
 	"WallSets":
 	[
-		"other/wallset_palisade",
+		"structures/wallset_palisade",
 		"structures/kush_wallset_stone"
 	],
 	"Formations":
@@ -141,9 +141,9 @@
 		"special/formations/column_open",
 		"special/formations/line_open",
 		"special/formations/flank",
+		"special/formations/battle_line",
 		"special/formations/skirmish",
 		"special/formations/wedge",
-		"special/formations/battle_line",
 		"special/formations/syntagma"
 	],
 	"AINames":

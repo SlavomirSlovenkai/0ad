@@ -2,8 +2,8 @@
 <Entity parent="template_unit_infantry_ranged_archer">
   <Builder>
     <Entities datatype="tokens">
-      structures/mace_workshop
-      structures/mace_theatron
+      structures/mace_tower_artillery
+      structures/mace_theater
       structures/mace_library
     </Entities>
   </Builder>
@@ -15,12 +15,12 @@
   </Cost>
   <Identity>
     <Civ>mace</Civ>
+    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <Lang>greek</Lang>
     <SelectionGroupName>units/mace_infantry_archer_b</SelectionGroupName>
     <GenericName>Cretan Mercenary Archer</GenericName>
     <SpecificName>Toxótēs Krētikós</SpecificName>
-    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
-    <Icon>units/hele_infantry_archer.png</Icon>
+    <Icon>units/mace_infantry_archer.png</Icon>
     <RequiredTechnology>phase_town</RequiredTechnology>
   </Identity>
   <Promotion>

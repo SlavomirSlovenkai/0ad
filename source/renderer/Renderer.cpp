@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -64,6 +64,7 @@
 #include "renderer/OverlayRenderer.h"
 #include "renderer/ParticleRenderer.h"
 #include "renderer/PostprocManager.h"
+#include "renderer/RenderingOptions.h"
 #include "renderer/RenderModifiers.h"
 #include "renderer/ShadowMap.h"
 #include "renderer/SilhouetteRenderer.h"
@@ -347,7 +348,7 @@ public:
 	void SetOpenGLCamera(const CCamera& camera)
 	{
 		CMatrix3D view;
-		camera.m_Orientation.GetInverse(view);
+		camera.GetOrientation().GetInverse(view);
 		const CMatrix3D& proj = camera.GetProjection();
 
 #if CONFIG2_GLES
@@ -369,7 +370,7 @@ public:
 	void CallModelRenderers(const CShaderDefines& context, int cullGroup, int flags)
 	{
 		CShaderDefines contextSkinned = context;
-		if (g_Renderer.m_Options.m_GPUSkinning)
+		if (g_RenderingOptions.GetGPUSkinning())
 		{
 			contextSkinned.Add(str_USE_INSTANCING, str_1);
 			contextSkinned.Add(str_USE_GPU_SKINNING, str_1);
@@ -390,7 +391,7 @@ public:
 	void CallTranspModelRenderers(const CShaderDefines& context, int cullGroup, int flags)
 	{
 		CShaderDefines contextSkinned = context;
-		if (g_Renderer.m_Options.m_GPUSkinning)
+		if (g_RenderingOptions.GetGPUSkinning())
 		{
 			contextSkinned.Add(str_USE_INSTANCING, str_1);
 			contextSkinned.Add(str_USE_GPU_SKINNING, str_1);
@@ -426,46 +427,11 @@ CRenderer::CRenderer()
 	m_DisplayTerrainPriorities = false;
 	m_SkipSubmit = false;
 
-	m_Options.m_NoVBO = false;
-	m_Options.m_RenderPath = RP_DEFAULT;
-	m_Options.m_Shadows = false;
-	m_Options.m_WaterEffects = false;
-	m_Options.m_WaterFancyEffects = false;
-	m_Options.m_WaterRealDepth = false;
-	m_Options.m_WaterRefraction = false;
-	m_Options.m_WaterReflection = false;
-	m_Options.m_WaterShadows = false;
-	m_Options.m_ShadowAlphaFix = true;
-	m_Options.m_ARBProgramShadow = true;
-	m_Options.m_ShadowPCF = false;
-	m_Options.m_Particles = false;
-	m_Options.m_Silhouettes = false;
-	m_Options.m_PreferGLSL = false;
-	m_Options.m_Fog = false;
-	m_Options.m_ForceAlphaTest = false;
-	m_Options.m_GPUSkinning = false;
-	m_Options.m_SmoothLOS = false;
-	m_Options.m_Postproc = false;
-	m_Options.m_ShowSky = false;
-	m_Options.m_DisplayFrustum = false;
-
-	// TODO: be more consistent in use of the config system
-	CFG_GET_VAL("preferglsl", m_Options.m_PreferGLSL);
-	CFG_GET_VAL("forcealphatest", m_Options.m_ForceAlphaTest);
-	CFG_GET_VAL("gpuskinning", m_Options.m_GPUSkinning);
-	CFG_GET_VAL("smoothlos", m_Options.m_SmoothLOS);
-	CFG_GET_VAL("postproc", m_Options.m_Postproc);
-
 	CStr skystring = "0 0 0";
 	CColor skycolor;
 	CFG_GET_VAL("skycolor", skystring);
 	if (skycolor.ParseString(skystring, 255.f))
 		SetClearColor(skycolor.AsSColor4ub());
-
-#if CONFIG2_GLES
-	// Override config option since GLES only supports GLSL
-	m_Options.m_PreferGLSL = true;
-#endif
 
 	m_ShadowZBias = 0.02f;
 	m_ShadowMapSize = 0;
@@ -508,7 +474,7 @@ void CRenderer::EnumCaps()
 	m_Caps.m_PrettyWater = false;
 
 	// now start querying extensions
-	if (!m_Options.m_NoVBO && ogl_HaveExtension("GL_ARB_vertex_buffer_object"))
+	if (!g_RenderingOptions.GetNoVBO() && ogl_HaveExtension("GL_ARB_vertex_buffer_object"))
 		m_Caps.m_VBO = true;
 
 	if (0 == ogl_HaveExtensions(0, "GL_ARB_vertex_program", "GL_ARB_fragment_program", NULL))
@@ -548,13 +514,13 @@ void CRenderer::RecomputeSystemShaderDefines()
 {
 	CShaderDefines defines;
 
-	if (GetRenderPath() == RP_SHADER && m_Caps.m_ARBProgram)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER && m_Caps.m_ARBProgram)
 		defines.Add(str_SYS_HAS_ARB, str_1);
 
-	if (GetRenderPath() == RP_SHADER && m_Caps.m_VertexShader && m_Caps.m_FragmentShader)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER && m_Caps.m_VertexShader && m_Caps.m_FragmentShader)
 		defines.Add(str_SYS_HAS_GLSL, str_1);
 
-	if (m_Options.m_PreferGLSL)
+	if (g_RenderingOptions.GetPreferGLSL())
 		defines.Add(str_SYS_PREFER_GLSL, str_1);
 
 	m_SystemShaderDefines = defines;
@@ -566,33 +532,30 @@ void CRenderer::ReloadShaders()
 
 	m->globalContext = m_SystemShaderDefines;
 
-	if (m_Caps.m_Shadows && m_Options.m_Shadows)
+	if (m_Caps.m_Shadows && g_RenderingOptions.GetShadows())
 	{
 		m->globalContext.Add(str_USE_SHADOW, str_1);
-		if (m_Caps.m_ARBProgramShadow && m_Options.m_ARBProgramShadow)
+		if (m_Caps.m_ARBProgramShadow && g_RenderingOptions.GetARBProgramShadow())
 			m->globalContext.Add(str_USE_FP_SHADOW, str_1);
-		if (m_Options.m_ShadowPCF)
+		if (g_RenderingOptions.GetShadowPCF())
 			m->globalContext.Add(str_USE_SHADOW_PCF, str_1);
 #if !CONFIG2_GLES
 		m->globalContext.Add(str_USE_SHADOW_SAMPLER, str_1);
 #endif
 	}
 
-	if (m_LightEnv)
-		m->globalContext.Add(CStrIntern("LIGHTING_MODEL_" + m_LightEnv->GetLightingModel()), str_1);
-
-	if (m_Options.m_PreferGLSL && m_Options.m_Fog)
+	if (g_RenderingOptions.GetPreferGLSL() && g_RenderingOptions.GetFog())
 		m->globalContext.Add(str_USE_FOG, str_1);
 
 	m->Model.ModShader = LitRenderModifierPtr(new ShaderRenderModifier());
 
-	bool cpuLighting = (GetRenderPath() == RP_FIXED);
+	bool cpuLighting = (g_RenderingOptions.GetRenderPath() == RenderPath::FIXED);
 	m->Model.VertexRendererShader = ModelVertexRendererPtr(new ShaderModelVertexRenderer(cpuLighting));
-	m->Model.VertexInstancingShader = ModelVertexRendererPtr(new InstancingModelRenderer(false, m_Options.m_PreferGLSL));
+	m->Model.VertexInstancingShader = ModelVertexRendererPtr(new InstancingModelRenderer(false, g_RenderingOptions.GetPreferGLSL()));
 
-	if (GetRenderPath() == RP_SHADER && m_Options.m_GPUSkinning) // TODO: should check caps and GLSL etc too
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER && g_RenderingOptions.GetGPUSkinning()) // TODO: should check caps and GLSL etc too
 	{
-		m->Model.VertexGPUSkinningShader = ModelVertexRendererPtr(new InstancingModelRenderer(true, m_Options.m_PreferGLSL));
+		m->Model.VertexGPUSkinningShader = ModelVertexRendererPtr(new InstancingModelRenderer(true, g_RenderingOptions.GetPreferGLSL()));
 		m->Model.NormalSkinned = ModelRendererPtr(new ShaderModelRenderer(m->Model.VertexGPUSkinningShader));
 		m->Model.TranspSkinned = ModelRendererPtr(new ShaderModelRenderer(m->Model.VertexGPUSkinningShader));
 	}
@@ -604,7 +567,7 @@ void CRenderer::ReloadShaders()
 	}
 
 	// Use instancing renderers in shader mode
-	if (GetRenderPath() == RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 	{
 		m->Model.NormalUnskinned = ModelRendererPtr(new ShaderModelRenderer(m->Model.VertexInstancingShader));
 		m->Model.TranspUnskinned = ModelRendererPtr(new ShaderModelRenderer(m->Model.VertexInstancingShader));
@@ -650,7 +613,7 @@ bool CRenderer::Open(int width, int height)
 	LOGMESSAGE("CRenderer::Open: alpha bits %d",bits);
 
 	// Validate the currently selected render path
-	SetRenderPath(m_Options.m_RenderPath);
+	SetRenderPath(g_RenderingOptions.GetRenderPath());
 
 	RecomputeSystemShaderDefines();
 
@@ -658,7 +621,7 @@ bool CRenderer::Open(int width, int height)
 	// the shader path have been determined.
 	m->overlayRenderer.Initialize();
 
-	if (m_Options.m_Postproc)
+	if (g_RenderingOptions.GetPostProc())
 		m->postprocManager.Initialize();
 
 	return true;
@@ -679,124 +642,6 @@ void CRenderer::Resize(int width, int height)
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// SetOptionBool: set boolean renderer option
-void CRenderer::SetOptionBool(enum Option opt,bool value)
-{
-	// Don't do anything if the option didn't change from its previous value.
-	if (value == GetOptionBool(opt))
-		return;
-
-	switch (opt) {
-		case OPT_NOVBO:
-			m_Options.m_NoVBO = value;
-			break;
-		case OPT_SHADOWS:
-			m_Options.m_Shadows = value;
-			MakeShadersDirty();
-			break;
-		case OPT_WATEREFFECTS:
-			m_Options.m_WaterEffects = value;
-			break;
-		case OPT_WATERFANCYEFFECTS:
-			m_Options.m_WaterFancyEffects = value;
-			break;
-		case OPT_WATERREALDEPTH:
-			m_Options.m_WaterRealDepth = value;
-			break;
-		case OPT_WATERREFLECTION:
-			m_Options.m_WaterReflection = value;
-			break;
-		case OPT_WATERREFRACTION:
-			m_Options.m_WaterRefraction = value;
-			break;
-		case OPT_SHADOWSONWATER:
-			m_Options.m_WaterShadows = value;
-			break;
-		case OPT_SHADOWPCF:
-			m_Options.m_ShadowPCF = value;
-			MakeShadersDirty();
-			break;
-		case OPT_PARTICLES:
-			m_Options.m_Particles = value;
-			break;
-		case OPT_PREFERGLSL:
-			m_Options.m_PreferGLSL = value;
-			MakeShadersDirty();
-			RecomputeSystemShaderDefines();
-			break;
-		case OPT_FOG:
-			m_Options.m_Fog = value;
-			MakeShadersDirty();
-			break;
-		case OPT_SILHOUETTES:
-			m_Options.m_Silhouettes = value;
-			break;
-		case OPT_SHOWSKY:
-			m_Options.m_ShowSky = value;
-			break;
-		case OPT_SMOOTHLOS:
-			m_Options.m_SmoothLOS = value;
-			break;
-		case OPT_POSTPROC:
-			m_Options.m_Postproc = value;
-			break;
-		case OPT_DISPLAYFRUSTUM:
-			m_Options.m_DisplayFrustum = value;
-			break;
-		default:
-			debug_warn(L"CRenderer::SetOptionBool: unknown option");
-			break;
-	}
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// GetOptionBool: get boolean renderer option
-bool CRenderer::GetOptionBool(enum Option opt) const
-{
-	switch (opt) {
-		case OPT_NOVBO:
-			return m_Options.m_NoVBO;
-		case OPT_SHADOWS:
-			return m_Options.m_Shadows;
-		case OPT_WATEREFFECTS:
-			return m_Options.m_WaterEffects;
-		case OPT_WATERFANCYEFFECTS:
-			return m_Options.m_WaterFancyEffects;
-		case OPT_WATERREALDEPTH:
-			return m_Options.m_WaterRealDepth;
-		case OPT_WATERREFLECTION:
-			return m_Options.m_WaterReflection;
-		case OPT_WATERREFRACTION:
-			return m_Options.m_WaterRefraction;
-		case OPT_SHADOWSONWATER:
-			return m_Options.m_WaterShadows;
-		case OPT_SHADOWPCF:
-			return m_Options.m_ShadowPCF;
-		case OPT_PARTICLES:
-			return m_Options.m_Particles;
-		case OPT_PREFERGLSL:
-			return m_Options.m_PreferGLSL;
-		case OPT_FOG:
-			return m_Options.m_Fog;
-		case OPT_SILHOUETTES:
-			return m_Options.m_Silhouettes;
-		case OPT_SHOWSKY:
-			return m_Options.m_ShowSky;
-		case OPT_SMOOTHLOS:
-			return m_Options.m_SmoothLOS;
-		case OPT_POSTPROC:
-			return m_Options.m_Postproc;
-		case OPT_DISPLAYFRUSTUM:
-			return m_Options.m_DisplayFrustum;
-		default:
-			debug_warn(L"CRenderer::GetOptionBool: unknown option");
-			break;
-	}
-
-	return false;
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
 // SetRenderPath: Select the preferred render path.
 // This may only be called before Open(), because the layout of vertex arrays and other
 // data may depend on the chosen render path.
@@ -805,29 +650,29 @@ void CRenderer::SetRenderPath(RenderPath rp)
 	if (!m->IsOpen)
 	{
 		// Delay until Open() is called.
-		m_Options.m_RenderPath = rp;
 		return;
 	}
 
 	// Renderer has been opened, so validate the selected renderpath
-	if (rp == RP_DEFAULT)
+	if (rp == RenderPath::DEFAULT)
 	{
-		if (m_Caps.m_ARBProgram || (m_Caps.m_VertexShader && m_Caps.m_FragmentShader && m_Options.m_PreferGLSL))
-			rp = RP_SHADER;
+		if (m_Caps.m_ARBProgram || (m_Caps.m_VertexShader && m_Caps.m_FragmentShader && g_RenderingOptions.GetPreferGLSL()))
+			rp = RenderPath::SHADER;
 		else
-			rp = RP_FIXED;
+			rp = RenderPath::FIXED;
 	}
 
-	if (rp == RP_SHADER)
+	if (rp == RenderPath::SHADER)
 	{
-		if (!(m_Caps.m_ARBProgram || (m_Caps.m_VertexShader && m_Caps.m_FragmentShader && m_Options.m_PreferGLSL)))
+		if (!(m_Caps.m_ARBProgram || (m_Caps.m_VertexShader && m_Caps.m_FragmentShader && g_RenderingOptions.GetPreferGLSL())))
 		{
 			LOGWARNING("Falling back to fixed function\n");
-			rp = RP_FIXED;
+			rp = RenderPath::FIXED;
 		}
 	}
 
-	m_Options.m_RenderPath = rp;
+	// TODO: remove this once capabilities have been properly extracted and the above checks have been moved elsewhere.
+	g_RenderingOptions.m_RenderPath = rp;
 
 	MakeShadersDirty();
 	RecomputeSystemShaderDefines();
@@ -836,31 +681,6 @@ void CRenderer::SetRenderPath(RenderPath rp)
 	if (g_Game)
 		g_Game->GetWorld()->GetTerrain()->MakeDirty(RENDERDATA_UPDATE_COLOR);
 }
-
-
-CStr CRenderer::GetRenderPathName(RenderPath rp)
-{
-	switch(rp) {
-	case RP_DEFAULT: return "default";
-	case RP_FIXED: return "fixed";
-	case RP_SHADER: return "shader";
-	default: return "(invalid)";
-	}
-}
-
-CRenderer::RenderPath CRenderer::GetRenderPathByName(const CStr& name)
-{
-	if (name == "fixed")
-		return RP_FIXED;
-	if (name == "shader")
-		return RP_SHADER;
-	if (name == "default")
-		return RP_DEFAULT;
-
-	LOGWARNING("Unknown render path name '%s', assuming 'default'", name.c_str());
-	return RP_DEFAULT;
-}
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // BeginFrame: signal frame start
@@ -946,10 +766,10 @@ void CRenderer::RenderPatches(const CShaderDefines& context, int cullGroup)
 #endif
 
 	// render all the patches, including blend pass
-	if (GetRenderPath() == RP_SHADER)
-		m->terrainRenderer.RenderTerrainShader(context, cullGroup, (m_Caps.m_Shadows && m_Options.m_Shadows) ? &m->shadow : 0);
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
+		m->terrainRenderer.RenderTerrainShader(context, cullGroup, (m_Caps.m_Shadows && g_RenderingOptions.GetShadows()) ? &m->shadow : 0);
 	else
-		m->terrainRenderer.RenderTerrain(cullGroup);
+		m->terrainRenderer.RenderTerrainFixed(cullGroup);
 
 
 #if !CONFIG2_GLES
@@ -1085,7 +905,7 @@ void CRenderer::SetObliqueFrustumClipping(CCamera& camera, const CVector4D& worl
 {
 	// First, we'll convert the given clip plane to camera space, then we'll
 	// Get the view matrix and normal matrix (top 3x3 part of view matrix)
-	CMatrix3D normalMatrix = camera.m_Orientation.GetTranspose();
+	CMatrix3D normalMatrix = camera.GetOrientation().GetTranspose();
 	CVector4D camPlane = normalMatrix.Transform(worldPlane);
 
 	CMatrix3D matrix = camera.GetProjection();
@@ -1118,6 +938,7 @@ void CRenderer::ComputeReflectionCamera(CCamera& camera, const CBoundingBoxAlign
 {
 	WaterManager& wm = m->waterManager;
 
+	ENSURE(m_ViewCamera.GetProjectionType() == CCamera::PERSPECTIVE);
 	float fov = m_ViewCamera.GetFOV();
 
 	// Expand fov slightly since ripples can reflect parts of the scene that
@@ -1145,10 +966,10 @@ void CRenderer::ComputeReflectionCamera(CCamera& camera, const CBoundingBoxAlign
 	vp.m_X = 0;
 	vp.m_Y = 0;
 	camera.SetViewPort(vp);
-	camera.SetProjection(m_ViewCamera.GetNearPlane(), m_ViewCamera.GetFarPlane(), fov);
+	camera.SetPerspectiveProjection(m_ViewCamera.GetNearPlane(), m_ViewCamera.GetFarPlane(), fov);
 	CMatrix3D scaleMat;
 	scaleMat.SetScaling(m_Height/float(std::max(1, m_Width)), 1.0f, 1.0f);
-	camera.m_ProjMat = scaleMat * camera.m_ProjMat;
+	camera.SetProjection(scaleMat * camera.GetProjection());
 
 	CVector4D camPlane(0, 1, 0, -wm.m_WaterHeight + 0.5f);
 	SetObliqueFrustumClipping(camera, camPlane);
@@ -1159,6 +980,7 @@ void CRenderer::ComputeRefractionCamera(CCamera& camera, const CBoundingBoxAlign
 {
 	WaterManager& wm = m->waterManager;
 
+	ENSURE(m_ViewCamera.GetProjectionType() == CCamera::PERSPECTIVE);
 	float fov = m_ViewCamera.GetFOV();
 
 	// Expand fov slightly since ripples can reflect parts of the scene that
@@ -1181,10 +1003,10 @@ void CRenderer::ComputeRefractionCamera(CCamera& camera, const CBoundingBoxAlign
 	vp.m_X = 0;
 	vp.m_Y = 0;
 	camera.SetViewPort(vp);
-	camera.SetProjection(m_ViewCamera.GetNearPlane(), m_ViewCamera.GetFarPlane(), fov);
+	camera.SetPerspectiveProjection(m_ViewCamera.GetNearPlane(), m_ViewCamera.GetFarPlane(), fov);
 	CMatrix3D scaleMat;
 	scaleMat.SetScaling(m_Height/float(std::max(1, m_Width)), 1.0f, 1.0f);
-	camera.m_ProjMat = scaleMat * camera.m_ProjMat;
+	camera.SetProjection(scaleMat * camera.GetProjection());
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1192,10 +1014,6 @@ void CRenderer::ComputeRefractionCamera(CCamera& camera, const CBoundingBoxAlign
 void CRenderer::RenderReflections(const CShaderDefines& context, const CBoundingBoxAligned& scissor)
 {
 	PROFILE3_GPU("water reflections");
-
-	// Save the post-processing framebuffer.
-	GLint fbo;
-	glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &fbo);
 
 	WaterManager& wm = m->waterManager;
 
@@ -1229,7 +1047,7 @@ void CRenderer::RenderReflections(const CShaderDefines& context, const CBounding
 
 	glFrontFace(GL_CW);
 
-	if (!m_Options.m_WaterReflection)
+	if (!g_RenderingOptions.GetWaterReflection())
 	{
 		m->skyManager.RenderSky();
 		ogl_WarnIfError();
@@ -1248,7 +1066,7 @@ void CRenderer::RenderReflections(const CShaderDefines& context, const CBounding
 
 	// Particles are always oriented to face the camera in the vertex shader,
 	// so they don't need the inverted glFrontFace
-	if (m_Options.m_Particles)
+	if (g_RenderingOptions.GetParticles())
 	{
 		RenderParticles(CULL_REFLECTIONS);
 		ogl_WarnIfError();
@@ -1260,10 +1078,7 @@ void CRenderer::RenderReflections(const CShaderDefines& context, const CBounding
   	m_ViewCamera = normalCamera;
   	m->SetOpenGLCamera(m_ViewCamera);
 
-	// rebind post-processing frambuffer.
-	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo);
-
-	return;
+	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 }
 
 
@@ -1272,10 +1087,6 @@ void CRenderer::RenderReflections(const CShaderDefines& context, const CBounding
 void CRenderer::RenderRefractions(const CShaderDefines& context, const CBoundingBoxAligned &scissor)
 {
 	PROFILE3_GPU("water refractions");
-
-	// Save the post-processing framebuffer.
-	GLint fbo;
-	glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &fbo);
 
 	WaterManager& wm = m->waterManager;
 
@@ -1324,10 +1135,7 @@ void CRenderer::RenderRefractions(const CShaderDefines& context, const CBounding
   	m_ViewCamera = normalCamera;
   	m->SetOpenGLCamera(m_ViewCamera);
 
-	// rebind post-processing frambuffer.
-	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo);
-
-	return;
+	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 }
 
 void CRenderer::RenderSilhouettes(const CShaderDefines& context)
@@ -1434,7 +1242,7 @@ void CRenderer::RenderSilhouettes(const CShaderDefines& context)
 void CRenderer::RenderParticles(int cullGroup)
 {
 	// Only supported in shader modes
-	if (GetRenderPath() != RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() != RenderPath::SHADER)
 		return;
 
 	PROFILE3_GPU("particles");
@@ -1474,12 +1282,6 @@ void CRenderer::RenderSubmissions(const CBoundingBoxAligned& waterScissor)
 
 	GetScene().GetLOSTexture().InterpolateLOS();
 
-	if (m_Options.m_Postproc)
-	{
-		m->postprocManager.Initialize();
-		m->postprocManager.CaptureRenderOutput();
-	}
-
 	CShaderDefines context = m->globalContext;
 
 	int cullGroup = CULL_DEFAULT;
@@ -1506,15 +1308,9 @@ void CRenderer::RenderSubmissions(const CBoundingBoxAligned& waterScissor)
 
 	m->particleRenderer.PrepareForRendering(context);
 
-	if (m_Caps.m_Shadows && m_Options.m_Shadows && GetRenderPath() == RP_SHADER)
+	if (m_Caps.m_Shadows && g_RenderingOptions.GetShadows() && g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 	{
 		RenderShadowMap(context);
-	}
-
-	{
-		PROFILE3_GPU("clear buffers");
-		glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	}
 
 	ogl_WarnIfError();
@@ -1526,12 +1322,29 @@ void CRenderer::RenderSubmissions(const CBoundingBoxAligned& waterScissor)
 			PROFILE3_GPU("water scissor");
 			RenderReflections(context, waterScissor);
 
-			if (m_Options.m_WaterRefraction)
+			if (g_RenderingOptions.GetWaterRefraction())
 				RenderRefractions(context, waterScissor);
 		}
 	}
 
-	if (m_Options.m_ShowSky)
+	if (g_RenderingOptions.GetPostProc())
+	{
+		// We have to update the post process manager with real near/far planes
+		// that we use for the scene rendering.
+		m->postprocManager.SetDepthBufferClipPlanes(
+			m_ViewCamera.GetNearPlane(), m_ViewCamera.GetFarPlane()
+		);
+		m->postprocManager.Initialize();
+		m->postprocManager.CaptureRenderOutput();
+	}
+
+	{
+		PROFILE3_GPU("clear buffers");
+		glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	}
+
+	if (g_RenderingOptions.GetShowSky())
 	{
 		m->skyManager.RenderSky();
 	}
@@ -1581,19 +1394,19 @@ void CRenderer::RenderSubmissions(const CBoundingBoxAligned& waterScissor)
 	ogl_WarnIfError();
 
 	// particles are transparent so render after water
-	if (m_Options.m_Particles)
+	if (g_RenderingOptions.GetParticles())
 	{
 		RenderParticles(cullGroup);
 		ogl_WarnIfError();
 	}
 
-	if (m_Options.m_Postproc)
+	if (g_RenderingOptions.GetPostProc())
 	{
 		m->postprocManager.ApplyPostproc();
 		m->postprocManager.ReleaseRenderOutput();
 	}
 
-	if (m_Options.m_Silhouettes)
+	if (g_RenderingOptions.GetSilhouettes())
 	{
 		RenderSilhouettes(context);
 	}
@@ -1601,16 +1414,18 @@ void CRenderer::RenderSubmissions(const CBoundingBoxAligned& waterScissor)
 #if !CONFIG2_GLES
 	// Clean up texture blend mode so particles and other things render OK
 	// (really this should be cleaned up by whoever set it)
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::FIXED)
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 #endif
 
 	// render debug lines
-	if (m_Options.m_DisplayFrustum)
-	{
+	if (g_RenderingOptions.GetDisplayFrustum())
 		DisplayFrustum();
+
+	if (g_RenderingOptions.GetDisplayShadowsFrustum())
+	{
 		m->shadow.RenderDebugBounds();
 		m->shadow.RenderDebugTexture();
-		ogl_WarnIfError();
 	}
 
 	m->silhouetteRenderer.RenderDebugOverlays(m_ViewCamera);
@@ -1642,17 +1457,16 @@ void CRenderer::EndFrame()
 		m->Model.TranspUnskinned->EndFrame();
 
 	ogl_tex_bind(0, 0);
-
-	{
-		PROFILE3("error check");
-		int err = glGetError();
-		if (err)
-		{
-			ONCE(LOGERROR("CRenderer::EndFrame: GL errors %s (%04x) occurred", ogl_GetErrorName(err), err));
-		}
-	}
 }
 
+void CRenderer::OnSwapBuffers()
+{
+	PROFILE3("error check");
+	// We have to check GL errors after SwapBuffer to avoid possible
+	// synchronizations during rendering.
+	if (GLenum  err = glGetError())
+		ONCE(LOGERROR("GL error %s (0x%04x) occurred", ogl_GetErrorName(err), err));
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // DisplayFrustum: debug displays
@@ -1681,6 +1495,8 @@ void CRenderer::DisplayFrustum()
 	glEnable(GL_CULL_FACE);
 	glDepthMask(1);
 #endif
+
+	ogl_WarnIfError();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1704,7 +1520,7 @@ void CRenderer::SetSceneCamera(const CCamera& viewCamera, const CCamera& cullCam
 	m_ViewCamera = viewCamera;
 	m_CullCamera = cullCamera;
 
-	if (m_Caps.m_Shadows && m_Options.m_Shadows && GetRenderPath() == RP_SHADER)
+	if (m_Caps.m_Shadows && g_RenderingOptions.GetShadows() && g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 		m->shadow.SetupFrame(m_CullCamera, m_LightEnv->GetSunDir());
 }
 
@@ -1836,7 +1652,7 @@ void CRenderer::RenderScene(Scene& scene)
 
 	m->particleManager.RenderSubmit(*this, frustum);
 
-	if (m_Options.m_Silhouettes)
+	if (g_RenderingOptions.GetSilhouettes())
 	{
 		m->silhouetteRenderer.ComputeSubmissions(m_ViewCamera);
 
@@ -1850,7 +1666,7 @@ void CRenderer::RenderScene(Scene& scene)
 		m->silhouetteRenderer.RenderSubmitCasters(*this);
 	}
 
-	if (m_Caps.m_Shadows && m_Options.m_Shadows && GetRenderPath() == RP_SHADER)
+	if (m_Caps.m_Shadows && g_RenderingOptions.GetShadows() && g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 	{
 		m_CurrentCullGroup = CULL_SHADOWS;
 
@@ -1865,7 +1681,7 @@ void CRenderer::RenderScene(Scene& scene)
 
 		if (waterScissor.GetVolume() > 0 && m_WaterManager->WillRenderFancyWater())
 		{
-			if (m_Options.m_WaterReflection)
+			if (g_RenderingOptions.GetWaterReflection())
 			{
 				m_CurrentCullGroup = CULL_REFLECTIONS;
 
@@ -1875,7 +1691,7 @@ void CRenderer::RenderScene(Scene& scene)
 				scene.EnumerateObjects(reflectionCamera.GetFrustum(), this);
 			}
 
-			if (m_Options.m_WaterRefraction)
+			if (g_RenderingOptions.GetWaterRefraction())
 			{
 				m_CurrentCullGroup = CULL_REFRACTIONS;
 

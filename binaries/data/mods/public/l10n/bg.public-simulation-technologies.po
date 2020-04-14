@@ -1,5 +1,5 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
@@ -8,15 +8,15 @@
 # Любомир Василев, 2016
 # Radoslav Mitev <darkinaatrox@gmail.com>, 2016
 # Yordan Grigorov (yoreei) <yoreei.grigorov@gmail.com>, 2015
-# Красимир Миков <krasimir_mikov@icloud.com>, 2019
-# Красимир Миков <krasimir_mikov@icloud.com>, 2019
+# 12192b354109d39d9c701ab47471cc99, 2019
+# 12192b354109d39d9c701ab47471cc99, 2019
 # Любомир Василев, 2016-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:10+0200\n"
-"PO-Revision-Date: 2019-04-04 12:13+0000\n"
-"Last-Translator: Красимир Миков <krasimir_mikov@icloud.com>\n"
+"POT-Creation-Date: 2020-03-23 08:32+0000\n"
+"PO-Revision-Date: 2020-03-23 09:36+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/wildfire-games/0ad/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,6 +31,33 @@ msgid ""
 "for melee units, 4m extra range and better precision for ranged units, "
 "faster movement speeds and extra heal speed and range for healers."
 msgstr "Единиците, които бъдат повишени до напреднал клас, получават доста подобрения: 20% допълнително здраве, по 1 допълнително ниво защита от всеки вид, 20% допълнителна плячка, 20% допълнителна атака за близкобойните единици, 4 метра допълнителен обхват и по-добра точност за далекобойните единици, по-бърза скорост на придвижване и допълнителна скорост на лечение и по-голям обхват за лечителите."
+
+#: simulation/data/technologies/archery_tradition.jsondescription
+msgid ""
+"The Indian, Iranian, and Kushite peoples had a tradition of fine archery and"
+" a penchant for using massed archers in battle."
+msgstr ""
+
+#: simulation/data/technologies/archery_tradition.jsontooltip
+msgid ""
+"Range +10 meters for bow-wielding units. Archer units better accuracy and "
+"-20% train time, but also -20% health."
+msgstr "+10 метра обхват за единиците, стрелящи с лък. Стрелците имат по-добра точност и времето за обучаването им се намалява с -20%, но и здравето им също се намалява с -20%."
+
+#: simulation/data/technologies/archery_tradition.jsongenericName
+msgid "Archery Tradition"
+msgstr "Традиции в стрелбата"
+
+#: simulation/data/technologies/archery_tradition.jsonrequirementsTooltip
+#: simulation/data/technologies/armor_ship_reinforcedhull.jsonrequirementsTooltip
+#: simulation/data/technologies/gather_capacity_basket.jsonrequirementsTooltip
+#: simulation/data/technologies/gather_farming_plows.jsonrequirementsTooltip
+#: simulation/data/technologies/gather_fishing_net.jsonrequirementsTooltip
+#: simulation/data/technologies/gather_lumbering_ironaxes.jsonrequirementsTooltip
+#: simulation/data/technologies/health_females_01.jsonrequirementsTooltip
+#: simulation/data/technologies/tower_watch.jsonrequirementsTooltip
+msgid "Unlocked in Village Phase."
+msgstr "Отключва се в Селската фаза."
 
 #: simulation/data/technologies/armor_cav_01.jsondescription
 #: simulation/data/technologies/armor_cav_chamfron.jsondescription
@@ -459,18 +486,6 @@ msgstr "Подсилващи дървени греди за корабни ко�
 msgid "Reinforced hull"
 msgstr "Подсилен корпус"
 
-#: simulation/data/technologies/armor_ship_reinforcedhull.jsonrequirementsTooltip
-#: simulation/data/technologies/gather_capacity_basket.jsonrequirementsTooltip
-#: simulation/data/technologies/gather_farming_plows.jsonrequirementsTooltip
-#: simulation/data/technologies/gather_fishing_net.jsonrequirementsTooltip
-#: simulation/data/technologies/gather_lumbering_ironaxes.jsonrequirementsTooltip
-#: simulation/data/technologies/health_females_01.jsonrequirementsTooltip
-#: simulation/data/technologies/tower_watch.jsonrequirementsTooltip
-#: simulation/data/technologies/mauryas/special_archery_tradition.jsonrequirementsTooltip
-#: simulation/data/technologies/persians/special_archery_tradition.jsonrequirementsTooltip
-msgid "Unlocked in Village Phase."
-msgstr "Отключва се в Селската фаза."
-
 #: simulation/data/technologies/attack_cav_lance.jsondescription
 msgid "A long spear made specifically for cavalry."
 msgstr "Дълго копие, направено специално за конницата."
@@ -636,8 +651,8 @@ msgstr "Използването на желязо вместо бронз да�
 #: simulation/data/technologies/attack_infantry_ranged_01.jsondescription
 #: simulation/data/technologies/attack_infantry_ranged_02.jsondescription
 #: simulation/data/technologies/ranged_inf_irregulars.jsondescription
-msgid "Training increases damage of ranged infantry units."
-msgstr "Тренирането увеличава щетите, нанасяни от далекобойната пехота."
+msgid "Training increases damage of ranged infantry."
+msgstr ""
 
 #: simulation/data/technologies/attack_infantry_ranged_01.jsontooltip
 #: simulation/data/technologies/attack_infantry_ranged_02.jsontooltip
@@ -736,34 +751,39 @@ msgid ""
 msgstr "Единиците, които бъдат повишени до елитен клас, получават доста подобрения: 20% допълнително здраве, по 1 допълнително ниво защита от всеки вид, 20% допълнителна плячка, 20% допълнителна атака за близкобойните единици, 4 метра допълнителен обхват и по-добра точност за далекобойните единици, по-бърза скорост на придвижване и допълнителна скорост на лечение и по-голям обхват за лечителите."
 
 #: simulation/data/technologies/gather_animals_stockbreeding.jsondescription
-msgid "Breeding livestock for food."
-msgstr "Отглеждане на добитък за храна."
+msgid "Breed livestock (sheep, goats, cattle, etc.) for food."
+msgstr ""
 
 #: simulation/data/technologies/gather_animals_stockbreeding.jsontooltip
-msgid "Breed time -25% for domestic animals (sheep, goats, cattle, etc.)."
-msgstr "Времето за размножаване на домашни животни (овце, кози, крави, т.н.) намалява с -25%."
+msgid "Domestic Animals −25% breeding time."
+msgstr ""
 
 #: simulation/data/technologies/gather_animals_stockbreeding.jsongenericName
 msgid "Stockbreeding"
 msgstr "Размножаване на добитък"
 
 #: simulation/data/technologies/gather_capacity_basket.jsondescription
-#: simulation/data/technologies/gather_capacity_carts.jsondescription
-#: simulation/data/technologies/gather_capacity_wheelbarrow.jsondescription
-msgid "Increases shuttling capacity for all resources."
-msgstr "Увеличава капацитета на пренасяне за всички ресурси."
+msgid "Workers use baskets. Increases shuttling capacity for all resources."
+msgstr ""
 
 #: simulation/data/technologies/gather_capacity_basket.jsontooltip
-msgid "Workers use baskets. +5 shuttle capacity for all resources."
-msgstr "Работниците използват кошници. +5% капацитет на пренасяне за всички ресурси."
+#: simulation/data/technologies/gather_capacity_wheelbarrow.jsontooltip
+msgid "Workers +5 resource capacity."
+msgstr ""
 
 #: simulation/data/technologies/gather_capacity_basket.jsongenericName
 msgid "Baskets"
 msgstr "Кошници"
 
+#: simulation/data/technologies/gather_capacity_carts.jsondescription
+msgid ""
+"Workers use horse-drawn carts. Increases shuttling capacity for all "
+"resources."
+msgstr ""
+
 #: simulation/data/technologies/gather_capacity_carts.jsontooltip
-msgid "Workers use horse-drawn carts. +10 shuttle capacity for all resources."
-msgstr "Работниците използват конски каруци. +10 капацитет на пренасяне за всички ресурси."
+msgid "Workers +10 resource capacity."
+msgstr ""
 
 #: simulation/data/technologies/gather_capacity_carts.jsongenericName
 msgid "Horse-drawn Carts"
@@ -785,9 +805,10 @@ msgstr "Осоляване на рибата"
 msgid "Unlocked in Town Phase. Requires Fishing Net."
 msgstr "Отключва се в Градска фаза. Изисква Рибарски мрежи."
 
-#: simulation/data/technologies/gather_capacity_wheelbarrow.jsontooltip
-msgid "Workers use wheelbarrows. +5 shuttle capacity for all resources."
-msgstr "Работниците използват колички. +5 капацитет на пренасяне за всички ресурси."
+#: simulation/data/technologies/gather_capacity_wheelbarrow.jsondescription
+msgid ""
+"Workers use wheelbarrows. Increases shuttling capacity for all resources."
+msgstr ""
 
 #: simulation/data/technologies/gather_capacity_wheelbarrow.jsongenericName
 msgid "Wheelbarrow"
@@ -798,20 +819,23 @@ msgid "Extra nutrients for farms."
 msgstr "Допълнителни хранителни вещества за фермите."
 
 #: simulation/data/technologies/gather_farming_fertilizer.jsontooltip
-msgid "Workers +25% farming rate."
-msgstr "Скоростта на работниците при земеделие се увеличава с +25%."
+msgid "Workers +25% grain gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_farming_fertilizer.jsongenericName
 msgid "Fertilizer"
 msgstr "Тор"
 
 #: simulation/data/technologies/gather_farming_plows.jsondescription
-msgid "A horse drawn instrument to turn the sod."
-msgstr "Инструмент, влачен от кон, който обръща чима."
+msgid ""
+"Equip your workers with iron plows, animal-drawn instruments to turn the "
+"sod."
+msgstr ""
 
 #: simulation/data/technologies/gather_farming_plows.jsontooltip
-msgid "Equip your workers with iron plows. +15% farming rate."
-msgstr "Оборудване на работниците с железни плугове. +15% скорост при земеделие."
+#: simulation/data/technologies/gather_farming_training.jsontooltip
+msgid "Workers +15% grain gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_farming_plows.jsongenericName
 msgid "Iron Plow"
@@ -821,22 +845,17 @@ msgstr "Железни плугове"
 msgid "Training for workers to increase farm gathering speed."
 msgstr "Обучаване на работниците за увеличена бързина при земеделие."
 
-#: simulation/data/technologies/gather_farming_training.jsontooltip
-msgid "Workers +15% farming rate."
-msgstr "+15% бързина за работниците при земеделие."
-
 #: simulation/data/technologies/gather_farming_training.jsongenericName
 msgid "Gather Training"
 msgstr "Обучение в събиране на реколтата"
 
 #: simulation/data/technologies/gather_fishing_net.jsondescription
-msgid "Nets improve the productivity of fishing boats."
-msgstr "Мрежите подобряват производителността на рибарските лодки."
+msgid "Use nets to improve the productivity of fishing boats."
+msgstr ""
 
 #: simulation/data/technologies/gather_fishing_net.jsontooltip
-msgid ""
-"Use nets on your Fishing Boats. +30% fishing rate. Unlocks Salting Fish."
-msgstr "Използване на мрежи в рибарските лодки. +30% скорост на риболова. Отключва Осоляване на рибата."
+msgid "Fishing Boats +30% fish gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_fishing_net.jsongenericName
 msgid "Fishing Net"
@@ -850,16 +869,16 @@ msgstr "Увеличава скоростта на събиране на дър�
 
 #: simulation/data/technologies/gather_lumbering_ironaxes.jsontooltip
 #: simulation/data/technologies/gather_lumbering_strongeraxes.jsontooltip
-msgid "Workers +15% lumbering rate for trees."
-msgstr "Работниците стават +15% по-бързи при събирането на дървесина."
+msgid "Workers +15% wood gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_lumbering_ironaxes.jsongenericName
 msgid "Iron Ax Heads"
 msgstr "Железни секири"
 
 #: simulation/data/technologies/gather_lumbering_sharpaxes.jsontooltip
-msgid "Workers +50% lumbering rate for trees."
-msgstr "Работниците стават +50% по-бързи при събирането на дървесина."
+msgid "Workers +50% wood gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_lumbering_sharpaxes.jsongenericName
 msgid "Sharp Ax Heads"
@@ -870,15 +889,15 @@ msgid "Stronger Ax"
 msgstr "По-здрави секири"
 
 #: simulation/data/technologies/gather_mining_serfs.jsondescription
-#: simulation/data/technologies/gather_mining_servants.jsondescription
-#: simulation/data/technologies/gather_mining_slaves.jsondescription
-msgid "Increases stone gathering rates."
-msgstr "Увеличава скоростта на събиране на камък."
+msgid ""
+"Compel serfs to help your workers quarry stone. Increases stone gathering "
+"rates."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_serfs.jsontooltip
-msgid ""
-"Compel serfs to help your workers mine stone. +15% stone gathering rate."
-msgstr "Принуждаване на крепостниците да помагат на работниците при събирането на камък. +15% скорост на събиране на камък."
+#: simulation/data/technologies/gather_mining_servants.jsontooltip
+msgid "Workers +15% stone gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_serfs.jsongenericName
 msgid "Serfs"
@@ -890,9 +909,9 @@ msgstr "Крепостници"
 msgid "Heílōtes"
 msgstr "Хеѝлотес"
 
-#: simulation/data/technologies/gather_mining_servants.jsontooltip
-msgid "Hire servants to help mine stone. +15% stone gathering rate."
-msgstr "Наемане на слуги да помагат със събирането на камък. +15% скорост на събиране на камък."
+#: simulation/data/technologies/gather_mining_servants.jsondescription
+msgid "Hire servants to help quarry stone. Increases stone gathering rates."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_servants.jsongenericName
 msgid "Servants"
@@ -905,22 +924,25 @@ msgid "Doûloi"
 msgstr "Доулои"
 
 #: simulation/data/technologies/gather_mining_shaftmining.jsondescription
-#: simulation/data/technologies/gather_mining_silvermining.jsondescription
-#: simulation/data/technologies/gather_mining_wedgemallet.jsondescription
-msgid "Increases metal gathering rates."
-msgstr "Увеличава скоростта на събирането на метал."
+msgid "Develop shaft mining. Increases metal gathering rates."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_shaftmining.jsontooltip
-msgid "Develop shaft mining. +15% metal gathering rate."
-msgstr "Разработване на технологии за копаене на мини. +15% скорост на събиране на метал."
+#: simulation/data/technologies/gather_mining_wedgemallet.jsontooltip
+msgid "Workers +15% metal gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_shaftmining.jsongenericName
 msgid "Shaft Mining"
 msgstr "Минни шахти"
 
+#: simulation/data/technologies/gather_mining_silvermining.jsondescription
+msgid "Strike a vein of precious silver. Increases metal gathering rates."
+msgstr ""
+
 #: simulation/data/technologies/gather_mining_silvermining.jsontooltip
-msgid "Strike a vein of precious silver. +50% metal gathering rate."
-msgstr "Откриване на жилка ценно сребро. +50% скорост на събиране на метал."
+msgid "Workers +50% metal gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_silvermining.jsongenericName
 msgid "Silver Mining"
@@ -934,10 +956,15 @@ msgstr "Мините на Кренидес"
 msgid "Mines of Laureion"
 msgstr "Мините на Лаврион"
 
-#: simulation/data/technologies/gather_mining_slaves.jsontooltip
+#: simulation/data/technologies/gather_mining_slaves.jsondescription
 msgid ""
-"Buy slaves to help your workers mine for stone. +50% stone gathering rate."
-msgstr "Купуване на роби, които да помагат в копаенето на камък. +50% скорост на събиране на камък."
+"Buy slaves to help your workers quarry stone. Increases stone gathering "
+"rates."
+msgstr ""
+
+#: simulation/data/technologies/gather_mining_slaves.jsontooltip
+msgid "Workers +50% stone gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_slaves.jsongenericName
 msgid "Slaves"
@@ -949,21 +976,22 @@ msgstr "Роби"
 msgid "Andrápoda"
 msgstr "Андра̀пода"
 
-#: simulation/data/technologies/gather_mining_wedgemallet.jsontooltip
-msgid "Equip your workers with helpful tools. +15% metal gathering rate."
-msgstr "Оборудване на работниците с полезни инструменти. +15% скорост на събиране на метал."
+#: simulation/data/technologies/gather_mining_wedgemallet.jsondescription
+msgid ""
+"Equip your workers with helpful tools. Increases metal gathering rates."
+msgstr ""
 
 #: simulation/data/technologies/gather_mining_wedgemallet.jsongenericName
 msgid "Wedge and Mallet"
 msgstr "Клин и чук"
 
 #: simulation/data/technologies/gather_wicker_baskets.jsondescription
-msgid "Baskets for foraging."
-msgstr "Кошници за събиране на плодове."
+msgid "Equip your foragers with wicker baskets for foraging."
+msgstr ""
 
 #: simulation/data/technologies/gather_wicker_baskets.jsontooltip
-msgid "Equip your foragers with wicker baskets. +50% fruit foraging rate."
-msgstr "Оборудвайте събирачите с плетени кошници. +50% скорост при събиране на плодове."
+msgid "Workers +50% fruit gather rate."
+msgstr ""
 
 #: simulation/data/technologies/gather_wicker_baskets.jsongenericName
 msgid "Wicker Baskets"
@@ -1070,8 +1098,8 @@ msgid ""
 msgstr "Тъкачният стан позволявал направата на по-хубави дрехи за заселниците. Жените в домакинството били обучавани от ранна възраст как да тъкат на стана и в последствие прекарвали голяма част от живота си, работейки на него."
 
 #: simulation/data/technologies/health_females_01.jsontooltip
-msgid "+50% health for female citizens."
-msgstr "+50% здраве за жените."
+msgid "+100% health for female citizens."
+msgstr ""
 
 #: simulation/data/technologies/health_females_01.jsongenericName
 msgid "The Loom"
@@ -1231,9 +1259,9 @@ msgstr "Превръща оживения град в истински мега�
 msgid ""
 "Advance to City Phase, which unlocks more structures and units. Territory "
 "radius for Civic Centers increased by another +50%. Silver Owls civ bonus "
-"grants an extra +10% metal gather rate to all workers. Citizen soldiers max "
-"health increased by +10%. All structures +9 garrisoned regeneration rate."
-msgstr "Преминава към Мегаполисната фаза, която отключва още сгради и единици. Териториалният радиус за селищните центрове се увеличава с още +50%. Предимството „Сребърни сови“ увеличава скоростта на събирането на метал да всички работници с +10%. Максималното здраве на во̀ините се увеличава с +10%. Скоростта на лекуване на единиците на гарнизон във всички сгради се увеличава с +9."
+"grants an extra +10% metal gather rate to all workers. Citizen Soldiers +10%"
+" health. All structures +9 garrisoned regeneration rate."
+msgstr ""
 
 #: simulation/data/technologies/phase_city_athen.jsonrequirementsTooltip
 #: simulation/data/technologies/phase_city_generic.jsonrequirementsTooltip
@@ -1255,9 +1283,9 @@ msgstr "Превръща оживения град в истинска метр�
 #: simulation/data/technologies/phase_city_generic.jsontooltip
 msgid ""
 "Advance to City Phase, which unlocks more structures and units. Territory "
-"radius for Civic Centers increased by another +50%. Citizen soldiers max "
-"health increased by +10%. All structures +9 garrisoned regeneration rate."
-msgstr "Преминава към Мегаполисната фаза, която отключва още сгради и единици. Териториалният радиус за селищните центрове се увеличава с още +50%. Максималното здраве на во̀ините се увеличава с +10%. Скоростта на лекуване на единиците на гарнизон във всички сгради се увеличава с +9."
+"radius for Civic Centers increased by another +50%. Citizen Soldiers +10% "
+"health. All structures +9 garrisoned regeneration rate."
+msgstr ""
 
 #: simulation/data/technologies/phase_town.jsongenericName
 #: simulation/data/technologies/phase_town_athen.jsongenericName
@@ -1282,9 +1310,9 @@ msgstr "Преминава от малко селце в оживен град, 
 msgid ""
 "Advance to Town Phase, which unlocks more structures and units. Territory "
 "radius for Civic Centers increased by +30%. 'Silver Owls' civ bonus grants "
-"an extra +10% metal gather rate to all workers. Citizen soldiers max health "
-"increased by +20%. All structures +7 garrisoned regeneration rate."
-msgstr "Преминава към Градската фаза, която отключва още сгради и единици. Териториалният радиус за селищните центрове се увеличава с +30%. Предимството „Сребърни сови“ увеличава скоростта на събирането на метал да всички работници с +10%. Максималното здраве на во̀ините се увеличава с +20%. Скоростта на лекуване на единиците на гарнизон във всички сгради се увеличава с +7."
+"an extra +10% metal gather rate to all workers. Citizen Soldiers +20% "
+"health. All structures +7 garrisoned regeneration rate."
+msgstr ""
 
 #: simulation/data/technologies/phase_town_athen.jsonrequirementsTooltip
 #: simulation/data/technologies/phase_town_generic.jsonrequirementsTooltip
@@ -1306,9 +1334,9 @@ msgstr "Преминава от малко селце в оживен град, 
 #: simulation/data/technologies/phase_town_generic.jsontooltip
 msgid ""
 "Advance to Town Phase, which unlocks more structures and units. Territory "
-"radius for Civic Centers increased by +30%. Citizen soldiers max health "
-"increased by +20%. All structures +7 garrisoned regeneration rate."
-msgstr "Преминава към Градската фаза, която отключва още сгради и единици. Териториалният радиус за селищните центрове се увеличава с +30%. Максималното здраве на во̀ините се увеличава с +20%. Скоростта на лекуване на единиците на гарнизон във всички сгради се увеличава с +7."
+"radius for Civic Centers increased by +30%. Citizen Soldiers +20% health. "
+"All structures +7 garrisoned regeneration rate."
+msgstr ""
 
 #: simulation/data/technologies/phase_village.jsongenericName
 msgid "Village Phase"
@@ -1445,72 +1473,72 @@ msgid "Amentum"
 msgstr "Аментум"
 
 #: simulation/data/technologies/siege_armor.jsondescription
-msgid "Increased armor on siege weapons"
-msgstr "Увеличена защита на обсадните оръжия"
+msgid "Increased armor on siege engines."
+msgstr ""
 
 #: simulation/data/technologies/siege_armor.jsontooltip
-msgid "All Siege weapons +2 Hack armor levels."
-msgstr "+2 защита срещу разсичане за всички обсадни оръжия."
+msgid "Siege Engines +2 hack armor."
+msgstr ""
 
 #: simulation/data/technologies/siege_armor.jsongenericName
 msgid "Armor plating"
 msgstr "Слоести брони"
 
 #: simulation/data/technologies/siege_attack.jsondescription
-msgid "Advanced technologies improve siege efficiency"
-msgstr "Напредналите технологии подобряват ефикасността на обсадните оръжия"
+msgid "Advanced technologies improve siege efficiency."
+msgstr ""
 
 #: simulation/data/technologies/siege_attack.jsontooltip
-msgid "All siege weapons +25% Crush damage."
-msgstr "+25% разбиващи щети за всички обсадни оръжия."
+msgid "Siege Engines +25% attack crush damage."
+msgstr ""
 
 #: simulation/data/technologies/siege_attack.jsongenericName
 msgid "Advanced Siege"
 msgstr "Подобрена обсада"
 
 #: simulation/data/technologies/siege_bolt_accuracy.jsondescription
-msgid "Improvement to projectile accuracy"
-msgstr "Подобрение в точността на метателните оръжия"
+msgid "Improvement to projectile accuracy."
+msgstr ""
 
 #: simulation/data/technologies/siege_bolt_accuracy.jsontooltip
-msgid "Bolt shooter increased accuracy."
-msgstr "Увеличена точност на хвърлячите на стрели."
+msgid "Bolt Shooters −20% ranged attack spread."
+msgstr ""
 
 #: simulation/data/technologies/siege_bolt_accuracy.jsongenericName
 msgid "Bolt Accuracy"
 msgstr "Точност на стрелите за обсада"
 
 #: simulation/data/technologies/siege_cost_metal.jsondescription
-msgid "Siege weapons require less metal resource"
-msgstr "Обсадните оръжия изискват по-малко метал"
+msgid "Siege engines require less metal."
+msgstr ""
 
 #: simulation/data/technologies/siege_cost_metal.jsontooltip
-msgid "Siege weapons cost 20% less metal"
-msgstr "Обсадните оръжия струват 20% по-малко метал"
+msgid "Siege Engines −20% metal cost."
+msgstr ""
 
 #: simulation/data/technologies/siege_cost_metal.jsongenericName
 msgid "Metalworker"
 msgstr "Металоработник"
 
 #: simulation/data/technologies/siege_cost_wood.jsondescription
-msgid "Siege weapons cost less wood"
-msgstr "Обсадните оръжия струват по-малко дървесина"
+msgid "Siege engines require less wood."
+msgstr ""
 
 #: simulation/data/technologies/siege_cost_wood.jsontooltip
-msgid "Siege weapons cost 20% less wood"
-msgstr "Обсадните оръжия струват 20% по-малко дървесина"
+msgid "Siege Engines −20% wood cost."
+msgstr ""
 
 #: simulation/data/technologies/siege_cost_wood.jsongenericName
 msgid "Artillery Instructors"
 msgstr "Артилерийски инструктори"
 
 #: simulation/data/technologies/siege_packing.jsondescription
-msgid "Immobile siege weapons are assembled and disassembled faster"
-msgstr "Неподвижните обсадни оръжия се сглобяват и разглобяват по-бързо"
+msgid "Immobile siege engines are assembled and disassembled faster."
+msgstr ""
 
 #: simulation/data/technologies/siege_packing.jsontooltip
-msgid "-25% pack and unpack time for immobile siege weapons."
-msgstr "-25% време за опаковане/разопаковане за неподвижните обсадни оръжия."
+msgid "Siege Engines −25% pack and unpack time."
+msgstr ""
 
 #: simulation/data/technologies/siege_packing.jsongenericName
 msgid "Military Engineers"
@@ -2256,9 +2284,8 @@ msgstr "Картагенците строели стените си в три к
 
 #: simulation/data/technologies/civbonuses/cart_walls.jsontooltip
 msgid ""
-"Carthaginian walls, gates, and wall towers have 3x the health of a standard "
-"wall, but also cost twice as much and take twice as long to build."
-msgstr "Следователно, картагенските стени, порти и стенни кули имат 3 пъти повече здраве от стандартните стени, но също така струват два пъти повече и отнемат два пъти повече време за строеж."
+"Carthaginian Walls +100% build time, +100% stone cost, and  +200% health."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/cart_walls.jsongenericName
 msgid "Triple Walls"
@@ -2270,9 +2297,9 @@ msgstr "Келтските сгради били направени основн
 
 #: simulation/data/technologies/civbonuses/celt_structures.jsontooltip
 msgid ""
-"Celtic buildings have 20% less health, but are also 20% cheaper and faster "
-"to construct."
-msgstr "Келтските сгради имат 20% по-малко здраве, но пък са 20% по-евтини и отнемат 20% по-малко време за строеж."
+"Briton and Gaulish Structures −20% build time, −20% health, and −20% capture"
+" points."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/celt_structures.jsongenericName
 msgid "Wooden Construction"
@@ -2284,9 +2311,9 @@ msgstr "Гърците използвали каменни конструкци�
 
 #: simulation/data/technologies/civbonuses/greek_structures.jsontooltip
 msgid ""
-"All structures have 10% more health and capture points, but also take 10% "
-"longer to build."
-msgstr "10% повече здраве и пленителни точки за всички сгради, но и 10% по-дълго време за строеж."
+"Athenian, Macedonian, and Spartan Structures +10% build time, +10% health, "
+"and +10% capture points."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/greek_structures.jsongenericName
 msgid "Hellenic Architecture"
@@ -2303,8 +2330,8 @@ msgid ""
 msgstr "Империята Маурия обединила множество независими дотогава царства на територия от над 5 милиона кв. км, с почти 60 милиона население. Маурските регенти носели званието Император на императорите и управлявали армия от 600 000 пехотинци, 9000 слона, 8000 колесници и 30 000 конници, което почти сигурно е била най-голямата армия за времето си."
 
 #: simulation/data/technologies/civbonuses/maur_population.jsontooltip
-msgid "Mauryas have a 10% higher maximum population limit."
-msgstr "Маурите имат 10% по-голямо максимално население."
+msgid "Mauryas +10% maximum population limit."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/maur_population.jsongenericName
 msgid "Emperor of Emperors"
@@ -2321,8 +2348,8 @@ msgid ""
 msgstr "Маурците строели градските си стени с дървесина, изобилен ресурс в Индия."
 
 #: simulation/data/technologies/civbonuses/maur_walls.jsontooltip
-msgid "Mauryan city walls have -20% less health and -20% less build time."
-msgstr "Маурските градски стени имат 20% по-малко здраве и отнемат 20% по-малко време за строеж."
+msgid "Mauryan City Walls −20% build time and −20% health."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/maur_walls.jsongenericName
 msgid "Wooden Walls"
@@ -2339,8 +2366,8 @@ msgid ""
 msgstr "Персийците можели и събирали голям брой пехотинци по време на война, поради големия размера на Ахеменидското царство и начина, по който то било уредено. Персийската пехота като цяло била добре обучена и се биела упорито. Въпреки това, пехотинците не били особено добри в близък бой. Също така, с изключение на елитните полкове, персийската пехота не била професионална армия."
 
 #: simulation/data/technologies/civbonuses/pers_population.jsontooltip
-msgid "Persians have a 10% higher maximum population limit."
-msgstr "Персийците имат 10% по-голямо максимално население."
+msgid "Persians +10% maximum population limit."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/pers_population.jsongenericName
 msgid "Great King's Levy"
@@ -2355,8 +2382,8 @@ msgid ""
 msgstr "Спартанците не разполагали с най-голямата армия на света, но пък тя била най-добрата за своето време. Това, което им липсвало количествено, те наваксвали с качество. Хората казвали, че на Спарта не ѝ трябвали здрави стени, защото нейни стени били мъжете ѝ."
 
 #: simulation/data/technologies/civbonuses/spart_population.jsontooltip
-msgid "Spartans have 10% less maximum population."
-msgstr "Спартанците имат 10% по-малко максимално население."
+msgid "Spartans −10% maximum population limit."
+msgstr ""
 
 #: simulation/data/technologies/civbonuses/spart_population.jsongenericName
 msgid "Underdogs"
@@ -2448,24 +2475,6 @@ msgstr "Обучаване на лечители от елитен ранг."
 msgid "Divine Instruction"
 msgstr "Божествена заръка"
 
-#: simulation/data/technologies/mauryas/special_archery_tradition.jsondescription
-msgid ""
-"The Indians had a tradition of fine archery and a penchant for using massed "
-"archers in battle."
-msgstr "Индийците имали традиции в стрелбата с лък, както и наклонност към използване на огромен брой стрелци в битка."
-
-#: simulation/data/technologies/mauryas/special_archery_tradition.jsontooltip
-#: simulation/data/technologies/persians/special_archery_tradition.jsontooltip
-msgid ""
-"Range +10 meters for bow-wielding units. Archer units better accuracy and "
-"-20% train time, but also -20% health."
-msgstr "+10 метра обхват за единиците, стрелящи с лък. Стрелците имат по-добра точност и времето за обучаването им се намалява с -20%, но и здравето им също се намалява с -20%."
-
-#: simulation/data/technologies/mauryas/special_archery_tradition.jsongenericName
-#: simulation/data/technologies/persians/special_archery_tradition.jsongenericName
-msgid "Archery Tradition"
-msgstr "Традиции в стрелбата"
-
 #: simulation/data/technologies/persians/immortals.jsondescription
 msgid ""
 "The Anusiya champion infantry train twice as fast, but lose a little max "
@@ -2498,12 +2507,6 @@ msgstr "+25% здраве и пленителни точки за всички �
 msgid "Persian Architecture"
 msgstr "Персийска архитектура"
 
-#: simulation/data/technologies/persians/special_archery_tradition.jsondescription
-msgid ""
-"The Persians had a tradition of fine archery and a penchant for using massed"
-" archers in battle."
-msgstr "Персийците имали традиции в стрелбата с лък, както и наклонност към използването на огромен брой стрелци в битка."
-
 #: simulation/data/technologies/persians/special_equine_transports.jsondescription
 msgid ""
 "Early Achaemenid rulers acted towards making Persia the first great Asian "
@@ -2516,8 +2519,8 @@ msgid ""
 msgstr "Ранните владетели на Ахеменидското се стремели да направят Персия първата велика азиатска империя, която да владее моретата. Великият цар бил благосклонен към всички морски народи, за да си осигури услугите им, но също така и сам развивал различни морски дейности. По време на управлението на Дарий I Велики, например, бил построен канал в Египте и персийската войска била изпратена да проучва река Инд. Според Херодот, около 300 кораба от персийския военноморски флот били преоборудвани, за да могат да превозват коне и ездачите им."
 
 #: simulation/data/technologies/persians/special_equine_transports.jsontooltip
-msgid "Phoenician Triremes gain the ability to train cavalry units."
-msgstr "Финикийските триери получават способността да обучават конни единици."
+msgid "Phoenician Triremes gain the ability to train cavalry."
+msgstr ""
 
 #: simulation/data/technologies/persians/special_equine_transports.jsongenericName
 msgid "Equine Transports"
@@ -2606,9 +2609,9 @@ msgstr "Елинска метрополия"
 
 #: simulation/data/technologies/successors/special_parade_of_daphne.jsondescription
 msgid ""
-"Significantly increase training speed of champions and siege weapons at the "
-"fortress by training them in large batches or battalions."
-msgstr "Бързината на обучаване на гвардейци и строене на обсадни оръжия в крепостта се увеличава драстично, ако се групират в партиди или батальони."
+"Significantly increase training speed of champions and siege engines at the "
+"fortress when training them in large batches."
+msgstr ""
 
 #: simulation/data/technologies/successors/special_parade_of_daphne.jsontooltip
 msgid "Faster batch training speed for the Fortress."

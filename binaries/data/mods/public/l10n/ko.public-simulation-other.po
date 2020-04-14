@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Asakura, 2015,2017
-# 이정희 <daemul72@gmail.com>, 2019
+# MarongHappy <daemul72@gmail.com>, 2019
 # Gu Hong Min <placidmoon1@gmail.com>, 2015
 # jjj <triplej03@nate.com>, 2014
 # karubabu <karubabu@protonmail.com>, 2018
 # karubabu <karubabu@protonmail.com>, 2018
 # Gu Hong Min <placidmoon1@gmail.com>, 2015
 # ks k, 2019
-# ks k, 2019
+# ks k, 2019-2020
 # llen_llen, 2016
+# MarongHappy <daemul72@gmail.com>, 2019
 # naoki yoshida <oimotanaka1122@gmail.com>, 2015
 # red hare <www3@hotmail.co.jp>, 2017
 # sang gyu nam <destro0419@naver.com>, 2018
@@ -21,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
 "POT-Creation-Date: 2019-05-24 09:43+0200\n"
-"PO-Revision-Date: 2019-05-27 02:01+0000\n"
+"PO-Revision-Date: 2020-02-22 20:07+0000\n"
 "Last-Translator: ks k\n"
 "Language-Team: Korean (http://www.transifex.com/wildfire-games/0ad/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +119,7 @@ msgstr "만약 당신이 나에게 약간의 %(resource)s 자원을 제공해 �
 #, javascript-format
 msgid ""
 "If you can spare me some %(resource)s, I will be able to strengthen my army."
-msgstr "%(resource)s 을(를) 절약 할 수 있다면, 군대를 강화시킬 수 있을 것입니다."
+msgstr "%(resource)s 을(를) 절약할 수 있다면, 군대를 강화시킬 수 있을 것입니다."
 
 #: simulation/ai/petra/chatHelper.js:42
 #, javascript-format
@@ -132,7 +133,7 @@ msgstr "%(_player_)s 님과 새로운 경로를 설정했습니다. 거래는 �
 msgid ""
 "A new trade route is set up with %(_player_)s. Take your share of the "
 "profits."
-msgstr "새로운 무역 경로가 %(_player_)s 님으로 설정됩니다. 이익을 나누십시오."
+msgstr "새로운 교역 경로가 %(_player_)s 님으로 설정됩니다. 이익을 나누십시오."
 
 #: simulation/ai/petra/chatHelper.js:48
 #, javascript-format
@@ -494,7 +495,7 @@ msgstr "%(time)s 간격으로 공격할 수 있습니다"
 
 #: simulation/components/CeasefireManager.js:112
 msgid "You can attack now!"
-msgstr "당신은 지금 공격 할 수 있습니다!"
+msgstr "당신은 지금 공격할 수 있습니다!"
 
 #: simulation/components/EndGameManager.js:171
 #, javascript-format
@@ -719,7 +720,7 @@ msgstr "모든 건축물을 파괴하여 상대편을 물리칩니다."
 
 #: simulation/data/settings/victory_conditions/conquest_structures.jsonData.Title
 msgid "Conquest Structures"
-msgstr "건축물 점령"
+msgstr "점령 건축물"
 
 #: simulation/data/settings/victory_conditions/conquest_units.jsonData.Description
 msgid "Defeat opponents by killing all their units."
@@ -889,4 +890,4 @@ msgid ""
 "Petra is the default 0 A.D. AI bot. Please report issues to Wildfire Games (see the link in the main menu).\n"
 "\n"
 "The AI's resource gathering rate and trade gain depend on the difficulty level (Sandbox −58%, Very Easy −44%, Easy −25%, Medium ±0%, Hard +25%, Very Hard +56%). The easiest levels also have a slower research, training, and building rate. In addition, the Sandbox level does not expand nor attack."
-msgstr "페트라는 기본 0 A.D.의 인공지능 봇입니다. 와일드 파이어 게임즈에 문제를 보고해 주세요(메인 메뉴의 링크 참조)s.\n\nAI의 자원 채집율과 교역 이익은 난이도(샌드박스 -58%, 매우 쉬움 -44%, 쉬움 -25%, 보통 +0%, 어려움 +25%, 매우 어려움 +56%)s에 따라 달라집니다. 또한 가장 쉬운 레벨은 연구, 교육 및 건축 비율이 더 느립니다. 또한 샌드박스 레벨은 확장되거나 공격되지 않습니다."
+msgstr "페트라는 기본 0 A.D.의 인공지능 봇입니다. 와일드 파이어 게임즈에 문제를 보고해 주세요(메인 메뉴의 링크 참조)s.\n\nAI의 자원 채집율과 교역 이익은 난이도(샌드박스 -58%, 매우 쉬움 -44%, 쉬움 -25%, 보통 +0%, 어려움 +25%, 매우 어려움 +56%)s에 따라 달라집니다. 또한 가장 쉬운 수준은 연구, 교육 및 건축 비율이 더 느립니다. 또한 모래 통 수준은 확장되거나 공격되지 않습니다."

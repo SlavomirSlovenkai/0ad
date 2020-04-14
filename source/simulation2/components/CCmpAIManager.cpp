@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -145,10 +145,12 @@ private:
 
 			// Set up the data to pass as the constructor argument
 			JS::RootedValue settings(cx);
-			m_ScriptInterface->Eval(L"({})", &settings);
-			m_ScriptInterface->SetProperty(settings, "player", m_Player, false);
-			m_ScriptInterface->SetProperty(settings, "difficulty", m_Difficulty, false);
-			m_ScriptInterface->SetProperty(settings, "behavior", m_Behavior, false);
+			ScriptInterface::CreateObject(
+				cx,
+				&settings,
+				"player", m_Player,
+				"difficulty", m_Difficulty,
+				"behavior", m_Behavior);
 
 			if (!m_UseSharedComponent)
 			{
@@ -437,10 +439,8 @@ public:
 		}
 
 		// Set up the data to pass as the constructor argument
-		JS::RootedValue settings(cx);
-		m_ScriptInterface->Eval(L"({})", &settings);
 		JS::RootedValue playersID(cx);
-		m_ScriptInterface->Eval(L"({})", &playersID);
+		ScriptInterface::CreateObject(cx, &playersID);
 
 		for (size_t i = 0; i < m_Players.size(); ++i)
 		{
@@ -449,9 +449,14 @@ public:
 			m_ScriptInterface->SetPropertyInt(playersID, i, val, true);
 		}
 
-		m_ScriptInterface->SetProperty(settings, "players", playersID);
 		ENSURE(m_HasLoadedEntityTemplates);
-		m_ScriptInterface->SetProperty(settings, "templates", m_EntityTemplates, false);
+
+		JS::RootedValue settings(cx);
+		ScriptInterface::CreateObject(
+			cx,
+			&settings,
+			"players", playersID,
+			"templates", m_EntityTemplates);
 
 		JS::AutoValueVector argv(cx);
 		argv.append(settings);
@@ -558,8 +563,9 @@ public:
 			ENSURE(JS_GetArrayLength(cx, dataObj, &length));
 			u32 nbytes = (u32)(length * sizeof(NavcellData));
 
+			bool sharedMemory;
 			JS::AutoCheckCannotGC nogc;
-			memcpy((void*)JS_GetUint16ArrayData(dataObj, nogc), m_PassabilityMap.m_Data, nbytes);
+			memcpy((void*)JS_GetUint16ArrayData(dataObj, &sharedMemory, nogc), m_PassabilityMap.m_Data, nbytes);
 		}
 	}
 
@@ -586,8 +592,9 @@ public:
 			ENSURE(JS_GetArrayLength(cx, dataObj, &length));
 			u32 nbytes = (u32)(length * sizeof(u8));
 
+			bool sharedMemory;
 			JS::AutoCheckCannotGC nogc;
-			memcpy((void*)JS_GetUint8ArrayData(dataObj, nogc), m_TerritoryMap.m_Data, nbytes);
+			memcpy((void*)JS_GetUint8ArrayData(dataObj, &sharedMemory, nogc), m_TerritoryMap.m_Data, nbytes);
 		}
 	}
 
@@ -625,7 +632,7 @@ public:
 
 		m_HasLoadedEntityTemplates = true;
 
-		m_ScriptInterface->Eval("({})", &m_EntityTemplates);
+		ScriptInterface::CreateObject(cx, &m_EntityTemplates);
 
 		JS::RootedValue val(cx);
 		for (size_t i = 0; i < templates.size(); ++i)
@@ -1178,7 +1185,7 @@ private:
 		JSAutoRequest rq(cx);
 
 		JS::RootedValue classesVal(cx);
-		scriptInterface.Eval("({})", &classesVal);
+		ScriptInterface::CreateObject(cx, &classesVal);
 
 		std::map<std::string, pass_class_t> classes;
 		cmpPathfinder->GetPassabilityClasses(classes);

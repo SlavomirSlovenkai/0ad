@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -19,18 +19,17 @@
 
 #include "ComponentManager.h"
 
-#include "DynamicSubscription.h"
-#include "IComponent.h"
-#include "ParamNode.h"
-#include "SimContext.h"
-
-#include "simulation2/MessageTypes.h"
-#include "simulation2/components/ICmpTemplateManager.h"
-
 #include "lib/utf8.h"
 #include "ps/CLogger.h"
 #include "ps/Filesystem.h"
+#include "ps/Profile.h"
 #include "ps/scripting/JSInterface_VFS.h"
+#include "simulation2/components/ICmpTemplateManager.h"
+#include "simulation2/MessageTypes.h"
+#include "simulation2/system/DynamicSubscription.h"
+#include "simulation2/system/IComponent.h"
+#include "simulation2/system/ParamNode.h"
+#include "simulation2/system/SimContext.h"
 
 /**
  * Used for script-only message types.
@@ -145,6 +144,8 @@ bool CComponentManager::LoadScript(const VfsPath& filename, bool hotload)
 		return false;
 	std::string content = file.DecodeUTF8(); // assume it's UTF-8
 	bool ok = m_ScriptInterface.LoadScript(filename, content);
+
+	m_CurrentlyHotloading = false;
 	return ok;
 }
 
@@ -170,8 +171,7 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 	{
 		if (reRegister)
 		{
-			std::string msg("ReRegistering component type that was not registered before '"+cname+"'");
-			componentManager->m_ScriptInterface.ReportError(msg.c_str());
+			componentManager->m_ScriptInterface.ReportError(("ReRegistering component type that was not registered before '" + cname + "'").c_str());
 			return;
 		}
 		// Allocate a new cid number
@@ -186,8 +186,7 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 
 		if (!componentManager->m_CurrentlyHotloading && !reRegister)
 		{
-			std::string msg("Registering component type with already-registered name '"+cname+"'");
-			componentManager->m_ScriptInterface.ReportError(msg.c_str());
+			componentManager->m_ScriptInterface.ReportError(("Registering component type with already-registered name '" + cname + "'").c_str());
 			return;
 		}
 
@@ -196,8 +195,7 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 		// We can only replace scripted component types, not native ones
 		if (ctPrevious.type != CT_Script)
 		{
-			std::string msg("Loading script component type with same name '"+cname+"' as native component");
-			componentManager->m_ScriptInterface.ReportError(msg.c_str());
+			componentManager->m_ScriptInterface.ReportError(("Loading script component type with same name '" + cname + "' as native component").c_str());
 			return;
 		}
 
@@ -233,18 +231,24 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 		mustReloadComponents = true;
 	}
 
-	std::string schema = "<empty/>";
+	JS::RootedValue protoVal(cx);
+	if (!componentManager->m_ScriptInterface.GetProperty(ctor, "prototype", &protoVal))
 	{
-		JS::RootedValue prototype(cx);
-		if (componentManager->m_ScriptInterface.GetProperty(ctor, "prototype", &prototype) &&
-			componentManager->m_ScriptInterface.HasProperty(prototype, "Schema"))
-		{
-			componentManager->m_ScriptInterface.GetProperty(prototype, "Schema", schema);
-		}
+		componentManager->m_ScriptInterface.ReportError("Failed to get property 'prototype'");
+		return;
 	}
+	if (!protoVal.isObject())
+	{
+		componentManager->m_ScriptInterface.ReportError("Component has no constructor");
+		return;
+	}
+	std::string schema = "<empty/>";
+
+	if (componentManager->m_ScriptInterface.HasProperty(protoVal, "Schema"))
+		componentManager->m_ScriptInterface.GetProperty(protoVal, "Schema", schema);
 
 	// Construct a new ComponentType, using the wrapper's alloc functions
-	ComponentType ct(
+	ComponentType ct{
 		CT_Script,
 		iid,
 		ctWrapper.alloc,
@@ -252,26 +256,19 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 		cname,
 		schema,
 		DefPersistentRooted<JS::Value>(cx, ctor)
-	);
+	};
 	componentManager->m_ComponentTypesById[cid] = std::move(ct);
 
 	componentManager->m_CurrentComponent = cid; // needed by Subscribe
 
-
 	// Find all the ctor prototype's On* methods, and subscribe to the appropriate messages:
-	JS::RootedValue protoVal(cx);
-	if (!componentManager->m_ScriptInterface.GetProperty(ctor, "prototype", &protoVal))
-		return; // error
-
 	std::vector<std::string> methods;
-	JS::RootedObject proto(cx);
-	if (!protoVal.isObjectOrNull())
-		return; // error
-
-	proto = protoVal.toObjectOrNull();
 
 	if (!componentManager->m_ScriptInterface.EnumeratePropertyNamesWithPrefix(protoVal, "On", methods))
-		return; // error
+	{
+		componentManager->m_ScriptInterface.ReportError("Failed to enumerate 'On' messages");
+		return;
+	}
 
 	for (std::vector<std::string>::const_iterator it = methods.begin(); it != methods.end(); ++it)
 	{
@@ -288,8 +285,7 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 		std::map<std::string, MessageTypeId>::const_iterator mit = componentManager->m_MessageTypeIdsByName.find(name);
 		if (mit == componentManager->m_MessageTypeIdsByName.end())
 		{
-			std::string msg("Registered component has unrecognised '" + *it + "' message handler method");
-			componentManager->m_ScriptInterface.ReportError(msg.c_str());
+			componentManager->m_ScriptInterface.ReportError(("Registered component has unrecognized '" + *it + "' message handler method").c_str());
 			return;
 		}
 
@@ -311,9 +307,7 @@ void CComponentManager::Script_RegisterComponentType_Common(ScriptInterface::CxP
 		{
 			JS::RootedValue instance(cx, eit->second->GetJSInstance());
 			if (!instance.isNull())
-			{
 				componentManager->m_ScriptInterface.SetPrototype(instance, protoVal);
-			}
 		}
 	}
 }
@@ -347,10 +341,7 @@ void CComponentManager::Script_RegisterInterface(ScriptInterface::CxPrivate* pCx
 		// Redefinitions are fine (and just get ignored) when hotloading; otherwise
 		// they're probably unintentional and should be reported
 		if (!componentManager->m_CurrentlyHotloading)
-		{
-			std::string msg("Registering interface with already-registered name '"+name+"'");
-			componentManager->m_ScriptInterface.ReportError(msg.c_str());
-		}
+			componentManager->m_ScriptInterface.ReportError(("Registering interface with already-registered name '" + name + "'").c_str());
 		return;
 	}
 
@@ -371,10 +362,7 @@ void CComponentManager::Script_RegisterMessageType(ScriptInterface::CxPrivate* p
 		// Redefinitions are fine (and just get ignored) when hotloading; otherwise
 		// they're probably unintentional and should be reported
 		if (!componentManager->m_CurrentlyHotloading)
-		{
-			std::string msg("Registering message type with already-registered name '"+name+"'");
-			componentManager->m_ScriptInterface.ReportError(msg.c_str());
-		}
+			componentManager->m_ScriptInterface.ReportError(("Registering message type with already-registered name '" + name + "'").c_str());
 		return;
 	}
 
@@ -387,9 +375,6 @@ void CComponentManager::Script_RegisterMessageType(ScriptInterface::CxPrivate* p
 void CComponentManager::Script_RegisterGlobal(ScriptInterface::CxPrivate* pCxPrivate, const std::string& name, JS::HandleValue value)
 {
 	CComponentManager* componentManager = static_cast<CComponentManager*> (pCxPrivate->pCBData);
-
-	// Set the value, and accept duplicates only if hotloading (otherwise it's an error,
-	// in order to detect accidental duplicate definitions of globals)
 	componentManager->m_ScriptInterface.SetGlobal(name.c_str(), value, componentManager->m_CurrentlyHotloading);
 }
 
@@ -520,7 +505,7 @@ void CComponentManager::ResetState()
 		}
 	}
 
-	std::vector<boost::unordered_map<entity_id_t, IComponent*> >::iterator ifcit = m_ComponentsByInterface.begin();
+	std::vector<std::unordered_map<entity_id_t, IComponent*> >::iterator ifcit = m_ComponentsByInterface.begin();
 	for (; ifcit != m_ComponentsByInterface.end(); ++ifcit)
 		ifcit->clear();
 
@@ -548,7 +533,7 @@ void CComponentManager::SetRNGSeed(u32 seed)
 void CComponentManager::RegisterComponentType(InterfaceId iid, ComponentTypeId cid, AllocFunc alloc, DeallocFunc dealloc,
 		const char* name, const std::string& schema)
 {
-	ComponentType c(CT_Native, iid, alloc, dealloc, name, schema, DefPersistentRooted<JS::Value>());
+	ComponentType c{ CT_Native, iid, alloc, dealloc, name, schema, DefPersistentRooted<JS::Value>() };
 	m_ComponentTypesById.insert(std::make_pair(cid, std::move(c)));
 	m_ComponentTypeIdsByName[name] = cid;
 }
@@ -556,7 +541,7 @@ void CComponentManager::RegisterComponentType(InterfaceId iid, ComponentTypeId c
 void CComponentManager::RegisterComponentTypeScriptWrapper(InterfaceId iid, ComponentTypeId cid, AllocFunc alloc,
 		DeallocFunc dealloc, const char* name, const std::string& schema)
 {
-	ComponentType c(CT_ScriptWrapper, iid, alloc, dealloc, name, schema, DefPersistentRooted<JS::Value>());
+	ComponentType c{ CT_ScriptWrapper, iid, alloc, dealloc, name, schema, DefPersistentRooted<JS::Value>() };
 	m_ComponentTypesById.insert(std::make_pair(cid, std::move(c)));
 	m_ComponentTypeIdsByName[name] = cid;
 	// TODO: merge with RegisterComponentType
@@ -755,7 +740,7 @@ IComponent* CComponentManager::ConstructComponent(CEntityHandle ent, ComponentTy
 
 	ENSURE((size_t)ct.iid < m_ComponentsByInterface.size());
 
-	boost::unordered_map<entity_id_t, IComponent*>& emap1 = m_ComponentsByInterface[ct.iid];
+	std::unordered_map<entity_id_t, IComponent*>& emap1 = m_ComponentsByInterface[ct.iid];
 	if (emap1.find(ent.GetId()) != emap1.end())
 	{
 		LOGERROR("Multiple components for interface %d", ct.iid);
@@ -804,7 +789,7 @@ void CComponentManager::AddMockComponent(CEntityHandle ent, InterfaceId iid, ICo
 	// Just add it into the by-interface map, not the by-component-type map,
 	// so it won't be considered for messages or deletion etc
 
-	boost::unordered_map<entity_id_t, IComponent*>& emap1 = m_ComponentsByInterface.at(iid);
+	std::unordered_map<entity_id_t, IComponent*>& emap1 = m_ComponentsByInterface.at(iid);
 	if (emap1.find(ent.GetId()) != emap1.end())
 		debug_warn(L"Multiple components for interface");
 	emap1.insert(std::make_pair(ent.GetId(), &component));
@@ -879,7 +864,7 @@ entity_id_t CComponentManager::AddEntity(const std::wstring& templateName, entit
 		CComponentManager::ComponentTypeId cid = LookupCID(it->first);
 		if (cid == CID__Invalid)
 		{
-			LOGERROR("Unrecognised component type name '%s' in entity template '%s'", it->first, utf8_from_wstring(templateName));
+			LOGERROR("Unrecognized component type name '%s' in entity template '%s'", it->first, utf8_from_wstring(templateName));
 			return INVALID_ENTITY;
 		}
 
@@ -955,7 +940,7 @@ void CComponentManager::FlushDestroyedComponents()
 			m_ComponentCaches.erase(ent);
 
 			// Remove from m_ComponentsByInterface
-			std::vector<boost::unordered_map<entity_id_t, IComponent*> >::iterator ifcit = m_ComponentsByInterface.begin();
+			std::vector<std::unordered_map<entity_id_t, IComponent*> >::iterator ifcit = m_ComponentsByInterface.begin();
 			for (; ifcit != m_ComponentsByInterface.end(); ++ifcit)
 			{
 				ifcit->erase(ent);
@@ -972,7 +957,7 @@ IComponent* CComponentManager::QueryInterface(entity_id_t ent, InterfaceId iid) 
 		return NULL;
 	}
 
-	boost::unordered_map<entity_id_t, IComponent*>::const_iterator eit = m_ComponentsByInterface[iid].find(ent);
+	std::unordered_map<entity_id_t, IComponent*>::const_iterator eit = m_ComponentsByInterface[iid].find(ent);
 	if (eit == m_ComponentsByInterface[iid].end())
 	{
 		// This entity doesn't implement this interface
@@ -994,7 +979,7 @@ CComponentManager::InterfaceList CComponentManager::GetEntitiesWithInterface(Int
 
 	ret.reserve(m_ComponentsByInterface[iid].size());
 
-	boost::unordered_map<entity_id_t, IComponent*>::const_iterator it = m_ComponentsByInterface[iid].begin();
+	std::unordered_map<entity_id_t, IComponent*>::const_iterator it = m_ComponentsByInterface[iid].begin();
 	for (; it != m_ComponentsByInterface[iid].end(); ++it)
 		ret.push_back(*it);
 

@@ -7,9 +7,11 @@
   </Armour>
   <Attack>
     <Melee>
-      <Hack>10.0</Hack>
-      <Pierce>0.0</Pierce>
-      <Crush>0.0</Crush>
+      <Damage>
+        <Hack>10.0</Hack>
+        <Pierce>0.0</Pierce>
+        <Crush>0.0</Crush>
+      </Damage>
       <MaxRange>5.0</MaxRange>
       <PrepareTime>500</PrepareTime>
       <RepeatTime>1000</RepeatTime>
@@ -30,9 +32,11 @@
     <Pickup>true</Pickup>
   </GarrisonHolder>
   <Identity>
-    <Classes datatype="tokens">FishingBoat -ConquestCritical</Classes>
+    <Classes datatype="tokens">-ConquestCritical</Classes>
+    <VisibleClasses datatype="tokens">FishingBoat</VisibleClasses>
     <Formations disable=""/>
     <GenericName>Fishing Boat</GenericName>
+    <SelectionGroupName>template_unit_ship_fishing</SelectionGroupName>
     <Tooltip>Fish the waters for food.</Tooltip>
   </Identity>
   <Loot>

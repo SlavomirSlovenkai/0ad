@@ -1,10 +1,11 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2018 Wildfire Games
+# Copyright (C) 2019 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
 # Jacob Carlsson <yejcob@gmail.com>, 2015
 # Jonatan Nyberg, 2016
+# Jonatan Nyberg, 2020
 # Kristoffer Grundström <hamnisdude@gmail.com>, 2016
 # pilino1234 <pilino1234@zoho.eu>, 2016
 # pilino1234 <pilino1234@zoho.eu>, 2015-2016
@@ -16,9 +17,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2018-11-06 16:32+0100\n"
-"PO-Revision-Date: 2019-03-22 04:05+0000\n"
-"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"POT-Creation-Date: 2019-11-22 08:08+0000\n"
+"PO-Revision-Date: 2020-02-18 07:12+0000\n"
+"Last-Translator: Jonatan Nyberg\n"
 "Language-Team: Swedish (http://www.transifex.com/wildfire-games/0ad/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,370 +27,467 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gui/lobby/lobby.js:50
-msgid "Online"
-msgstr "Ansluten"
-
-#: gui/lobby/lobby.js:51
-msgid "Away"
-msgstr "Borta"
-
-#: gui/lobby/lobby.js:52
-msgid "Busy"
-msgstr "Upptagen"
-
-#: gui/lobby/lobby.js:53
-msgid "Offline"
-msgstr "Frånkopplad"
-
-#: gui/lobby/lobby.js:54
-msgctxt "lobby presence"
-msgid "Unknown"
-msgstr "Okänd"
-
-#: gui/lobby/lobby.js:58
-msgid "Moderator"
-msgstr "Moderator"
-
-#: gui/lobby/lobby.js:59
-msgid "Player"
-msgstr "Spelare"
-
-#: gui/lobby/lobby.js:60
-msgid "Muted Player"
-msgstr "Tystad Spelare"
-
-#: gui/lobby/lobby.js:156
-msgid "Disconnected."
-msgstr "Frånkopplad."
-
-#: gui/lobby/lobby.js:178
-#, javascript-format
-msgid "%(nick)s changed the lobby subject to %(subject)s"
-msgstr "%(nick)s ändrade lobbyämnet till %(subject)s"
-
-#: gui/lobby/lobby.js:189
-#, javascript-format
-msgid "%(nick)s has joined."
-msgstr "%(nick)s har anslutit."
-
-#: gui/lobby/lobby.js:199
-#, javascript-format
-msgid "%(nick)s has left."
-msgstr "%(nick)s har lämnat lobbyn."
-
-#: gui/lobby/lobby.js:220
-msgid "You have been muted."
-msgstr "Du har tystats"
-
-#: gui/lobby/lobby.js:221
-#, javascript-format
-msgid "%(nick)s has been muted."
-msgstr "%(nick)s har blivit tystad."
-
-#: gui/lobby/lobby.js:224
-msgid "You are now a moderator."
-msgstr "Du är nu en moderator"
-
-#: gui/lobby/lobby.js:225
-#, javascript-format
-msgid "%(nick)s is now a moderator."
-msgstr "%(nick)s är nu en moderator"
-
-#: gui/lobby/lobby.js:228
-msgid "You have been unmuted."
-msgstr "Du är inte tystad längre."
-
-#: gui/lobby/lobby.js:229
-#, javascript-format
-msgid "%(nick)s has been unmuted."
-msgstr "%(nick)s är inte tystad längre."
-
-#: gui/lobby/lobby.js:231
-msgid "You are not a moderator anymore."
-msgstr "Du är inte moderator längre."
-
-#: gui/lobby/lobby.js:232
-#, javascript-format
-msgid "%(nick)s is not a moderator anymore."
-msgstr "%(nick)s är inte moderator längre."
-
-#: gui/lobby/lobby.js:247
-#, javascript-format
-msgid "%(oldnick)s is now known as %(newnick)s."
-msgstr "%(oldnick)s är nu känd som %(newnick)s."
-
-#: gui/lobby/lobby.js:279
+#: gui/lobby/LobbyPage/AnnouncementHandler.js:18
 msgid "Notice"
 msgstr "OBS"
 
-#: gui/lobby/lobby.js:320
-msgid "Set your state to 'Away'."
-msgstr "Ändra din status till 'Borta'."
+#: gui/lobby/LobbyPage/ConnectionHandler.js:45
+msgid "BANNED"
+msgstr "BANNAD"
 
-#: gui/lobby/lobby.js:327
-msgid "Set your state to 'Online'."
-msgstr "Ändra din status till 'Online'."
+#: gui/lobby/LobbyPage/ConnectionHandler.js:45
+msgid "KICKED"
+msgstr "SPARKAD"
 
-#: gui/lobby/lobby.js:334
-msgid "Kick a specified user from the lobby. Usage: /kick nick reason"
-msgstr "Sparka en användare från lobbyn. Användning: /kick användarnamn anledning"
-
-#: gui/lobby/lobby.js:342
-msgid "Ban a specified user from the lobby. Usage: /ban nick reason"
-msgstr "Banna en användare från lobbyn: Användning: /ban användarnamn anledning"
-
-#: gui/lobby/lobby.js:350
-msgid "Show this help."
-msgstr "Visa denna hjälpdialog."
-
-#: gui/lobby/lobby.js:353
-msgid "Chat commands:"
-msgstr "Chattkommandon:"
-
-#. Translation: Chat command help format
-#: gui/lobby/lobby.js:357
-#, javascript-format
-msgid "%(command)s - %(description)s"
-msgstr "%(command)s - %(description)s"
-
-#: gui/lobby/lobby.js:370
-msgid "Send a chat message about yourself. Example: /me goes swimming."
-msgstr "Skicka ett chattmeddelande om dig själv. Exempel: /me går och badar."
-
-#: gui/lobby/lobby.js:374
-msgid ""
-"Send text as a chat message (even if it starts with slash). Example: /say "
-"/help is a great command."
-msgstr "Skicka text som chattmeddelande (även om den börjar med ett snedstreck). Exempel: /say /help är ett bra kommando."
-
-#: gui/lobby/lobby.js:378
-msgid "Clear all chat scrollback."
-msgstr "Rensa all chatthistoria."
-
-#: gui/lobby/lobby.js:385
-msgid "Return to the main menu."
-msgstr "Återgå till huvudmenyn."
-
-#: gui/lobby/lobby.js:443
+#: gui/lobby/LobbyPage/ConnectionHandler.js:61
 msgid "You have been disconnected from the lobby. Do you want to reconnect?"
 msgstr "Du har blivit frånkopplad ifrån lobbyn. Vill du återansluta?"
 
-#: gui/lobby/lobby.js:444 gui/lobby/lobby.js:1210
+#: gui/lobby/LobbyPage/ConnectionHandler.js:62
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:53
 #: gui/prelobby/common/credentials/credentials.js:55
 msgid "Confirmation"
 msgstr "Bekräftelse"
 
-#: gui/lobby/lobby.js:445 gui/lobby/lobby.js:1193 gui/lobby/lobby.js:1211
+#: gui/lobby/LobbyPage/ConnectionHandler.js:63
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:44
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:54
 #: gui/prelobby/common/credentials/credentials.js:56
 msgid "No"
 msgstr "Nej"
 
-#: gui/lobby/lobby.js:445 gui/lobby/lobby.js:1193 gui/lobby/lobby.js:1211
+#: gui/lobby/LobbyPage/ConnectionHandler.js:63
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:44
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:54
 #: gui/prelobby/common/credentials/credentials.js:56
 msgid "Yes"
 msgstr "Ja"
 
-#: gui/lobby/lobby.js:460
-msgctxt "previous page"
-msgid "Back"
-msgstr "Tillbaka"
-
-#: gui/lobby/lobby.js:461
-msgctxt "previous page"
-msgid "Main Menu"
-msgstr "Huvudmeny"
-
-#: gui/lobby/lobby.js:530
-msgctxt "map size"
-msgid "Any"
-msgstr "Vilken som helst"
-
-#: gui/lobby/lobby.js:535
-msgctxt "player number"
-msgid "Any"
-msgstr "Vilken som helst"
-
-#: gui/lobby/lobby.js:539 gui/lobby/lobby.js:553
-msgctxt "map"
-msgid "Any"
-msgstr "Vilken som helst"
-
-#: gui/lobby/lobby.js:547
+#. Translation: The number of players and observers in this game
+#: gui/lobby/LobbyPage/Game.js:298
 #, javascript-format
-msgctxt "gamelist filter"
-msgid "> %(rating)s"
-msgstr "> %(rating)s"
+msgid "%(current)s/%(max)s +%(observercount)s"
+msgstr "%(current)s/%(max)s +%(observercount)s"
 
-#: gui/lobby/lobby.js:548
+#. Translation: The number of players in this game
+#: gui/lobby/LobbyPage/Game.js:301
 #, javascript-format
-msgctxt "gamelist filter"
-msgid "< %(rating)s"
-msgstr "< %(rating)s"
+msgid "%(current)s/%(max)s"
+msgstr "%(current)s/%(max)s"
 
-#: gui/lobby/lobby.js:621
-msgid "You have been banned from the lobby!"
-msgstr "Du har blivit bannad från lobbyn!"
+#: gui/lobby/LobbyPage/GameDetails.js:65
+msgctxt "victory condition"
+msgid "Endless Game"
+msgstr "Oändligt spel"
 
-#: gui/lobby/lobby.js:622
+#: gui/lobby/LobbyPage/GameDetails.js:117
+#, javascript-format
+msgid "Host: %(playername)s"
+msgstr "Värd: %(playername)s"
+
+#: gui/lobby/LobbyPage/GameDetails.js:119
+#, javascript-format
+msgid "Players: %(current)s/%(total)s"
+msgstr "Spelare: %(current)s/%(total)s"
+
+#: gui/lobby/LobbyPage/GameDetails.js:121
+msgid "Victory Conditions:"
+msgstr "Segervillkor:"
+
+#. Translation: Comma used to concatenate victory conditions
+#: gui/lobby/LobbyPage/GameDetails.js:124
+msgid ", "
+msgstr ", "
+
+#: gui/lobby/LobbyPage/GameDetails.js:126
+msgid "Mods:"
+msgstr ""
+
+#. Translation: %(time)s is the hour and minute here.
+#: gui/lobby/LobbyPage/GameDetails.js:129
+#, javascript-format
+msgid "Game started at %(time)s"
+msgstr "Spelet började %(time)s"
+
+#: gui/lobby/LobbyPage/GameDetails.js:131
+#: gui/lobby/LobbyPage/Chat/TimestampWrapper.js:33
+msgid "HH:mm"
+msgstr "HH:mm"
+
+#: gui/lobby/LobbyPage/GameDetails.js:133
+msgid "Map Type:"
+msgstr "Karttyp:"
+
+#: gui/lobby/LobbyPage/GameDetails.js:135
+msgid "Map Size:"
+msgstr "Kartstorlek:"
+
+#: gui/lobby/LobbyPage/GameDetails.js:137
+msgid "Map Description:"
+msgstr "Kartbeskrivning:"
+
+#: gui/lobby/LobbyPage/KickStrings.js:39
 msgid "You have been kicked from the lobby!"
 msgstr "Du har sparkats från lobbyn!"
 
-#: gui/lobby/lobby.js:624
-#, javascript-format
-msgid "%(nick)s has been banned from the lobby."
-msgstr "%(nick)s har bannats från lobbyn."
+#: gui/lobby/LobbyPage/KickStrings.js:40
+msgid "You have been banned from the lobby!"
+msgstr "Du har blivit bannad från lobbyn!"
 
-#: gui/lobby/lobby.js:625
+#: gui/lobby/LobbyPage/KickStrings.js:43
 #, javascript-format
 msgid "%(nick)s has been kicked from the lobby."
 msgstr "%(nick)s har sparkats från lobbyn."
 
-#: gui/lobby/lobby.js:628
+#: gui/lobby/LobbyPage/KickStrings.js:44
+#, javascript-format
+msgid "%(nick)s has been banned from the lobby."
+msgstr "%(nick)s har bannats från lobbyn."
+
+#: gui/lobby/LobbyPage/KickStrings.js:49
 #, javascript-format
 msgctxt "lobby kick"
 msgid "Reason: %(reason)s"
 msgstr "Anledning: %(reason)s"
 
-#: gui/lobby/lobby.js:656
-msgid "BANNED"
-msgstr "BANNAD"
-
-#: gui/lobby/lobby.js:656
-msgid "KICKED"
-msgstr "SPARKAD"
-
-#: gui/lobby/lobby.js:687
-msgid "Unmark as Buddy"
-msgstr "Avmarkera som Kompis"
-
-#: gui/lobby/lobby.js:687
-msgid "Mark as Buddy"
-msgstr "Markera som Kompis"
-
-#: gui/lobby/lobby.js:880 gui/lobby/lobby.js:881 gui/lobby/lobby.js:882
-#: gui/lobby/lobby.js:883 gui/lobby/lobby.js:884 gui/lobby/lobby.js:885
-msgid "N/A"
-msgstr "Ej tillgänglig"
-
-#: gui/lobby/lobby.js:913
-#, javascript-format
-msgid "Player \"%(nick)s\" not found."
-msgstr "Spelare \"%(nick)s\" kan ej hittas."
-
-#. Translation: %(time)s is the hour and minute here.
-#: gui/lobby/lobby.js:1143
-#, javascript-format
-msgid "Game started at %(time)s"
-msgstr "Spelet började %(time)s"
-
-#: gui/lobby/lobby.js:1144 gui/lobby/lobby.js:1524
-msgid "HH:mm"
-msgstr "HH:mm"
-
-#: gui/lobby/lobby.js:1148
-#, javascript-format
-msgid "Players: %(current)s/%(total)s"
-msgstr "Spelare: %(current)s/%(total)s"
-
-#: gui/lobby/lobby.js:1189
-msgid "Your active mods do not match the mods of this game."
-msgstr "Dina aktiva mods matchar inte spelets mods."
-
-#: gui/lobby/lobby.js:1191
-msgid "Do you want to switch to the mod selection page?"
-msgstr "Vill du byta till sidan för att välja mods?"
-
-#: gui/lobby/lobby.js:1192
-msgid "Incompatible mods"
-msgstr "Inkompatibla mods"
-
-#: gui/lobby/lobby.js:1209
-msgid "The game has already started. Do you want to join as observer?"
-msgstr "Matchen har redan startat. Vill du ansluta dig som observatör?"
-
-#: gui/lobby/lobby.js:1243
-#, javascript-format
-msgid "This game's address '%(ip)s' does not appear to be valid."
-msgstr "Spelets ip-adress: '%(ip)s' verkar inte vara giltig."
-
-#: gui/lobby/lobby.js:1359
-#, javascript-format
-msgid "The command '%(cmd)s' is not supported."
-msgstr "Kommandot '%(cmd)s' stöds inte."
-
-#: gui/lobby/lobby.js:1371
-#, javascript-format
-msgid "The command '%(cmd)s' is restricted to moderators."
-msgstr "Kommandot '%(cmd)s' är bara tillgängligt för moderatorer."
-
-#. Translation: IRC message prefix when the sender uses the /me command.
-#: gui/lobby/lobby.js:1444
-#, javascript-format
-msgid "* %(sender)s"
-msgstr "* %(sender)s"
-
-#. Translation: IRC message issued using the ‘/me’ command.
-#: gui/lobby/lobby.js:1449
-#, javascript-format
-msgid "%(sender)s %(action)s"
-msgstr "%(sender)s %(action)s"
-
-#. Translation: IRC message prefix.
-#: gui/lobby/lobby.js:1458 gui/lobby/lobby.js:1479 gui/lobby/lobby.js:1506
-#, javascript-format
-msgid "<%(sender)s>"
-msgstr "<%(sender)s>"
-
-#. Translation: IRC message.
-#: gui/lobby/lobby.js:1463 gui/lobby/lobby.js:1484 gui/lobby/lobby.js:1511
-#, javascript-format
-msgid "%(sender)s %(message)s"
-msgstr "%(sender)s %(message)s"
-
-#. Translation: IRC system message.
-#: gui/lobby/lobby.js:1473
-#, javascript-format
-msgid "== %(message)s"
-msgstr "== %(message)s"
-
-#: gui/lobby/lobby.js:1501
-#, javascript-format
-msgctxt "lobby private message"
-msgid "(%(private)s) <%(sender)s>"
-msgstr "(%(private)s) <%(sender)s>"
-
-#: gui/lobby/lobby.js:1502
-msgid "Private"
-msgstr "Privat"
-
-#. Translation: Time prefix as shown in the multiplayer lobby (when you enable
-#. it in the options page).
-#: gui/lobby/lobby.js:1527
-#, javascript-format
-msgid "\\[%(time)s]"
-msgstr "\\[%(time)s]"
-
-#. Translation: IRC message format when there is a time prefix.
-#: gui/lobby/lobby.js:1532
-#, javascript-format
-msgid "%(time)s %(message)s"
-msgstr "%(time)s %(message)s"
-
-#: gui/lobby/lobby.js:1571
+#: gui/lobby/LobbyPage/PlayerColor.js:34
 #, javascript-format
 msgid "%(nick)s (%(rating)s)"
 msgstr "%(nick)s (%(rating)s)"
 
-#: gui/lobby/lobby.js:1587
+#: gui/lobby/LobbyPage/PlayerList.js:178
+msgid "Online"
+msgstr "Ansluten"
+
+#: gui/lobby/LobbyPage/PlayerList.js:184
+msgid "Away"
+msgstr "Borta"
+
+#: gui/lobby/LobbyPage/PlayerList.js:190
+msgid "Busy"
+msgstr "Upptagen"
+
+#: gui/lobby/LobbyPage/PlayerList.js:196
+msgid "Offline"
+msgstr "Frånkopplad"
+
+#: gui/lobby/LobbyPage/PlayerList.js:202
+msgctxt "lobby presence"
+msgid "Unknown"
+msgstr "Okänd"
+
+#: gui/lobby/LobbyPage/ProfilePanel.js:106
+msgid "N/A"
+msgstr "Ej tillgänglig"
+
+#: gui/lobby/LobbyPage/ProfilePanel.js:112
+msgid "Moderator"
+msgstr "Moderator"
+
+#: gui/lobby/LobbyPage/ProfilePanel.js:113
+msgid "Player"
+msgstr "Spelare"
+
+#: gui/lobby/LobbyPage/ProfilePanel.js:114
+msgid "Muted Player"
+msgstr "Tystad Spelare"
+
+#: gui/lobby/LobbyPage/ProfilePanel.js:120
 msgctxt "Used for an undefined winning rate"
 msgid "-"
 msgstr "-"
 
-#: gui/lobby/lobby.js:1589
+#: gui/lobby/LobbyPage/ProfilePanel.js:122
 #, javascript-format
 msgid "%(percentage)s%%"
 msgstr "%(percentage)s%%"
+
+#: gui/lobby/LobbyPage/Buttons/BuddyButton.js:69
+msgid "Mark as Buddy"
+msgstr "Markera som Kompis"
+
+#: gui/lobby/LobbyPage/Buttons/BuddyButton.js:70
+msgid "Unmark as Buddy"
+msgstr "Avmarkera som Kompis"
+
+#: gui/lobby/LobbyPage/Buttons/HostButton.js:10
+msgid "Host Game"
+msgstr "Var värd i ett spel"
+
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:40
+msgid "Your active mods do not match the mods of this game."
+msgstr "Dina aktiva mods matchar inte spelets mods."
+
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:42
+msgid "Do you want to switch to the mod selection page?"
+msgstr "Vill du byta till sidan för att välja mods?"
+
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:43
+msgid "Incompatible mods"
+msgstr "Inkompatibla mods"
+
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:52
+msgid "The game has already started. Do you want to join as observer?"
+msgstr "Matchen har redan startat. Vill du ansluta dig som observatör?"
+
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:89
+#, javascript-format
+msgid "This game's address '%(ip)s' does not appear to be valid."
+msgstr "Spelets ip-adress: '%(ip)s' verkar inte vara giltig."
+
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:91
+msgid "Error"
+msgstr "Fel"
+
+#. Translation: Join the game currently selected in the list.
+#: gui/lobby/LobbyPage/Buttons/JoinButton.js:130
+msgid "Join Game"
+msgstr "Anslut till spel"
+
+#: gui/lobby/LobbyPage/Buttons/LeaderboardButton.js:9
+#: gui/lobby/LeaderboardPage/LeaderboardPage.xml:(caption):10
+msgid "Leaderboard"
+msgstr "Topplistan"
+
+#: gui/lobby/LobbyPage/Buttons/ProfileButton.js:9
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):10
+msgid "Player Profile Lookup"
+msgstr ""
+
+#: gui/lobby/LobbyPage/Buttons/QuitButton.js:15
+msgctxt "previous page"
+msgid "Back"
+msgstr "Tillbaka"
+
+#: gui/lobby/LobbyPage/Buttons/QuitButton.js:16
+msgctxt "previous page"
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:32
+#, javascript-format
+msgid "The command '%(cmd)s' is not supported."
+msgstr "Kommandot '%(cmd)s' stöds inte."
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:44
+#, javascript-format
+msgid "The command '%(cmd)s' is restricted to moderators."
+msgstr "Kommandot '%(cmd)s' är bara tillgängligt för moderatorer."
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:66
+#, javascript-format
+msgid "The command '%(cmd)s' requires at least one argument."
+msgstr ""
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:87
+msgid "Set your state to 'Away'."
+msgstr "Ändra din status till 'Borta'."
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:94
+msgid "Set your state to 'Online'."
+msgstr "Ändra din status till 'Online'."
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:101
+msgid "Kick a specified user from the lobby. Usage: /kick nick reason"
+msgstr "Sparka en användare från lobbyn. Användning: /kick användarnamn anledning"
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:113
+msgid "Ban a specified user from the lobby. Usage: /ban nick reason"
+msgstr "Banna en användare från lobbyn: Användning: /ban användarnamn anledning"
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:125
+msgid "Show this help."
+msgstr "Visa denna hjälpdialog."
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:128
+msgid "Chat commands:"
+msgstr "Chattkommandon:"
+
+#. Translation: Chat command help format
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:132
+#, javascript-format
+msgid "%(command)s - %(description)s"
+msgstr "%(command)s - %(description)s"
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:146
+msgid "Send a chat message about yourself. Example: /me goes swimming."
+msgstr "Skicka ett chattmeddelande om dig själv. Exempel: /me går och badar."
+
+#. Translation: Chat command
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:149
+msgid "/me"
+msgstr ""
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:153
+msgid ""
+"Send text as a chat message (even if it starts with slash). Example: /say "
+"/help is a great command."
+msgstr "Skicka text som chattmeddelande (även om den börjar med ett snedstreck). Exempel: /say /help är ett bra kommando."
+
+#. Translation: Chat command
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:156
+msgid "/say"
+msgstr ""
+
+#: gui/lobby/LobbyPage/Chat/ChatCommandHandler.js:160
+msgid "Clear all chat scrollback."
+msgstr "Rensa all chatthistoria."
+
+#. Translation: Chat message format when there is a time prefix.
+#: gui/lobby/LobbyPage/Chat/TimestampWrapper.js:25
+#, javascript-format
+msgid "%(time)s %(message)s"
+msgstr "%(time)s %(message)s"
+
+#. Translation: Time prefix as shown in the multiplayer lobby (when you enable
+#. it in the options page).
+#: gui/lobby/LobbyPage/Chat/TimestampWrapper.js:28
+#, javascript-format
+msgid "\\[%(time)s]"
+msgstr "\\[%(time)s]"
+
+#. Translation: Chat message issued using the ‘/me’ command.
+#: gui/lobby/LobbyPage/Chat/ChatMessages/ChatMessageFormatMe.js:24
+#, javascript-format
+msgid "* %(sender)s %(message)s"
+msgstr "* %(sender)s %(message)s"
+
+#: gui/lobby/LobbyPage/Chat/ChatMessages/ChatMessageFormatSay.js:29
+#, javascript-format
+msgid "<%(sender)s>"
+msgstr "<%(sender)s>"
+
+#: gui/lobby/LobbyPage/Chat/ChatMessages/ChatMessageFormatSay.js:31
+#, javascript-format
+msgid "%(sender)s %(message)s"
+msgstr "%(sender)s %(message)s"
+
+#: gui/lobby/LobbyPage/Chat/ChatMessages/ChatMessagePrivateWrapper.js:23
+msgid "Private"
+msgstr "Privat"
+
+#: gui/lobby/LobbyPage/Chat/ChatMessages/ChatMessagePrivateWrapper.js:25
+#, javascript-format
+msgid "(%(private)s) %(message)s"
+msgstr "(%(private)s) %(message)s"
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:47
+#, javascript-format
+msgid "%(nick)s has joined."
+msgstr "%(nick)s har anslutit."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:48
+#, javascript-format
+msgid "%(nick)s has left."
+msgstr "%(nick)s har lämnat lobbyn."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:70
+#, javascript-format
+msgid "%(oldnick)s is now known as %(newnick)s."
+msgstr "%(oldnick)s är nu känd som %(newnick)s."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:107
+msgid "You have been muted."
+msgstr "Du har tystats"
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:108
+#, javascript-format
+msgid "%(nick)s has been muted."
+msgstr "%(nick)s har blivit tystad."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:112
+msgid "You are now a moderator."
+msgstr "Du är nu en moderator"
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:113
+#, javascript-format
+msgid "%(nick)s is now a moderator."
+msgstr "%(nick)s är nu en moderator"
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:118
+msgid "You have been unmuted."
+msgstr "Du är inte tystad längre."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:119
+#, javascript-format
+msgid "%(nick)s has been unmuted."
+msgstr "%(nick)s är inte tystad längre."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:124
+msgid "You are not a moderator anymore."
+msgstr "Du är inte moderator längre."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:125
+#, javascript-format
+msgid "%(nick)s is not a moderator anymore."
+msgstr "%(nick)s är inte moderator längre."
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:152
+#, javascript-format
+msgid "%(nick)s changed the lobby subject to:"
+msgstr ""
+
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageEvents.js:153
+#, javascript-format
+msgid "%(nick)s deleted the lobby subject."
+msgstr ""
+
+#. Translation: Chat status message
+#: gui/lobby/LobbyPage/Chat/StatusMessages/StatusMessageFormat.js:25
+#, javascript-format
+msgid "== %(message)s"
+msgstr "== %(message)s"
+
+#: gui/lobby/LobbyPage/Chat/SystemMessages/SystemMessageEvents.js:55
+msgid "Connected."
+msgstr "Ansluten."
+
+#: gui/lobby/LobbyPage/Chat/SystemMessages/SystemMessageEvents.js:56
+msgid "Disconnected."
+msgstr "Frånkopplad."
+
+#. Translation: Caption for system notifications shown in the chat panel
+#: gui/lobby/LobbyPage/Chat/SystemMessages/SystemMessageFormat.js:25
+msgid "System:"
+msgstr "System:"
+
+#: gui/lobby/LobbyPage/Chat/SystemMessages/SystemMessageFormat.js:32
+#, javascript-format
+msgid "=== %(system)s %(message)s"
+msgstr "=== %(system)s %(message)s"
+
+#: gui/lobby/LobbyPage/GameListFilters/MapSize.js:9
+msgctxt "map size"
+msgid "Any"
+msgstr "Vilken som helst"
+
+#: gui/lobby/LobbyPage/GameListFilters/MapType.js:9
+#: gui/lobby/LobbyPage/GameListFilters/Rating.js:11
+msgctxt "map"
+msgid "Any"
+msgstr "Vilken som helst"
+
+#: gui/lobby/LobbyPage/GameListFilters/PlayerCount.js:10
+msgctxt "player number"
+msgid "Any"
+msgstr "Vilken som helst"
+
+#: gui/lobby/LobbyPage/GameListFilters/Rating.js:19
+#, javascript-format
+msgctxt "gamelist filter"
+msgid "> %(rating)s"
+msgstr "> %(rating)s"
+
+#: gui/lobby/LobbyPage/GameListFilters/Rating.js:20
+#, javascript-format
+msgctxt "gamelist filter"
+msgid "< %(rating)s"
+msgstr "< %(rating)s"
+
+#: gui/lobby/ProfilePage/ProfilePage.js:70
+#, javascript-format
+msgid "Player \"%(nick)s\" not found."
+msgstr "Spelare \"%(nick)s\" kan ej hittas."
 
 #: gui/prelobby/common/credentials/credentials.js:5
 msgid "Please enter your username"
@@ -475,132 +573,105 @@ msgstr "Registrerar…"
 msgid "Registered"
 msgstr "Registrerad"
 
-#: gui/lobby/lobby.xml:(caption):13
-#: gui/prelobby/entrance/entrance.xml:(caption):14
-msgid "Multiplayer Lobby"
-msgstr "Multiplayer Lobby"
+#: gui/lobby/LeaderboardPage/LeaderboardPage.xml:(heading):15
+msgid "Rank"
+msgstr "Rang"
 
-#: gui/lobby/lobby_panels.xml:(heading):24
-msgid "Status"
-msgstr "Status"
-
-#: gui/lobby/lobby_panels.xml:(heading):27
-#: gui/lobby/lobby_panels.xml:(heading):190
-#: gui/lobby/lobby_panels.xml:(heading):289
+#: gui/lobby/LeaderboardPage/LeaderboardPage.xml:(heading):18
+#: gui/lobby/LobbyPage/GameList.xml:(heading):12
+#: gui/lobby/LobbyPage/PlayerList.xml:(heading):15
 msgid "Name"
 msgstr "Namn"
 
-#: gui/lobby/lobby_panels.xml:(heading):30
-#: gui/lobby/lobby_panels.xml:(heading):205
-#: gui/lobby/lobby_panels.xml:(heading):292
+#: gui/lobby/LeaderboardPage/LeaderboardPage.xml:(heading):21
+#: gui/lobby/LobbyPage/GameList.xml:(heading):27
+#: gui/lobby/LobbyPage/PlayerList.xml:(heading):18
 msgid "Rating"
 msgstr "Värdering"
 
-#: gui/lobby/lobby_panels.xml:(heading):193
+#: gui/lobby/LeaderboardPage/LeaderboardPage.xml:(caption):26
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):59
+msgid "Back"
+msgstr "Tillbaka"
+
+#: gui/lobby/LeaderboardPage/LeaderboardPage.xml:(caption):30
+msgid "Update"
+msgstr "Uppdatera"
+
+#: gui/lobby/LobbyPage/GameList.xml:(heading):15
 msgid "Map Name"
 msgstr "Kartnamn"
 
-#: gui/lobby/lobby_panels.xml:(heading):196
+#: gui/lobby/LobbyPage/GameList.xml:(heading):18
 msgctxt "map"
 msgid "Size"
 msgstr "Storlek"
 
-#: gui/lobby/lobby_panels.xml:(heading):199
+#: gui/lobby/LobbyPage/GameList.xml:(heading):21
 msgctxt "map"
 msgid "Type"
 msgstr "Typ"
 
-#: gui/lobby/lobby_panels.xml:(heading):202
+#: gui/lobby/LobbyPage/GameList.xml:(heading):24
 msgid "Players"
 msgstr "Spelare"
 
-#: gui/lobby/lobby_panels.xml:(heading):286
-msgid "Rank"
-msgstr "Rang"
-
-#: gui/lobby/lobby_panels.xml:(caption):52
-#: gui/lobby/lobby_panels.xml:(caption):331
-msgid "Current Rank:"
-msgstr "Nuvarande Rank"
-
-#: gui/lobby/lobby_panels.xml:(caption):56
-#: gui/lobby/lobby_panels.xml:(caption):335
-msgid "Highest Rating:"
-msgstr "Högsta Värdering:"
-
-#: gui/lobby/lobby_panels.xml:(caption):60
-#: gui/lobby/lobby_panels.xml:(caption):339
-msgid "Total Games:"
-msgstr "Totala spel:"
-
-#: gui/lobby/lobby_panels.xml:(caption):64
-#: gui/lobby/lobby_panels.xml:(caption):343
-msgid "Wins:"
-msgstr "Vinster:"
-
-#: gui/lobby/lobby_panels.xml:(caption):68
-#: gui/lobby/lobby_panels.xml:(caption):347
-msgid "Losses:"
-msgstr "Förluster:"
-
-#: gui/lobby/lobby_panels.xml:(caption):72
-#: gui/lobby/lobby_panels.xml:(caption):351
-msgid "Win Rate:"
-msgstr "Vinsttakt:"
-
-#: gui/lobby/lobby_panels.xml:(caption):86
-#: gui/lobby/lobby_panels.xml:(caption):279
-msgid "Leaderboard"
-msgstr "Topplistan"
-
-#: gui/lobby/lobby_panels.xml:(caption):92
-#: gui/lobby/lobby_panels.xml:(caption):314
-msgid "User Profile Lookup"
-msgstr "Användarprofilkatalog"
-
-#: gui/lobby/lobby_panels.xml:(caption):120
-msgid "Map Type:"
-msgstr "Karttyp:"
-
-#: gui/lobby/lobby_panels.xml:(caption):132
-msgid "Map Size:"
-msgstr "Kartstorlek:"
-
-#. Join the game currently selected in the list.
-#: gui/lobby/lobby_panels.xml:(caption):157
-msgid "Join Game"
-msgstr "Anslut till spel"
-
-#: gui/lobby/lobby_panels.xml:(caption):163
-msgid "Host Game"
-msgstr "Var värd i ett spel"
-
-#: gui/lobby/lobby_panels.xml:(caption):244
+#: gui/lobby/LobbyPage/GameListFilters.xml:(caption):5
 msgid "Show only open games"
 msgstr "Visa bara öppna spel"
 
-#: gui/lobby/lobby_panels.xml:(caption):267
+#: gui/lobby/LobbyPage/LobbyPage.xml:(caption):10
+#: gui/prelobby/entrance/entrance.xml:(caption):14
+msgid "Multiplayer Lobby"
+msgstr "Flerspelarlobby"
+
+#: gui/lobby/LobbyPage/PlayerList.xml:(heading):12
+msgid "Status"
+msgstr "Status"
+
+#: gui/lobby/LobbyPage/ProfilePanel.xml:(caption):8
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):28
+msgid "Current Rank:"
+msgstr "Nuvarande Rank"
+
+#: gui/lobby/LobbyPage/ProfilePanel.xml:(caption):12
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):32
+msgid "Highest Rating:"
+msgstr "Högsta Värdering:"
+
+#: gui/lobby/LobbyPage/ProfilePanel.xml:(caption):16
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):36
+msgid "Total Games:"
+msgstr "Totala spel:"
+
+#: gui/lobby/LobbyPage/ProfilePanel.xml:(caption):20
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):40
+msgid "Wins:"
+msgstr "Vinster:"
+
+#: gui/lobby/LobbyPage/ProfilePanel.xml:(caption):24
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):44
+msgid "Losses:"
+msgstr "Förluster:"
+
+#: gui/lobby/LobbyPage/ProfilePanel.xml:(caption):28
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):48
+msgid "Win Rate:"
+msgstr "Vinsttakt:"
+
+#: gui/lobby/LobbyPage/Chat/ChatPanel.xml:(caption):6
 msgid "Send"
 msgstr "Skicka"
 
-#: gui/lobby/lobby_panels.xml:(caption):299
-#: gui/lobby/lobby_panels.xml:(caption):361
-msgid "Back"
-msgstr "Tillbaka"
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):14
+msgid "Enter playername:"
+msgstr "Ange spelarens namn:"
 
-#: gui/lobby/lobby_panels.xml:(caption):305
-msgid "Update"
-msgstr "Uppdatera"
-
-#: gui/lobby/lobby_panels.xml:(caption):317
-msgid "Enter username:"
-msgstr "Ange användarnamn:"
-
-#: gui/lobby/lobby_panels.xml:(caption):323
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):20
 msgid "View Profile"
 msgstr "Se profil"
 
-#: gui/lobby/lobby_panels.xml:(caption):356
+#: gui/lobby/ProfilePage/ProfilePage.xml:(caption):53
 msgid "Please enter a player name."
 msgstr "Vänligen ange ett spelarnamn."
 
@@ -645,7 +716,7 @@ msgstr "Registrering"
 msgid ""
 "[font=\"sans-bold-18\"]0 A.D. Empires Ascendant Multiplayer Lobby Privacy "
 "Policy[/font]"
-msgstr "[font = \"Sans-Bold-18\"] 0 A.D. Empires ascendant multiplayer lobbyn sekretess policy [/font]"
+msgstr "[font = \"Sans-Bold-18\"] 0 A.D. Empires Ascendant flerspelarlobbyn sekretesspolicy [/font]"
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:3
 #: gui/prelobby/common/terms/Terms_of_Service.txt:3
@@ -711,7 +782,7 @@ msgid ""
 "When a player hosts a match in the Multiplayer Lobby, the IP address of that"
 " player is sent to every player who is online, so that other players can "
 "join that game."
-msgstr "När en spelare är värd för en match i multiplayer lobbyn, är IP-adressen för den spelaren skickas till alla spelare som är online, så att andra spelare kan ansluta sig till det spelet."
+msgstr "När en spelare är värd för en match i flerspelarlobbyn, är IP-adressen för den spelaren skickas till alla spelare som är online, så att andra spelare kan ansluta sig till det spelet."
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:17
 msgid ""
@@ -755,7 +826,7 @@ msgstr "[font = \"Sans-fet-14\"] 4. online-närvaro [/font]"
 msgid ""
 "Which players are currently connected to the Multiplayer Lobby and which "
 "match they joined is shown to all online players."
-msgstr "Vilka spelare som för närvarande är anslutna till multiplayer lobbyn och som matchar de anslöt visas för alla online-spelare."
+msgstr "Vilka spelare som för närvarande är anslutna till flerspelarlobbyn och som matchar de anslöt visas för alla online-spelare."
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:26
 msgid "[font=\"sans-bold-14\"]5. Chat messages[/font]"
@@ -765,7 +836,7 @@ msgstr "[font = \"Sans-fet-14\"] 5. chattmeddelanden [/font]"
 msgid ""
 "The Multiplayer Lobby features a public chat room that enables players to "
 "discuss the game and organize multiplayer matches."
-msgstr "Multiplayer lobby har ett offentligt chattrum som gör det möjligt för spelare att diskutera spelet och organisera multiplayer matcher."
+msgstr "Flerspelarlobbyn har ett offentligt chattrum som gör det möjligt för spelare att diskutera spelet och organisera flerspelarmatcher."
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:28
 msgid ""
@@ -798,7 +869,7 @@ msgstr "[font = \"Sans-fet-14\"] 6. match statistik [/font]"
 msgid ""
 "Players can gain a rating on the Multiplayer Lobby that reflects their skill"
 " at the game."
-msgstr "Spelare kan få ett betyg i multiplayer lobby som återspeglar deras skicklighet i spelet."
+msgstr "Spelare kan få ett betyg i flerspelarlobbyn som återspeglar deras skicklighet i spelet."
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:35
 msgid ""
@@ -875,14 +946,14 @@ msgid ""
 "Lobby, in the development and improvement of 0 A.D. and the Multiplayer "
 "Lobby, in enforcing the Terms of Use and in the protection against "
 "cyberattacks (GDPR 6.1.f)."
-msgstr "2. Wildfire Games har legitima intressen i att tillhandahålla multiplayer lobby, i utvecklingen och förbättringen av 0 A.D. och multiplayer lobby, att genomdriva användar villkoren och i skydd mot cyberattacker (GDPR 6.1. f)."
+msgstr "2. Wildfire Games har legitima intressen i att tillhandahålla flerspelarlobby, i utvecklingen och förbättringen av 0 A.D. och flerspelarlobbyn, att genomdriva användarvillkoren och i skydd mot cyberattacker (GDPR 6.1. f)."
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:51
 msgid ""
 "3. Wildfire Games does not process any further data for the Multiplayer "
 "Lobby and does not ask for consent to process data (GDPR 6.1.a, GDPR 7, GDPR"
 " 8, GDPR 13.2.c)."
-msgstr "3. Wildfire Games behandlar inte ytterligare data för multiplayer lobby och ber inte om samtycke till att behandla data (GDPR 6.1. a, GDPR 7, GDPR 8, GDPR 13.2. c)."
+msgstr "3. Wildfire Games behandlar inte ytterligare data för flerspelarlobby och ber inte om samtycke till att behandla data (GDPR 6.1. a, GDPR 7, GDPR 8, GDPR 13.2. c)."
 
 #: gui/prelobby/common/terms/Privacy_Policy.txt:53
 msgid "[font=\"sans-bold-16\"]User rights:[/font]"
@@ -1051,7 +1122,7 @@ msgstr "För ytterligare information om Wildfire Games sekretess policy, besök 
 msgid ""
 "[font=\"sans-bold-18\"]0 A.D. Empires Ascendant Multiplayer Lobby Terms of "
 "Service[/font]"
-msgstr "[font = \"Sans-Bold-18\"] 0 A.D. Empires Ascendenten multiplayer lobby användar villkor [/font]"
+msgstr "[font = \"Sans-Bold-18\"] 0 A.D. Empires Ascendenten flerspelarlobby användarvillkor [/font]"
 
 #: gui/prelobby/common/terms/Terms_of_Service.txt:5
 msgid ""
@@ -1059,25 +1130,25 @@ msgid ""
 " by Wildfire Games that allows players to setup online multiplayer matches, "
 "discuss the game in a public chat room and gain a rating that reflects their"
 " skill."
-msgstr "Den 0 A.D. Empires Ascendenten multiplayer lobby är en online tjänst som tillhandahålls av Wildfire spel som tillåter spelare att ställa in online multiplayer matcher, diskutera spelet i ett offentligt chattrum och få en rating som återspeglar deras skicklighet."
+msgstr "0 A.D. Empires Ascendenten flerspelarlobbyn är en online tjänst som tillhandahålls av Wildfire Games som tillåter spelare att ställa in flerspelarmatcher online, diskutera spelet i ett offentligt chattrum och få en rating som återspeglar deras skicklighet."
 
 #: gui/prelobby/common/terms/Terms_of_Service.txt:7
 msgid ""
 "Due to the subject matter of historic warfare, description and depiction of "
 "violence and the language on the Multiplayer Lobby, 0 A.D. and the "
 "Multiplayer Lobby are not directed to young children (COPPA §312.2)."
-msgstr "På grund av föremålet för historisk krigföring, beskrivning och skildring av våld och språket i multiplayer lobby, är 0 A.D. och multiplayer lobbyn inte riktade till små barn (COPPA § 312,2)."
+msgstr "På grund av föremålet för historisk krigföring, beskrivning och skildring av våld och språket i flerspelarlobbyn, är 0 A.D. och flerspelarlobbyn inte riktade till små barn (COPPA § 312,2)."
 
 #: gui/prelobby/common/terms/Terms_of_Service.txt:8
 msgid "The minimum age to use the Multiplayer Lobby is 13."
-msgstr "Minimiåldern för att använda multiplayer-lobbyn är 13."
+msgstr "Minimiåldern för att använda flerspelarlobbyn är 13."
 
 #: gui/prelobby/common/terms/Terms_of_Service.txt:10
 #: gui/prelobby/common/terms/Terms_of_Use.txt:5
 msgid ""
 "[font=\"sans-bold-14\"]By using the 0 A.D. Multiplayer Lobby, you agree "
 "to:[/font]"
-msgstr "[font = \"Sans-fet-14\"] Genom att använda 0 A.D. multiplayer lobbyn, samtycker du till: [/font]"
+msgstr "[font = \"Sans-fet-14\"] Genom att använda 0 A.D. flerspelarlobbyn, samtycker du till: [/font]"
 
 #: gui/prelobby/common/terms/Terms_of_Service.txt:11
 msgid " 1. Follow all usage policies."
@@ -1139,7 +1210,7 @@ msgstr "Om delar av villkoren anses vara olagliga eller på annat sätt omöjlig
 msgid ""
 "[font=\"sans-bold-18\"]0 A.D. Empires Ascendant Multiplayer Lobby Terms of "
 "Use[/font]"
-msgstr "[font = \"Sans-Bold-18\"] 0 A.D. Empires ascendant multiplayer lobby användar villkor [/font]"
+msgstr "[font = \"Sans-Bold-18\"] 0 A.D. Empires Ascendant flerspelarlobby användarvillkor [/font]"
 
 #: gui/prelobby/common/terms/Terms_of_Use.txt:3
 msgid "[font=\"sans-bold-14\"]Document Date:[/font] 2018-10-13"
@@ -1155,7 +1226,7 @@ msgstr " 1. endast skapa ett konto per person på tjänsten om inte godkänts av
 msgid ""
 " 2. Not impersonate other users of the service and only use your registered "
 "username in multiplayer matches."
-msgstr " 2. inte personifiera andra användare av tjänsten och endast använda ditt registrerade användar namn i multiplayer matcher."
+msgstr " 2. Inte personifiera andra användare av tjänsten och endast använda ditt registrerade användarnamn i matcher med flera spelare."
 
 #: gui/prelobby/common/terms/Terms_of_Use.txt:8
 msgid " 3. Not post profanity, pejorative terms or pornographic content."
@@ -1193,7 +1264,7 @@ msgid ""
 " 8. Not undermine the intended gameplay or purposefully gain unfair "
 "advantages in multiplayer matches (for example cheating, using exploits or "
 "bugs)."
-msgstr " 8. inte undergräva den avsedda gameplay eller mål medvetet få orättvisa fördelar i multiplayer matcher (till exempel fusk, med hjälp av kryp hål eller buggar)."
+msgstr " 8. Inte undergräva den avsedda spelet eller uppnå otillbörliga fördelar i flerspelarmatcher (till exempel fuska, med hjälp av kryphål eller fel)."
 
 #: gui/prelobby/common/terms/Terms_of_Use.txt:14
 msgid ""

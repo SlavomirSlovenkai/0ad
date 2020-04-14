@@ -95,31 +95,72 @@ function LoadPlayerSettings(settings, newPlayers)
 			continue;
 		}
 
-		// Note: this is not yet implemented but I leave it commented to highlight it's easy
-		// If anyone ever adds handicap.
-		//if (getSetting(playerData, playerDefaults, i, "GatherRateMultiplier") !== undefined)
-		//	cmpPlayer.SetGatherRateMultiplier(getSetting(playerData, playerDefaults, i, "GatherRateMultiplier"));
+		// PopulationLimit
+		{
+			let maxPopulation =
+				settings.PlayerData[i].PopulationLimit !== undefined ?
+					settings.PlayerData[i].PopulationLimit :
+				settings.PopulationCap !== undefined ?
+					settings.PopulationCap :
+				playerDefaults[i].PopulationLimit !== undefined ?
+					playerDefaults[i].PopulationLimit :
+					undefined;
 
-		if (getSetting(playerData, playerDefaults, i, "PopulationLimit") !== undefined)
-			cmpPlayer.SetMaxPopulation(getSetting(playerData, playerDefaults, i, "PopulationLimit"));
+			if (maxPopulation !== undefined)
+				cmpPlayer.SetMaxPopulation(maxPopulation);
+		}
 
-		if (getSetting(playerData, playerDefaults, i, "Resources") !== undefined)
-			cmpPlayer.SetResourceCounts(getSetting(playerData, playerDefaults, i, "Resources"));
+		// StartingResources
+		if (settings.PlayerData[i].Resources !== undefined)
+			cmpPlayer.SetResourceCounts(settings.PlayerData[i].Resources);
+		else if (settings.StartingResources)
+		{
+			let resourceCounts = cmpPlayer.GetResourceCounts();
+			let newResourceCounts = {};
+			for (let resouces in resourceCounts)
+				newResourceCounts[resouces] = settings.StartingResources;
+			cmpPlayer.SetResourceCounts(newResourceCounts);
+		}
+		else if (playerDefaults[i].Resources !== undefined)
+			cmpPlayer.SetResourceCounts(playerDefaults[i].Resources);
 
-		if (getSetting(playerData, playerDefaults, i, "StartingTechnologies") !== undefined)
-			cmpPlayer.SetStartingTechnologies(getSetting(playerData, playerDefaults, i, "StartingTechnologies"));
+		// StartingTechnologies
+		{
+			let startingTechnologies =
+				settings.PlayerData[i].StartingTechnologies ||
+				settings.StartingTechnologies ||
+				playerDefaults[i].StartingTechnologies ||
+				[];
 
-		if (getSetting(playerData, playerDefaults, i, "DisabledTechnologies") !== undefined)
-			cmpPlayer.SetDisabledTechnologies(getSetting(playerData, playerDefaults, i, "DisabledTechnologies"));
+			if (startingTechnologies.length)
+				cmpPlayer.SetStartingTechnologies(startingTechnologies);
+		}
 
-		let disabledTemplates = [];
-		if (settings.DisabledTemplates !== undefined)
-			disabledTemplates = settings.DisabledTemplates;
-		if (getSetting(playerData, playerDefaults, i, "DisabledTemplates") !== undefined)
-			disabledTemplates = disabledTemplates.concat(getSetting(playerData, playerDefaults, i, "DisabledTemplates"));
-		if (disabledTemplates.length)
-			cmpPlayer.SetDisabledTemplates(disabledTemplates);
+		// DisabledTechnologies
+		{
+			let disabledTechnologies =
+				settings.PlayerData[i].DisabledTechnologies ||
+				settings.DisabledTechnologies ||
+				playerDefaults[i].DisabledTechnologies ||
+				[];
 
+			if (disabledTechnologies.length)
+				cmpPlayer.SetDisabledTechnologies(disabledTechnologies);
+		}
+
+		// DisabledTemplates
+		{
+			let disabledTemplates =
+				settings.PlayerData[i].DisabledTemplates ||
+				settings.DisabledTemplates ||
+				playerDefaults[i].DisabledTemplates ||
+				[];
+
+			if (disabledTemplates.length)
+				cmpPlayer.SetDisabledTemplates(disabledTemplates);
+		}
+
+		// DisableSpies
 		if (settings.DisableSpies)
 		{
 			cmpPlayer.AddDisabledTechnology("unlock_spies");
@@ -182,6 +223,31 @@ function GetPlayerTemplateName(civ)
 		return path + "_" + civ;
 
 	return path;
+}
+
+/**
+ * @param id An entity's ID
+ * @returns The entity ID of the owner player (not his player ID) or ent if ent is a player entity.
+ */
+function QueryOwnerEntityID(ent)
+{
+	let cmpPlayer = Engine.QueryInterface(ent, IID_Player);
+	if (cmpPlayer)
+		return ent;
+
+	let cmpOwnership = Engine.QueryInterface(ent, IID_Ownership);
+	if (!cmpOwnership)
+		return null;
+
+	let owner = cmpOwnership.GetOwner();
+	if (owner == INVALID_PLAYER)
+		return null;
+
+	let cmpPlayerManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager);
+	if (!cmpPlayerManager)
+		return null;
+
+	return cmpPlayerManager.GetPlayerByID(owner);
 }
 
 /**
@@ -303,7 +369,7 @@ function IsOwnedByMutualAllyOfPlayer(player, target)
 	return IsOwnedByHelper(player, target, "IsMutualAlly");
 }
 
-function IsOwnedByNeutralOfPlayer(player,target)
+function IsOwnedByNeutralOfPlayer(player, target)
 {
 	return IsOwnedByHelper(player, target, "IsNeutral");
 }
@@ -326,6 +392,7 @@ function IsOwnedByHelper(player, target, check)
 }
 
 Engine.RegisterGlobal("LoadPlayerSettings", LoadPlayerSettings);
+Engine.RegisterGlobal("QueryOwnerEntityID", QueryOwnerEntityID);
 Engine.RegisterGlobal("QueryOwnerInterface", QueryOwnerInterface);
 Engine.RegisterGlobal("QueryPlayerIDInterface", QueryPlayerIDInterface);
 Engine.RegisterGlobal("QueryMiragedInterface", QueryMiragedInterface);

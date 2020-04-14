@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -17,15 +17,6 @@
 
 #include "precompiled.h"
 
-#include "lib/allocators/allocator_adapters.h"
-#include "lib/allocators/arena.h"
-#include "lib/ogl.h"
-#include "maths/Vector3D.h"
-#include "maths/Vector4D.h"
-
-#include "ps/CLogger.h"
-#include "ps/Profile.h"
-
 #include "graphics/Color.h"
 #include "graphics/LightEnv.h"
 #include "graphics/Material.h"
@@ -33,7 +24,14 @@
 #include "graphics/ModelDef.h"
 #include "graphics/ShaderManager.h"
 #include "graphics/TextureManager.h"
-
+#include "lib/allocators/allocator_adapters.h"
+#include "lib/allocators/arena.h"
+#include "lib/hash.h"
+#include "lib/ogl.h"
+#include "maths/Vector3D.h"
+#include "maths/Vector4D.h"
+#include "ps/CLogger.h"
+#include "ps/Profile.h"
 #include "renderer/MikktspaceWrap.h"
 #include "renderer/ModelRenderer.h"
 #include "renderer/ModelVertexRenderer.h"
@@ -233,7 +231,6 @@ ShaderModelRenderer::~ShaderModelRenderer()
 // Submit one model.
 void ShaderModelRenderer::Submit(int cullGroup, CModel* model)
 {
-	CModelDefPtr mdef = model->GetModelDef();
 	CModelRData* rdata = (CModelRData*)model->GetRenderData();
 
 	// Ensure model data is valid
@@ -339,8 +336,8 @@ struct SMRMaterialBucketKeyHash
 	size_t operator()(const SMRMaterialBucketKey& key) const
 	{
 		size_t hash = 0;
-		boost::hash_combine(hash, key.effect.GetHash());
-		boost::hash_combine(hash, key.defines.GetHash());
+		hash_combine(hash, key.effect.GetHash());
+		hash_combine(hash, key.defines.GetHash());
 		return hash;
 	}
 };
@@ -369,7 +366,7 @@ void ShaderModelRenderer::Render(const RenderModifierPtr& modifier, const CShade
 		return;
 
 	CMatrix3D worldToCam;
-	g_Renderer.GetViewCamera().m_Orientation.GetInverse(worldToCam);
+	g_Renderer.GetViewCamera().GetOrientation().GetInverse(worldToCam);
 
 	/*
 	 * Rendering approach:
@@ -425,12 +422,17 @@ void ShaderModelRenderer::Render(const RenderModifierPtr& modifier, const CShade
 	 */
 
 	Allocators::DynamicArena arena(256 * KiB);
-	typedef ProxyAllocator<CModel*, Allocators::DynamicArena> ModelListAllocator;
-	typedef std::vector<CModel*, ModelListAllocator> ModelList_t;
-	typedef boost::unordered_map<SMRMaterialBucketKey, ModelList_t,
-		SMRMaterialBucketKeyHash, std::equal_to<SMRMaterialBucketKey>,
-		ProxyAllocator<std::pair<const SMRMaterialBucketKey, ModelList_t>, Allocators::DynamicArena>
-	> MaterialBuckets_t;
+	using ModelListAllocator = ProxyAllocator<CModel*, Allocators::DynamicArena>;
+	using ModelList_t = std::vector<CModel*, ModelListAllocator>;
+	using MaterialBuckets_t = std::unordered_map<
+		SMRMaterialBucketKey,
+		ModelList_t,
+		SMRMaterialBucketKeyHash,
+		std::equal_to<SMRMaterialBucketKey>,
+		ProxyAllocator<
+			std::pair<const SMRMaterialBucketKey, ModelList_t>,
+			Allocators::DynamicArena> >;
+
 	MaterialBuckets_t materialBuckets((MaterialBuckets_t::allocator_type(arena)));
 
 	{
@@ -686,25 +688,19 @@ void ShaderModelRenderer::Render(const RenderModifierPtr& modifier, const CShade
 						{
 							const CMaterial::TextureSampler& samp = samplers[s];
 
-							CShaderProgram::Binding bind = texBindings[s];
 							// check that the handles are current
 							// and reevaluate them if necessary
-							if (texBindingNames[s] == samp.Name && bind.Active())
+							if (texBindingNames[s] != samp.Name || !texBindings[s].Active())
 							{
-								bind = texBindings[s];
-							}
-							else
-							{
-								bind = shader->GetTextureBinding(samp.Name);
-								texBindings[s] = bind;
+								texBindings[s] = shader->GetTextureBinding(samp.Name);
 								texBindingNames[s] = samp.Name;
 							}
 
 							// same with the actual sampler bindings
 							CTexture* newTex = samp.Sampler.get();
-							if (bind.Active() && newTex != currentTexs[s])
+							if (texBindings[s].Active() && newTex != currentTexs[s])
 							{
-								shader->BindTexture(bind, samp.Sampler->GetHandle());
+								shader->BindTexture(texBindings[s], newTex->GetHandle());
 								currentTexs[s] = newTex;
 							}
 						}

@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -37,10 +37,13 @@
 #endif
 
 #include "lib/config.h"	            // CONFIG_ENABLE_BOOST, CONFIG_ENABLE_PCH
-#include "lib/sysdep/compiler.h"    // MSC_VERSION, HAVE_PCH
+#include "lib/sysdep/compiler.h"    // MSC_VERSION
 
 // must come before any STL headers are included
 #if MSC_VERSION
+# if MSC_VERSION < 1900
+#   error "Visual Studio 2015 is the minimal supported version"
+# endif
 # ifdef NDEBUG	// release: disable all checks
 #  define _HAS_ITERATOR_DEBUGGING 0
 #  define _SECURE_SCL 0
@@ -95,7 +98,7 @@ using std::shared_ptr;
 // they use. this policy ensures good compile performance whether or not
 // PCHs are being used.
 
-#if CONFIG_ENABLE_PCH && HAVE_PCH
+#if CONFIG_ENABLE_PCH
 
 // anything placed here won't need to be compiled in each translation unit,
 // but will cause a complete rebuild if they change.
@@ -108,4 +111,4 @@ using std::shared_ptr;
 #include "ps/CLogger.h"
 #include "ps/Profile.h"
 
-#endif // #if CONFIG_ENABLE_PCH && HAVE_PCH
+#endif // #if CONFIG_ENABLE_PCH

@@ -1,4 +1,4 @@
-/* Copyright (C) 2015 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -52,6 +52,10 @@ struct BufferOutputHandler : public nvtt::OutputHandler
 		memcpy(&buffer[off], data, size);
 		return true;
 	}
+
+	virtual void endImage()
+	{
+	}
 };
 
 /**
@@ -64,8 +68,6 @@ struct CTextureConverter::ConversionRequest
 	nvtt::InputOptions inputOptions;
 	nvtt::CompressionOptions compressionOptions;
 	nvtt::OutputOptions outputOptions;
-	bool isDXT1a; // see comment in RunThread
-	bool is8bpp;
 };
 
 /**
@@ -284,19 +286,7 @@ CTextureConverter::CTextureConverter(PIVFS vfs, bool highQuality) :
 	ENSURE(nvtt::version() >= NVTT_VERSION);
 #endif
 
-	// Set up the worker thread:
-
-	int ret;
-
-	// Use SDL semaphores since OS X doesn't implement sem_init
-	m_WorkerSem = SDL_CreateSemaphore(0);
-	ENSURE(m_WorkerSem);
-
-	ret = pthread_mutex_init(&m_WorkerMutex, NULL);
-	ENSURE(ret == 0);
-
-	ret = pthread_create(&m_WorkerThread, NULL, &RunThread, this);
-	ENSURE(ret == 0);
+	m_WorkerThread = std::thread(RunThread, this);
 
 	// Maybe we should share some centralised pool of worker threads?
 	// For now we'll just stick with a single thread for this specific use.
@@ -305,19 +295,24 @@ CTextureConverter::CTextureConverter(PIVFS vfs, bool highQuality) :
 CTextureConverter::~CTextureConverter()
 {
 	// Tell the thread to shut down
-	pthread_mutex_lock(&m_WorkerMutex);
-	m_Shutdown = true;
-	pthread_mutex_unlock(&m_WorkerMutex);
+	{
+		std::lock_guard<std::mutex> lock(m_WorkerMutex);
+		m_Shutdown = true;
+	}
 
-	// Wake it up so it sees the notification
-	SDL_SemPost(m_WorkerSem);
+	while (true)
+	{
+		// Wake the thread up so that it shutdowns.
+		// If we send the message once, there is a chance it will be missed,
+		// so keep sending until shtudown becomes false again, indicating that the thread has shut down.
+		std::lock_guard<std::mutex> lock(m_WorkerMutex);
+		m_WorkerCV.notify_all();
+		if (!m_Shutdown)
+			break;
+	}
 
 	// Wait for it to shut down cleanly
-	pthread_join(m_WorkerThread, NULL);
-
-	// Clean up resources
-	SDL_DestroySemaphore(m_WorkerSem);
-	pthread_mutex_destroy(&m_WorkerMutex);
+	m_WorkerThread.join();
 }
 
 bool CTextureConverter::ConvertTexture(const CTexturePtr& texture, const VfsPath& src, const VfsPath& dest, const Settings& settings)
@@ -390,9 +385,6 @@ bool CTextureConverter::ConvertTexture(const CTexturePtr& texture, const VfsPath
 	else
 		request->inputOptions.setAlphaMode(nvtt::AlphaMode_None);
 
-	request->isDXT1a = false;
-	request->is8bpp = false;
-
 	if (settings.format == FMT_RGBA)
 	{
 		request->compressionOptions.setFormat(nvtt::Format_RGBA);
@@ -403,7 +395,6 @@ bool CTextureConverter::ConvertTexture(const CTexturePtr& texture, const VfsPath
 	{
 		request->compressionOptions.setFormat(nvtt::Format_RGBA);
 		request->compressionOptions.setPixelFormat(8, 0x00, 0x00, 0x00, 0xFF);
-		request->is8bpp = true;
 	}
 	else if (!hasAlpha)
 	{
@@ -413,7 +404,6 @@ bool CTextureConverter::ConvertTexture(const CTexturePtr& texture, const VfsPath
 	else if (settings.format == FMT_DXT1)
 	{
 		request->compressionOptions.setFormat(nvtt::Format_DXT1a);
-		request->isDXT1a = true;
 	}
 	else if (settings.format == FMT_DXT3)
 	{
@@ -463,12 +453,13 @@ bool CTextureConverter::ConvertTexture(const CTexturePtr& texture, const VfsPath
 		delete[] rgba;
 	}
 
-	pthread_mutex_lock(&m_WorkerMutex);
-	m_RequestQueue.push_back(request);
-	pthread_mutex_unlock(&m_WorkerMutex);
+	{
+		std::lock_guard<std::mutex> lock(m_WorkerMutex);
+		m_RequestQueue.push_back(request);
+	}
 
 	// Wake up the worker thread
-	SDL_SemPost(m_WorkerSem);
+	m_WorkerCV.notify_all();
 
 	return true;
 
@@ -484,13 +475,14 @@ bool CTextureConverter::Poll(CTexturePtr& texture, VfsPath& dest, bool& ok)
 	shared_ptr<ConversionResult> result;
 
 	// Grab the first result (if any)
-	pthread_mutex_lock(&m_WorkerMutex);
-	if (!m_ResultQueue.empty())
 	{
-		result = m_ResultQueue.front();
-		m_ResultQueue.pop_front();
+		std::lock_guard<std::mutex> lock(m_WorkerMutex);
+		if (!m_ResultQueue.empty())
+		{
+			result = m_ResultQueue.front();
+			m_ResultQueue.pop_front();
+		}
 	}
-	pthread_mutex_unlock(&m_WorkerMutex);
 
 	if (!result)
 	{
@@ -530,39 +522,41 @@ bool CTextureConverter::Poll(CTexturePtr& texture, VfsPath& dest, bool& ok)
 
 bool CTextureConverter::IsBusy()
 {
-	pthread_mutex_lock(&m_WorkerMutex);
-	bool busy = !m_RequestQueue.empty();
-	pthread_mutex_unlock(&m_WorkerMutex);
-
-	return busy;
+	std::lock_guard<std::mutex> lock(m_WorkerMutex);
+	return !m_RequestQueue.empty();
 }
 
-void* CTextureConverter::RunThread(void* data)
+void CTextureConverter::RunThread(CTextureConverter* textureConverter)
 {
 	debug_SetThreadName("TextureConverter");
 	g_Profiler2.RegisterCurrentThread("texconv");
 
-	CTextureConverter* textureConverter = static_cast<CTextureConverter*>(data);
-
 #if CONFIG2_NVTT
 
 	// Wait until the main thread wakes us up
-	while (SDL_SemWait(textureConverter->m_WorkerSem) == 0)
+	while (true)
 	{
+		// We may have several textures in the incoming queue, process them all before going back to sleep.
+		if (!textureConverter->IsBusy()) {
+			std::unique_lock<std::mutex> wait_lock(textureConverter->m_WorkerMutex);
+			// Use the no-condition variant because spurious wake-ups don't matter that much here.
+			textureConverter->m_WorkerCV.wait(wait_lock);
+		}
+
 		g_Profiler2.RecordSyncMarker();
 		PROFILE2_EVENT("wakeup");
 
-		pthread_mutex_lock(&textureConverter->m_WorkerMutex);
-		if (textureConverter->m_Shutdown)
+		shared_ptr<ConversionRequest> request;
+
 		{
-			pthread_mutex_unlock(&textureConverter->m_WorkerMutex);
-			break;
+			std::lock_guard<std::mutex> wait_lock(textureConverter->m_WorkerMutex);
+			if (textureConverter->m_Shutdown)
+				break;
+			// If we weren't woken up for shutdown, we must have been woken up for
+			// a new request, so grab it from the queue
+			request = textureConverter->m_RequestQueue.front();
+			textureConverter->m_RequestQueue.pop_front();
 		}
-		// If we weren't woken up for shutdown, we must have been woken up for
-		// a new request, so grab it from the queue
-		shared_ptr<ConversionRequest> request = textureConverter->m_RequestQueue.front();
-		textureConverter->m_RequestQueue.pop_front();
-		pthread_mutex_unlock(&textureConverter->m_WorkerMutex);
 
 		// Set up the result object
 		shared_ptr<ConversionResult> result(new ConversionResult());
@@ -581,26 +575,12 @@ void* CTextureConverter::RunThread(void* data)
 			result->ret = compressor.process(request->inputOptions, request->compressionOptions, request->outputOptions);
 		}
 
-		// Ugly hack: NVTT 2.0 doesn't set DDPF_ALPHAPIXELS for DXT1a, so we can't
-		// distinguish it from DXT1. (It's fixed in trunk by
-		// http://code.google.com/p/nvidia-texture-tools/source/detail?r=924&path=/trunk).
-		// Rather than using a trunk NVTT (unstable, makes packaging harder)
-		// or patching our copy (makes packaging harder), we'll just manually
-		// set the flag here.
-		if (request->isDXT1a && result->ret && result->output.buffer.size() > 80)
-			result->output.buffer[80] |= 1; // DDPF_ALPHAPIXELS in DDS_PIXELFORMAT.dwFlags
-		// Ugly hack: NVTT always sets DDPF_RGB, even if we're trying to output 8-bit
-		// alpha-only DDS with no RGB components. Unset that flag.
-		if (request->is8bpp)
-			result->output.buffer[80] &= ~0x40; // DDPF_RGB in DDS_PIXELFORMAT.dwFlags
-
 		// Push the result onto the queue
-		pthread_mutex_lock(&textureConverter->m_WorkerMutex);
+		std::lock_guard<std::mutex> wait_lock(textureConverter->m_WorkerMutex);
 		textureConverter->m_ResultQueue.push_back(result);
-		pthread_mutex_unlock(&textureConverter->m_WorkerMutex);
 	}
 
+	std::lock_guard<std::mutex> wait_lock(textureConverter->m_WorkerMutex);
+	textureConverter->m_Shutdown = false;
 #endif
-
-	return NULL;
 }

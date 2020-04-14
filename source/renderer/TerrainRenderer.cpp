@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -46,6 +46,7 @@
 #include "renderer/DecalRData.h"
 #include "renderer/PatchRData.h"
 #include "renderer/Renderer.h"
+#include "renderer/RenderingOptions.h"
 #include "renderer/ShadowMap.h"
 #include "renderer/TerrainRenderer.h"
 #include "renderer/VertexArray.h"
@@ -172,7 +173,7 @@ void TerrainRenderer::EndFrame()
 
 ///////////////////////////////////////////////////////////////////
 // Full-featured terrain rendering with blending and everything
-void TerrainRenderer::RenderTerrain(int cullGroup)
+void TerrainRenderer::RenderTerrainFixed(int cullGroup)
 {
 #if CONFIG2_GLES
 	UNUSED2(cullGroup);
@@ -284,7 +285,7 @@ void TerrainRenderer::RenderTerrain(int cullGroup)
 	glEnableClientState(GL_COLOR_ARRAY); // diffuse lighting colors
 
 	// The vertex color is scaled by 0.5 to permit overbrightness without clamping.
-	// We therefore need to draw clamp((texture*lighting)*2.0), where 'texture'
+	// We therefore need to draw Clamp((texture*lighting)*2.0), where 'texture'
 	// is what previous passes drew onto the framebuffer, and 'lighting' is the
 	// color computed by this pass.
 	// We can do that with blending by getting it to draw dst*src + src*dst:
@@ -622,8 +623,8 @@ CBoundingBoxAligned TerrainRenderer::ScissorWater(int cullGroup, const CMatrix3D
 			continue;
 		scissor += screenBounds;
 	}
-	return CBoundingBoxAligned(CVector3D(clamp(scissor[0].X, -1.0f, 1.0f), clamp(scissor[0].Y, -1.0f, 1.0f), -1.0f),
-				  CVector3D(clamp(scissor[1].X, -1.0f, 1.0f), clamp(scissor[1].Y, -1.0f, 1.0f), 1.0f));
+	return CBoundingBoxAligned(CVector3D(Clamp(scissor[0].X, -1.0f, 1.0f), Clamp(scissor[0].Y, -1.0f, 1.0f), -1.0f),
+				  CVector3D(Clamp(scissor[1].X, -1.0f, 1.0f), Clamp(scissor[1].Y, -1.0f, 1.0f), 1.0f));
 }
 
 // Render fancy water
@@ -649,7 +650,7 @@ bool TerrainRenderer::RenderFancyWater(const CShaderDefines& context, int cullGr
 			defines.Add(str_USE_SHADOWS_ON_WATER, str_1);
 
 		// haven't updated the ARB shader yet so I'll always load the GLSL
-		/*if (!g_Renderer.m_Options.m_PreferGLSL && !superFancy)
+		/*if (!g_RenderingOptions.GetPreferGLSL() && !superFancy)
 			m->fancyWaterShader = g_Renderer.GetShaderManager().LoadProgram("arb/water_high", defines);
 		else*/
 			m->fancyWaterShader = g_Renderer.GetShaderManager().LoadProgram("glsl/water_high", defines);
@@ -740,7 +741,6 @@ bool TerrainRenderer::RenderFancyWater(const CShaderDefines& context, int cullGr
 	m->fancyWaterShader->Bind();
 
 	const CCamera& camera = g_Renderer.GetViewCamera();
-	CVector3D camPos = camera.m_Orientation.GetTranslation();
 
 	m->fancyWaterShader->BindTexture(str_normalMap, WaterMgr->m_NormalMap[curTex]);
 	m->fancyWaterShader->BindTexture(str_normalMap2, WaterMgr->m_NormalMap[nexTex]);
@@ -756,8 +756,8 @@ bool TerrainRenderer::RenderFancyWater(const CShaderDefines& context, int cullGr
 
 	if (WaterMgr->m_WaterRefraction)
 		m->fancyWaterShader->BindTexture(str_refractionMap, WaterMgr->m_RefractionTexture);
-
-	m->fancyWaterShader->BindTexture(str_reflectionMap, WaterMgr->m_ReflectionTexture);
+	if (WaterMgr->m_WaterReflection)
+		m->fancyWaterShader->BindTexture(str_reflectionMap, WaterMgr->m_ReflectionTexture);
 	m->fancyWaterShader->BindTexture(str_losMap, losTexture.GetTextureSmooth());
 
 	const CLightEnv& lightEnv = g_Renderer.GetLightEnv();
@@ -773,6 +773,11 @@ bool TerrainRenderer::RenderFancyWater(const CShaderDefines& context, int cullGr
 		skyBoxRotation.SetIdentity();
 		skyBoxRotation.RotateY(M_PI + lightEnv.GetRotation());
 		m->fancyWaterShader->Uniform(str_skyBoxRot, skyBoxRotation);
+
+		if (WaterMgr->m_WaterRefraction)
+			m->fancyWaterShader->Uniform(str_refractionMatrix, WaterMgr->m_RefractionMatrix);
+		if (WaterMgr->m_WaterReflection)
+			m->fancyWaterShader->Uniform(str_reflectionMatrix, WaterMgr->m_ReflectionMatrix);
 	}
 	m->fancyWaterShader->Uniform(str_sunDir, lightEnv.GetSunDir());
 	m->fancyWaterShader->Uniform(str_sunColor, lightEnv.m_SunColor);
@@ -782,10 +787,15 @@ bool TerrainRenderer::RenderFancyWater(const CShaderDefines& context, int cullGr
 	m->fancyWaterShader->Uniform(str_murkiness, WaterMgr->m_Murkiness);
 	m->fancyWaterShader->Uniform(str_windAngle, WaterMgr->m_WindAngle);
 	m->fancyWaterShader->Uniform(str_repeatScale, 1.0f / repeatPeriod);
-	m->fancyWaterShader->Uniform(str_reflectionMatrix, WaterMgr->m_ReflectionMatrix);
-	m->fancyWaterShader->Uniform(str_refractionMatrix, WaterMgr->m_RefractionMatrix);
 	m->fancyWaterShader->Uniform(str_losMatrix, losTexture.GetTextureMatrix());
-	m->fancyWaterShader->Uniform(str_cameraPos, camPos);
+
+	m->fancyWaterShader->Uniform(str_cameraPos, camera.GetOrientation().GetTranslation());
+	if (WaterMgr->m_WaterRealDepth)
+	{
+		m->fancyWaterShader->Uniform(str_zNear, camera.GetNearPlane());
+		m->fancyWaterShader->Uniform(str_zFar, camera.GetFarPlane());
+	}
+
 	m->fancyWaterShader->Uniform(str_fogColor, lightEnv.m_FogColor);
 	m->fancyWaterShader->Uniform(str_fogParams, lightEnv.m_FogFactor, lightEnv.m_FogMax, 0.f, 0.f);
 	m->fancyWaterShader->Uniform(str_time, (float)time);

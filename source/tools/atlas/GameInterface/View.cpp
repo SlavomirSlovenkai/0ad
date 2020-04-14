@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -40,6 +40,7 @@
 #include "simulation2/components/ICmpObstructionManager.h"
 #include "simulation2/components/ICmpParticleManager.h"
 #include "simulation2/components/ICmpPathfinder.h"
+#include "soundmanager/ISoundManager.h"
 
 extern void (*Atlas_GLSwapBuffers)(void* context);
 
@@ -85,7 +86,7 @@ void AtlasViewActor::Render()
 	SViewPort vp = { 0, 0, g_xres, g_yres };
 	CCamera& camera = GetCamera();
 	camera.SetViewPort(vp);
-	camera.SetProjection(2.f, 512.f, DEGTORAD(20.f));
+	camera.SetPerspectiveProjection(2.f, 512.f, DEGTORAD(20.f));
 	camera.UpdateFrustum();
 
 	m_ActorViewer->Render();
@@ -211,6 +212,10 @@ void AtlasViewGame::Update(float realFrameLength)
 		g_Game->Interpolate(actualFrameLength, realFrameLength);
 	}
 
+	// Run sound idle tasks every frame.
+	if (g_SoundManager)
+		g_SoundManager->IdleTask();
+
 	// Cinematic motion should be independent of simulation update, so we can
 	// preview the cinematics by themselves
 	g_Game->GetView()->GetCinema()->Update(realFrameLength);
@@ -221,11 +226,12 @@ void AtlasViewGame::Render()
 	SViewPort vp = { 0, 0, g_xres, g_yres };
 	CCamera& camera = GetCamera();
 	camera.SetViewPort(vp);
-	camera.SetProjection(g_Game->GetView()->GetNear(), g_Game->GetView()->GetFar(), g_Game->GetView()->GetFOV());
+	camera.SetProjectionFromCamera(*g_Game->GetView()->GetCamera());
 	camera.UpdateFrustum();
 
 	::Render();
 	Atlas_GLSwapBuffers((void*)g_AtlasGameLoop->glCanvas);
+	g_Renderer.OnSwapBuffers();
 }
 
 void AtlasViewGame::DrawCinemaPathTool()
@@ -346,7 +352,7 @@ void AtlasViewGame::SetParam(const std::wstring& name, const std::wstring& value
 	}
 	else if (name == L"renderpath")
 	{
-		g_Renderer.SetRenderPath(g_Renderer.GetRenderPathByName(CStrW(value).ToUTF8()));
+		g_RenderingOptions.SetRenderPath(RenderPathEnum::FromString(CStrW(value).ToUTF8()));
 	}
 }
 

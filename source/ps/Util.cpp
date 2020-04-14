@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -43,6 +43,7 @@
 #include "ps/Game.h"
 #include "ps/CLogger.h"
 #include "ps/Filesystem.h"
+#include "ps/Pyrogenesis.h"
 #include "ps/VideoMode.h"
 #include "renderer/Renderer.h"
 #include "maths/MathUtil.h"
@@ -342,12 +343,13 @@ void WriteBigScreenshot(const VfsPath& extension, int tiles)
 
 	ogl_WarnIfError();
 
+	CCamera oldCamera = *g_Game->GetView()->GetCamera();
+
 	// Resize various things so that the sizes and aspect ratios are correct
 	{
 		g_Renderer.Resize(tile_w, tile_h);
 		SViewPort vp = { 0, 0, tile_w, tile_h };
-		g_Game->GetView()->GetCamera()->SetViewPort(vp);
-		g_Game->GetView()->SetCameraProjection();
+		g_Game->GetView()->SetViewport(vp);
 	}
 
 #if !CONFIG2_GLES
@@ -367,12 +369,18 @@ void WriteBigScreenshot(const VfsPath& extension, int tiles)
 	g_CursorName = L"";
 
 	// Render each tile
+	CMatrix3D projection;
+	projection.SetIdentity();
 	for (int tile_y = 0; tile_y < tiles; ++tile_y)
 	{
 		for (int tile_x = 0; tile_x < tiles; ++tile_x)
 		{
 			// Adjust the camera to render the appropriate region
-			g_Game->GetView()->GetCamera()->SetProjectionTile(tiles, tile_x, tile_y);
+			if (oldCamera.GetProjectionType() == CCamera::PERSPECTIVE)
+			{
+				projection.SetPerspectiveTile(oldCamera.GetFOV(), oldCamera.GetAspectRatio(), oldCamera.GetNearPlane(), oldCamera.GetFarPlane(), tiles, tile_x, tile_y);
+			}
+			g_Game->GetView()->GetCamera()->SetProjection(projection);
 
 			RenderLogger(false);
 			RenderGui(false);
@@ -404,9 +412,8 @@ void WriteBigScreenshot(const VfsPath& extension, int tiles)
 	{
 		g_Renderer.Resize(g_xres, g_yres);
 		SViewPort vp = { 0, 0, g_xres, g_yres };
-		g_Game->GetView()->GetCamera()->SetViewPort(vp);
-		g_Game->GetView()->SetCameraProjection();
-		g_Game->GetView()->GetCamera()->SetProjectionTile(1, 0, 0);
+		g_Game->GetView()->SetViewport(vp);
+		g_Game->GetView()->GetCamera()->SetProjectionFromCamera(oldCamera);
 	}
 
 	if (tex_write(&t, filename) == INFO::OK)

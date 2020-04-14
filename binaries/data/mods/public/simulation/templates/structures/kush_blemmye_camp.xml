@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_military_embassy">
   <Cost>
-    <BuildTime>200</BuildTime>
     <Resources>
       <wood>100</wood>
-      <stone>0</stone>
       <metal>100</metal>
     </Resources>
   </Cost>
@@ -23,6 +21,10 @@
     <Tooltip>Train Blemmye Desert Raiders.</Tooltip>
     <Icon>structures/mercenary_camp.png</Icon>
   </Identity>
+  <Loot>
+    <wood>20</wood>
+    <metal>20</metal>
+  </Loot>
   <Obstruction>
     <Static width="29.0" depth="29.0"/>
   </Obstruction>

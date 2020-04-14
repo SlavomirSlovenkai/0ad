@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <variant name="gather_praise">
   <animations>
-	<animation file="biped/new/pray.dae" name="gather_praise" id="praise1" speed="100"/>
-	<animation file="biped/new/pray.dae" name="gather_praise" id="praise2" speed="200"/>
-	<animation file="biped/new/pray.dae" name="gather_praise" id="praise3" speed="50"/>
+    <animation file="biped/citizen/pray.dae" name="gather_praise" id="praise1" speed="100"/>
+    <animation file="biped/citizen/pray.dae" name="gather_praise" id="praise2" speed="200"/>
+    <animation file="biped/citizen/pray.dae" name="gather_praise" id="praise3" speed="50"/>
   </animations>
   <props>
     <prop actor="" attachpoint="shield"/>
@@ -10,7 +11,6 @@
     <prop actor="" attachpoint="weapon_L"/>
     <prop actor="" attachpoint="ammo"/>
     <prop actor="" attachpoint="shield_arm"/>
-    <prop actor="" attachpoint="helmet"/>
-    <prop actor="" attachpoint="bow"/>
+    <prop actor="" attachpoint="weapon_bow"/>
   </props>
 </variant>

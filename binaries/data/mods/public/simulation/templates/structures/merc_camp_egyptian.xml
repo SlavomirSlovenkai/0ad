@@ -12,7 +12,6 @@
     <BuildTime>300</BuildTime>
     <Resources>
       <wood>100</wood>
-      <stone>0</stone>
       <metal>100</metal>
     </Resources>
   </Cost>
@@ -26,13 +25,17 @@
   </Health>
   <Identity>
     <Civ>ptol</Civ>
-    <GenericName>Mercenary Camp (Egyptian)</GenericName>
-    <SpecificName>Stratópedo Misthophóron Aigyptiakós</SpecificName>
+    <GenericName>Egyptian Mercenary Camp</GenericName>
+    <SpecificName>Stratopedeia Misthophorōn</SpecificName>
     <Classes datatype="tokens">MercenaryCamp</Classes>
     <Tooltip>Capture this structure to train mercenaries from Hellenistic Egypt.</Tooltip>
     <Icon>structures/military_settlement.png</Icon>
     <RequiredTechnology>phase_town</RequiredTechnology>
   </Identity>
+  <Loot>
+    <wood>20</wood>
+    <metal>20</metal>
+  </Loot>
   <Obstruction>
     <Static width="23.5" depth="23.5"/>
   </Obstruction>

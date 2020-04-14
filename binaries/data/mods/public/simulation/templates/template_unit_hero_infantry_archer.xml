@@ -2,9 +2,11 @@
 <Entity parent="template_unit_hero_infantry">
   <Attack>
     <Ranged>
-      <Hack>0</Hack>
-      <Pierce>8.0</Pierce>
-      <Crush>0</Crush>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>8.0</Pierce>
+        <Crush>0</Crush>
+      </Damage>
       <MaxRange>80</MaxRange>
       <MinRange>0.0</MinRange>
       <PrepareTime>200</PrepareTime>
@@ -13,15 +15,16 @@
       <Projectile>
         <Speed>75.0</Speed>
         <Spread>0.5</Spread>
-        <Gravity>9.81</Gravity>
+        <Gravity>39.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <PreferredClasses datatype="tokens">Human</PreferredClasses>
     </Ranged>
   </Attack>
   <Identity>
-    <GenericName>Hero Archer</GenericName>
     <VisibleClasses datatype="tokens">Ranged Archer</VisibleClasses>
+    <GenericName>Hero Archer</GenericName>
     <Formations datatype="tokens">
       special/formations/skirmish
     </Formations>

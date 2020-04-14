@@ -34,8 +34,12 @@
     <GenericName>House</GenericName>
     <Tooltip>Increase the population limit.</Tooltip>
     <VisibleClasses datatype="tokens">Village House</VisibleClasses>
+    <SelectionGroupName>template_structure_civic_house</SelectionGroupName>
     <Icon>structures/house.png</Icon>
   </Identity>
+  <Loot>
+    <wood>15</wood>
+  </Loot>
   <Obstruction>
     <Static width="11.0" depth="11.0"/>
   </Obstruction>

@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -20,49 +20,56 @@
 #include "JSInterface_Renderer.h"
 
 #include "graphics/TextureManager.h"
-#include "ps/Profile.h"
+#include "renderer/PostprocManager.h"
+#include "renderer/RenderingOptions.h"
 #include "renderer/Renderer.h"
 #include "renderer/ShadowMap.h"
 #include "scriptinterface/ScriptInterface.h"
 
-#define IMPLEMENT_BOOLEAN_SCRIPT_SETTING(NAME, SCRIPTNAME) \
-bool JSI_Renderer::Get##SCRIPTNAME##Enabled(ScriptInterface::CxPrivate* UNUSED(pCxPrivate)) \
+#define IMPLEMENT_BOOLEAN_SCRIPT_SETTING(NAME) \
+bool JSI_Renderer::Get##NAME##Enabled(ScriptInterface::CxPrivate* UNUSED(pCxPrivate)) \
 { \
-	return g_Renderer.GetOptionBool(CRenderer::OPT_##NAME); \
+return g_RenderingOptions.Get##NAME(); \
 } \
 \
-void JSI_Renderer::Set##SCRIPTNAME##Enabled(ScriptInterface::CxPrivate* UNUSED(pCxPrivate), bool Enabled) \
+void JSI_Renderer::Set##NAME##Enabled(ScriptInterface::CxPrivate* UNUSED(pCxPrivate), bool enabled) \
 { \
-	g_Renderer.SetOptionBool(CRenderer::OPT_##NAME, Enabled); \
+	g_RenderingOptions.Set##NAME(enabled); \
 }
 
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(PARTICLES, Particles);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(PREFERGLSL, PreferGLSL);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WATEREFFECTS, WaterEffects);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WATERFANCYEFFECTS, WaterFancyEffects);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SHADOWPCF, ShadowPCF);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SHADOWS, Shadows);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WATERREALDEPTH, WaterRealDepth);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WATERREFLECTION, WaterReflection);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WATERREFRACTION, WaterRefraction);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SHADOWSONWATER, WaterShadows);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(FOG, Fog);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SILHOUETTES, Silhouettes);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SHOWSKY, ShowSky);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SMOOTHLOS, SmoothLOS);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(POSTPROC, Postproc);
-IMPLEMENT_BOOLEAN_SCRIPT_SETTING(DISPLAYFRUSTUM, DisplayFrustum);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(Shadows);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(ShadowPCF);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(Particles);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(PreferGLSL);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WaterEffects);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WaterFancyEffects);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WaterRealDepth);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WaterReflection);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WaterRefraction);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(WaterShadows);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(Fog);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(Silhouettes);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(ShowSky);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(SmoothLOS);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(PostProc);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(DisplayFrustum);
+IMPLEMENT_BOOLEAN_SCRIPT_SETTING(DisplayShadowsFrustum);
 
 #undef IMPLEMENT_BOOLEAN_SCRIPT_SETTING
 
 std::string JSI_Renderer::GetRenderPath(ScriptInterface::CxPrivate* UNUSED(pCxPrivate))
 {
-	return CRenderer::GetRenderPathName(g_Renderer.GetRenderPath());
+	return RenderPathEnum::ToString(g_RenderingOptions.GetRenderPath());
 }
 
 void JSI_Renderer::SetRenderPath(ScriptInterface::CxPrivate* UNUSED(pCxPrivate), const std::string& name)
 {
-	g_Renderer.SetRenderPath(CRenderer::GetRenderPathByName(name));
+	g_RenderingOptions.SetRenderPath(RenderPathEnum::FromString(name));
+}
+
+void JSI_Renderer::UpdateAntiAliasingTechnique(ScriptInterface::CxPrivate* UNUSED(pCxPrivate))
+{
+	g_Renderer.GetPostprocManager().UpdateAntiAliasingTechnique();
 }
 
 void JSI_Renderer::RecreateShadowMap(ScriptInterface::CxPrivate* UNUSED(pCxPrivate))
@@ -84,6 +91,7 @@ void JSI_Renderer::RegisterScriptFunctions(const ScriptInterface& scriptInterfac
 	scriptInterface.RegisterFunction<std::string, &JSI_Renderer::GetRenderPath>("Renderer_GetRenderPath");
 	scriptInterface.RegisterFunction<void, std::string, &JSI_Renderer::SetRenderPath>("Renderer_SetRenderPath");
 	scriptInterface.RegisterFunction<void, &JSI_Renderer::RecreateShadowMap>("Renderer_RecreateShadowMap");
+	scriptInterface.RegisterFunction<void, &JSI_Renderer::UpdateAntiAliasingTechnique>("Renderer_UpdateAntiAliasingTechnique");
 	scriptInterface.RegisterFunction<bool, std::wstring, &JSI_Renderer::TextureExists>("TextureExists");
 	REGISTER_BOOLEAN_SCRIPT_SETTING(Shadows);
 	REGISTER_BOOLEAN_SCRIPT_SETTING(ShadowPCF);
@@ -99,8 +107,9 @@ void JSI_Renderer::RegisterScriptFunctions(const ScriptInterface& scriptInterfac
 	REGISTER_BOOLEAN_SCRIPT_SETTING(Silhouettes);
 	REGISTER_BOOLEAN_SCRIPT_SETTING(ShowSky);
 	REGISTER_BOOLEAN_SCRIPT_SETTING(SmoothLOS);
-	REGISTER_BOOLEAN_SCRIPT_SETTING(Postproc);
+	REGISTER_BOOLEAN_SCRIPT_SETTING(PostProc);
 	REGISTER_BOOLEAN_SCRIPT_SETTING(DisplayFrustum);
+	REGISTER_BOOLEAN_SCRIPT_SETTING(DisplayShadowsFrustum);
 }
 
 #undef REGISTER_BOOLEAN_SCRIPT_SETTING

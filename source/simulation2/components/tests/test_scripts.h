@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -56,6 +56,19 @@ public:
 		TS_ASSERT(componentManager->LoadScript(VfsPath(L"simulation/helpers") / pathname));
 	}
 
+	void test_global_scripts()
+	{
+		VfsPaths paths;
+		TS_ASSERT_OK(vfs::GetPathnames(g_VFS, L"globalscripts/tests/", L"test_*.js", paths));
+		for (const VfsPath& path : paths)
+		{
+			CSimContext context;
+			CComponentManager componentManager(context, g_ScriptRuntime, true);
+			ScriptTestSetup(componentManager.GetScriptInterface());
+			load_script(componentManager.GetScriptInterface(), path);
+		}
+	}
+
 	void test_scripts()
 	{
 		if (!VfsFileExists(L"simulation/components/tests/setup.js"))
@@ -66,6 +79,7 @@ public:
 
 		VfsPaths paths;
 		TS_ASSERT_OK(vfs::GetPathnames(g_VFS, L"simulation/components/tests/", L"test_*.js", paths));
+		TS_ASSERT_OK(vfs::GetPathnames(g_VFS, L"simulation/helpers/tests/", L"test_*.js", paths));
 		paths.push_back(VfsPath(L"simulation/components/tests/setup_test.js"));
 		for (const VfsPath& path : paths)
 		{

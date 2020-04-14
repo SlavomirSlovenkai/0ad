@@ -2,9 +2,11 @@
 <Entity parent="template_unit_champion_cavalry">
   <Attack>
     <Ranged>
-      <Hack>0.0</Hack>
-      <Pierce>36.0</Pierce>
-      <Crush>0.0</Crush>
+      <Damage>
+        <Hack>0.0</Hack>
+        <Pierce>36.0</Pierce>
+        <Crush>0.0</Crush>
+      </Damage>
       <MaxRange>32.0</MaxRange>
       <MinRange>0.0</MinRange>
       <PrepareTime>750</PrepareTime>
@@ -13,7 +15,8 @@
       <Projectile>
         <Speed>62.5</Speed>
         <Spread>1.0</Spread>
-        <Gravity>9.81</Gravity>
+        <Gravity>39.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <PreferredClasses datatype="tokens">Human</PreferredClasses>
@@ -25,7 +28,7 @@
     </Resources>
   </Cost>
   <Identity>
-    <VisibleClasses datatype="tokens">Ranged Javelin</VisibleClasses>
+    <VisibleClasses datatype="tokens">Ranged Javelinist</VisibleClasses>
     <GenericName>Champion Cavalry Skirmisher</GenericName>
     <Formations datatype="tokens">
       special/formations/skirmish
@@ -34,6 +37,8 @@
   <Sound>
     <SoundGroups>
       <death>actor/fauna/death/death_horse.xml</death>
+      <attack_ranged>attack/weapon/javelin_attack.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/javelin_impact.xml</attack_impact_ranged>
     </SoundGroups>
   </Sound>
 </Entity>

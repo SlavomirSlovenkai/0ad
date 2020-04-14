@@ -1,13 +1,14 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
+# Krisli Pulaj <pkisi00@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-05-27 10:00+0200\n"
-"PO-Revision-Date: 2019-05-27 15:47+0000\n"
+"POT-Creation-Date: 2020-01-17 08:09+0000\n"
+"PO-Revision-Date: 2020-01-17 15:02+0000\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Albanian (http://www.transifex.com/wildfire-games/0ad/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +19,11 @@ msgstr ""
 
 #: maps/random/aegean_sea.jsonsettings.Description
 msgid "Players start on two sides of a sea with scattered islands."
-msgstr ""
+msgstr "Lojtarët fillojnë në dy anë të një deti me ishuj të shpërndarë."
 
 #: maps/random/aegean_sea.jsonsettings.Name
 msgid "Aegean Sea"
-msgstr ""
+msgstr "Deti Egje"
 
 #: maps/random/african_plains.jsonsettings.Description
 msgid ""
@@ -32,7 +33,7 @@ msgstr ""
 
 #: maps/random/african_plains.jsonsettings.Name
 msgid "African Plains"
-msgstr ""
+msgstr "Fusha afrikane"
 
 #: maps/random/alpine_lakes.jsonsettings.Description
 msgid ""
@@ -42,7 +43,7 @@ msgstr ""
 
 #: maps/random/alpine_lakes.jsonsettings.Name
 msgid "Alpine Lakes"
-msgstr ""
+msgstr "Liqene Alpinë"
 
 #: maps/random/alpine_valley.jsonsettings.Description
 msgid "High Alpine mountains bordering deep valleys."
@@ -50,7 +51,7 @@ msgstr ""
 
 #: maps/random/alpine_valley.jsonsettings.Name
 msgid "Alpine Valley"
-msgstr ""
+msgstr "Lugina Alpine"
 
 #: maps/random/ambush.jsonsettings.Description
 msgid ""
@@ -60,7 +61,7 @@ msgstr ""
 
 #: maps/random/ambush.jsonsettings.Name
 msgid "Ambush"
-msgstr ""
+msgstr "Pritë"
 
 #: maps/random/anatolian_plateau.jsonsettings.Description
 msgid ""
@@ -80,7 +81,7 @@ msgstr ""
 
 #: maps/random/archipelago.jsonsettings.Name
 msgid "Archipelago"
-msgstr ""
+msgstr "Arkipelag"
 
 #: maps/random/arctic_summer.jsonsettings.Description
 msgid ""
@@ -92,7 +93,7 @@ msgstr ""
 
 #: maps/random/arctic_summer.jsonsettings.Name
 msgid "Arctic Summer"
-msgstr ""
+msgstr "Verë Arktike"
 
 #: maps/random/ardennes_forest.jsonsettings.Description
 msgid ""
@@ -103,7 +104,7 @@ msgstr ""
 
 #: maps/random/ardennes_forest.jsonsettings.Name
 msgid "Ardennes Forest"
-msgstr ""
+msgstr "Pylli i Ardenes"
 
 #: maps/random/atlas_mountains.jsonsettings.Description
 msgid ""
@@ -113,7 +114,7 @@ msgstr ""
 
 #: maps/random/atlas_mountains.jsonsettings.Name
 msgid "Atlas Mountains"
-msgstr ""
+msgstr "Malet Atlas"
 
 #: maps/random/bahrain.jsonsettings.Description
 msgid ""
@@ -128,7 +129,7 @@ msgstr ""
 
 #: maps/random/bahrain.jsonsettings.Name
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrein"
 
 #: maps/random/belgian_uplands.jsonsettings.Description
 msgid ""
@@ -180,17 +181,20 @@ msgstr ""
 
 #: maps/random/canyon.jsonsettings.Name
 msgid "Canyon"
-msgstr ""
+msgstr "Kanion"
 
 #: maps/random/continent.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Description
 msgid "All players starts on a continent surrounded by water."
-msgstr ""
+msgstr "Të gjithë lojtarët fillojnë në një kontinent të rrethuar nga uji."
 
 #: maps/random/continent.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[0].Name
 msgid "Continent"
-msgstr ""
+msgstr "Kontinent"
 
 #: maps/random/corinthian_isthmus.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Description
 #: maps/skirmishes/Corinthian Isthmus (2).xml:Description:39
 #: maps/skirmishes/Corinthian Isthmus (4).xml:Description:40
 msgid ""
@@ -206,11 +210,11 @@ msgstr ""
 msgid ""
 "The players start on two opposing islands, both with a very jagged relief "
 "that will make landing difficult."
-msgstr ""
+msgstr "Lojtarët fillojnë në dy ishuj përballë njëri-tjetrit, secili me një reliev te thyer që e bën zbarkimin shumë të vështirë."
 
 #: maps/random/corsica.jsonsettings.Name
 msgid "Corsica vs Sardinia"
-msgstr ""
+msgstr "Korsika vs Sardenja"
 
 #: maps/random/cycladic_archipelago.jsonsettings.Description
 msgid ""
@@ -234,13 +238,29 @@ msgid ""
 "the reemergence of the Geto-Dacian Confederation under King Burebista."
 msgstr ""
 
+#: maps/random/danubius.jsonsettings.Daytime[0].Description
+msgid "Bright daylight illuminates the scene."
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[0].Name
+msgid "Day"
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Description
+msgid "Attackers are covered by the darkness of the night."
+msgstr ""
+
+#: maps/random/danubius.jsonsettings.Daytime[1].Name
+msgid "Night"
+msgstr ""
+
 #: maps/random/danubius.jsonsettings.Name
 msgid "Danubius"
-msgstr ""
+msgstr "Danubi"
 
 #: maps/random/deep_forest.jsonsettings.Description
 msgid "A deep dark forest in Germania."
-msgstr ""
+msgstr "Një pyll i madh dhe i errët në Gjermani."
 
 #: maps/random/deep_forest.jsonsettings.Name
 msgid "Deep Forest"
@@ -280,7 +300,7 @@ msgstr ""
 
 #: maps/random/empire.jsonsettings.Name
 msgid "Empire"
-msgstr ""
+msgstr "Perandori"
 
 #: maps/random/english_channel.jsonsettings.Description
 msgid ""
@@ -290,7 +310,7 @@ msgstr ""
 
 #: maps/random/english_channel.jsonsettings.Name
 msgid "English Channel"
-msgstr ""
+msgstr "Kanali i la Manshit"
 
 #: maps/random/extinct_volcano.jsonsettings.Description
 msgid ""
@@ -301,11 +321,11 @@ msgstr ""
 
 #: maps/random/extinct_volcano.jsonsettings.Name
 msgid "Extinct Volcano"
-msgstr ""
+msgstr "Vullkan i shuar"
 
 #: maps/random/fields_of_meroe.jsonsettings.Description
 msgid ""
-"The \"Island of Meroe\", a vast peninsula flanked by the Nile and Atbarah "
+"The \"Island of Meroë\", a vast peninsula flanked by the Nile and Atbarah "
 "rivers, formed the heartland of ancient Kush. Where the harsh deserts start "
 "making way for the semi-arid savannahs and small acacia forests dot the "
 "landscape. The area is rich in resources and the ever-present Nile brings "
@@ -313,7 +333,7 @@ msgid ""
 msgstr ""
 
 #: maps/random/fields_of_meroe.jsonsettings.Name
-msgid "Fields of Meroe"
+msgid "Fields of Meroë"
 msgstr ""
 
 #: maps/random/flood.jsonsettings.Description
@@ -324,7 +344,7 @@ msgstr ""
 
 #: maps/random/flood.jsonsettings.Name
 msgid "Flood"
-msgstr ""
+msgstr "Përmbytje"
 
 #: maps/random/fortress.jsonsettings.Description
 msgid "Players start in a ready-made fortress with piles of resources."
@@ -348,7 +368,7 @@ msgstr ""
 
 #: maps/random/gear.jsonsettings.Name
 msgid "Gear"
-msgstr ""
+msgstr "Paisje"
 
 #: maps/random/guadalquivir_river.jsonsettings.Description
 msgid ""
@@ -383,7 +403,7 @@ msgstr ""
 
 #: maps/random/harbor.jsonsettings.Name
 msgid "Harbor"
-msgstr ""
+msgstr "Port"
 
 #: maps/random/hellas.jsonsettings.Description
 msgid ""
@@ -429,7 +449,7 @@ msgstr ""
 
 #: maps/random/india.jsonsettings.Name
 msgid "India"
-msgstr ""
+msgstr "Indi"
 
 #: maps/random/island_stronghold.jsonsettings.Description
 msgid ""
@@ -447,7 +467,7 @@ msgstr ""
 
 #: maps/random/islands.jsonsettings.Name
 msgid "Islands"
-msgstr ""
+msgstr "Ishuj"
 
 #: maps/random/jebel_barkal.jsonsettings.Description
 msgid ""
@@ -481,7 +501,7 @@ msgstr ""
 
 #: maps/random/lake.jsonsettings.Name
 msgid "Lake"
-msgstr ""
+msgstr "Liqen"
 
 #: maps/random/latium.jsonsettings.Description
 msgid ""
@@ -502,7 +522,7 @@ msgstr ""
 
 #: maps/random/lions_den.jsonsettings.Name
 msgid "Lion's Den"
-msgstr ""
+msgstr "Strofulla e Luanit"
 
 #: maps/random/lorraine_plain.jsonsettings.Description
 msgid ""
@@ -530,10 +550,12 @@ msgid "Lower Nubia"
 msgstr ""
 
 #: maps/random/mainland.jsonsettings.Description
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Description
 msgid "A typical map without any water."
-msgstr ""
+msgstr "Një hartë tipike pa ujra."
 
 #: maps/random/mainland.jsonsettings.Name
+#: maps/random/unknown.jsonsettings.Landscapes.land[8].Name
 msgid "Mainland"
 msgstr ""
 
@@ -551,7 +573,7 @@ msgstr ""
 
 #: maps/random/marmara.jsonsettings.Name
 msgid "Marmara"
-msgstr ""
+msgstr "Marmara"
 
 #: maps/random/mediterranean.jsonsettings.Description
 msgid ""
@@ -569,7 +591,7 @@ msgstr ""
 
 #: maps/random/mediterranean.jsonsettings.Name
 msgid "Mediterranean"
-msgstr ""
+msgstr "Mesdhe"
 
 #: maps/random/migration.jsonsettings.Description
 msgid ""
@@ -580,7 +602,7 @@ msgstr ""
 #: maps/random/migration.jsonsettings.Name
 #: maps/scenarios/Migration.xml:Name:27
 msgid "Migration"
-msgstr ""
+msgstr "Migrim"
 
 #: maps/random/neareastern_badlands.jsonsettings.Description
 msgid ""
@@ -595,7 +617,7 @@ msgstr ""
 
 #: maps/random/new_rms_test.jsonsettings.Description
 msgid "A basic test of the random map generator - not playable."
-msgstr ""
+msgstr "Një test i thjeshtë i gjeneratorit të hartës rastësore - i paluajtshëm."
 
 #: maps/random/new_rms_test.jsonsettings.Name
 msgid "New RMS Test"
@@ -631,7 +653,7 @@ msgstr ""
 
 #: maps/random/oasis.jsonsettings.Name
 msgid "Oasis"
-msgstr ""
+msgstr "Oaz"
 
 #: maps/random/persian_highlands.jsonsettings.Description
 msgid ""
@@ -667,9 +689,25 @@ msgid ""
 "recommended for inexperienced players.[/color]"
 msgstr ""
 
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Description
+msgid "Scattered sunlight illuminates the scenery in a vivid red tone."
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[0].Name
+msgid "Dawn"
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Description
+msgid "The scenery is illuminated by direct or indirect sunlight."
+msgstr ""
+
+#: maps/random/polar_sea.jsonsettings.Daytime[1].Name
+msgid "Daylight"
+msgstr ""
+
 #: maps/random/polar_sea.jsonsettings.Name
 msgid "Polar Sea"
-msgstr ""
+msgstr "Deti Polar"
 
 #: maps/random/pompeii.jsonsettings.Description
 msgid ""
@@ -681,7 +719,7 @@ msgstr ""
 
 #: maps/random/pompeii.jsonsettings.Name
 msgid "Pompeii"
-msgstr ""
+msgstr "Pompei"
 
 #: maps/random/pyrenean_sierra.jsonsettings.Description
 msgid ""
@@ -716,7 +754,7 @@ msgstr ""
 
 #: maps/random/red_sea.jsonsettings.Name
 msgid "Red Sea"
-msgstr ""
+msgstr "Deti i Kuq"
 
 #: maps/random/rhine_marshlands.jsonsettings.Description
 msgid ""
@@ -746,16 +784,16 @@ msgstr ""
 
 #: maps/random/rivers.jsonsettings.Name
 msgid "Rivers"
-msgstr ""
+msgstr "Lumenj"
 
 #: maps/random/saharan_oases.jsonsettings.Description
 msgid "Each players starts near a lush oasis in a large, desolate desert."
-msgstr ""
+msgstr "Secili lojtar fillon pranë një oazi të begatë, në një shkretëtirë të madhe dhe të mjerë."
 
 #: maps/random/saharan_oases.jsonsettings.Name maps/scenarios/Saharan
 #: Oases.xml:Name:27
 msgid "Saharan Oases"
-msgstr ""
+msgstr "Oaze Sahariane"
 
 #: maps/random/sahel.jsonsettings.Description
 msgid ""
@@ -784,7 +822,7 @@ msgstr ""
 
 #: maps/random/schwarzwald.jsonsettings.Name
 msgid "Schwarzwald"
-msgstr ""
+msgstr "Pylli i zi"
 
 #: maps/random/scythian_rivulet.jsonsettings.Description
 msgid ""
@@ -827,7 +865,7 @@ msgstr ""
 
 #: maps/random/survivalofthefittest.jsonsettings.Name
 msgid "Survival of the Fittest"
-msgstr ""
+msgstr "Mbijetesa e më të fortit"
 
 #: maps/random/syria.jsonsettings.Description
 msgid "Players start in a plains with slightly rolling highlands."
@@ -835,7 +873,7 @@ msgstr ""
 
 #: maps/random/syria.jsonsettings.Name
 msgid "Syria"
-msgstr ""
+msgstr "Siria"
 
 #: maps/random/the_nile.jsonsettings.Description
 msgid ""
@@ -845,22 +883,96 @@ msgstr ""
 
 #: maps/random/the_nile.jsonsettings.Name
 msgid "The Nile"
-msgstr ""
+msgstr "Nili"
 
 #: maps/random/unknown.jsonsettings.Description
-msgid "The unknown. Warning: May be a naval map."
+msgid "The unknown."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[1].Name
+msgid "Isthmus"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Description
+msgid "A small central river."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[2].Name
+msgid "Central River"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Description
+msgid ""
+"Players are aligned on a strip of land with seas bordering on one or both "
+"sides that may hold islands."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[3].Name
+msgid "Edge Seas"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Description
+msgid "Land shaped like a concrescent moon around a central lake."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[4].Name
+msgid "Gulf"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Description
+msgid "Mainland style with some small random lakes."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[5].Name
+msgid "Lakes"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Description
+msgid ""
+"A large hill encompasses the map and leaves players only a small passage to "
+"the two neighboring players."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[6].Name
+msgid "Passes"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Description
+msgid ""
+"The land is enclosed by a hill that leaves a small area per player connected"
+" to the large central place."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.land[7].Name
+msgid "Lowlands"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Description
+msgid "A huge sea is dividing the map into two halves."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[0].Name
+msgid "Naval: Central Sea"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Description
+msgid "Players are scattered across island chains and disconnected islands."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[1].Name
+msgid "Naval: Archipelago"
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Description
+msgid "A central lake with rivers possibly separating neighboring players."
+msgstr ""
+
+#: maps/random/unknown.jsonsettings.Landscapes.naval[2].Name
+msgid "Naval: Lake and rivers"
 msgstr ""
 
 #: maps/random/unknown.jsonsettings.Name
 msgid "Unknown"
-msgstr ""
-
-#: maps/random/unknown_land.jsonsettings.Description
-msgid "The unknown."
-msgstr ""
-
-#: maps/random/unknown_land.jsonsettings.Name
-msgid "Unknown Land"
 msgstr ""
 
 #: maps/random/volcanic_lands.jsonsettings.Description
@@ -907,23 +1019,23 @@ msgstr ""
 
 #: maps/random/jebel_barkal_triggers.js:592
 msgid "Napata is attacking!"
-msgstr ""
+msgstr "Napata po sulmon!"
 
 #: maps/random/jebel_barkal_triggers.js:602
 #, javascript-format
 msgid "Napata will attack in %(time)s!"
-msgstr ""
+msgstr "Napata do të sulmojë në %(time)s!"
 
 #: maps/random/survivalofthefittest_triggers.js:163
 #, javascript-format
 msgid "The first wave will start in %(time)s!"
-msgstr ""
+msgstr "Vala e parë do të fillojë në %(time)s!"
 
 #: maps/random/survivalofthefittest_triggers.js:264
 msgid "An enemy wave is attacking!"
-msgstr ""
+msgstr "Një valë kundërshtare po sulmon!"
 
-#: maps/random/survivalofthefittest_triggers.js:289
+#: maps/random/survivalofthefittest_triggers.js:288
 #, javascript-format
 msgid "%(player)s has been defeated (lost civic center)."
 msgstr ""
@@ -983,7 +1095,7 @@ msgstr ""
 
 #: maps/scenarios/treasure_islands.js:91
 msgid "Defeat your enemy to win!"
-msgstr ""
+msgstr "Mposht armikun që të fitosh!"
 
 #: maps/scenarios/treasure_islands.js:100
 #, javascript-format
@@ -1030,49 +1142,8 @@ msgstr ""
 #: maps/scenarios/WallTest.xml:PlayerData[0].Name:27
 #: maps/scenarios/Walls.xml:PlayerData[0].Name:27
 #: maps/scenarios/reservoir.xml:PlayerData[0].Name:27
-#: maps/skirmishes/Acropolis Bay (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[0].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[0].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[0].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[0].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[0].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[0].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[0].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[0].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[0].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[0].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[0].Name:39
 msgid "Player 1"
-msgstr ""
+msgstr "Lojtari 1"
 
 #: maps/scenarios/Arcadia.xml:PlayerData[1].Name:39
 #: maps/scenarios/Belgian_Bog_night.xml:PlayerData[1].Name:39
@@ -1094,50 +1165,9 @@ msgstr ""
 #: Islands.xml:PlayerData[1].Name:39 maps/scenarios/Tropical
 #: Island.xml:PlayerData[1].Name:39
 #: maps/scenarios/WallTest.xml:PlayerData[1].Name:27
-#: maps/scenarios/Walls.xml:PlayerData[1].Name:27 maps/skirmishes/Acropolis
-#: Bay (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Alpine_Valleys_(2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Bactria (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Barcania (3).xml:PlayerData[1].Name:27
-#: maps/skirmishes/Belgian Bog (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Caspian Sea (2v2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Corinthian Isthmus (4).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Corsica and Sardinia (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Cycladic Archipelago (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Death Canyon (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Deccan Plateau (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gallic Fields (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Gambia River (3).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Golden Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Greek Acropolis Night (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Libyan Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Lorraine Plain (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Median Oasis (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Median Oasis (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Mediterranean Cove (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Neareastern Badlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Nile River (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Persian Highlands (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Punjab (2).xml:PlayerData[1].Name:40
-#: maps/skirmishes/Saharan Oases (4).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sahel (4).xml:PlayerData[1].Name:39 maps/skirmishes/Savanna
-#: River.xml:PlayerData[1].Name:39 maps/skirmishes/Sicilia
-#: (2).xml:PlayerData[1].Name:39
-#: maps/skirmishes/Sicilia_Nomad.xml:PlayerData[1].Name:35
-#: maps/skirmishes/Sporades Islands (2).xml:PlayerData[2].Name:39
-#: maps/skirmishes/Syria (2).xml:PlayerData[1].Name:39 maps/skirmishes/Team
-#: Oasis - 2v2.xml:PlayerData[1].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[1].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[1].Name:39 maps/skirmishes/Zagros Mountains
-#: (2).xml:PlayerData[1].Name:39
+#: maps/scenarios/Walls.xml:PlayerData[1].Name:27
 msgid "Player 2"
-msgstr ""
+msgstr "Lojtari 2"
 
 #: maps/scenarios/Arcadia.xml:Name:39
 msgid "Arcadia"
@@ -1150,11 +1180,11 @@ msgstr ""
 
 #: maps/scenarios/Azure Coast(2).xml:PlayerData[0].Name:27
 msgid "Greeks"
-msgstr ""
+msgstr "Grekët"
 
 #: maps/scenarios/Azure Coast(2).xml:PlayerData[1].Name:27
 msgid "Celts"
-msgstr ""
+msgstr "Keltët"
 
 #: maps/scenarios/Azure Coast(2).xml:Name:27
 msgid "Azure Coast 2"
@@ -1162,19 +1192,19 @@ msgstr ""
 
 #: maps/scenarios/Azure Coast(4).xml:PlayerData[0].Name:27
 msgid "East"
-msgstr ""
+msgstr "Lindje"
 
 #: maps/scenarios/Azure Coast(4).xml:PlayerData[1].Name:27
 msgid "West"
-msgstr ""
+msgstr "Perëndim"
 
 #: maps/scenarios/Azure Coast(4).xml:PlayerData[2].Name:27
 msgid "South"
-msgstr ""
+msgstr "Jug"
 
 #: maps/scenarios/Azure Coast(4).xml:PlayerData[3].Name:27
 msgid "North"
-msgstr ""
+msgstr "Veri"
 
 #: maps/scenarios/Azure Coast(4).xml:Name:27
 msgid "Azure Coast 3"
@@ -1224,7 +1254,7 @@ msgstr ""
 
 #: maps/scenarios/Battle for the Tiber.xml:PlayerData[0].Name:27
 msgid "Rome"
-msgstr ""
+msgstr "Roma"
 
 #: maps/scenarios/Battle for the Tiber.xml:PlayerData[1].Name:27
 msgid "Veii"
@@ -1253,7 +1283,7 @@ msgstr ""
 
 #: maps/scenarios/Bridge_demo.xml:PlayerData[1].Name:27
 msgid "Other"
-msgstr ""
+msgstr "Të tjera"
 
 #: maps/scenarios/Bridge_demo.xml:Description:27
 msgid "Demo map showing how to simulate bridges in the Atlas map editor."
@@ -1278,12 +1308,12 @@ msgstr "Lidhja e Delos"
 #: maps/scenarios/Campaign Test Map.xml:PlayerData[1].Name:39
 #: maps/scenarios/Peloponnese.xml:PlayerData[3].Name:39
 msgid "Thebes"
-msgstr ""
+msgstr "Teba"
 
 #: maps/scenarios/Campaign Test Map.xml:PlayerData[2].Name:39
 #: maps/scenarios/Peloponnese.xml:PlayerData[5].Name:39
 msgid "Thessaly"
-msgstr ""
+msgstr "Thesalia"
 
 #: maps/scenarios/Campaign Test Map.xml:PlayerData[3].Name:39
 msgid "Megara"
@@ -1299,11 +1329,11 @@ msgstr ""
 
 #: maps/scenarios/Campaign Test Map.xml:PlayerData[6].Name:39
 msgid "Peloponnesian League"
-msgstr ""
+msgstr "Liga Peloponeze"
 
 #: maps/scenarios/Campaign Test Map.xml:PlayerData[7].Name:39
 msgid "Religious Institutions"
-msgstr ""
+msgstr "Institucione Fetare"
 
 #: maps/scenarios/Campaign Test Map.xml:Name:39
 msgid "Strategic Campaign Proof of Concept"
@@ -1319,7 +1349,7 @@ msgstr ""
 
 #: maps/scenarios/Cinema_Demo.xml:PlayerData[2].Name:40
 msgid "You"
-msgstr ""
+msgstr "Ti"
 
 #: maps/scenarios/Cinema_Demo.xml:Name:40
 msgid "Cinema Demo"
@@ -1364,27 +1394,9 @@ msgstr ""
 #: Oases.xml:PlayerData[2].Name:27 maps/scenarios/Sandbox -
 #: Britons.xml:PlayerData[2].Name:39 maps/scenarios/Sandbox -
 #: Gauls.xml:PlayerData[3].Name:40 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[2].Name:27 maps/skirmishes/Barcania
-#: (3).xml:PlayerData[2].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[2].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Gallic Fields
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Gambia River
-#: (3).xml:PlayerData[2].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[2].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[2].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[2].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[2].Name:39
+#: Oasis.xml:PlayerData[2].Name:27
 msgid "Player 3"
-msgstr ""
+msgstr "Lojtari 3"
 
 #: maps/scenarios/Death Canyon - Invasion Force.xml:Name:39
 msgid "Death Canyon - Invasion Force"
@@ -1419,24 +1431,9 @@ msgstr ""
 #: maps/scenarios/Gold_Rush.xml:PlayerData[3].Name:27
 #: maps/scenarios/Necropolis.xml:PlayerData[3].Name:39 maps/scenarios/Saharan
 #: Oases.xml:PlayerData[3].Name:27 maps/scenarios/Siwa
-#: Oasis.xml:PlayerData[3].Name:27 maps/skirmishes/Caspian Sea
-#: (2v2).xml:PlayerData[3].Name:39 maps/skirmishes/Corinthian Isthmus
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Corsica and Sardinia
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Greek Acropolis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Libyan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Median Oasis
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Neareastern Badlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Nile River
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Persian Highlands
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Saharan Oases
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Sahel
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Team Oasis -
-#: 2v2.xml:PlayerData[3].Name:39 maps/skirmishes/Thessalian Plains
-#: (4).xml:PlayerData[3].Name:39 maps/skirmishes/Tuscan Acropolis
-#: (4).xml:PlayerData[3].Name:40 maps/skirmishes/Watering Holes
-#: (4).xml:PlayerData[3].Name:39
+#: Oasis.xml:PlayerData[3].Name:27
 msgid "Player 4"
-msgstr ""
+msgstr "Lojtari 4"
 
 #: maps/scenarios/Fast Oasis.xml:Name:27
 msgid "Fast Oasis"
@@ -1540,7 +1537,7 @@ msgstr ""
 #: maps/scenarios/Miletus.xml:PlayerData[1].Name:27 maps/scenarios/Sandbox -
 #: Ptolemies 2.xml:PlayerData[1].Name:39
 msgid "Romans"
-msgstr ""
+msgstr "Romakët"
 
 #: maps/scenarios/Miletus.xml:Description:27
 msgid "A sandbox scenario for one player."
@@ -1568,7 +1565,7 @@ msgstr ""
 
 #: maps/scenarios/Necropolis.xml:Description:39
 msgid ""
-"4 players duke it out over the vast Nile Delta. Each city starts out nestled atop a large acropolis, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
+"Four players duke it out over the vast Nile Delta. Each city starts out nestled atop a large plateau, but resources are scarce, forcing each player to expand their resource operations into the surrounding lands.\n"
 "\n"
 "Scouts say the nearby branches of the Nile River are shallow and fordable in multiple locations, so should only serve as a minor barrier between enemy factions."
 msgstr ""
@@ -1601,11 +1598,11 @@ msgstr ""
 
 #: maps/scenarios/Peloponnese.xml:PlayerData[0].Name:39
 msgid "Athens"
-msgstr ""
+msgstr "Athina"
 
 #: maps/scenarios/Peloponnese.xml:PlayerData[1].Name:39
 msgid "Sparta"
-msgstr ""
+msgstr "Sparta"
 
 #: maps/scenarios/Peloponnese.xml:PlayerData[2].Name:39
 msgid "Elis"
@@ -1613,7 +1610,7 @@ msgstr ""
 
 #: maps/scenarios/Peloponnese.xml:PlayerData[4].Name:39
 msgid "Corinth"
-msgstr ""
+msgstr "Korint"
 
 #: maps/scenarios/Peloponnese.xml:Name:39
 msgid "Peloponnesian Wars"
@@ -1625,7 +1622,7 @@ msgstr ""
 
 #: maps/scenarios/Polynesia.xml:PlayerData[0].Name:39
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #: maps/scenarios/Polynesia.xml:PlayerData[1].Name:39
 msgid "Vanuatu"
@@ -1633,7 +1630,7 @@ msgstr ""
 
 #: maps/scenarios/Polynesia.xml:Name:39
 msgid "Polynesia"
-msgstr ""
+msgstr "Polinezia"
 
 #: maps/scenarios/Resource_demo.xml:Name:27
 msgid "Resource demo"
@@ -1679,26 +1676,26 @@ msgstr ""
 
 #: maps/scenarios/Sandbox - Athenians.xml:PlayerData[0].Name:39
 msgid "The Athenians"
-msgstr ""
+msgstr "Athinasit"
 
 #: maps/scenarios/Sandbox - Athenians.xml:PlayerData[1].Name:39
 #: maps/scenarios/Sandbox - Macedonians.xml:PlayerData[1].Name:39
 #: maps/scenarios/Sandbox - Spartans.xml:PlayerData[0].Name:39
 #: maps/scenarios/Sandbox - Spartans.xml:PlayerData[1].Name:39
 msgid "The Spartans"
-msgstr ""
+msgstr "Spartanët"
 
 #: maps/scenarios/Sandbox - Athenians.xml:PlayerData[2].Name:39
 #: maps/scenarios/Sandbox - Macedonians.xml:PlayerData[2].Name:39
 #: maps/scenarios/Sandbox - Spartans.xml:PlayerData[2].Name:39
 msgid "The Persians"
-msgstr ""
+msgstr "Persët"
 
 #: maps/scenarios/Sandbox - Athenians.xml:PlayerData[3].Name:39
 #: maps/scenarios/Sandbox - Macedonians.xml:PlayerData[3].Name:39
 #: maps/scenarios/Sandbox - Spartans.xml:PlayerData[3].Name:39
 msgid "The Gauls"
-msgstr ""
+msgstr "Galët"
 
 #: maps/scenarios/Sandbox - Athenians.xml:Name:39
 msgid "Sandbox - The Athenians"
@@ -1758,7 +1755,7 @@ msgstr ""
 
 #: maps/scenarios/Sandbox - Kushites.xml:PlayerData[2].Name:40
 msgid "Egyptians"
-msgstr ""
+msgstr "Egjiptianët"
 
 #: maps/scenarios/Sandbox - Kushites.xml:Name:40
 msgid "Sandbox - The Kushites"
@@ -1771,7 +1768,7 @@ msgstr ""
 
 #: maps/scenarios/Sandbox - Macedonians.xml:PlayerData[0].Name:39
 msgid "The Macedonians"
-msgstr ""
+msgstr "Maqedonasit"
 
 #: maps/scenarios/Sandbox - Macedonians.xml:Name:39
 msgid "Sandbox - The Macedonians"
@@ -1820,7 +1817,7 @@ msgstr ""
 
 #: maps/scenarios/Sandbox - Ptolemies 2.xml:PlayerData[3].Name:39
 msgid "Libyans"
-msgstr ""
+msgstr "Libanezët"
 
 #: maps/scenarios/Sandbox - Ptolemies 2.xml:Name:39
 msgid "Sandbox - The Ptolemaic Egyptians 2"
@@ -1888,15 +1885,15 @@ msgstr ""
 
 #: maps/scenarios/Serengeti.xml:PlayerData[1].Name:27
 msgid "Iberia"
-msgstr ""
+msgstr "Iberia"
 
 #: maps/scenarios/Serengeti.xml:PlayerData[2].Name:27
 msgid "Greece"
-msgstr ""
+msgstr "Greqia"
 
 #: maps/scenarios/Serengeti.xml:PlayerData[3].Name:27
 msgid "Persia"
-msgstr ""
+msgstr "Persia"
 
 #: maps/scenarios/Serengeti.xml:Description:27
 msgid ""
@@ -1914,11 +1911,11 @@ msgstr ""
 
 #: maps/scenarios/Ship Formations.xml:PlayerData[0].Name:27
 msgid "Ships"
-msgstr ""
+msgstr "Anije"
 
 #: maps/scenarios/Ship Formations.xml:Name:27
 msgid "Ship Formations"
-msgstr ""
+msgstr "Formacionet e Anijeve"
 
 #: maps/scenarios/Siwa Oasis.xml:Description:27
 msgid ""
@@ -1971,11 +1968,11 @@ msgstr ""
 
 #: maps/scenarios/The Persian Gates.xml:PlayerData[3].Name:27
 msgid "Persians"
-msgstr ""
+msgstr "Persët"
 
 #: maps/scenarios/The Persian Gates.xml:Name:27
 msgid "The Persian Gates"
-msgstr ""
+msgstr "Portat Perse"
 
 #: maps/scenarios/Third Macedonian War.xml:Description:27
 msgid ""
@@ -1993,7 +1990,7 @@ msgstr ""
 
 #: maps/scenarios/Third Macedonian War.xml:PlayerData[2].Name:27
 msgid "Greek Allies"
-msgstr ""
+msgstr "Aleatët Grekë"
 
 #: maps/scenarios/Third Macedonian War.xml:Name:27
 msgid "Third Macedonian War"
@@ -2037,7 +2034,7 @@ msgstr ""
 
 #: maps/scenarios/WallTest.xml:Description:27
 #: maps/scenarios/_default.xml:Description:28 maps/scenarios/temperate
-#: map.xml:Description:27 maps/scenarios/test-foundation.xml:Description:40
+#: map.xml:Description:27
 msgid "Give an interesting description of your map."
 msgstr ""
 
@@ -2047,22 +2044,21 @@ msgstr ""
 
 #: maps/scenarios/Walls.xml:Description:27
 msgid "Walls."
-msgstr ""
+msgstr "Mure."
 
 #: maps/scenarios/Walls.xml:Name:27
 msgid "Walls"
-msgstr ""
+msgstr "Mure"
 
 #: maps/scenarios/We are Legion.xml:Name:27
 msgid "We Are Legion"
 msgstr ""
 
 #: maps/scenarios/We are Legion.xml:Description:27
-msgid "A quick battle demo map using Roman legionnaires."
+msgid "A quick battle demo map using Roman legionaries."
 msgstr ""
 
 #: maps/scenarios/_default.xml:Name:28
-#: maps/scenarios/test-foundation.xml:Name:40
 msgid "Unnamed map"
 msgstr ""
 
@@ -2072,7 +2068,7 @@ msgstr ""
 
 #: maps/scenarios/reservoir.xml:Name:27
 msgid "Reservoir"
-msgstr ""
+msgstr "Rezervuar"
 
 #: maps/scenarios/road demo.xml:Description:27
 msgid "Demo map showcasing Temperate Road decals."
@@ -2094,11 +2090,17 @@ msgstr ""
 msgid "Base Temperate Map"
 msgstr ""
 
-#: maps/scenarios/unit_motion_integration_test.xml:Name:28
-msgid "Unit Motion Integration Test"
+#: maps/scenarios/test-foundation.xml:Description:40
+msgid ""
+"This map is designed to help artists and modders find the adequate "
+"foundation for a specific building. This map is not meant to be playable."
 msgstr ""
 
-#: maps/scenarios/unit_motion_integration_test.xml:Description:28
+#: maps/scenarios/test-foundation.xml:Name:40
+msgid "Foundation Testing Map"
+msgstr ""
+
+#: maps/scenarios/unit_motion_integration_test.xml:Description:40
 msgid ""
 "This map is designed to test some basic unit movement cases. It will involve"
 " unitAI, unitMotion and the relevant pathfinders and thus acts as an "
@@ -2106,16 +2108,20 @@ msgid ""
 "and weird pathing."
 msgstr ""
 
+#: maps/scenarios/unit_motion_integration_test.xml:Name:40
+msgid "Unit Motion Integration Test"
+msgstr ""
+
 #: maps/skirmishes/Acropolis Bay (2).xml:Description:39
 msgid ""
-"Each player starts the match atop a large flat plateau, otherwise known as an acropolis.\n"
+"Each player starts the match atop a large flat plateau.\n"
 "\n"
-"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed acropolis commanding the valley below."
+"To the East lies a large bay with fishing opportunities. To the West is a rugged hinterland with an unclaimed plateau commanding the valley below."
 msgstr ""
 
 #: maps/skirmishes/Acropolis Bay (2).xml:Name:39
 msgid "Acropolis Bay (2)"
-msgstr ""
+msgstr "Gjiri i Akropolis (2)"
 
 #: maps/skirmishes/Alpine_Mountains_(3).xml:Description:40
 msgid ""
@@ -2125,7 +2131,7 @@ msgstr ""
 
 #: maps/skirmishes/Alpine_Mountains_(3).xml:Name:40
 msgid "Alpine Mountains (3)"
-msgstr ""
+msgstr "Male Alpine (3)"
 
 #: maps/skirmishes/Alpine_Valleys_(2).xml:Description:39
 msgid ""
@@ -2136,6 +2142,17 @@ msgstr ""
 
 #: maps/skirmishes/Alpine_Valleys_(2).xml:Name:39
 msgid "Alpine Valleys (2)"
+msgstr "Lugina Alpine (2)"
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Description:40
+msgid ""
+"Skirmish high in the Atlas mountains, where snowcapped mountains loom over "
+"desert oases. A wild landscape awaits; every player will experience "
+"different advantages and challenges based on their location."
+msgstr ""
+
+#: maps/skirmishes/Atlas_Valleys_(8).xml:Name:40
+msgid "Atlas Valleys (8)"
 msgstr ""
 
 #: maps/skirmishes/Bactria (2).xml:Description:39
@@ -2178,11 +2195,11 @@ msgid ""
 "as the Butana Steppe."
 msgstr ""
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[0].Name:40
 msgid "West Player"
 msgstr ""
 
-#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[2].Name:40
+#: maps/skirmishes/Butana Steppe (2).xml:PlayerData[1].Name:40
 msgid "East Player"
 msgstr ""
 
@@ -2199,7 +2216,7 @@ msgstr ""
 
 #: maps/skirmishes/Caspian Sea (2v2).xml:Name:39
 msgid "Caspian Sea (2v2)"
-msgstr ""
+msgstr "Deti Kaspik (2v2)"
 
 #: maps/skirmishes/Corinthian Isthmus (2).xml:Name:39
 msgid "Corinthian Isthmus (2)"
@@ -2218,7 +2235,7 @@ msgstr ""
 
 #: maps/skirmishes/Corsica and Sardinia (4).xml:Name:39
 msgid "Corsica and Sardinia (4)"
-msgstr ""
+msgstr "Korsika dhe Sardenja (4)"
 
 #: maps/skirmishes/Cycladic Archipelago (2).xml:Description:39
 msgid "A \"small island\"-style map set in the Aegean Sea."
@@ -2241,7 +2258,7 @@ msgstr ""
 
 #: maps/skirmishes/Cycladic Archipelago (3).xml:PlayerData[1].Name:39
 msgid "Lesbos"
-msgstr ""
+msgstr "Lezbos"
 
 #: maps/skirmishes/Cycladic Archipelago (3).xml:PlayerData[2].Name:39
 msgid "Delos"
@@ -2288,29 +2305,29 @@ msgstr ""
 
 #: maps/skirmishes/Egypt (3v3).xml:Name:40
 msgid "Egypt (3v3)"
-msgstr ""
+msgstr "Egjipt (3v3)"
+
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[0].Name:40
+msgid "Alexandria"
+msgstr "Aleksandria"
 
 #: maps/skirmishes/Egypt (3v3).xml:PlayerData[1].Name:40
-msgid "Alexandria"
-msgstr ""
-
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
 msgid "Theben"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[2].Name:40
 msgid "Siwa"
 msgstr ""
 
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[3].Name:40
 msgid "Sinai"
-msgstr ""
+msgstr "Sinai"
+
+#: maps/skirmishes/Egypt (3v3).xml:PlayerData[4].Name:40
+msgid "Memphis"
+msgstr "Memfis"
 
 #: maps/skirmishes/Egypt (3v3).xml:PlayerData[5].Name:40
-msgid "Memphis"
-msgstr ""
-
-#: maps/skirmishes/Egypt (3v3).xml:PlayerData[6].Name:40
 msgid "Cyrene"
 msgstr ""
 
@@ -2331,6 +2348,14 @@ msgid ""
 "- Western desert: Oasis Charga and Siwa, Qattara Depression\n"
 msgstr ""
 
+#: maps/skirmishes/Farmland (2).xml:Description:40
+msgid "Farmland in Eastern Europe."
+msgstr ""
+
+#: maps/skirmishes/Farmland (2).xml:Name:40
+msgid "Farmland (2)"
+msgstr ""
+
 #: maps/skirmishes/Forest Battle (4).xml:Description:40
 msgid ""
 "A forest battle map where all players fight for supremacy and control over "
@@ -2339,7 +2364,7 @@ msgstr ""
 
 #: maps/skirmishes/Forest Battle (4).xml:Name:40
 msgid "Forest Battle (4)"
-msgstr ""
+msgstr "Betejë në Pyll (4)"
 
 #: maps/skirmishes/Gallic Fields (3).xml:Description:39
 msgid ""
@@ -2368,12 +2393,12 @@ msgstr ""
 #: maps/skirmishes/Golden Island (2).xml:Description:40
 msgid ""
 "A ring of land borders a resource-rich island in the Mediterranean. Players "
-"can access the center via a narrow strip of land or via boat."
+"can access the center via a narrow strip of shallow water or via boat."
 msgstr ""
 
 #: maps/skirmishes/Golden Island (2).xml:Name:40
 msgid "Golden Island (2)"
-msgstr ""
+msgstr "Ishujt e Artë (2)"
 
 #: maps/skirmishes/Golden Oasis (2).xml:Description:39
 msgid ""
@@ -2384,34 +2409,34 @@ msgstr ""
 
 #: maps/skirmishes/Golden Oasis (2).xml:Name:39
 msgid "Gold Oasis (2)"
-msgstr ""
+msgstr "Oaz i Artë (2)"
 
 #: maps/skirmishes/Greek Acropolis (2).xml:Description:39
 #: maps/skirmishes/Greek Acropolis Night (2).xml:Description:39
 msgid ""
-"Two factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Two factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
 msgstr ""
 
 #: maps/skirmishes/Greek Acropolis (2).xml:Name:39
 msgid "Greek Acropolis (2)"
-msgstr ""
+msgstr "Akropolis grek (2)"
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Description:39
 msgid ""
-"Three factions find themselves perched safely atop large rocky plateaus, or acropolises, whereas the fourth one is separated from their foes by a river branch.\n"
+"Three factions find themselves perched safely atop large rocky plateaus, whereas the fourth one is separated from their foes by a river branch.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources.."
 msgstr ""
 
 #: maps/skirmishes/Greek Acropolis (4).xml:Name:39
 msgid "Greek Acropolis (4)"
-msgstr ""
+msgstr "Akropolis grek (4)"
 
 #: maps/skirmishes/Greek Acropolis Night (2).xml:Name:39
 msgid "Greek Acropolis Night (2)"
-msgstr ""
+msgstr "Akropolis grek natë (2)"
 
 #: maps/skirmishes/Libyan Oases (4).xml:Description:39
 msgid ""
@@ -2422,7 +2447,7 @@ msgstr ""
 
 #: maps/skirmishes/Libyan Oases (4).xml:Name:39
 msgid "Libyan Oases (4)"
-msgstr ""
+msgstr "Oaze Libaneze (4)"
 
 #: maps/skirmishes/Libyan Oasis (2).xml:Description:39
 msgid ""
@@ -2435,7 +2460,7 @@ msgstr ""
 
 #: maps/skirmishes/Libyan Oasis (2).xml:Name:39
 msgid "Libyan Oasis (2)"
-msgstr ""
+msgstr "Oaze Libaneze (2)"
 
 #: maps/skirmishes/Lorraine Plain (2).xml:Description:40
 msgid ""
@@ -2502,7 +2527,7 @@ msgstr ""
 
 #: maps/skirmishes/Nile River (4).xml:Name:39
 msgid "Nile River (4)"
-msgstr ""
+msgstr "Lumi Nil (4)"
 
 #: maps/skirmishes/Northern Island (2).xml:Description:40
 msgid ""
@@ -2513,6 +2538,30 @@ msgstr ""
 
 #: maps/skirmishes/Northern Island (2).xml:Name:40
 msgid "Northern Island (2)"
+msgstr "Ishulli Verior (2)"
+
+#: maps/skirmishes/Obedska_Bog_(4).xml:Description:40
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Description:40
+msgid ""
+"A lazy river meanders through these Serbian wetlands. Stone is scarce, but many lumps of bog iron sit waiting to be found.\n"
+"\n"
+"*This map makes heavy use of grass actors which may adversely affect performance."
+msgstr ""
+
+#: maps/skirmishes/Obedska_Bog_(4).xml:Name:40
+msgid "Obedska Bog (4)"
+msgstr ""
+
+#: maps/skirmishes/Obedska_Bog_Night_(4).xml:Name:40
+msgid "Obedska Bog Night (4)"
+msgstr ""
+
+#: maps/skirmishes/Oceanside (2).xml:Description:40
+msgid "A Lush temperate biome along an ocean. "
+msgstr ""
+
+#: maps/skirmishes/Oceanside (2).xml:Name:40
+msgid "Oceanside (2)"
 msgstr ""
 
 #: maps/skirmishes/Persian Highlands (4).xml:Description:39
@@ -2558,6 +2607,19 @@ msgstr ""
 msgid "Sahel (4)"
 msgstr ""
 
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Description:40
+msgid ""
+"The diverse rainforests nestled in the Sahyadri mountain range of the west coast of India. It goes without saying, wood is abundant.\n"
+"\n"
+"Iberian players do not get full circuit walls, but 5 strategically placed wall towers.\n"
+"\n"
+"WARNING: This map uses a lot of floral actors on account of being a rainforest. Expect a drop in framerate, this is taxing on most mid range computers."
+msgstr ""
+
+#: maps/skirmishes/Sahyadri_Buttes_(5).xml:Name:40
+msgid "Sahyadri Buttes (5)"
+msgstr ""
+
 #: maps/skirmishes/Savanna River.xml:Description:39
 msgid "A large savanna is bisected by a narrow jungle stream."
 msgstr ""
@@ -2572,7 +2634,7 @@ msgstr ""
 
 #: maps/skirmishes/Sicilia (2).xml:Name:39
 msgid "Sicilia (2)"
-msgstr ""
+msgstr "Sicilia (2)"
 
 #: maps/skirmishes/Sicilia_Nomad.xml:Description:35
 msgid ""
@@ -2605,7 +2667,7 @@ msgstr ""
 
 #: maps/skirmishes/Syria (2).xml:Name:39
 msgid "Syria (2)"
-msgstr ""
+msgstr "Siria (2)"
 
 #: maps/skirmishes/Team Oasis - 2v2.xml:Description:39
 msgid ""
@@ -2618,11 +2680,19 @@ msgstr ""
 msgid "Team Oasis (2v2)"
 msgstr ""
 
+#: maps/skirmishes/Temperate Roadway (2).xml:Description:40
+msgid "Temperate zone map with plentiful resources. Map Size: Small"
+msgstr ""
+
+#: maps/skirmishes/Temperate Roadway (2).xml:Name:40
+msgid "Temperate Roadway (2)"
+msgstr ""
+
 #: maps/skirmishes/Thessalian Plains (4).xml:Description:39
 msgid ""
 "The rolling Thessalian plain is traversed with narrow streams, easily "
 "forded. Wide-open spaces allow for massive expansion, while each player "
-"starts the match safe atop a large acropolis."
+"starts the match safe atop a large plateau."
 msgstr ""
 
 #: maps/skirmishes/Thessalian Plains (4).xml:Name:39
@@ -2631,7 +2701,7 @@ msgstr ""
 
 #: maps/skirmishes/Tuscan Acropolis (4).xml:Description:40
 msgid ""
-"Four factions find themselves perched safely atop large rocky plateaus, or acropolises.\n"
+"Four factions find themselves perched safely atop large rocky plateaus.\n"
 "\n"
 "Scout the lands to find free treasures and to secure new resources."
 msgstr ""
@@ -2648,6 +2718,17 @@ msgstr ""
 
 #: maps/skirmishes/Two Seas (6).xml:Name:40
 msgid "Two Seas (6)"
+msgstr "Dy Dete (6)"
+
+#: maps/skirmishes/Vesuvius_(6).xml:Description:40
+msgid ""
+"Skirmish as ash lightly falls around this recently erupted volcano. the "
+"scorched landscape offers little food, though the blasted forests are still "
+"laden with useful wood. "
+msgstr ""
+
+#: maps/skirmishes/Vesuvius_(6).xml:Name:40
+msgid "Vesuvius (6)"
 msgstr ""
 
 #: maps/skirmishes/Via Augusta (4).xml:Description:40
@@ -2693,7 +2774,7 @@ msgstr ""
 #: maps/random/rmbiome/fields_of_meroe/dry.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Dry Season"
-msgstr ""
+msgstr "Stina e thatë"
 
 #: maps/random/rmbiome/fields_of_meroe/rainy.jsonDescription.Description
 msgctxt "biome definition"
@@ -2705,7 +2786,7 @@ msgstr ""
 #: maps/random/rmbiome/fields_of_meroe/rainy.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Rainy Season"
-msgstr ""
+msgstr "Stina me shi"
 
 #: maps/random/rmbiome/generic/alpine.jsonDescription.Description
 msgctxt "biome definition"
@@ -2718,7 +2799,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/alpine.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Alpine"
-msgstr ""
+msgstr "Alpine"
 
 #: maps/random/rmbiome/generic/autumn.jsonDescription.Description
 msgctxt "biome definition"
@@ -2732,7 +2813,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/autumn.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Autumn"
-msgstr ""
+msgstr "Vjeshtë"
 
 #: maps/random/rmbiome/generic/desert.jsonDescription.Description
 msgctxt "biome definition"
@@ -2745,7 +2826,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/desert.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Desert"
-msgstr ""
+msgstr "Shkretëtirë"
 
 #: maps/random/rmbiome/generic/mediterranean.jsonDescription.Description
 msgctxt "biome definition"
@@ -2758,7 +2839,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/mediterranean.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Mediterranean"
-msgstr ""
+msgstr "Mesdhe"
 
 #: maps/random/rmbiome/generic/savanna.jsonDescription.Description
 msgctxt "biome definition"
@@ -2771,7 +2852,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/savanna.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Savanna"
-msgstr ""
+msgstr "Savana"
 
 #: maps/random/rmbiome/generic/snowy.jsonDescription.Description
 msgctxt "biome definition"
@@ -2784,7 +2865,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/snowy.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Snowy"
-msgstr ""
+msgstr "Me dëborë"
 
 #: maps/random/rmbiome/generic/temperate.jsonDescription.Description
 msgctxt "biome definition"
@@ -2812,7 +2893,7 @@ msgstr ""
 #: maps/random/rmbiome/generic/tropic.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Tropic"
-msgstr ""
+msgstr "Tropik"
 
 #: maps/random/rmbiome/gulf_of_bothnia/frozen_lake.jsonDescription.Description
 msgctxt "biome definition"
@@ -2824,7 +2905,7 @@ msgstr ""
 #: maps/random/rmbiome/gulf_of_bothnia/frozen_lake.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Frozen Lake"
-msgstr ""
+msgstr "Liqen i ngrirë"
 
 #: maps/random/rmbiome/gulf_of_bothnia/late_spring.jsonDescription.Description
 msgctxt "biome definition"
@@ -2849,7 +2930,7 @@ msgstr ""
 #: maps/random/rmbiome/gulf_of_bothnia/winter.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Winter"
-msgstr ""
+msgstr "Dimër"
 
 #: maps/random/rmbiome/persian_highlands/spring.jsonDescription.Description
 msgctxt "biome definition"
@@ -2862,7 +2943,7 @@ msgstr ""
 #: maps/random/rmbiome/persian_highlands/spring.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Spring"
-msgstr ""
+msgstr "Pranverë"
 
 #: maps/random/rmbiome/persian_highlands/summer.jsonDescription.Description
 msgctxt "biome definition"
@@ -2874,4 +2955,4 @@ msgstr ""
 #: maps/random/rmbiome/persian_highlands/summer.jsonDescription.Title
 msgctxt "biome definition"
 msgid "Summer"
-msgstr ""
+msgstr "Verë"

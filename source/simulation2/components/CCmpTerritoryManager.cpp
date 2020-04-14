@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -223,7 +223,7 @@ public:
 		case MT_RenderSubmit:
 		{
 			const CMessageRenderSubmit& msgData = static_cast<const CMessageRenderSubmit&> (msg);
-			RenderSubmit(msgData.collector);
+			RenderSubmit(msgData.collector, msgData.frustum, msgData.culling);
 			break;
 		}
 		}
@@ -302,7 +302,7 @@ public:
 
 	void Interpolate(float frameTime, float frameOffset);
 
-	void RenderSubmit(SceneCollector& collector);
+	void RenderSubmit(SceneCollector& collector, const CFrustum& frustum, bool culling);
 
 	void SetVisibility(bool visible)
 	{
@@ -362,8 +362,8 @@ struct Tile
 static void NearestTerritoryTile(entity_pos_t x, entity_pos_t z, u16& i, u16& j, u16 w, u16 h)
 {
 	entity_pos_t scale = Pathfinding::NAVCELL_SIZE * ICmpTerritoryManager::NAVCELLS_PER_TERRITORY_TILE;
-	i = clamp((x / scale).ToInt_RoundToNegInfinity(), 0, w - 1);
-	j = clamp((z / scale).ToInt_RoundToNegInfinity(), 0, h - 1);
+	i = Clamp((x / scale).ToInt_RoundToNegInfinity(), 0, w - 1);
+	j = Clamp((z / scale).ToInt_RoundToNegInfinity(), 0, h - 1);
 }
 
 void CCmpTerritoryManager::CalculateCostGrid()
@@ -581,12 +581,13 @@ std::vector<STerritoryBoundary> CCmpTerritoryManager::ComputeBoundaries()
 
 u8 CCmpTerritoryManager::GetTerritoryPercentage(player_id_t player)
 {
-	if (player <= 0 || (size_t)player > m_TerritoryCellCounts.size())
+	if (player <= 0 || static_cast<size_t>(player) >= m_TerritoryCellCounts.size())
 		return 0;
 
 	CalculateTerritories();
 
-	if (m_TerritoryTotalPassableCellCount == 0)
+	// Territories may have been recalculated, check whether player is still there.
+	if (m_TerritoryTotalPassableCellCount == 0 || static_cast<size_t>(player) >= m_TerritoryCellCounts.size())
 		return 0;
 
 	u8 percentage = (m_TerritoryCellCounts[player] * 100) / m_TerritoryTotalPassableCellCount;
@@ -691,13 +692,17 @@ void CCmpTerritoryManager::Interpolate(float frameTime, float UNUSED(frameOffset
 	}
 }
 
-void CCmpTerritoryManager::RenderSubmit(SceneCollector& collector)
+void CCmpTerritoryManager::RenderSubmit(SceneCollector& collector, const CFrustum& frustum, bool culling)
 {
 	if (!m_Visible)
 		return;
 
 	for (size_t i = 0; i < m_BoundaryLines.size(); ++i)
+	{
+		if (culling && !m_BoundaryLines[i].overlay.IsVisibleInFrustum(frustum))
+			continue;
 		collector.Submit(&m_BoundaryLines[i].overlay);
+	}
 
 	for (size_t i = 0; i < m_DebugBoundaryLineNodes.size(); ++i)
 		collector.Submit(&m_DebugBoundaryLineNodes[i]);

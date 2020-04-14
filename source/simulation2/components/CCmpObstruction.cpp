@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -48,11 +48,7 @@ public:
 
 	// Template state:
 
-	enum {
-		STATIC,
-		UNIT,
-		CLUSTER
-	} m_Type;
+	EObstructionType m_Type;
 
 	entity_pos_t m_Size0; // radius or width
 	entity_pos_t m_Size1; // radius or depth
@@ -363,6 +359,8 @@ public:
 				if (!cmpObstructionManager)
 					break; // error
 
+				// Deactivate the obstruction in case PositionChanged messages are sent after this.
+				m_Active = false;
 				cmpObstructionManager->RemoveShape(m_Tag);
 				m_Tag = tag_t();
 				if(m_Type == CLUSTER)
@@ -460,6 +458,11 @@ public:
 		return (m_TemplateFlags & ICmpObstructionManager::FLAG_BLOCK_MOVEMENT) != 0;
 	}
 
+	virtual EObstructionType GetObstructionType() const
+	{
+		return m_Type;
+	}
+
 	virtual ICmpObstructionManager::tag_t GetObstruction() const
 	{
 		return m_Tag;
@@ -514,6 +517,11 @@ public:
 			return m_Clearance;
 		else
 			return CFixedVector2D(m_Size0 / 2, m_Size1 / 2).Length();
+	}
+
+	virtual CFixedVector2D GetStaticSize() const
+	{
+		return m_Type == STATIC ? CFixedVector2D(m_Size0, m_Size1) : CFixedVector2D();
 	}
 
 	virtual void SetUnitClearance(const entity_pos_t& clearance)

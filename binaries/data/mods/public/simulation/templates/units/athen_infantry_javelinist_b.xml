@@ -2,8 +2,9 @@
 <Entity parent="template_unit_infantry_ranged_javelinist">
   <Builder>
     <Entities datatype="tokens">
-      structures/athen_gymnasion
-      structures/athen_theatron
+      structures/athen_tower_artillery
+      structures/athen_gymnasium
+      structures/athen_theater
       structures/athen_prytaneion
       structures/athen_royal_stoa
     </Entities>
@@ -16,12 +17,12 @@
   </Cost>
   <Identity>
     <Civ>athen</Civ>
+    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
     <Lang>greek</Lang>
     <SelectionGroupName>units/athen_infantry_javelinist_b</SelectionGroupName>
     <GenericName>Thracian Peltast</GenericName>
     <SpecificName>Peltastḗs Thrâx</SpecificName>
-    <VisibleClasses datatype="tokens">Mercenary</VisibleClasses>
-    <Icon>units/hele_infantry_javelinist.png</Icon>
+    <Icon>units/athen_infantry_javelinist.png</Icon>
     <RequiredTechnology>phase_town</RequiredTechnology>
   </Identity>
   <Promotion>

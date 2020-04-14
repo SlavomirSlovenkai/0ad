@@ -2,8 +2,10 @@
 <Entity parent="template_unit_cavalry_melee">
   <Attack>
     <Melee>
-      <Hack>6.0</Hack>
-      <Pierce>5.0</Pierce>
+      <Damage>
+        <Hack>6.0</Hack>
+        <Pierce>5.0</Pierce>
+      </Damage>
       <MaxRange>4.5</MaxRange>
       <Bonuses>
         <BonusCavMelee>
@@ -20,10 +22,15 @@
     </Resources>
   </Cost>
   <Identity>
-    <VisibleClasses datatype="tokens">Spear</VisibleClasses>
+    <VisibleClasses datatype="tokens">Spearman</VisibleClasses>
     <GenericName>Cavalry Spearman</GenericName>
     <Tooltip>Counters: 1.5x vs. Cavalry.</Tooltip>
   </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_melee>attack/weapon/spear_attack.xml</attack_melee>
+    </SoundGroups>
+  </Sound>
   <UnitMotion>
     <WalkSpeed op="mul">1.1</WalkSpeed>
   </UnitMotion>

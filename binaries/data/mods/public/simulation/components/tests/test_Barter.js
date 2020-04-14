@@ -10,7 +10,7 @@ Engine.LoadComponentScript("Barter.js");
 const truePrice = 110;
 
 Resources = {
-	"GetCodes": () => ["wood", "stone", "metal"],
+	"GetBarterableCodes": () => ["wood", "stone", "metal"],
 	"GetResource": (resource) => ({ "truePrice": truePrice })
 };
 
@@ -36,6 +36,7 @@ let multiplier = {
 		"metal": 1.0
 	}
 };
+let cmpBarter = ConstructComponent(SYSTEM_ENTITY, "Barter");
 
 AddMock(SYSTEM_ENTITY, IID_Timer, {
 	"CancelTimer": id => { timerActivated = false; },
@@ -46,8 +47,6 @@ AddMock(SYSTEM_ENTITY, IID_Timer, {
 		return 7;
 	}
 });
-
-let cmpBarter = ConstructComponent(SYSTEM_ENTITY, "Barter");
 
 // Init
 TS_ASSERT_EQUALS(cmpBarter.restoreTimer, undefined);

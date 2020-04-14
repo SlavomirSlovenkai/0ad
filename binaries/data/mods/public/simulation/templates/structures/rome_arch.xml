@@ -3,7 +3,6 @@
   <Cost>
     <BuildTime>200</BuildTime>
     <Resources>
-      <wood>0</wood>
       <stone>200</stone>
       <metal>400</metal>
     </Resources>
@@ -19,11 +18,15 @@
   </Health>
   <Identity>
     <Civ>rome</Civ>
-    <SpecificName>Triumphal Arch</SpecificName>
-    <Tooltip>Special Imperial Roman building.</Tooltip>
+    <GenericName>Triumphal Arch</GenericName>
+    <SpecificName>Arcus Triumphālis</SpecificName>
     <Classes datatype="tokens">ConquestCritical</Classes>
     <Icon>structures/arch.png</Icon>
   </Identity>
+  <Loot>
+    <stone>40</stone>
+    <metal>80</metal>
+  </Loot>
   <Obstruction>
     <Static width="18.0" depth="9.0"/>
   </Obstruction>
@@ -32,7 +35,7 @@
   <Sound>
     <SoundGroups>
       <select>interface/select/building/sel_theater.xml</select>
-      <constructed>interface/complete/building/complete_theatre.xml</constructed>
+      <constructed>interface/complete/building/complete_theater.xml</constructed>
     </SoundGroups>
   </Sound>
   <TerritoryInfluence>

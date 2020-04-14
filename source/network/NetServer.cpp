@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -32,7 +32,6 @@
 #include "ps/ConfigDB.h"
 #include "ps/GUID.h"
 #include "ps/Profile.h"
-#include "ps/ThreadUtil.h"
 #include "scriptinterface/ScriptInterface.h"
 #include "scriptinterface/ScriptRuntime.h"
 #include "simulation2/Simulation2.h"
@@ -152,13 +151,18 @@ CNetServerWorker::~CNetServerWorker()
 	{
 		// Tell the thread to shut down
 		{
-			CScopeLock lock(m_WorkerMutex);
+			std::lock_guard<std::mutex> lock(m_WorkerMutex);
 			m_Shutdown = true;
 		}
 
 		// Wait for it to shut down cleanly
-		pthread_join(m_WorkerThread, NULL);
+		m_WorkerThread.join();
 	}
+
+#if CONFIG2_MINIUPNPC
+	if (m_UPnPThread.joinable())
+		m_UPnPThread.detach();
+#endif
 
 	// Clean up resources
 
@@ -201,21 +205,21 @@ bool CNetServerWorker::SetupConnection(const u16 port)
 	m_State = SERVER_STATE_PREGAME;
 
 	// Launch the worker thread
-	int ret = pthread_create(&m_WorkerThread, NULL, &RunThread, this);
-	ENSURE(ret == 0);
+	m_WorkerThread = std::thread(RunThread, this);
 
 #if CONFIG2_MINIUPNPC
 	// Launch the UPnP thread
-	ret = pthread_create(&m_UPnPThread, NULL, &SetupUPnP, NULL);
-	ENSURE(ret == 0);
+	m_UPnPThread = std::thread(SetupUPnP);
 #endif
 
 	return true;
 }
 
 #if CONFIG2_MINIUPNPC
-void* CNetServerWorker::SetupUPnP(void*)
+void CNetServerWorker::SetupUPnP()
 {
+	debug_SetThreadName("UPnP");
+
 	// Values we want to set.
 	char psPort[6];
 	sprintf_s(psPort, ARRAY_SIZE(psPort), "%d", PS_DEFAULT_PORT);
@@ -224,14 +228,26 @@ void* CNetServerWorker::SetupUPnP(void*)
 	const char* protocall = "UDP";
 	char internalIPAddress[64];
 	char externalIPAddress[40];
+
 	// Variables to hold the values that actually get set.
 	char intClient[40];
 	char intPort[6];
 	char duration[16];
+
 	// Intermediate variables.
+	bool allocatedUrls = false;
 	struct UPNPUrls urls;
 	struct IGDdatas data;
 	struct UPNPDev* devlist = NULL;
+
+	// Make sure everything is properly freed.
+	std::function<void()> freeUPnP = [&allocatedUrls, &urls, &devlist]()
+	{
+		if (allocatedUrls)
+			FreeUPNPUrls(&urls);
+		freeUPNPDevlist(devlist);
+		// IGDdatas does not need to be freed according to UPNP_GetIGDFromUrl
+	};
 
 	// Cached root descriptor URL.
 	std::string rootDescURL;
@@ -240,7 +256,6 @@ void* CNetServerWorker::SetupUPnP(void*)
 		LOGMESSAGE("Net server: attempting to use cached root descriptor URL: %s", rootDescURL.c_str());
 
 	int ret = 0;
-	bool allocatedUrls = false;
 
 	// Try a cached URL first
 	if (!rootDescURL.empty() && UPNP_GetIGDFromUrl(rootDescURL.c_str(), &urls, &data, internalIPAddress, sizeof(internalIPAddress)))
@@ -261,7 +276,8 @@ void* CNetServerWorker::SetupUPnP(void*)
 	else
 	{
 		LOGMESSAGE("Net server: upnpDiscover failed and no working cached URL.");
-		return NULL;
+		freeUPnP();
+		return;
 	}
 
 	switch (ret)
@@ -287,7 +303,8 @@ void* CNetServerWorker::SetupUPnP(void*)
 	if (ret != UPNPCOMMAND_SUCCESS)
 	{
 		LOGMESSAGE("Net server: GetExternalIPAddress failed with code %d (%s)", ret, strupnperror(ret));
-		return NULL;
+		freeUPnP();
+		return;
 	}
 	LOGMESSAGE("Net server: ExternalIPAddress = %s", externalIPAddress);
 
@@ -298,7 +315,8 @@ void* CNetServerWorker::SetupUPnP(void*)
 	{
 		LOGMESSAGE("Net server: AddPortMapping(%s, %s, %s) failed with code %d (%s)",
 			   psPort, psPort, internalIPAddress, ret, strupnperror(ret));
-		return NULL;
+		freeUPnP();
+		return;
 	}
 
 	// Check that the port was actually forwarded.
@@ -314,7 +332,8 @@ void* CNetServerWorker::SetupUPnP(void*)
 	if (ret != UPNPCOMMAND_SUCCESS)
 	{
 		LOGMESSAGE("Net server: GetSpecificPortMappingEntry() failed with code %d (%s)", ret, strupnperror(ret));
-		return NULL;
+		freeUPnP();
+		return;
 	}
 
 	LOGMESSAGE("Net server: External %s:%s %s is redirected to internal %s:%s (duration=%s)",
@@ -325,13 +344,7 @@ void* CNetServerWorker::SetupUPnP(void*)
 	g_ConfigDB.WriteValueToFile(CFG_USER, "network.upnprootdescurl", urls.controlURL);
 	LOGMESSAGE("Net server: cached UPnP root descriptor URL as %s", urls.controlURL);
 
-	// Make sure everything is properly freed.
-	if (allocatedUrls)
-		FreeUPNPUrls(&urls);
-
-	freeUPNPDevlist(devlist);
-
-	return NULL;
+	freeUPnP();
 }
 #endif // CONFIG2_MINIUPNPC
 
@@ -361,13 +374,11 @@ bool CNetServerWorker::Broadcast(const CNetMessage* message, const std::vector<N
 	return ok;
 }
 
-void* CNetServerWorker::RunThread(void* data)
+void CNetServerWorker::RunThread(CNetServerWorker* data)
 {
 	debug_SetThreadName("NetServer");
 
-	static_cast<CNetServerWorker*>(data)->Run();
-
-	return NULL;
+	data->Run();
 }
 
 void CNetServerWorker::Run()
@@ -416,7 +427,7 @@ bool CNetServerWorker::RunStep()
 	std::vector<u32> newTurnLength;
 
 	{
-		CScopeLock lock(m_WorkerMutex);
+		std::lock_guard<std::mutex> lock(m_WorkerMutex);
 
 		if (m_Shutdown)
 			return false;
@@ -612,7 +623,7 @@ void CNetServerWorker::CheckClientConnections()
 void CNetServerWorker::HandleMessageReceive(const CNetMessage* message, CNetServerSession* session)
 {
 	// Handle non-FSM messages first
-	Status status = session->GetFileTransferer().HandleMessageReceive(message);
+	Status status = session->GetFileTransferer().HandleMessageReceive(*message);
 	if (status != INFO::SKIPPED)
 		return;
 
@@ -914,7 +925,7 @@ bool CNetServerWorker::OnClientHandshake(void* context, CFsmEvent* event)
 	{
 		if (++count > 100)
 		{
-			session->Disconnect(NDR_UNKNOWN);
+			session->Disconnect(NDR_GUID_FAILED);
 			return true;
 		}
 		guid = ps_generate_guid();
@@ -1565,7 +1576,8 @@ CStrW CNetServerWorker::DeduplicatePlayerName(const CStrW& original)
 
 void CNetServerWorker::SendHolePunchingMessage(const CStr& ipStr, u16 port)
 {
-	StunClient::SendHolePunchingMessages(m_Host, ipStr.c_str(), port);
+	if (m_Host)
+		StunClient::SendHolePunchingMessages(*m_Host, ipStr, port);
 }
 
 
@@ -1594,7 +1606,7 @@ bool CNetServer::SetupConnection(const u16 port)
 
 void CNetServer::StartGame()
 {
-	CScopeLock lock(m_Worker->m_WorkerMutex);
+	std::lock_guard<std::mutex> lock(m_Worker->m_WorkerMutex);
 	m_Worker->m_StartGameQueue.push_back(true);
 }
 
@@ -1604,19 +1616,19 @@ void CNetServer::UpdateGameAttributes(JS::MutableHandleValue attrs, const Script
 	// cross-thread way of passing script data
 	std::string attrsJSON = scriptInterface.StringifyJSON(attrs, false);
 
-	CScopeLock lock(m_Worker->m_WorkerMutex);
+	std::lock_guard<std::mutex> lock(m_Worker->m_WorkerMutex);
 	m_Worker->m_GameAttributesQueue.push_back(attrsJSON);
 }
 
 void CNetServer::OnLobbyAuth(const CStr& name, const CStr& token)
 {
-	CScopeLock lock(m_Worker->m_WorkerMutex);
+	std::lock_guard<std::mutex> lock(m_Worker->m_WorkerMutex);
 	m_Worker->m_LobbyAuthQueue.push_back(std::make_pair(name, token));
 }
 
 void CNetServer::SetTurnLength(u32 msecs)
 {
-	CScopeLock lock(m_Worker->m_WorkerMutex);
+	std::lock_guard<std::mutex> lock(m_Worker->m_WorkerMutex);
 	m_Worker->m_TurnLengthQueue.push_back(msecs);
 }
 

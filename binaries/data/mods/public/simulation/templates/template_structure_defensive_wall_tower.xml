@@ -2,9 +2,11 @@
 <Entity parent="template_structure_defensive_wall">
   <Attack>
     <Ranged>
-      <Hack>0.0</Hack>
-      <Pierce>8.0</Pierce>
-      <Crush>0.0</Crush>
+      <Damage>
+        <Hack>0.0</Hack>
+        <Pierce>8.0</Pierce>
+        <Crush>0.0</Crush>
+      </Damage>
       <MaxRange>72.0</MaxRange>
       <MinRange>12.0</MinRange>
       <PrepareTime>1200</PrepareTime>
@@ -13,7 +15,8 @@
       <Projectile>
         <Speed>75.0</Speed>
         <Spread>1.5</Spread>
-        <Gravity>9.81</Gravity>
+        <Gravity>39.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <PreferredClasses datatype="tokens">Human</PreferredClasses>
@@ -49,10 +52,14 @@
   </Health>
   <Identity>
     <GenericName>Wall Turret</GenericName>
+    <SelectionGroupName>template_structure_defensive_wall_tower</SelectionGroupName>
     <Tooltip>Shoots arrows. Garrison to defend a city wall against attackers.</Tooltip>
     <Classes datatype="tokens">Tower</Classes>
     <Icon>structures/tower.png</Icon>
   </Identity>
+  <Loot>
+    <stone>18</stone>
+  </Loot>
   <Obstruction>
     <ControlPersist/>
   </Obstruction>

@@ -1,4 +1,4 @@
-/* Copyright (C) 2018 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -26,6 +26,8 @@
 extern void GUI_DisplayLoadProgress(int percent, const wchar_t* pending_task);
 
 extern void Render();
+
+extern bool ShouldRender();
 
 /**
  * initialize global modules that are be needed before Init.
@@ -90,8 +92,8 @@ extern void MountMods(const Paths& paths, const std::vector<CStr>& mods);
  * In the latter case the caller should call Shutdown() with SHUTDOWN_FROM_CONFIG.
  */
 extern bool Init(const CmdLineArgs& args, int flags);
-extern void InitGraphics(const CmdLineArgs& args, int flags,
-	const std::vector<CStr>& installedMods = std::vector<CStr>());
+extern void InitInput();
+extern void InitGraphics(const CmdLineArgs& args, int flags, const std::vector<CStr>& installedMods = std::vector<CStr>());
 extern void InitNonVisual(const CmdLineArgs& args);
 extern void Shutdown(int flags);
 extern void CancelLoad(const CStrW& message);

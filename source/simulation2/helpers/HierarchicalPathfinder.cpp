@@ -380,6 +380,9 @@ void HierarchicalPathfinder::Recompute(Grid<NavcellData>* grid,
 	m_Chunks.clear();
 	m_Edges.clear();
 
+	// Reset global regions.
+	m_NextGlobalRegionID = 1;
+
 	for (auto& passClassMask : allPassClasses)
 	{
 		pass_class_t passClass = passClassMask.second;
@@ -394,10 +397,33 @@ void HierarchicalPathfinder::Recompute(Grid<NavcellData>* grid,
 			}
 		}
 
-		// Construct the search graph over the regions
+		// Construct the search graph over the regions.
 		EdgesMap& edges = m_Edges[passClass];
 		RecomputeAllEdges(passClass, edges);
 
+		// Spread global regions.
+		std::map<RegionID, GlobalRegionID>& globalRegion = m_GlobalRegions[passClass];
+		globalRegion.clear();
+		for (u8 cj = 0; cj < m_ChunksH; ++cj)
+			for (u8 ci = 0; ci < m_ChunksW; ++ci)
+				for (u16 rid : GetChunk(ci, cj, passClass).m_RegionsID)
+				{
+					RegionID reg{ci,cj,rid};
+					if (globalRegion.find(reg) == globalRegion.end())
+					{
+						GlobalRegionID ID = m_NextGlobalRegionID++;
+
+						globalRegion.insert({ reg, ID });
+						// Avoid creating an empty link if possible, FindReachableRegions uses [] which calls the default constructor.
+						if (edges.find(reg) != edges.end())
+						{
+							std::set<RegionID> reachable;
+							FindReachableRegions(reg, reachable, passClass);
+							for (const RegionID& region : reachable)
+								globalRegion.insert({ region, ID });
+						}
+					}
+				}
 	}
 
 	if (m_DebugOverlay)
@@ -411,12 +437,22 @@ void HierarchicalPathfinder::Update(Grid<NavcellData>* grid, const Grid<u8>& dir
 {
 	PROFILE3("Hierarchical Update");
 
+	ASSERT(m_NextGlobalRegionID < std::numeric_limits<GlobalRegionID>::max());
+
+	std::map<pass_class_t, std::vector<RegionID> > needNewGlobalRegionMap;
+
 	// Algorithm for the partial update:
 	// 1. Loop over chunks.
 	// 2. For any dirty chunk:
+	//		- remove all regions from the global region map
 	//		- remove all edges, by removing the neighbor connection with them and then deleting us
 	//		- recreate regions inside the chunk
 	//		- reconnect the regions. We may do too much work if we reconnect with a dirty chunk, but that's fine.
+	// 3. Recreate global regions.
+	// This means that if any chunk changes, we may need to flood (at most once) the whole map.
+	// That's quite annoying, but I can't think of an easy way around it.
+	// If we could be sure that a region's topology hasn't changed, we could skip removing its global region
+	// but that's non trivial as we have no easy way to determine said topology (regions could "switch" IDs on update for now).
 	for (u8 cj = 0; cj <  m_ChunksH; ++cj)
 	{
 		int j0 = cj * CHUNK_SIZE;
@@ -434,11 +470,12 @@ void HierarchicalPathfinder::Update(Grid<NavcellData>* grid, const Grid<u8>& dir
 				pass_class_t passClass = passClassMask.second;
 				Chunk& a = m_Chunks[passClass].at(ci + cj*m_ChunksW);
 
-				// Clean up edges ID
+				// Clean up edges and global region ID
 				EdgesMap& edgeMap = m_Edges[passClass];
 				for (u16 i : a.m_RegionsID)
 				{
 					RegionID reg{ci, cj, i};
+					m_GlobalRegions[passClass].erase(reg);
 					for (const RegionID& neighbor : edgeMap[reg])
 					{
 						edgeMap[neighbor].erase(reg);
@@ -451,11 +488,15 @@ void HierarchicalPathfinder::Update(Grid<NavcellData>* grid, const Grid<u8>& dir
 				// Recompute regions inside this chunk.
 				a.InitRegions(ci, cj, grid, passClass);
 
+				for (u16 i : a.m_RegionsID)
+					needNewGlobalRegionMap[passClass].push_back(RegionID{ci, cj, i});
 
 				UpdateEdges(ci, cj, passClass, edgeMap);
 			}
 		}
 	}
+
+	UpdateGlobalRegions(needNewGlobalRegionMap);
 
 	if (m_DebugOverlay)
 	{
@@ -580,6 +621,28 @@ void HierarchicalPathfinder::AddDebugEdges(pass_class_t passClass)
 	}
 }
 
+void HierarchicalPathfinder::UpdateGlobalRegions(const std::map<pass_class_t, std::vector<RegionID> >& needNewGlobalRegionMap)
+{
+	// Use FindReachableRegions because we cannot be sure, even if we find a non-dirty chunk nearby,
+	// that we weren't the only bridge connecting that chunk to the rest of the global region.
+	for (const std::pair<pass_class_t, std::vector<RegionID> >& regionsInNeed : needNewGlobalRegionMap)
+		for (const RegionID& reg : regionsInNeed.second)
+		{
+			std::map<RegionID, GlobalRegionID>& globalRegions = m_GlobalRegions[regionsInNeed.first];
+			// If we have already been given a region, skip us.
+			if (globalRegions.find(reg) != globalRegions.end())
+				continue;
+
+			std::set<RegionID> reachable;
+			FindReachableRegions(reg, reachable, regionsInNeed.first);
+
+			GlobalRegionID ID = m_NextGlobalRegionID++;
+
+			for (const RegionID& reg : reachable)
+				globalRegions[reg] = ID;
+		}
+}
+
 HierarchicalPathfinder::RegionID HierarchicalPathfinder::Get(u16 i, u16 j, pass_class_t passClass) const
 {
 	int ci = i / CHUNK_SIZE;
@@ -588,140 +651,106 @@ HierarchicalPathfinder::RegionID HierarchicalPathfinder::Get(u16 i, u16 j, pass_
 	return m_Chunks.at(passClass)[cj*m_ChunksW + ci].Get(i % CHUNK_SIZE, j % CHUNK_SIZE);
 }
 
-void HierarchicalPathfinder::MakeGoalReachable(u16 i0, u16 j0, PathGoal& goal, pass_class_t passClass) const
+HierarchicalPathfinder::GlobalRegionID HierarchicalPathfinder::GetGlobalRegion(u16 i, u16 j, pass_class_t passClass) const
 {
-	PROFILE2("MakeGoalReachable");
-	RegionID source = Get(i0, j0, passClass);
+	return GetGlobalRegion(Get(i, j, passClass), passClass);
+}
 
-	// Find everywhere that's reachable
-	std::set<RegionID> reachableRegions;
-	FindReachableRegions(source, reachableRegions, passClass);
+HierarchicalPathfinder::GlobalRegionID HierarchicalPathfinder::GetGlobalRegion(RegionID region, pass_class_t passClass) const
+{
+	return region.r == 0 ? GlobalRegionID(0) : m_GlobalRegions.at(passClass).at(region);
+}
 
-	// Check whether any reachable region contains the goal
-	// And get the navcell that's the closest to the point
-
-	u16 bestI = 0;
-	u16 bestJ = 0;
-	u32 dist2Best = std::numeric_limits<u32>::max();
-
-	for (const RegionID& region : reachableRegions)
-	{
-		// Skip region if its chunk doesn't contain the goal area
-		entity_pos_t x0 = Pathfinding::NAVCELL_SIZE * (region.ci * CHUNK_SIZE);
-		entity_pos_t z0 = Pathfinding::NAVCELL_SIZE * (region.cj * CHUNK_SIZE);
-		entity_pos_t x1 = x0 + Pathfinding::NAVCELL_SIZE * CHUNK_SIZE;
-		entity_pos_t z1 = z0 + Pathfinding::NAVCELL_SIZE * CHUNK_SIZE;
-		if (!goal.RectContainsGoal(x0, z0, x1, z1))
-			continue;
-
-		u16 i,j;
-		u32 dist2;
-
-		// If the region contains the goal area, the goal is reachable
-		// Remember the best point for optimization.
-		if (GetChunk(region.ci, region.cj, passClass).RegionNearestNavcellInGoal(region.r, i0, j0, goal, i, j, dist2))
-		{
-			// If it's a point, no need to move it, we're done
-			if (goal.type == PathGoal::POINT)
-				return;
-			if (dist2 < dist2Best)
-			{
-				bestI = i;
-				bestJ = j;
-				dist2Best = dist2;
-			}
-		}
-	}
-
-	// If the goal area wasn't reachable,
-	// find the navcell that's nearest to the goal's center
-	if (dist2Best == std::numeric_limits<u32>::max())
-	{
-		u16 iGoal, jGoal;
-		Pathfinding::NearestNavcell(goal.x, goal.z, iGoal, jGoal, m_W, m_H);
-
-		FindNearestNavcellInRegions(reachableRegions, iGoal, jGoal, passClass);
-
-		// Construct a new point goal at the nearest reachable navcell
-		PathGoal newGoal;
-		newGoal.type = PathGoal::POINT;
-		Pathfinding::NavcellCenter(iGoal, jGoal, newGoal.x, newGoal.z);
-		goal = newGoal;
-		return;
-	}
-
-	ENSURE(dist2Best != std::numeric_limits<u32>::max());
+void CreatePointGoalAt(u16 i, u16 j, PathGoal& goal)
+{
 	PathGoal newGoal;
 	newGoal.type = PathGoal::POINT;
-	Pathfinding::NavcellCenter(bestI, bestJ, newGoal.x, newGoal.z);
+	Pathfinding::NavcellCenter(i, j, newGoal.x, newGoal.z);
 	goal = newGoal;
+}
+
+bool HierarchicalPathfinder::MakeGoalReachable(u16 i0, u16 j0, PathGoal& goal, pass_class_t passClass) const
+{
+	PROFILE2("MakeGoalReachable");
+
+	u16 iGoal, jGoal;
+	Pathfinding::NearestNavcell(goal.x, goal.z, iGoal, jGoal, m_W, m_H);
+
+	std::set<InterestingRegion, SortByBestToPoint> goalRegions(SortByBestToPoint(i0, j0));
+	// This returns goal regions ordered by distance from the best navcell in each region.
+	FindGoalRegionsAndBestNavcells(i0, j0, iGoal, jGoal, goal, goalRegions, passClass);
+
+	// Because of the sorting above, we can stop as soon as the first reachable goal region is found.
+	for (const InterestingRegion& region : goalRegions)
+		if (GetGlobalRegion(region.region, passClass) == GetGlobalRegion(i0, j0, passClass))
+		{
+			iGoal = region.bestI;
+			jGoal = region.bestJ;
+
+			// No need to move reachable point goals.
+			if (goal.type != PathGoal::POINT)
+				CreatePointGoalAt(iGoal, jGoal, goal);
+			return true;
+		}
+
+	// Goal wasn't reachable - get the closest navcell in the nearest reachable region.
+	std::set<RegionID, SortByCenterToPoint> reachableRegions(SortByCenterToPoint(iGoal, jGoal));
+	FindReachableRegions(Get(i0, j0, passClass), reachableRegions, passClass);
+
+	FindNearestNavcellInRegions(reachableRegions, iGoal, jGoal, passClass);
+	CreatePointGoalAt(iGoal, jGoal, goal);
+	return false;
 }
 
 void HierarchicalPathfinder::FindNearestPassableNavcell(u16& i, u16& j, pass_class_t passClass) const
 {
-	std::set<RegionID> regions;
-	FindPassableRegions(regions, passClass);
+	std::set<RegionID, SortByCenterToPoint> regions(SortByCenterToPoint(i, j));
+
+	// Construct a set of all regions of all chunks for this pass class
+	for (const Chunk& chunk : m_Chunks.at(passClass))
+		for (int r : chunk.m_RegionsID)
+			regions.insert(RegionID(chunk.m_ChunkI, chunk.m_ChunkJ, r));
+
 	FindNearestNavcellInRegions(regions, i, j, passClass);
 }
 
-void HierarchicalPathfinder::FindNearestNavcellInRegions(const std::set<RegionID>& regions, u16& iGoal, u16& jGoal, pass_class_t passClass) const
+void HierarchicalPathfinder::FindNearestNavcellInRegions(const std::set<RegionID, SortByCenterToPoint>& regions, u16& iGoal, u16& jGoal, pass_class_t passClass) const
 {
-	// Find the navcell in the given regions that's nearest to the goal navcell:
-	// * For each region, record the (squared) minimal distance to the goal point
-	// * Sort regions by that underestimated distance
-	// * For each region, find the actual nearest navcell
-	// * Stop when the underestimated distances are worse than the best real distance
+	u16 bestI = iGoal, bestJ = jGoal; // Somewhat sensible default-values should regions() be passed empty.
+	u32 bestDist = std::numeric_limits<u32>::max();
 
-	std::vector<std::pair<u32, RegionID> > regionDistEsts; // pair of (distance^2, region)
+	// Because regions are sorted by increasing distance, we can ignore regions that are obviously farther than the current best point.
+	// Since regions are squares, that happens when the center of a region is at least √2 * CHUNK_SIZE farther than the current best point.
+	// Add one to avoid cases where the center navcell is actually slightly off-center (= CHUNK_SIZE is even)
+	u32 maxDistFromBest = (fixed::FromInt(3) / 2 * CHUNK_SIZE).ToInt_RoundToInfinity() + 1;
+	// TODO: update to static_assert with constexpr
+	ENSURE(maxDistFromBest < std::numeric_limits<u16>::max());
+	maxDistFromBest *= maxDistFromBest;
 
 	for (const RegionID& region : regions)
 	{
-		int i0 = region.ci * CHUNK_SIZE;
-		int j0 = region.cj * CHUNK_SIZE;
-		int i1 = i0 + CHUNK_SIZE - 1;
-		int j1 = j0 + CHUNK_SIZE - 1;
+		u32 chunkDist = region.DistanceTo(iGoal, jGoal);
+		// This might overflow, but only if we are already close to the maximal possible distance, so the condition would probably be false anyways.
+		// It's also a bit pessimistic, so we'll still consider a few too many regions.
+		if (bestDist < std::numeric_limits<u32>::max() && chunkDist > maxDistFromBest + bestDist)
+			break; // Break, the set is ordered by increased distance so a closer region will not be found.
 
-		// Pick the point in the chunk nearest the goal
-		int iNear = Clamp((int)iGoal, i0, i1);
-		int jNear = Clamp((int)jGoal, j0, j1);
-
-		int dist2 = (iNear - iGoal)*(iNear - iGoal)
-		          + (jNear - jGoal)*(jNear - jGoal);
-
-		regionDistEsts.emplace_back(dist2, region);
-	}
-
-	// Sort by increasing distance (tie-break on RegionID)
-	std::sort(regionDistEsts.begin(), regionDistEsts.end());
-
-	int iBest = iGoal;
-	int jBest = jGoal;
-	u32 dist2Best = std::numeric_limits<u32>::max();
-
-	for (auto& pair : regionDistEsts)
-	{
-		if (pair.first >= dist2Best)
-			break;
-
-		RegionID region = pair.second;
-
-		int i, j;
-		u32 dist2;
-		GetChunk(region.ci, region.cj, passClass).RegionNavcellNearest(region.r, iGoal, jGoal, i, j, dist2);
-
-		if (dist2 < dist2Best)
+		int ri, rj;
+		u32 dist;
+		GetChunk(region.ci, region.cj, passClass).RegionNavcellNearest(region.r, iGoal, jGoal, ri, rj, dist);
+		if (dist < bestDist)
 		{
-			iBest = i;
-			jBest = j;
-			dist2Best = dist2;
+			bestI = ri;
+			bestJ = rj;
+			bestDist = dist;
 		}
 	}
-
-	iGoal = iBest;
-	jGoal = jBest;
+	iGoal = bestI;
+	jGoal = bestJ;
 }
 
-void HierarchicalPathfinder::FindReachableRegions(RegionID from, std::set<RegionID>& reachable, pass_class_t passClass) const
+template<typename Ordering>
+void HierarchicalPathfinder::FindReachableRegions(RegionID from, std::set<RegionID, Ordering>& reachable, pass_class_t passClass) const
 {
 	// Flood-fill the region graph, starting at 'from',
 	// collecting all the regions that are reachable via edges
@@ -748,12 +777,37 @@ void HierarchicalPathfinder::FindReachableRegions(RegionID from, std::set<Region
 	}
 }
 
-void HierarchicalPathfinder::FindPassableRegions(std::set<RegionID>& regions, pass_class_t passClass) const
+void HierarchicalPathfinder::FindGoalRegionsAndBestNavcells(u16 i0, u16 j0, u16 gi, u16 gj, const PathGoal& goal, std::set<InterestingRegion, SortByBestToPoint>& regions, pass_class_t passClass) const
 {
-	// Construct a set of all regions of all chunks for this pass class
-	for (const Chunk& chunk : m_Chunks.at(passClass))
-		for (int r : chunk.m_RegionsID)
-			regions.insert(RegionID(chunk.m_ChunkI, chunk.m_ChunkJ, r));
+	if (goal.type == PathGoal::POINT)
+	{
+		RegionID region = Get(gi, gj, passClass);
+		if (region.r > 0)
+			regions.insert({region, gi, gj});
+		return;
+	}
+
+	// For non-point cases, we'll test each region inside the bounds of the goal.
+	// we might occasionally test a few too many for circles but it's not too bad.
+	// Note that this also works in the Inverse-circle / Inverse-square case
+	// Since our ranges are inclusive, we will necessarily test at least the perimeter/outer bound of the goal.
+	// If we find a navcell, great, if not, well then we'll be surrounded by an impassable barrier.
+	// Since in the Inverse-XX case we're supposed to start inside, then we can't ever reach the goal so it's good enough.
+	// It's not worth it to skip the "inner" regions since we'd need ranges above CHUNK_SIZE for that to start mattering
+	// (and even then not always) and that just doesn't happen for Inverse-XX goals
+	int size = (std::max(goal.hh, goal.hw) * 3 / 2).ToInt_RoundToInfinity();
+
+	u16 bestI, bestJ;
+	u32 c; // Unused.
+
+	for (u8 sz = std::max(0,(gj - size) / CHUNK_SIZE); sz <= std::min(m_ChunksH-1, (gj + size + 1) / CHUNK_SIZE); ++sz)
+		for (u8 sx = std::max(0,(gi - size) / CHUNK_SIZE); sx <= std::min(m_ChunksW-1, (gi + size + 1) / CHUNK_SIZE); ++sx)
+		{
+			const Chunk& chunk = GetChunk(sx, sz, passClass);
+			for (u16 i : chunk.m_RegionsID)
+				if (chunk.RegionNearestNavcellInGoal(i, i0, j0, goal, bestI, bestJ, c))
+					regions.insert({RegionID{sx, sz, i}, bestI, bestJ});
+		}
 }
 
 void HierarchicalPathfinder::FillRegionOnGrid(const RegionID& region, pass_class_t passClass, u16 value, Grid<u16>& grid) const

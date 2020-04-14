@@ -1,4 +1,4 @@
-/* Copyright (C) 2013 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -35,22 +35,17 @@
 #include "lib/debug.h"
 #include "lib/utf8.h"
 #include "lib/sysdep/gfx.h"
-#include "lib/sysdep/cursor.h"
 
 #include "ps/VideoMode.h"
-
-#define Cursor X__Cursor
 
 #include <X11/Xlib.h>
 #include <stdlib.h>
 #include <X11/Xatom.h>
-#include <X11/Xcursor/Xcursor.h>
 
 #include "SDL.h"
 #include "SDL_syswm.h"
 
 #include <algorithm>
-#undef Cursor
 #undef Status
 
 static Display *g_SDL_Display;
@@ -87,22 +82,6 @@ Status GetVideoMode(int* xres, int* yres, int* bpp, int* freq)
 		*bpp = XDefaultDepth(disp, screen);
 	if(freq)
 		*freq = 0;
-	XCloseDisplay(disp);
-	return INFO::OK;
-}
-
-
-Status GetMonitorSize(int& width_mm, int& height_mm)
-{
-	Display* disp = XOpenDisplay(0);
-	if(!disp)
-		WARN_RETURN(ERR::FAIL);
-
-	int screen = XDefaultScreen(disp);
-
-	width_mm = XDisplayWidthMM(disp, screen);
-	height_mm = XDisplayHeightMM(disp, screen);
-
 	XCloseDisplay(disp);
 	return INFO::OK;
 }
@@ -207,7 +186,7 @@ wchar_t *sys_clipboard_get()
 			&len, &bytes_left,
 			&data);
 		if(result != Success)
-			debug_printf("clipboard_get: result: %d type:%lu len:%lu format:%d bytes_left:%lu\n",
+			debug_printf("clipboard_get: XGetWindowProperty failed! result: %d type:%lu len:%lu format:%d bytes_left:%lu\n",
 				result, type, len, format, bytes_left);
 		if(result == Success && bytes_left > 0)
 		{
@@ -218,9 +197,6 @@ wchar_t *sys_clipboard_get()
 
 			if(result == Success)
 			{
-				debug_printf("clipboard_get: XGetWindowProperty succeeded, returning data\n");
-				debug_printf("clipboard_get: data was: \"%s\", type was %lu, XA_STRING atom is %lu\n", (char *)data, type, XA_STRING);
-
 				if(type == XA_STRING) //Latin-1: Just copy into low byte of wchar_t
 				{
 					wchar_t *ret=(wchar_t *)malloc((bytes_left+1)*sizeof(wchar_t));
@@ -352,8 +328,6 @@ Status sys_clipboard_set(const wchar_t *str)
 {
 	ONCE(x11_clipboard_init());
 
-	debug_printf("sys_clipboard_set: %s\n", utf8_from_wstring(str).c_str());
-
 	if(selection_data)
 	{
 		free(selection_data);
@@ -376,121 +350,5 @@ Status sys_clipboard_set(const wchar_t *str)
 
 	return INFO::OK;
 }
-
-struct sys_cursor_impl
-{
-	XcursorImage* image;
-	X__Cursor cursor;
-};
-
-static XcursorPixel cursor_pixel_to_x11_format(const XcursorPixel& bgra_pixel)
-{
-	BOOST_STATIC_ASSERT(sizeof(XcursorPixel) == 4 * sizeof(u8));
-	XcursorPixel ret;
-	u8* dst = reinterpret_cast<u8*>(&ret);
-	const u8* b = reinterpret_cast<const u8*>(&bgra_pixel);
-	const u8 a = b[3];
-
-	for(size_t i = 0; i < 3; ++i)
-		*dst++ = (b[i]) * a / 255;
-	*dst = a;
-	return ret;
-}
-
-Status sys_cursor_create(int w, int h, void* bgra_img, int hx, int hy, sys_cursor* cursor)
-{
-	debug_printf("sys_cursor_create: using Xcursor to create %d x %d cursor\n", w, h);
-	XcursorImage* image = XcursorImageCreate(w, h);
-	if(!image)
-		WARN_RETURN(ERR::FAIL);
-
-	const XcursorPixel* bgra_img_begin = reinterpret_cast<XcursorPixel*>(bgra_img);
-	std::transform(bgra_img_begin, bgra_img_begin + (w*h), image->pixels,
-		cursor_pixel_to_x11_format);
-	image->xhot = hx;
-	image->yhot = hy;
-
-	SDL_SysWMinfo wminfo;
-	if(!get_wminfo(wminfo))
-		WARN_RETURN(ERR::FAIL);
-
-	sys_cursor_impl* impl = new sys_cursor_impl;
-	impl->image = image;
-	impl->cursor = XcursorImageLoadCursor(wminfo.info.x11.display, image);
-	if(impl->cursor == None)
-		WARN_RETURN(ERR::FAIL);
-
-	*cursor = static_cast<sys_cursor>(impl);
-	return INFO::OK;
-}
-
-// returns a dummy value representing an empty cursor
-Status sys_cursor_create_empty(sys_cursor* cursor)
-{
-	static u8 transparent_bgra[] = { 0x0, 0x0, 0x0, 0x0 };
-
-	return sys_cursor_create(1, 1, static_cast<void*>(transparent_bgra), 0, 0, cursor);
-}
-
-// replaces the current system cursor with the one indicated. need only be
-// called once per cursor; pass 0 to restore the default.
-Status sys_cursor_set(sys_cursor cursor)
-{
-	if(!cursor) // restore default cursor
-		SDL_ShowCursor(SDL_DISABLE);
-	else
-	{
-		SDL_SysWMinfo wminfo;
-		if(!get_wminfo(wminfo))
-			WARN_RETURN(ERR::FAIL);
-
-		if(wminfo.subsystem != SDL_SYSWM_X11)
-			WARN_RETURN(ERR::FAIL);
-
-		SDL_ShowCursor(SDL_ENABLE);
-
-		Window window;
-		if(wminfo.info.x11.window)
-			window = wminfo.info.x11.window;
-		else
-			WARN_RETURN(ERR::FAIL);
-
-		XDefineCursor(wminfo.info.x11.display, window,
-			static_cast<sys_cursor_impl*>(cursor)->cursor);
-		// SDL2 doesn't have a lockable event thread, so it just uses
-		// XSync directly instead of lock_func/unlock_func
-		XSync(wminfo.info.x11.display, False);
-	}
-
-	return INFO::OK;}
-
-// destroys the indicated cursor and frees its resources. if it is
-// currently the system cursor, the default cursor is restored first.
-Status sys_cursor_free(sys_cursor cursor)
-{
-	// bail now to prevent potential confusion below; there's nothing to do.
-	if(!cursor)
-		return INFO::OK;
-
-	sys_cursor_set(0); // restore default cursor
-	sys_cursor_impl* impl = static_cast<sys_cursor_impl*>(cursor);
-
-	XcursorImageDestroy(impl->image);
-
-	SDL_SysWMinfo wminfo;
-	if(!get_wminfo(wminfo))
-		return ERR::FAIL;
-	XFreeCursor(wminfo.info.x11.display, impl->cursor);
-
-	delete impl;
-
-	return INFO::OK;
-}
-
-Status sys_cursor_reset()
-{
-	return INFO::OK;
-}
-
 
 #endif	// #if HAVE_X

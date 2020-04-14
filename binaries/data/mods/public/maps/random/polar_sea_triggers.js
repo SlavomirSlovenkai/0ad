@@ -1,6 +1,6 @@
 const debugLog = false;
 
-var attackerTemplate = "trigger/fauna_arctic_wolf_attack";
+var attackerTemplate = "gaia/fauna_arctic_wolf_domestic";
 
 var minWaveSize = 1;
 var maxWaveSize = 3;
@@ -15,18 +15,6 @@ var maxWaveTime = 4;
 var targetClasses = "Organic+!Domestic";
 var targetCount = 3;
 
-var disabledTechnologies = [
-	"gather_lumbering_ironaxes",
-	"gather_lumbering_sharpaxes",
-	"gather_lumbering_strongeraxes"
-];
-
-Trigger.prototype.InitDisableTechnologies = function()
-{
-	for (let i = 1; i < TriggerHelper.GetNumberOfPlayers(); ++i)
-		QueryPlayerIDInterface(i).SetDisabledTechnologies(disabledTechnologies);
-};
-
 Trigger.prototype.SpawnWolvesAndAttack = function()
 {
 	let waveSize = Math.round(Math.random() * (maxWaveSize - minWaveSize) + minWaveSize);
@@ -37,7 +25,6 @@ Trigger.prototype.SpawnWolvesAndAttack = function()
 
 	let allTargets;
 
-	let cmpDamage = Engine.QueryInterface(SYSTEM_ENTITY, IID_Damage);
 	let players = new Array(TriggerHelper.GetNumberOfPlayers()).fill(0).map((v, i) => i + 1);
 
 	for (let spawnPoint in attackers)
@@ -52,7 +39,7 @@ Trigger.prototype.SpawnWolvesAndAttack = function()
 			continue;
 
 		// The returned entities are sorted by RangeManager already
-		let targets = cmpDamage.EntitiesNearPoint(attackerPos, 200, players).filter(ent => {
+		let targets = Attacking.EntitiesNearPoint(attackerPos, 200, players).filter(ent => {
 			let cmpIdentity = Engine.QueryInterface(ent, IID_Identity);
 			return cmpIdentity && MatchesClassList(cmpIdentity.GetClassesList(), targetClasses);
 		});
@@ -108,6 +95,5 @@ Trigger.prototype.SpawnWolvesAndAttack = function()
 
 {
 	let cmpTrigger = Engine.QueryInterface(SYSTEM_ENTITY, IID_Trigger);
-	cmpTrigger.InitDisableTechnologies();
 	cmpTrigger.DoAfterDelay(firstWaveTime * 60 * 1000, "SpawnWolvesAndAttack", {});
 }

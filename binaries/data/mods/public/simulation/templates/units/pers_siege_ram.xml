@@ -2,7 +2,9 @@
 <Entity parent="template_unit_siege_ram">
   <Attack>
     <Melee>
-      <Crush op="mul">1.2</Crush>
+      <Damage>
+        <Crush op="mul">1.2</Crush>
+      </Damage>
     </Melee>
   </Attack>
   <Footprint replace="">
@@ -16,7 +18,7 @@
     <Civ>pers</Civ>
     <Lang>persian</Lang>
     <GenericName>Assyrian Siege Ram</GenericName>
-    <SpecificName>Athuriya Hamaranakuba</SpecificName>
+    <SpecificName>Hamaranakuba Aθuriya</SpecificName>
     <Icon>units/pers_siege_ram.png</Icon>
   </Identity>
   <VisualActor>

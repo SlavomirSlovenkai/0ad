@@ -19,7 +19,6 @@
   </GarrisonHolder>
   <Identity>
     <Civ>cart</Civ>
-    <SelectionGroupName>structures/cart_wallset_stone</SelectionGroupName>
     <SpecificName>Homah</SpecificName>
   </Identity>
   <Obstruction>
@@ -27,7 +26,7 @@
   </Obstruction>
   <VisualActor>
     <Actor>structures/carthaginians/wall_medium.xml</Actor>
-    <FoundationActor>structures/carthaginians/fndn_wall_med.xml</FoundationActor>
+    <FoundationActor>structures/carthaginians/fndn_wall_medium.xml</FoundationActor>
   </VisualActor>
   <WallPiece>
     <Length>24.0</Length>

@@ -1,4 +1,4 @@
-/* Copyright (C) 2015 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -17,22 +17,21 @@
 
 #include "precompiled.h"
 
-#include "lib/ogl.h"
-#include "maths/MathUtil.h"
-
-#include "gui/GUIutil.h"
-#include "lib/bits.h"
-#include "ps/CLogger.h"
-#include "ps/Filesystem.h"
-#include "ps/Game.h"
-#include "ps/World.h"
+#include "renderer/PostprocManager.h"
 
 #include "graphics/GameView.h"
 #include "graphics/LightEnv.h"
 #include "graphics/ShaderManager.h"
-
-#include "renderer/PostprocManager.h"
+#include "lib/bits.h"
+#include "lib/ogl.h"
+#include "maths/MathUtil.h"
+#include "ps/ConfigDB.h"
+#include "ps/CLogger.h"
+#include "ps/Filesystem.h"
+#include "ps/Game.h"
+#include "ps/World.h"
 #include "renderer/Renderer.h"
+#include "renderer/RenderingOptions.h"
 
 #if !CONFIG2_GLES
 
@@ -81,6 +80,7 @@ void CPostprocManager::Initialize()
 	m_Width = g_Renderer.GetWidth();
 	m_Height = g_Renderer.GetHeight();
 
+	UpdateAntiAliasingTechnique();
 	RecreateBuffers();
 	m_IsInitialized = true;
 
@@ -335,9 +335,6 @@ void CPostprocManager::ApplyBlur()
 {
 	glDisable(GL_BLEND);
 
-	GLint originalFBO;
-	glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &originalFBO);
-
 	int width = m_Width, height = m_Height;
 
 	#define SCALE_AND_BLUR(tex1, tex2, temptex) \
@@ -352,8 +349,6 @@ void CPostprocManager::ApplyBlur()
 	SCALE_AND_BLUR(m_BlurTex4a, m_BlurTex8a, m_BlurTex8b);
 
 	#undef SCALE_AND_BLUR
-
-	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, originalFBO);
 }
 
 
@@ -430,8 +425,8 @@ void CPostprocManager::ApplyEffect(CShaderTechniquePtr &shaderTech1, int pass)
 
 	shader->Uniform(str_width, m_Width);
 	shader->Uniform(str_height, m_Height);
-	shader->Uniform(str_zNear, g_Game->GetView()->GetNear());
-	shader->Uniform(str_zFar, g_Game->GetView()->GetFar());
+	shader->Uniform(str_zNear, m_NearPlane);
+	shader->Uniform(str_zFar, m_FarPlane);
 
 	shader->Uniform(str_brightness, g_LightEnv.m_Brightness);
 	shader->Uniform(str_hdr, g_LightEnv.m_Contrast);
@@ -499,8 +494,15 @@ void CPostprocManager::ApplyPostproc()
 	// (This may need to change depending on future usage, however that will have a fps hit)
 	ApplyBlur();
 
+	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, m_PingFbo);
 	for (int pass = 0; pass < m_PostProcTech->GetNumPasses(); ++pass)
 		ApplyEffect(m_PostProcTech, pass);
+
+	if (m_AATech)
+	{
+		for (int pass = 0; pass < m_AATech->GetNumPasses(); ++pass)
+			ApplyEffect(m_AATech, pass);
+	}
 
 	pglBindFramebufferEXT(GL_FRAMEBUFFER_EXT, m_PongFbo);
 	pglFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_DepthTex, 0);
@@ -545,6 +547,33 @@ void CPostprocManager::SetPostEffect(const CStrW& name)
 	}
 
 	m_PostProcEffect = name;
+}
+
+void CPostprocManager::UpdateAntiAliasingTechnique()
+{
+	if (!g_RenderingOptions.GetPreferGLSL())
+		return;
+
+	CStr newAAName;
+	CFG_GET_VAL("antialiasing", newAAName);
+	if (m_AAName == newAAName)
+		return;
+	m_AAName = newAAName;
+	m_AATech.reset();
+
+	// We have to hardcode names in the engine, because anti-aliasing
+	// techinques strongly depend on the graphics pipeline.
+	// We might use enums in future though.
+	if (m_AAName == "fxaa")
+	{
+		m_AATech = g_Renderer.GetShaderManager().LoadEffect(CStrIntern("fxaa"));
+	}
+}
+
+void CPostprocManager::SetDepthBufferClipPlanes(float nearPlane, float farPlane)
+{
+	m_NearPlane = nearPlane;
+	m_FarPlane = farPlane;
 }
 
 #else
@@ -593,6 +622,14 @@ std::vector<CStrW> CPostprocManager::GetPostEffects()
 }
 
 void CPostprocManager::SetPostEffect(const CStrW& UNUSED(name))
+{
+}
+
+void CPostprocManager::SetDepthBufferClipPlanes(float UNUSED(nearPlane), float UNUSED(farPlane))
+{
+}
+
+void CPostprocManager::UpdateAntiAliasingTechnique()
 {
 }
 

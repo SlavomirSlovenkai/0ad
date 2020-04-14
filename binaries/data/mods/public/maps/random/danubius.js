@@ -1,6 +1,8 @@
 Engine.LoadLibrary("rmgen");
 Engine.LoadLibrary("rmgen-common");
 
+const day = g_MapSettings.Daytime !== undefined ? g_MapSettings.Daytime == "day" : randBool(2/3);
+
 // Spawn ships away from the shoreline, but patrol close to the shoreline
 const triggerPointShipSpawn = "trigger/trigger_point_A";
 const triggerPointShipPatrol = "trigger/trigger_point_B";
@@ -33,7 +35,7 @@ const oWolf = "gaia/fauna_wolf";
 const oHawk = "gaia/fauna_hawk";
 const oRabbit = "gaia/fauna_rabbit";
 const oBoar = "gaia/fauna_boar";
-const oBear = "gaia/fauna_bear";
+const oBear = "gaia/fauna_bear_brown";
 const oStoneLarge = "gaia/geology_stonemine_temperate_quarry";
 const oStoneRuins = "gaia/ruins/standing_stone";
 const oMetalLarge = "gaia/geology_metal_mediterranean_slabs";
@@ -66,16 +68,16 @@ const oHouse = "uncapturable|structures/gaul_house";
 const oLongHouse = "uncapturable|other/celt_longhouse";
 const oHut = "uncapturable|other/celt_hut";
 const oSentryTower = "uncapturable|structures/gaul_sentry_tower";
-const oWatchTower = "uncapturable|other/palisades_rocks_watchtower";
+const oWatchTower = "uncapturable|structures/palisades_watchtower";
 
-const oPalisadeTallSpikes = "uncapturable|other/palisades_tall_spikes";
-const oPalisadeAngleSpikes = "uncapturable|other/palisades_angle_spike";
-const oPalisadeCurve = "uncapturable|other/palisades_rocks_curve";
-const oPalisadeShort = "uncapturable|other/palisades_rocks_short";
-const oPalisadeMedium = "uncapturable|other/palisades_rocks_medium";
-const oPalisadeLong = "uncapturable|other/palisades_rocks_long";
-const oPalisadeGate = "uncapturable|other/palisades_rocks_gate";
-const oPalisadePillar = "uncapturable|other/palisades_rocks_tower";
+const oPalisadeTallSpikes = "uncapturable|structures/palisades_spikes_tall";
+const oPalisadeAngleSpikes = "uncapturable|structures/palisades_spike_angle";
+const oPalisadeCurve = "uncapturable|structures/palisades_curve";
+const oPalisadeShort = "uncapturable|structures/palisades_short";
+const oPalisadeMedium = "uncapturable|structures/palisades_medium";
+const oPalisadeLong = "uncapturable|structures/palisades_long";
+const oPalisadeGate = "uncapturable|structures/palisades_gate";
+const oPalisadePillar = "uncapturable|structures/palisades_tower";
 
 const oFemale = "units/gaul_support_female_citizen";
 const oHealer = "units/gaul_support_healer_b";
@@ -235,7 +237,7 @@ var fortressDanubiusVillage = new Fortress(
 	"Geto-Dacian Tribal Confederation",
 	new Array(2).fill([
 		"gate", "pillar", "hut", "long", "long",
-		"cornerIn", "defense_tower", "long",  "temple", "long",
+		"cornerIn", "defense_tower", "long", "temple", "long",
 		"pillar", "house", "long", "short", "pillar", "gate", "pillar", "longhouse", "long", "long",
 		"cornerIn", "defense_tower", "long", "tavern", "long", "pillar"
 	]).reduce((result, items) => result.concat(items), []));
@@ -303,8 +305,8 @@ if (gallicCC)
 			for (let participants of ritualParticipants)
 			{
 				let [positions, angles] = distributePointsOnCircle(participants.count, startAngle, participants.radius * mRadius, meetingPlacePosition);
-				for (let i = 0; i < positions.length; ++i)
-					g_Map.placeEntityPassable(pickRandom(participants.templates), 0, positions[i], angles[i] + participants.angle);
+				for (let j = 0; j < positions.length; ++j)
+					g_Map.placeEntityPassable(pickRandom(participants.templates), 0, positions[j], angles[j] + participants.angle);
 			}
 		}
 
@@ -323,7 +325,7 @@ if (gallicCC)
 		placeCustomFortress(civicCenterPosition, fortressDanubiusSpikes, "danubius_spikes", 0, startAngle + Math.PI);
 
 		// Place treasure, potentially inside buildings
-		for (let i = 0; i < gallicCCTreasureCount; ++i)
+		for (let j = 0; j < gallicCCTreasureCount; ++j)
 			g_Map.placeEntityPassable(
 				pickRandom(oTreasures),
 				0,
@@ -444,7 +446,7 @@ Engine.SetProgress(50);
 g_Map.log("Creating grass patches");
 createLayeredPatches(
 	[scaleByMapSize(3, 6), scaleByMapSize(5, 10), scaleByMapSize(8, 21)],
-	[[tGrass, tGrass2],[tGrass2, tGrass3], [tGrass3, tGrass]],
+	[[tGrass, tGrass2], [tGrass2, tGrass3], [tGrass3, tGrass]],
 	[1, 1],
 	avoidClasses(clForest, 0, clPlayer, 10, clWater, 2, clDirt, 2, clHill, 1, clGauls, 5, clPath, 1),
 	scaleByMapSize(15, 45),
@@ -566,7 +568,7 @@ for (let i = 0; i < 2; ++i)
 		],
 		i == 0 ?
 			avoidClasses(clWater, 4, clForest, 1, clPlayer, 16, clRock, 4, clMetal, 4, clHill, 4, clGauls, 5, clPath, 1) :
-			[stayClasses(clIsland, 4) , avoidClasses(clForest, 1, clRock, 4, clMetal, 4)]);
+			[stayClasses(clIsland, 4), avoidClasses(clForest, 1, clRock, 4, clMetal, 4)]);
 Engine.SetProgress(75);
 
 g_Map.log("Creating fish");
@@ -797,7 +799,7 @@ createObjectGroupsByAreas(
 
 placePlayersNomad(clPlayer, avoidClasses(clWater, 4, clMetal, 4, clRock, 4, clIsland, 4, clGauls, 20, clRitualPlace, 20, clForest, 1, clBaseResource, 4, clHill, 4, clFood, 2));
 
-if (randBool(2/3))
+if (day)
 {
 	g_Map.log("Setting day theme");
 	setSkySet("cumulus");

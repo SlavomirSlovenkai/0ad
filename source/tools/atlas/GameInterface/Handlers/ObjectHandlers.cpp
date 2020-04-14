@@ -33,6 +33,7 @@
 #include "graphics/Terrain.h"
 #include "graphics/Unit.h"
 #include "lib/ogl.h"
+#include "lib/utf8.h"
 #include "maths/MathUtil.h"
 #include "maths/Matrix3D.h"
 #include "ps/CLogger.h"
@@ -299,7 +300,7 @@ QUERYHANDLER(GetObjectMapSettings)
 	}
 
 	const CStr& data = exampleFile.GetOutput();
-	msg->xmldata = std::wstring(data.begin(), data.end());
+	msg->xmldata = data.FromUTF8();
 }
 
 
@@ -377,14 +378,14 @@ static CVector3D GetUnitPos(const Position& pos, bool floating)
 
 	// Clamp the position to the edges of the world:
 
-	// Use 'clamp' with a value slightly less than the width, so that converting
+	// Use 'Clamp' with a value slightly less than the width, so that converting
 	// to integer (rounding towards zero) will put it on the tile inside the edge
 	// instead of just outside
 	float mapWidth = (g_Game->GetWorld()->GetTerrain()->GetVerticesPerSide()-1)*TERRAIN_TILE_SIZE;
 	float delta = 1e-6f; // fraction of map width - must be > FLT_EPSILON
 
-	float xOnMap = clamp(vec.X, 0.f, mapWidth * (1.f - delta));
-	float zOnMap = clamp(vec.Z, 0.f, mapWidth * (1.f - delta));
+	float xOnMap = Clamp(vec.X, 0.f, mapWidth * (1.f - delta));
+	float zOnMap = Clamp(vec.Z, 0.f, mapWidth * (1.f - delta));
 
 	// Don't waste time with GetExactGroundLevel unless we've changed
 	if (xOnMap != vec.X || zOnMap != vec.Z)
@@ -417,9 +418,8 @@ MESSAGEHANDLER(ObjectPreviewToEntity)
 	//I need to re create the objects finally delete preview objects
 	for (entity_id_t ent : g_PreviewEntitiesID)
 	{
-		//Get template
-		std::string templateName = cmpTemplateManager->GetCurrentTemplateName(ent);
-		std::wstring wTemplateName(templateName.begin() + 8, templateName.end());
+		//Get template name (without the "preview|" prefix)
+		std::wstring wTemplateName = wstring_from_utf8(cmpTemplateManager->GetCurrentTemplateName(ent).substr(8));
 		//Create new entity
 		entity_id_t new_ent = g_Game->GetSimulation2()->AddEntity(wTemplateName);
 		if (new_ent == INVALID_ENTITY)

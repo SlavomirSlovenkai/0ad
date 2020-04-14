@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_special">
   <Armour>
-    <Hack op="add">-5.0</Hack>
-    <Pierce op="add">-5.0</Pierce>
-    <Crush op="add">-1.0</Crush>
+    <Hack>15</Hack>
+    <Pierce>25</Pierce>
+    <Crush>2</Crush>
     <Foundation>
-      <Hack>1.0</Hack>
-      <Pierce>5.0</Pierce>
-      <Crush>1.0</Crush>
+      <Hack>1</Hack>
+      <Pierce>5</Pierce>
+      <Crush>1</Crush>
     </Foundation>
   </Armour>
   <Attack>
     <Ranged>
-      <Hack>0.0</Hack>
-      <Pierce>25.0</Pierce>
-      <Crush>0.0</Crush>
+      <Damage>
+        <Hack>0.0</Hack>
+        <Pierce>25.0</Pierce>
+        <Crush>0.0</Crush>
+      </Damage>
       <MaxRange>60.0</MaxRange>
       <MinRange>0.0</MinRange>
       <PrepareTime>1200</PrepareTime>
@@ -24,6 +26,7 @@
         <Speed>75.0</Speed>
         <Spread>1.5</Spread>
         <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
         <LaunchPoint y="3"/>
       </Projectile>
       <RangeOverlay>
@@ -56,7 +59,6 @@
     <BuildTime>250</BuildTime>
     <Resources>
       <wood>500</wood>
-      <stone>0</stone>
     </Resources>
   </Cost>
   <Footprint>
@@ -75,11 +77,11 @@
   </Health>
   <Identity>
     <Civ>rome</Civ>
-    <GenericName>Entrenched Army Camp</GenericName>
-    <SpecificName>Castrum Vallum</SpecificName>
+    <GenericName>Army Camp</GenericName>
+    <SpecificName>Castra</SpecificName>
     <Classes datatype="tokens">ArmyCamp ConquestCritical</Classes>
     <Icon>structures/roman_camp.png</Icon>
-    <Tooltip>Build in neutral or enemy territory. Construct siege weapons and train citizen-soldiers. Heal garrisoned units slowly.</Tooltip>
+    <Tooltip>Build in neutral or enemy territory. Train Citizen-Soldiers and construct Siege Engines. Garrison Soldiers for additional arrows.</Tooltip>
   </Identity>
   <Loot>
     <xp>100</xp>

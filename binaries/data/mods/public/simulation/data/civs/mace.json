@@ -104,20 +104,11 @@
 			"Requirements":"",
 			"Phase":"City",
 			"Special":"All Special Technologies are researched here. Building one reduces the cost of all other remaining technologies by 10%. Build limit: 1."
-		},
-		{
-			"Name":"Siege Workshop",
-			"Class":"",
-			"Emblem":"",
-			"History":"The Macedonians were innovators in area of siegecraft.",
-			"Requirements":"",
-			"Phase":"City",
-			"Special":"Constructs and upgrades all Macedonian siege engines."
 		}
 	],
 	"WallSets":
 	[
-		"other/wallset_palisade",
+		"structures/wallset_palisade",
 		"structures/mace_wallset_stone"
 	],
 	"StartEntities":
@@ -150,9 +141,9 @@
 		"special/formations/column_open",
 		"special/formations/line_open",
 		"special/formations/flank",
+		"special/formations/battle_line",
 		"special/formations/skirmish",
 		"special/formations/wedge",
-		"special/formations/battle_line",
 		"special/formations/phalanx",
 		"special/formations/syntagma"
 	],

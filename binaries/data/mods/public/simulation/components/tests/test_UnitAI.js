@@ -5,7 +5,7 @@ Engine.LoadComponentScript("interfaces/Attack.js");
 Engine.LoadComponentScript("interfaces/Auras.js");
 Engine.LoadComponentScript("interfaces/BuildingAI.js");
 Engine.LoadComponentScript("interfaces/Capturable.js");
-Engine.LoadComponentScript("interfaces/DamageReceiver.js");
+Engine.LoadComponentScript("interfaces/Resistance.js");
 Engine.LoadComponentScript("interfaces/Formation.js");
 Engine.LoadComponentScript("interfaces/Heal.js");
 Engine.LoadComponentScript("interfaces/Health.js");
@@ -61,9 +61,12 @@ function TestFormationExiting(mode)
 	AddMock(playerEntity, IID_Player, {
 		IsAlly: function() { return false; },
 		IsEnemy: function() { return true; },
-		GetEnemies: function() { return []; },
+		GetEnemies: function() { return [2]; },
 	});
 
+	AddMock(SYSTEM_ENTITY, IID_ObstructionManager, {
+		"IsInTargetRange": (ent, target, min, max, opposite) => true
+	});
 
 	var unitAI = ConstructComponent(unit, "UnitAI", { "FormationController": "false", "DefaultStance": "aggressive" });
 
@@ -84,12 +87,12 @@ function TestFormationExiting(mode)
 	});
 
 	AddMock(unit, IID_UnitMotion, {
-		GetWalkSpeed: function() { return 1; },
-		MoveToFormationOffset: function(target, x, z) { },
-		IsInTargetRange: function(target, min, max) { return true; },
-		MoveToTargetRange: function(target, min, max) { return true; },
-		StopMoving: function() { },
-		GetPassabilityClassName: function() { return "default"; },
+		"GetWalkSpeed": () => 1,
+		"MoveToFormationOffset": (target, x, z) => {},
+		"MoveToTargetRange": (target, min, max) => true,
+		"StopMoving": () => {},
+		"SetFacePointAfterMove": () => {},
+		"GetPassabilityClassName": () => "default"
 	});
 
 	AddMock(unit, IID_Vision, {
@@ -142,6 +145,7 @@ function TestFormationExiting(mode)
 		"StopMoving": () => {},
 		"SetSpeedMultiplier": () => {},
 		"MoveToPointRange": () => true,
+		"SetFacePointAfterMove": () => {},
 		"GetPassabilityClassName": () => "default"
 	});
 
@@ -153,12 +157,13 @@ function TestFormationExiting(mode)
 
 	controllerFormation.SetMembers([unit]);
 	controllerAI.Walk(100, 100, false);
-	controllerAI.OnMotionChanged({ "starting": true });
 
 	TS_ASSERT_EQUALS(controllerAI.fsmStateName, "FORMATIONCONTROLLER.WALKING");
 	TS_ASSERT_EQUALS(unitAI.fsmStateName, "FORMATIONMEMBER.WALKING");
 
 	controllerFormation.Disband();
+
+	unitAI.UnitFsm.ProcessMessage(unitAI, { "type": "Timer" });
 
 	if (mode == 0)
 		TS_ASSERT_EQUALS(unitAI.fsmStateName, "INDIVIDUAL.IDLE");
@@ -207,10 +212,14 @@ function TestMoveIntoFormationWhileAttacking()
 		GetNumPlayers: function() { return 2; },
 	});
 
+	AddMock(SYSTEM_ENTITY, IID_ObstructionManager, {
+		"IsInTargetRange": (ent, target, min, max) => true
+	});
+
 	AddMock(playerEntity, IID_Player, {
 		IsAlly: function() { return false; },
 		IsEnemy: function() { return true; },
-		GetEnemies: function() { return []; },
+		GetEnemies: function() { return [2]; },
 	});
 
 	// create units
@@ -237,12 +246,12 @@ function TestMoveIntoFormationWhileAttacking()
 		});
 
 		AddMock(unit + i, IID_UnitMotion, {
-			GetWalkSpeed: function() { return 1; },
-			MoveToFormationOffset: function(target, x, z) { },
-			IsInTargetRange: function(target, min, max) { return true; },
-			MoveToTargetRange: function(target, min, max) { return true; },
-			StopMoving: function() { },
-			GetPassabilityClassName: function() { return "default"; },
+			"GetWalkSpeed": () => 1,
+			"MoveToFormationOffset": (target, x, z) => {},
+			"MoveToTargetRange": (target, min, max) => true,
+			"StopMoving": () => {},
+			"SetFacePointAfterMove": () => {},
+			"GetPassabilityClassName": () => "default"
 		});
 
 		AddMock(unit + i, IID_Vision, {
@@ -283,12 +292,12 @@ function TestMoveIntoFormationWhileAttacking()
 	});
 
 	AddMock(controller, IID_UnitMotion, {
-		GetWalkSpeed: function() { return 1; },
-		SetSpeedMultiplier: function(speed) { },
-		MoveToPointRange: function(x, z, minRange, maxRange) { },
-		IsInTargetRange: function(target, min, max) { return true; },
-		StopMoving: function() { },
-		GetPassabilityClassName: function() { return "default"; },
+		"GetWalkSpeed": () => 1,
+		"SetSpeedMultiplier": (speed) => {},
+		"MoveToPointRange": (x, z, minRange, maxRange) => {},
+		"StopMoving": () => {},
+		"SetFacePointAfterMove": () => {},
+		"GetPassabilityClassName": () => "default"
 	});
 
 	AddMock(controller, IID_Attack, {

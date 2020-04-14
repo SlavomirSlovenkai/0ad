@@ -72,7 +72,6 @@ function displaySingle(entState)
 	let civEmblem = g_CivData[playerState.civ].Emblem;
 
 	let playerName = playerState.name;
-	let playerColor = rgbToGuiColor(g_DisplayedPlayerColors[entState.player], 128);
 
 	// Indicate disconnected players by prefixing their name
 	if (g_Players[entState.player].offline)
@@ -92,6 +91,30 @@ function displaySingle(entState)
 		Engine.GetGUIObjectByName("rankIcon").hidden = true;
 		Engine.GetGUIObjectByName("rankIcon").tooltip = "";
 	}
+
+	if (entState.statusEffects)
+	{
+		let statusEffectsSection = Engine.GetGUIObjectByName("statusEffectsIcons");
+		statusEffectsSection.hidden = false;
+		let statusIcons = statusEffectsSection.children;
+		let i = 0;
+		for (let effectName in entState.statusEffects)
+		{
+			let effect = entState.statusEffects[effectName];
+			statusIcons[i].hidden = false;
+			statusIcons[i].sprite = "stretched:session/icons/status_effects/" + (effect.Icon || "default") + ".png";
+			statusIcons[i].tooltip = getStatusEffectsTooltip(effect);
+			let size = statusIcons[i].size;
+			size.top = i * 18;
+			size.bottom = i * 18 + 16;
+			statusIcons[i].size = size;
+			i++;
+		}
+		for (; i < statusIcons.length; ++i)
+			statusIcons[i].hidden = true;
+	}
+	else
+		Engine.GetGUIObjectByName("statusEffectsIcons").hidden = true;
 
 	let showHealth = entState.hitpoints;
 	let showResource = entState.resourceSupply;
@@ -138,7 +161,7 @@ function displaySingle(entState)
 			let size = 100 * Math.max(0, Math.min(1, entState.capturePoints[playerID] / entState.maxCapturePoints));
 			sizeObj.rright = startSize + size;
 			unitCaptureBar.size = sizeObj;
-			unitCaptureBar.sprite = "color:" + rgbToGuiColor(g_DisplayedPlayerColors[playerID], 128);
+			unitCaptureBar.sprite = "color:" + g_DiplomacyColors.getPlayerColor(playerID, 128);
 			unitCaptureBar.hidden = false;
 			return startSize + size;
 		};
@@ -266,7 +289,10 @@ function displaySingle(entState)
 
 	Engine.GetGUIObjectByName("specific").caption = specificName;
 	Engine.GetGUIObjectByName("player").caption = playerName;
-	Engine.GetGUIObjectByName("playerColorBackground").sprite = "color:" + playerColor;
+
+	Engine.GetGUIObjectByName("playerColorBackground").sprite =
+		"color:" + g_DiplomacyColors.getPlayerColor(entState.player, 128);
+
 	Engine.GetGUIObjectByName("generic").caption = genericName == specificName ? "" :
 		sprintf(translate("(%(genericName)s)"), {
 			"genericName": genericName
@@ -381,7 +407,7 @@ function displayMultiple(entStates)
 			let size = 100 * Math.max(0, Math.min(1, capturePoints[pID] / maxCapturePoints));
 			sizeObj.rbottom = startSize + size;
 			unitCaptureBar.size = sizeObj;
-			unitCaptureBar.sprite = "color:" + rgbToGuiColor(g_DisplayedPlayerColors[pID], 128);
+			unitCaptureBar.sprite = "color:" + g_DiplomacyColors.getPlayerColor(pID, 128);
 			unitCaptureBar.hidden = false;
 			return startSize + size;
 		};

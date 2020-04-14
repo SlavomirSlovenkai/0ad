@@ -1,4 +1,4 @@
-/* Copyright (C) 2017 Wildfire Games.
+/* Copyright (C) 2019 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -25,8 +25,9 @@
 #include "graphics/CinemaManager.h"
 #include "graphics/GameView.h"
 #include "gui/GUIManager.h"
-#include "gui/GUI.h"
+#include "gui/CGUI.h"
 #include "lib/external_libraries/libsdl.h"
+#include "lib/ogl.h"
 #include "lib/sysdep/cpu.h"
 #include "maths/MathUtil.h"
 #include "ps/Game.h"
@@ -61,8 +62,7 @@ QUERYHANDLER(CinemaRecord)
 	{
 		g_Renderer.Resize(w, h);
 		SViewPort vp = { 0, 0, w, h };
-		g_Game->GetView()->GetCamera()->SetViewPort(vp);
-		g_Game->GetView()->SetCameraProjection();
+		g_Game->GetView()->SetViewport(vp);
 	}
 
 	unsigned char* img = new unsigned char [w*h*3];
@@ -113,8 +113,7 @@ QUERYHANDLER(CinemaRecord)
 	{
 		g_Renderer.Resize(g_xres, g_yres);
 		SViewPort vp = { 0, 0, g_xres, g_yres };
-		g_Game->GetView()->GetCamera()->SetViewPort(vp);
-		g_Game->GetView()->SetCameraProjection();
+		g_Game->GetView()->SetViewport(vp);
 	}
 
 }
@@ -173,8 +172,8 @@ MESSAGEHANDLER(GuiMouseButtonEvent)
 	ev.ev.button.clicks = msg->clicks;
 	float x, y;
 	msg->pos->GetScreenSpace(x, y);
-	ev.ev.button.x = (u16)clamp((int)x, 0, g_xres);
-	ev.ev.button.y = (u16)clamp((int)y, 0, g_yres);
+	ev.ev.button.x = static_cast<u16>(Clamp<int>(x, 0, g_xres));
+	ev.ev.button.y = static_cast<u16>(Clamp<int>(y, 0, g_yres));
 	in_dispatch_event(&ev);
 }
 
@@ -184,8 +183,8 @@ MESSAGEHANDLER(GuiMouseMotionEvent)
 	ev.ev.type = SDL_MOUSEMOTION;
 	float x, y;
 	msg->pos->GetScreenSpace(x, y);
-	ev.ev.motion.x = (u16)clamp((int)x, 0, g_xres);
-	ev.ev.motion.y = (u16)clamp((int)y, 0, g_yres);
+	ev.ev.motion.x = static_cast<u16>(Clamp<int>(x, 0, g_xres));
+	ev.ev.motion.y = static_cast<u16>(Clamp<int>(y, 0, g_yres));
 	in_dispatch_event(&ev);
 }
 

@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -411,7 +411,18 @@ static void Frame()
 	if (g_SoundManager)
 		g_SoundManager->IdleTask();
 
-	Render();
+	if (ShouldRender())
+	{
+		Render();
+
+		{
+			PROFILE3("swap buffers");
+			SDL_GL_SwapWindow(g_VideoMode.GetWindow());
+			ogl_WarnIfError();
+		}
+
+		g_Renderer.OnSwapBuffers();
+	}
 
 	g_Profiler.Frame();
 

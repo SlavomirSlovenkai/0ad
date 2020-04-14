@@ -1,5 +1,5 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
@@ -19,9 +19,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:07+0200\n"
-"PO-Revision-Date: 2019-04-01 16:10+0000\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"POT-Creation-Date: 2020-01-17 08:08+0000\n"
+"PO-Revision-Date: 2020-02-25 13:54+0000\n"
+"Last-Translator: 矢吹 幸治 <yabuki.yukiharu@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wildfire-games/0ad/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,8 +71,8 @@ msgid ""
 msgstr "ギリシアは様々な異民族をギリシア化させることに大成功を収めました。ヘレニズム時代には、ギリシア語は古代世界の共通語として、スペインからインドにかけて広く使われました。"
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Description
-msgid "Allied warships −25% construction time."
-msgstr ""
+msgid "Allied Warships −25% construction time."
+msgstr "同盟している軍艦の建造時間を25%減少します。"
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Name
 msgid "Delian League"
@@ -321,8 +321,8 @@ msgid "Celtic religion and druidry inspired their warlike mindset. "
 msgstr "ケルトの宗教とドルイド教は彼らの好戦的思想を鼓舞しました。"
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Description
-msgid "Allied healers −20% resource costs."
-msgstr ""
+msgid "Allied Healers −20% resource costs."
+msgstr "同盟国の治療者の育成するコストを20%下げます"
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Name
 msgid "Druids"
@@ -566,8 +566,8 @@ msgid ""
 msgstr "イベリア半島と同様に、北アフリカは馬の国として知られ、毎年10万頭の生産が可能でした。北アフリカはマルミミゾウの産地でもありました。"
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Description
-msgid "Allied markets +10% international trade bonus."
-msgstr ""
+msgid "Allied Markets +10% international trade bonus."
+msgstr "同盟国の市場に10%の国家間貿易ボーナスを加える。"
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Name
 msgid "Trademasters"
@@ -773,8 +773,8 @@ msgid "Gauls"
 msgstr "ガリア"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Description
-msgid "Allied structures −20% technology research time."
-msgstr ""
+msgid "Allied Structures −20% technology research time."
+msgstr "同盟している建造物のテクノロジー研究時間を20%減少します。"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Name
 msgid "Druidic Wisdom"
@@ -973,8 +973,8 @@ msgid ""
 msgstr "北アフリカのヌミディアと同様に、イベリア半島は「馬の国」として知られ、毎年10万頭もの生産が可能でした。"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier javelinists −20% resource costs."
-msgstr ""
+msgid "Allied Citizen Javelinists −10% resource costs."
+msgstr "同盟している投槍兵は、-10%の資源コストが下がります。"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Name
 msgid "Saripeko"
@@ -982,11 +982,11 @@ msgstr "シャリペコ"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].History
 msgid ""
-"The Iberians were long known to provide mercenary soldiers to other nations "
-"to serve as auxiliaries to their armies in foreign wars. Carthage is the "
-"most well known example, and we have evidence of them serving in such a "
-"capacity in Aquitania."
-msgstr "イベリア人は傭兵を補助的な兵力として他国の軍隊に提供してきたことで昔から有名でした。カルタゴはその最もよく知られた例であり、イベリア人傭兵達がそのような立場に従事していたことの証拠がアキテーヌに残されています。"
+"The Iberians were long known to provide mercenaries to other nations to "
+"serve as auxiliaries to their armies in foreign wars. Carthage is the most "
+"well known example, and we have evidence of them serving in such a capacity "
+"in Aquitania."
+msgstr ""
 
 #: simulation/data/civs/iber.jsonAINames[0]
 #: simulation/data/civs/iber.jsonAINames[1]
@@ -1169,11 +1169,11 @@ msgstr ""
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Name
 msgid "Elephant Suppliers"
-msgstr ""
+msgstr "象供給者"
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Description
-msgid "Allied elephants −20% resource costs and training time."
-msgstr ""
+msgid "Allied Elephants −20% resource costs and training time."
+msgstr "同盟している象は、資源コストと訓練時間が-20%になる。"
 
 #: simulation/data/civs/kush.jsonAINames[0]
 msgid "Kashta"
@@ -1383,7 +1383,7 @@ msgstr "ギリシア人は様々な異民族をギリシア化することに大
 
 #: simulation/data/civs/mace.jsonTeamBonuses[0].Description
 msgid "Allies +20% barter sell prices."
-msgstr ""
+msgstr "同盟国との物品交換の販売価格が+20になる。"
 
 #: simulation/data/civs/mace.jsonTeamBonuses[0].Name
 msgid "Standardized Currency"
@@ -1581,18 +1581,6 @@ msgid ""
 "Hellenistic culture."
 msgstr "アレクサンドロス大王は彼の新しい帝国の各地に図書館を建設しました。これらは全く新たな統合された文化、ギリシア文化の学問の中心となりました。"
 
-#: simulation/data/civs/mace.jsonStructures[2].Name
-msgid "Siege Workshop"
-msgstr "兵器工房"
-
-#: simulation/data/civs/mace.jsonStructures[2].Special
-msgid "Constructs and upgrades all Macedonian siege engines."
-msgstr "マケドニアのすべての攻城兵器の建造と強化を行います。"
-
-#: simulation/data/civs/mace.jsonStructures[2].History
-msgid "The Macedonians were innovators in area of siegecraft."
-msgstr "マケドニアは攻城兵器の分野を革新しました。"
-
 #: simulation/data/civs/mace.jsonHistory
 msgid ""
 "Macedonia was an ancient Greek kingdom, centered in the northeastern part of"
@@ -1644,7 +1632,7 @@ msgstr "クシャトリヤまたはカシュトリヤとは、戦士を意味し
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Description
 msgid ""
-"Allied temples −50% resource costs and building time; temple technologies "
+"Allied Temples −50% resource costs and building time; Temple technologies "
 "−50% resource costs and research time."
 msgstr ""
 
@@ -1663,43 +1651,35 @@ msgid "Chandragupta Maurya"
 msgstr "チャンドラグプタ・マウリヤ"
 
 #: simulation/data/civs/maur.jsonAINames[1]
+msgid "Bindusara Maurya"
+msgstr "ビンドゥサーラ・マウリヤ"
+
+#: simulation/data/civs/maur.jsonAINames[2]
 #: simulation/data/civs/maur.jsonFactions[0].Heroes[1].Name
 msgid "Ashoka the Great"
 msgstr "アショーカ大王"
 
-#: simulation/data/civs/maur.jsonAINames[2]
-msgid "Ashokavardhan Maurya"
-msgstr "アーショーカヴァルダン・マウリヤ"
-
 #: simulation/data/civs/maur.jsonAINames[3]
-msgid "Acharya Bhadrabahu"
-msgstr "アチャーリャ・バードラバフ"
+msgid "Dasharatha Maurya"
+msgstr ""
 
 #: simulation/data/civs/maur.jsonAINames[4]
-msgid "Bindusara Maurya"
-msgstr "ビンドゥサーラ・マウリヤ"
-
-#: simulation/data/civs/maur.jsonAINames[5]
-msgid "Dasaratha Maurya"
-msgstr "ダシャラタ・マウリヤ"
-
-#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Samprati Maurya"
 msgstr "サムプラティ・マウリヤ"
 
-#: simulation/data/civs/maur.jsonAINames[7]
-msgid "Salisuka Maurya"
-msgstr "シャーリシュカ・マウリヤ"
+#: simulation/data/civs/maur.jsonAINames[5]
+msgid "Shalishuka Maurya"
+msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[8]
+#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Devavarman Maurya"
 msgstr "デーヴァダルマン・マウリヤ"
 
-#: simulation/data/civs/maur.jsonAINames[9]
-msgid "Satadhanvan Maurya"
-msgstr "シャタダンヴァン・マウリヤ"
+#: simulation/data/civs/maur.jsonAINames[7]
+msgid "Shatadhanvan Maurya"
+msgstr ""
 
-#: simulation/data/civs/maur.jsonAINames[10]
+#: simulation/data/civs/maur.jsonAINames[8]
 msgid "Brihadratha Maurya"
 msgstr "ブリハドラタ・マウリヤ"
 
@@ -1819,8 +1799,8 @@ msgid ""
 msgstr "ペルシアは戦時に大人数の歩兵の召集を、アケメネス朝帝国の巨大さとそれを実現する手法によって可能にし、実際しました。一般にペルシアの歩兵は良く鍛えられていて、粘り強く戦いました。しかし、その一方で、歩兵はつかみ合いの接近戦に弱かったのでした。また、精鋭部隊を除き、ペルシア歩兵は専任の常備軍ではありませんでした。"
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Description
-msgid "Allied land traders +15% trade gain."
-msgstr ""
+msgid "Allied Land Traders +15% trade gain."
+msgstr "同盟国の商人は+15%の交易利益を得ます"
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Name
 msgid "Royal Road"
@@ -1885,8 +1865,8 @@ msgid "Xsayarsa II"
 msgstr "ハシャヤーラシャー2世"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Description
-msgid "Phoenician triremes gain the unique ability to train cavalry units."
-msgstr "フェニキア三段櫂船が騎兵ユニットを養成する特殊能力を得ます。"
+msgid "Phoenician triremes gain the unique ability to train cavalry."
+msgstr ""
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Name
 msgid "Naval Craftsmanship"
@@ -2026,7 +2006,7 @@ msgstr "プトレマイオス朝"
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Description
 msgid ""
 "The Ptolemies receive the Mercenary Camp, a Barracks that is constructed in "
-"neutral territory and trains mercenary soldiers."
+"neutral territory and trains mercenaries."
 msgstr ""
 
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Name
@@ -2218,8 +2198,8 @@ msgstr "Stratópedo Misthophóron"
 #: simulation/data/civs/ptol.jsonStructures[1].Special
 msgid ""
 "Must be constructed in neutral territory. Has no territory radius effect. "
-"Trains all 'mercenary' units."
-msgstr "中立地帯に建設しなければなりません。領地半径効果を持ちません。全種の「傭兵」ユニットを養成します。"
+"Trains mercenaries."
+msgstr ""
 
 #: simulation/data/civs/ptol.jsonStructures[2].Name
 msgid "Lighthouse"
@@ -2286,8 +2266,8 @@ msgid ""
 msgstr "ローマ市民権は古代世界で大変貴重なものでした。他の被征服民には認められない基本的な権利と特権がローマ市民には与えられました。ローマ市民を傷つけることは、ローマそのものを傷つけることと同等であり、またローマの全権力が加害者に行使されることになりかねないと言われました。"
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry −20% training time."
-msgstr ""
+msgid "Allied Citizen Infantry −10% training time."
+msgstr "同盟している市民歩兵は-10%の訓練時間になります。"
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Name
 msgid "Conscription"
@@ -2496,7 +2476,7 @@ msgid ""
 msgstr "セレウコス朝と後継者たちの紛争は、紀元前3から2世紀にかけて勃発しました。パルティアなど東部の成り上がりとの接触とバクトリアなど辺境州の頻発する反乱の結果、セレウコス朝に軍の再編成と戦術、特に騎兵の装備に関して変更がもたらされました。西からのローマとの戦争とガラティア人の侵入もまた、セレウコス朝に歩兵連隊をより柔軟に再編成することを強いました。"
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Description
-msgid "Allied civil centers −20% resource costs."
+msgid "Allied Civil Centers −20% resource costs."
 msgstr ""
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Name
@@ -2718,8 +2698,8 @@ msgid ""
 msgstr "マケドニア・ギリシア人の王朝で、アレクサンドロスの帝国の遺領の東部を支配しました。"
 
 #: simulation/data/civs/sele.jsonStructures[1].Special
-msgid "Trains all cavalry units except Citizen-Militia Cavalry."
-msgstr "市民騎兵を除くすべての騎兵ユニットを養成します。"
+msgid "Trains all cavalry except citizen-soldier cavalry."
+msgstr ""
 
 #: simulation/data/civs/sele.jsonStructures[2].Name
 msgid "Military Colony"
@@ -2786,7 +2766,7 @@ msgid ""
 msgstr "伝説的立法者のリュクルゴスが定めた国制のもと、スパルタ教育の制度が確立されました。スパルタ人はスパルタ防衛の優れた戦士となるため、6歳から訓練を受けました。"
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry spearmen +10% health."
+msgid "Allied Citizen Infantry Spearmen +10% health."
 msgstr ""
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Name

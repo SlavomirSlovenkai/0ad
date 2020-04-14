@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 Wildfire Games.
+/* Copyright (C) 2020 Wildfire Games.
  * This file is part of 0 A.D.
  *
  * 0 A.D. is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@
 #include "ps/World.h"
 #include "renderer/SkyManager.h"
 #include "renderer/Renderer.h"
-
+#include "renderer/RenderingOptions.h"
 
 SkyManager::SkyManager()
 	: m_RenderSky(true), m_SkyCubeMap(0)
@@ -126,11 +126,11 @@ void SkyManager::LoadSkyTextures()
 				}
 			}
 
-			glTexImage2D(types[i], 0, GL_RGB, tex.m_Width, tex.m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &rotated[0]);
+			glTexImage2D(types[i], 0, GL_RGBA, tex.m_Width, tex.m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &rotated[0]);
 		}
 		else
 		{
-			glTexImage2D(types[i], 0, GL_RGB, tex.m_Width, tex.m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+			glTexImage2D(types[i], 0, GL_RGBA, tex.m_Width, tex.m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		}
 	}
 
@@ -143,7 +143,7 @@ void SkyManager::LoadSkyTextures()
 #else
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 #endif
-	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 	///////////////////////////////////////////////////////////////////////////
 }
 
@@ -207,7 +207,8 @@ void SkyManager::RenderSky()
 	glDepthMask(GL_FALSE);
 
 	pglActiveTextureARB(GL_TEXTURE0_ARB);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::FIXED)
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -226,7 +227,7 @@ void SkyManager::RenderSky()
 	CShaderProgramPtr shader;
 	CShaderTechniquePtr skytech;
 
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 	{
 		skytech = g_Renderer.GetShaderManager().LoadEffect(str_sky_simple);
 		skytech->BeginPass();
@@ -280,7 +281,7 @@ void SkyManager::RenderSky()
 
 	glEnd();
 
-	if (g_Renderer.GetRenderPath() == CRenderer::RP_SHADER)
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::SHADER)
 	{
 		skytech->EndPass();
 	}
@@ -292,6 +293,9 @@ void SkyManager::RenderSky()
 	}
 
 	glPopMatrix();
+
+	if (g_RenderingOptions.GetRenderPath() == RenderPath::FIXED)
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
 	glDepthMask(GL_TRUE);
 

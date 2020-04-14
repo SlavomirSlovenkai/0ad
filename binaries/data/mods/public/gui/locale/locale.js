@@ -55,11 +55,14 @@ function languageSelectionChanged()
 function openAdvancedMenu()
 {
 	let localeText = Engine.GetGUIObjectByName("localeText");
-	Engine.PushGuiPage("page_locale_advanced.xml", { "callback": "applyFromAdvancedMenu", "locale": localeText.caption });
+	Engine.PushGuiPage("page_locale_advanced.xml", { "locale": localeText.caption }, applyFromAdvancedMenu);
 }
 
 function applyFromAdvancedMenu(locale)
 {
+	if (!locale)
+		return;
+
 	var languageList = Engine.GetGUIObjectByName("languageList");
 
 	var currentLocaleDictName = Engine.GetFallbackToAvailableDictLocale(locale);

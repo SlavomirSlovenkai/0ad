@@ -18,7 +18,9 @@
 #ifndef INCLUDED_REPlAY
 #define INCLUDED_REPlAY
 
+#include "lib/os_path.h"
 #include "scriptinterface/ScriptInterface.h"
+
 class CSimulation2;
 class CGUIManager;
 
@@ -113,11 +115,6 @@ bool HasReplayMetadata(const OsPath& directoryName);
  * Returns the metadata of a replay.
  */
 JS::Value GetReplayMetadata(ScriptInterface::CxPrivate* pCxPrivate, const OsPath& directoryName);
-
-/**
- * Saves the metadata from the session to metadata.json.
- */
-void SaveReplayMetadata(ScriptInterface* scriptInterface);
 
 /**
 * Adds a replay to the replayCache.

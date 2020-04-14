@@ -38,29 +38,15 @@
 	</Camera>
 	<ScriptSettings><![CDATA[
 {
-  "BaseHeight": 0,
-  "BaseTerrain": [
-    "medit_grass_field_dry",
-    "medit_grass_field_brown",
-    "medit_grass_field_b"
-  ],
   "CircularMap": true,
   "Description": "The mountains buffering the Persian homeland, straddling Persis, Susiana, and Media.\u000a\u000aPlayers start the match near the Persian Gulf in their own province with 1 free Temple. \u000a\u000aAccess to untapped resources and territories can be found through the rugged hinterlands.",
   "Keywords": [],
-  "LockTeams": false,
   "Name": "Zagros Mountains (2)",
   "PlayerData": [
-    {
-      "Name": "Player 1"
-    },
-    {
-      "Name": "Player 2"
-    }
+    {},
+    {}
   ],
   "Preview": "zagros_mountains_skirmish_2.png",
-  "RevealMap": false,
-  "Script": "latium.js",
-  "Size": 256,
   "VictoryConditions": [
     "conquest"
   ]
@@ -158,25 +144,25 @@
 			<Orientation y="-1.7424"/>
 		</Entity>
 		<Entity uid="80">
-			<Template>other/palisades_rocks_fort</Template>
+			<Template>structures/palisades_fort</Template>
 			<Player>1</Player>
 			<Position x="483.49338" z="641.68622"/>
 			<Orientation y="-0.7259"/>
 		</Entity>
 		<Entity uid="81">
-			<Template>other/palisades_rocks_fort</Template>
+			<Template>structures/palisades_fort</Template>
 			<Player>1</Player>
 			<Position x="265.31864" z="633.68055"/>
 			<Orientation y="-0.23795"/>
 		</Entity>
 		<Entity uid="82">
-			<Template>other/palisades_rocks_fort</Template>
+			<Template>structures/palisades_fort</Template>
 			<Player>2</Player>
 			<Position x="218.57361" z="387.79316"/>
 			<Orientation y="2.35621"/>
 		</Entity>
 		<Entity uid="83">
-			<Template>other/palisades_rocks_fort</Template>
+			<Template>structures/palisades_fort</Template>
 			<Player>2</Player>
 			<Position x="447.4918" z="210.43558"/>
 			<Orientation y="-2.74836"/>
@@ -9429,37 +9415,37 @@
 			<Orientation y="-3.0337"/>
 		</Entity>
 		<Entity uid="1884">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="434.8324" z="258.14908"/>
 			<Orientation y="2.35621"/>
 		</Entity>
 		<Entity uid="1885">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="384.1142" z="916.80372"/>
 			<Orientation y="2.35621"/>
 		</Entity>
 		<Entity uid="1886">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="692.50287" z="672.88428"/>
 			<Orientation y="-1.87885"/>
 		</Entity>
 		<Entity uid="1887">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="565.56873" z="806.92493"/>
 			<Orientation y="2.35621"/>
 		</Entity>
 		<Entity uid="1888">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="580.76111" z="241.47385"/>
 			<Orientation y="0.77546"/>
 		</Entity>
 		<Entity uid="1889">
-			<Template>gaia/fauna_bear</Template>
+			<Template>gaia/fauna_bear_brown</Template>
 			<Player>0</Player>
 			<Position x="713.26771" z="186.88773"/>
 			<Orientation y="-2.69391"/>

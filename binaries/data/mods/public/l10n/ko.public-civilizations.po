@@ -1,8 +1,9 @@
 # Translation template for 0 A.D. — Empires Ascendant.
-# Copyright (C) 2019 Wildfire Games
+# Copyright (C) 2020 Wildfire Games
 # This file is distributed under the same license as the 0 A.D. — Empires Ascendant project.
 # 
 # Translators:
+# MarongHappy <daemul72@gmail.com>, 2020
 # Gr Nada <inactive+Granada45621@transifex.com>, 2016
 # Gr Nada <inactive+Granada45621@transifex.com>, 2016
 # Gu Hong Min <placidmoon1@gmail.com>, 2015
@@ -11,6 +12,7 @@
 # Gu Hong Min <placidmoon1@gmail.com>, 2015
 # ks k, 2019
 # ks k, 2019
+# MarongHappy <daemul72@gmail.com>, 2020
 # moolow <copyhyeon@gmail.com>, 2018
 # Philipp Sauter <qt123@pm.me>, 2018
 # sang gyu nam <destro0419@naver.com>, 2019
@@ -22,8 +24,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D.\n"
-"POT-Creation-Date: 2019-04-01 10:07+0200\n"
-"PO-Revision-Date: 2019-05-30 16:35+0000\n"
+"POT-Creation-Date: 2020-01-17 08:08+0000\n"
+"PO-Revision-Date: 2020-02-22 16:24+0000\n"
 "Last-Translator: ks k\n"
 "Language-Team: Korean (http://www.transifex.com/wildfire-games/0ad/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -74,8 +76,8 @@ msgid ""
 msgstr "그리스는 많은 외국인들을 헬레니즘 문명화하는 것에 상당히 성공했습니다. 헬레니즘 시대동안, 그리스어는 고대 시대의 세계 공용어로서 스페인에서 인도에 이르기까지 폭넓게 사용되었습니다."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Description
-msgid "Allied warships −25% construction time."
-msgstr "동맹의 군함 제조속도가 -25% 빨라집니다."
+msgid "Allied Warships −25% construction time."
+msgstr "동맹의 전함 건조 시간이 -25% 단축됩니다."
 
 #: simulation/data/civs/athen.jsonTeamBonuses[0].Name
 msgid "Delian League"
@@ -154,7 +156,7 @@ msgstr "데모스테네스"
 
 #: simulation/data/civs/athen.jsonFactions[0].Technologies[0].Description
 msgid "Athenian triremes can train Marines (Epibastes Athenaikos)."
-msgstr "아테네 삼단 노선은 해병 (Epibastes Athenaikos)을 양성 할 수 있습니다."
+msgstr "아테네 3단 노선은 해병(에피바스테스 아테나이코스)을 양성할 수 있습니다."
 
 #: simulation/data/civs/athen.jsonFactions[0].Technologies[0].Name
 msgid "Iphicratean Reforms"
@@ -164,7 +166,7 @@ msgstr "이피크라테안의 개혁"
 msgid ""
 "Stone walls can be built in neutral territory. Construction time for walls "
 "is reduced by 50%."
-msgstr "돌벽은 중립 지대에 건설 할 수 있습니다. 벽의 건설 시간을 50% 단축됩니다."
+msgstr "돌 성벽은 중립 지대에 건설할 수 있습니다. 성벽의 건설 시간을 50% 단축됩니다."
 
 #: simulation/data/civs/athen.jsonFactions[0].Technologies[1].Name
 msgid "Long Walls"
@@ -182,7 +184,7 @@ msgstr "아테네의 장성은 만만찮은 테미스토클레스의 후원하�
 msgid ""
 "The player gains the ability to order spear-armed troops into Phalanx "
 "formation, providing greater attack and armor."
-msgstr "선수는 창 무장 병력을 팔랑크스 진형으로 주문하여 공격력과 방어력을 향상시킨다."
+msgstr "선수는 창 무장 병력을 팔랑크스 진형으로 주문하여 공격력과 방어력을 향상합니다."
 
 #: simulation/data/civs/athen.jsonFactions[0].Technologies[2].Name
 #: simulation/data/civs/spart.jsonCivBonuses[0].Name
@@ -206,7 +208,7 @@ msgid ""
 "Aegean, thereby laying the foundations of future Athenian power. However, he"
 " was eventually ostracised by the Athenians and forced to flee to the "
 "protection of the Persians."
-msgstr "아테네 사람들을 설득해 은 광산에서 얻은 수입으로 삼단노선 200척으로 구성된 해군을 편성한 장군입니다. 페르시아 전쟁 핵심 인물로 기원전 479년 살라미스의 해전에서 아테네 해군을 지휘하여 승리했습니다. 나중에, 그는 에게해에서 반 페르시아 정책을 주도하고, 미래의 아테네 패권에 기반을 마련했다. 하지만 결국 도편추방에의해 아테네를 쫒겨나 페르시아로 망명할 수밖에 없었습니다."
+msgstr "아테네 사람들을 설득해 은 광산에서 얻은 수입으로 3단 노선 200척으로 구성된 해군을 편성한 장군입니다. 페르시아 전쟁 핵심 인물로 기원전 479년 살라미스의 해전에서 아테네 해군을 지휘하여 승리했습니다. 나중에, 그는 에게해에서 반 페르시아 정책을 주도하고, 미래의 아테네 패권에 기반을 마련했다. 하지만 결국 도편추방에의해 아테네를 쫒겨나 페르시아로 망명할 수밖에 없었습니다."
 
 #: simulation/data/civs/athen.jsonFactions[0].Heroes[1].History
 msgid "Pericles was the foremost Athenian politician of the 5th Century B.C."
@@ -258,7 +260,7 @@ msgstr "김나지움-체육장"
 #: simulation/data/civs/athen.jsonStructures[1].Special
 msgid ""
 "Train champion units and research technologies pertaining to champion units."
-msgstr "전사 유닛을 양성하고 또한 대표전사 장치에 관련된 기술을 연구합니다."
+msgstr "전사 유닛을 양성하고 또한 대표 전사 장치에 관련된 기술을 연구합니다."
 
 #: simulation/data/civs/athen.jsonStructures[1].History
 msgid ""
@@ -286,7 +288,7 @@ msgid ""
 "Athens was famed as a center for the arts, learning and philosophy. The "
 "Athenians were also powerful warriors, particularly at sea. At its peak, "
 "Athens dominated a large part of the Hellenic world for several decades."
-msgstr "서양 문명의 요람이며, 민주주의의 발상지로 아테네는 예술, 학문, 철학의 중심지로 이름을 떨치고 있었습니다. 아테네는 강력한 군사력, 특히 바다에서 자랑했습니다. 전성기에는 아테네는 그리스 세계의 대부분을 수십 년 동안 지배했습니다."
+msgstr "서구 문명의 요람이자, 민주주의의 발상지로 아테네는 예술, 학문, 철학의 중심지로 유명했습니다. 아테네는 특히 바다에서 강력한 군사력을 보여줬습니다. 전성기에는 아테네는 수십 년 동안 헬레니즘 세계의 대부분을 수십년 동안 지배했습니다."
 
 #: simulation/data/civs/brit.jsonName
 #: simulation/data/civs/brit.jsonFactions[0].Name
@@ -306,7 +308,7 @@ msgstr "아르디오스마나에"
 #: simulation/data/civs/brit.jsonCivBonuses[0].History
 #: simulation/data/civs/gaul.jsonCivBonuses[0].History
 msgid "Represents Celtic farming methods. "
-msgstr "켈트족의 농사 방법을 대표합니다."
+msgstr "켈트의 농사 방법을 대표합니다."
 
 #: simulation/data/civs/brit.jsonCivBonuses[1].Description
 #: simulation/data/civs/gaul.jsonCivBonuses[1].Description
@@ -321,11 +323,11 @@ msgstr "켈트 여신"
 #: simulation/data/civs/brit.jsonCivBonuses[1].History
 #: simulation/data/civs/gaul.jsonCivBonuses[1].History
 msgid "Celtic religion and druidry inspired their warlike mindset. "
-msgstr "켈트인의 종교와 드루이드 교는 그들의 호전적인 사상을 고취했다."
+msgstr "켈트 종교와 드루이드 교는 그들의 호전적 사고 방식을 불어넣었습니다."
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Description
-msgid "Allied healers −20% resource costs."
-msgstr "동맹의 치료사 훈련 자원 소모가 -20% 감소합니다."
+msgid "Allied Healers −20% resource costs."
+msgstr "동맹의 치료사 양성 자원 비용이 -20% 감소합니다."
 
 #: simulation/data/civs/brit.jsonTeamBonuses[0].Name
 msgid "Druids"
@@ -335,7 +337,7 @@ msgstr "드루이드사제"
 msgid ""
 "The Druids of the Celts maintained an organized religion that advanced the "
 "technology of their people even during wartime."
-msgstr "켈트인의 드루이드사제는 조직적인 종교를 유지하여 전시에서도 켈트인의 기술을 발전 시켰습니다."
+msgstr "켈트의 드루이드 사제는 조직적인 종교를 유지하여 전시에서도 켈트의 기술을 발전 시켰습니다."
 
 #: simulation/data/civs/brit.jsonAINames[0]
 #: simulation/data/civs/brit.jsonFactions[0].Heroes[0].Name
@@ -466,7 +468,7 @@ msgid ""
 "their British allies, and Kunobelinos was held up by the post-Roman Britons "
 "as one of their great heroes; a conqueror and uniter of petty kingdoms, "
 "something the post-Roman Britons or Romano-British sorely needed."
-msgstr "쿠노벨리노스(아마도 쿠노벨린의 라틴양식으로 더 잘 알려져 있을 것입니다)는 카투벨로우니의 강력한 지배자였습니다. 그는 로마인들에게 영국인의 왕으로 일컬어졌습니다. 그의 영역은 오늘날 콜체스터인 카물로두논 시(카물로두눔으로 알려져 있습니다)를 중심으로 펼쳐 있었다. 테우토부르크 숲(독일) 전투에서 로마의 패배로 쿠노벨리노스가 이웃 부족인 트리노반테스를 정복할 수 있게 되었는데 이들은 로마의 동맹임에도 로마의 원조를 받을 수 없었다. 쿠노벨리노스는 로마인들에게 무관심한 것 같았다. 그는 로마와 자유롭게 교역을 했지만 알려진 로마의 동맹을 예속하는 데는 거의 거리낌이 없었고, 심지어 막내아들인 아드미니우스를 양자로 보내 로마의 갈리아에서 교육을 받게 하기도 했다. 이것은 로마인들 사이의 아드미니우스의 우정을 설명하였다. 아드미니우스는 켄트에 거주하는 그의 아버지로부터 칸타키에대한 영주권을 부여받았다. 이 지역은 영국에서 로마의 영향과 무역의 주요 지역이었고, 쿠노벨리노스는 강력한 로마와 갈로-로마 정치인들과 무역상들과 그의 막내아들의 친분을 빈틈없이 관찰했다. 그의 다른 아들들은 로마인에 대한 사랑이 없었다. 쿠노벨리노스가 질병으로 죽고, 그의 아들 토그두메노스로 뒤를 잇자 수많은 친로마파들을 체포, 처형, 추방했다.여기에는 그의 친형인 아드미니우스가 포함되었고, 퇴위된 아트레바테스 왕 베리카는 그들의 땅을 되찾는데 있어서 보좌를 해달라고 로마 제국에서의 그들의 인맥에 호소했다. 토그두메오스는 로마인과의 전투에서 전사하였고, 이후 그의 동생 카라타코스가 뒤를 이었습니다. 처음으로 로마의 보복에 초대된 것이 그의 셋째 아들이라는 것은 아이러니한 일이다. 쿠노벨리노스는 영국 왕들 중 가장 위대한 왕들 중 하나였을 것이다. 그는 영국 남반부 대부분을 정복했습니다(그의 동전은 웨일즈가 될 국경까지 주조되어 있었다). 그는 카투벨라우니라는 연합에서 겨우 4개의 소수 부족만을 통치하기 시작했고 결국 영국의 왕으로 인정받게 되었습니다. 캄브리아의 부족들은 로마인들과 그들의 영국 동맹들에 대항하여 그의 아들들을 도우러 왔으며, 쿠노벨리노스는 로마 이후의 영국인들에게 그들의 위대한 영웅들 중 한 명, 즉 로마 이후의 영국인이나 로마노-영국이 몹시 필요로 하는 것을 정복자 겸 통일자로 떠받들었습니다."
+msgstr "쿠노벨리노스(아마도 쿠노벨린의 라틴양식으로 더 잘 알려져 있을 것입니다)는 카투벨로우니의 강력한 지배자였습니다. 그는 로마인들에게 영국인의 왕으로 일컬어졌습니다. 그의 영역은 오늘날 콜체스터인 카물로두논 시(카물로두눔으로 알려져 있습니다)를 중심으로 펼쳐 있었다. 테우토부르크 숲(독일) 전투에서 로마의 패배로 쿠노벨리노스가 이웃 부족인 트리노반테스를 정복할 수 있게 되었는데 이들은 로마의 동맹임에도 로마의 원조를 받을 수 없었다. 쿠노벨리노스는 로마인들에게 무관심한 것 같았다. 그는 로마와 자유롭게 교역을 했지만 알려진 로마의 동맹을 예속하는 데는 거의 거리낌이 없었고, 심지어 막내아들인 아드미니우스를 양자로 보내 로마의 갈리아에서 교육을 받게 하기도 했다. 이것은 로마인들 사이의 아드미니우스의 우정을 설명하였다. 아드미니우스는 켄트에 거주하는 그의 아버지로부터 칸타키에대한 영주권을 부여받았다. 이 지역은 영국에서 로마의 영향과 교역의 주요 지역이었고, 쿠노벨리노스는 강력한 로마와 갈로-로마 정치인들과 교역상들과 그의 막내아들의 친분을 빈틈없이 관찰했다. 그의 다른 아들들은 로마인에 대한 사랑이 없었다. 쿠노벨리노스가 질병으로 죽고, 그의 아들 토그두메노스로 뒤를 잇자 수많은 친로마파들을 체포, 처형, 추방했다.여기에는 그의 친형인 아드미니우스가 포함되었고, 퇴위된 아트레바테스 왕 베리카는 그들의 땅을 되찾는데 있어서 보좌를 해달라고 로마 제국에서의 그들의 인맥에 호소했다. 토그두메오스는 로마인과의 전투에서 전사하였고, 이후 그의 동생 카라타코스가 뒤를 이었습니다. 처음으로 로마의 보복에 초대된 것이 그의 셋째 아들이라는 것은 아이러니한 일이다. 쿠노벨리노스는 영국 왕들 중 가장 위대한 왕들 중 하나였을 것이다. 그는 영국 남반부 대부분을 정복했습니다(그의 동전은 웨일즈가 될 국경까지 주조되어 있었다). 그는 카투벨라우니라는 연합에서 겨우 4개의 소수 부족만을 통치하기 시작했고 결국 영국의 왕으로 인정받게 되었습니다. 캄브리아의 부족들은 로마인들과 그들의 영국 동맹들에 대항하여 그의 아들들을 도우러 왔으며, 쿠노벨리노스는 로마 이후의 영국인들에게 그들의 위대한 영웅들 중 한 명, 즉 로마 이후의 영국인이나 로마노-영국이 몹시 필요로 하는 것을 정복자 겸 통일자로 떠받들었습니다."
 
 #: simulation/data/civs/brit.jsonFactions[0].Heroes[2].History
 msgid ""
@@ -539,15 +541,15 @@ msgstr "카르타고"
 msgid ""
 "Carthaginian walls, gates, and towers have 3x health of a standard wall, but"
 " also 2x build time."
-msgstr "카르타고의 벽, 문, 탑은 통상의 3배의 내구성을 가지고 있지만 2배의 건설 시간이 걸립니다."
+msgstr "카르타고의 성벽, 관문, 탑은 보통의 3배의 내구성을 가지고 있지만, 건설시간은 2배 더 걸립니다."
 
 #: simulation/data/civs/cart.jsonCivBonuses[0].Name
 msgid "Triple Walls"
-msgstr "삼중 방벽"
+msgstr "삼중 성벽"
 
 #: simulation/data/civs/cart.jsonCivBonuses[0].History
 msgid "Carthaginians built triple city walls."
-msgstr "카르타고인들은 삼중 도시 방벽을 세웠습니다."
+msgstr "카르타고는 삼중 도시 성벽을 세웠습니다."
 
 #: simulation/data/civs/cart.jsonCivBonuses[1].Description
 msgid ""
@@ -569,8 +571,8 @@ msgid ""
 msgstr "이베리아 반도와 마찬가지로 북아프리카는 말의 나라로 알려져 매년 10 만 마리의 생산이 가능했습니다. 북아프리카는 둥근귀 코끼리의 산지이기도했습니다."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Description
-msgid "Allied markets +10% international trade bonus."
-msgstr "동맹 시장의 국제 교역 보너스가 +10% 증가합니다."
+msgid "Allied Markets +10% international trade bonus."
+msgstr "동맹의 시장 국제 교역 보너스가 +10% 증가합니다."
 
 #: simulation/data/civs/cart.jsonTeamBonuses[0].Name
 msgid "Trademasters"
@@ -580,7 +582,7 @@ msgstr "거상"
 msgid ""
 "The Phoenicians and Carthaginians were broadly known as the greatest trading"
 " civilization of the ancient and classical world."
-msgstr "페니키아와 카르타고는 고전 고대 세계 최대의 무역 문명으로 널리 알려져 있었습니다."
+msgstr "페니키아와 카르타고는 고전 고대 세계 최대의 교역 문명으로 널리 알려져 있었습니다."
 
 #: simulation/data/civs/cart.jsonAINames[0]
 #: simulation/data/civs/cart.jsonFactions[0].Heroes[0].Name
@@ -694,7 +696,7 @@ msgid ""
 "B.C. While overshadowed by his sons, Hamilcar was great general in his own "
 "right, earning the nickname Baraq or Barca for the lightning speed of his "
 "advance."
-msgstr "한니발의 아버지 사실상 군사 독재자입니다. 하밀 카르 바르카 전 생애에 걸쳐 뛰어난 전사하고 정치인이었습니다. 기원전 275 년에서 228 년의 일생이었습니다. 아들의 그림자에 숨어 쉽지만, 하미루카루은 본래 위대한 장군이며 그의 진격의 번개 빛의 속도에서 버락 또는 바르카와 별명이 붙었습니다."
+msgstr "한니발의 아버지 사실상 군사 독재자입니다. 하밀카르 바르카 모든 생애에 걸쳐 뛰어난 전사하고 정치인이었습니다. 기원전 275 년에서 228 년의 일생이었습니다. 아들의 그림자에 숨어 쉽지만, 하미루카루은 본래 위대한 장군이며 그의 진격의 번개 빛의 속도에서 버락 또는 바르카와 별명이 붙었습니다."
 
 #: simulation/data/civs/cart.jsonFactions[0].Heroes[2].History
 msgid ""
@@ -768,7 +770,7 @@ msgid ""
 "among the fiercest contenders on the high seas, and masters of naval trade. "
 "They deployed towered War Elephants on the battlefield to fearsome effect, "
 "and had defensive walls so strong, they were never breached."
-msgstr "카르타고는 현대 튀니지에 있던 도시 국가에서 서쪽 지중해의 무서운 세력이며, 결국은 북아프리카의 대부분과 현대의 스페인 기원전 3 세기에 지배했습니다. 카르타고 선원은 가장 사나운 바다에서 경쟁자이며, 해상 무역의 달인이었습니다. 카르타고가 배포 한 우뚝 솟은 전투코끼리?? 전장에서 공포를 가져다 방어벽은 튼튼하고 결코 무너져 없습니다."
+msgstr "카르타고는 현대 튀니지에 있던 도시 국가에서 서쪽 지중해의 무서운 세력이며, 결국은 북아프리카의 대부분과 현대의 스페인 기원전 3 세기에 지배했습니다. 카르타고 선원은 가장 사나운 바다에서 경쟁자이며, 해상 교역의 달인이었습니다. 그들은 무시무시한 효과를 얻기 위해 전쟁터에 코끼리들을 배치했지만, 방어벽이 너무 강해서 결코 뚫리지 않았었습니다."
 
 #: simulation/data/civs/gaul.jsonName
 #: simulation/data/civs/gaul.jsonFactions[0].Name
@@ -776,7 +778,7 @@ msgid "Gauls"
 msgstr "갈리아"
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Description
-msgid "Allied structures −20% technology research time."
+msgid "Allied Structures −20% technology research time."
 msgstr "동맹의 건축물 기술 연구 시간이 -20% 감소합니다."
 
 #: simulation/data/civs/gaul.jsonTeamBonuses[0].Name
@@ -881,7 +883,7 @@ msgid ""
 " Marcellus, would be a fitting offering to the gods. He charged the Gaul, "
 "pierced his bright breastplate and cast him to the ground. It was an easy "
 "task to kill Viridomarus and strip him of his armor."
-msgstr "켈트 군대는 적과 대면하면, 전면전이 시작되기 전에 켈트의 대장은 최전선으로 가서 적군의 가장 용감한 자에게 일대 일 대결에 도전하기도 했습니다. 마르쿠스 클라우디우스 마르셀은 갈리아 왕을 크라스티디움(기원전 222년)에서 죽인 이야기는 그러한 조우의 전형입니다. 소규모 군대에서 전진하였고, 마르켈루스는 인수브리아의 갈리아와 가에사타에의 연합군과 클래스티디움에서 만났습니다. 갈리아 군대는 평소처럼 빠르고 무섭고 우렁찬 함성과 함께 진격했고, 그들의 왕인 비리도마루스는 마르셀루스를 선택하고 그에게 딱 맞는 그의 계급 휘장을 수단으로 하여 그에게 도전하겠다고 외치고 그의 창을 휘둘렀습니다. 비리도마루스는 그의 외형은 체격뿐만 아니라 장식품에도 잘 꾸민 인물이었습니다. 그는 밝은색으로 빛났고, 갑옷은 금과 은으로 빛났습니다. 마르셀루스는 이 갑옷은 신들에게 받칠 적절한 제물이 될 것이라고 생각했습니다. 그는 갈리아인들에게 돌진하여, 화려한 흉갑옷을 뚫고 그를 땅바닥에 내동댕이 쳤습니다. 비리도마루스를 죽이고 그의 갑옷을 벗기는 것은 쉬운 일이었습니다. "
+msgstr "켈트 군대는 적과 대면하면, 전면전이 시작되기 전에 켈트의 대장은 최전선으로 가서 적군의 가장 용감한 자에게 일대 일 대결에 도전하기도 했습니다. 마르쿠스 클라우디우스 마르셀루스는 갈리아 왕을 크라스티디움(기원전 222년)에서 죽인 이야기는 그러한 조우의 전형입니다. 소규모 군대에서 전진하였고, 마르셀루스는 인수브리아의 갈리아와 가에사타에의 연합군과 클래스티디움에서 만났습니다. 갈리아 군대는 평소처럼 빠르고 무섭고 우렁찬 함성과 함께 진격했고, 그들의 왕인 비리도마루스는 마르셀루스를 선택하고 그에게 딱 맞는 그의 계급 휘장을 수단으로 하여 그에게 도전하겠다고 외치고 그의 창을 휘둘렀습니다. 비리도마루스는 그의 외형은 체격뿐만 아니라 장식품에도 잘 꾸민 인물이었습니다. 그는 밝은색으로 빛났고, 갑옷은 금과 은으로 빛났습니다. 마르셀루스는 이 갑옷은 신들에게 받칠 적절한 제물이 될 것이라고 생각했습니다. 그는 갈리아인들에게 돌진하여, 화려한 흉갑옷을 뚫고 그를 땅바닥에 내동댕이 쳤습니다. 비리도마루스를 죽이고 그의 갑옷을 벗기는 것은 쉬운 일이었습니다."
 
 #: simulation/data/civs/gaul.jsonFactions[0].Heroes[1].History
 msgid ""
@@ -917,7 +919,7 @@ msgid ""
 "was. Because we only know of him from Roman sources we don't know much about"
 " Vercingetorix as a child or young man, except that perhaps he was probably "
 "very high spirited and probably gained some renown in deeds."
-msgstr "베르킨게토릭스 (갈리아어: Ver-Rix Cingetos)는 갈리아 (현재는 프랑스)의 아르베르니 족의 족장이었습니다. 기원전 52 년에 시작 반란을 그는 주도 율리우스 카이사르가 이끄는 로마의 침략에 저항했습니다. 그의 반란 동안의 행동이 오늘날까지 기억되고 있습니다. 베르킨게토릭스는 아마 지파의 도시 게루고위아 근처에서 태어났습니다. 우리가 가진 약간의 정보에 의하면, 베르킨게토릭스는 아마도 기원전 72 년에 태어나 아버지는 켈티르 어머니는 누군가 모릅니다. 우리는 그를 로마의 자료에서 알만을위한, 베르킨게토릭스의 어린 청년기에 대해 많이 알지 못하지만 오직 아마 그는 매우 용감 실제로 명성을 얻고 있던 것입니다."
+msgstr "베르킨게토릭스 (갈리아어: 베르-릭스 시겐토스)는 갈리아 (현재는 프랑스)의 아르베르니 족의 족장이었습니다. 기원전 52년에 시작 반란을 그는 주도 율리우스 카이사르가 이끄는 로마의 침략에 저항했습니다. 그의 반란 동안의 행동이 오늘날까지 기억되고 있습니다. 베르킨게토릭스는 아마 지파의 도시 게루고위아 근처에서 태어났습니다. 우리가 가진 약간의 정보에 의하면, 베르킨게토릭스는 아마도 기원전 72 년에 태어나 아버지는 켈티르 어머니는 누군가 모릅니다. 우리는 그를 로마의 자료에서 알만을위한, 베르킨게토릭스의 어린 청년기에 대해 많이 알지 못하지만 오직 아마 그는 매우 용감 실제로 명성을 얻고 있던 것입니다."
 
 #: simulation/data/civs/gaul.jsonFactions[0].Description
 msgid "The Celts of mainland Europe."
@@ -938,7 +940,7 @@ msgid ""
 "metalworking, agriculture, trade and even road engineering. With heavy "
 "infantry and cavalry, Gallic warriors valiantly resisted Caesar's campaign "
 "of conquest and Rome's authoritarian rule."
-msgstr "갈리아인은 유럽 대륙의 켈트 부족이었습니다. 사제의 신관 계급이 지배하고 고급 금속 가공, 농업, 무역, 심지어는 도로 설계에 관한 정교한 문화가 특징이었습니다. 중장비 보병과 기병으로 갈리아 병사는 카이사르의 원정과 로마의 권위 주의적 통치에 용감하게 저항했습니다."
+msgstr "갈리아는 유럽 대륙의 켈트 부족이었습니다. 사제의 신관 계급이 지배하고 고급 금속 가공, 농업, 교역, 심지어는 도로 설계에 관한 정교한 문화가 특징이었습니다. 중장비 보병과 기병으로 갈리아 병사는 카이사르의 원정과 로마의 권위 주의적 통치에 용감하게 저항했습니다."
 
 #: simulation/data/civs/iber.jsonName
 msgid "Iberians"
@@ -973,11 +975,11 @@ msgstr "잘디 살도아"
 msgid ""
 "Not unlike Numidia in North Africa, the Iberian Peninsula was known as "
 "'horse country', capable of producing up to 100,000 new mounts each year."
-msgstr "북 아프리카의 누미디아와 마찬가지로 이베리아 반도는 매년 최대 10만 마리의 말을 생산할수있는 ′말의 나라′로 알려졌습니다."
+msgstr "북 아프리카의 누미디아와 마찬가지로 이베리아 반도는 매년 최대 10만 마리의 말을 생산할 수 있는 ′말의 나라′로 알려졌습니다."
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier javelinists −20% resource costs."
-msgstr "동맹의 시민군 투창병 양성 자원 비용이 -20% 감소합니다. "
+msgid "Allied Citizen Javelinists −10% resource costs."
+msgstr "동맹의 시민 투창병 양성 자원 비용이 -10% 감소합니다."
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].Name
 msgid "Saripeko"
@@ -985,11 +987,11 @@ msgstr "사리페코"
 
 #: simulation/data/civs/iber.jsonTeamBonuses[0].History
 msgid ""
-"The Iberians were long known to provide mercenary soldiers to other nations "
-"to serve as auxiliaries to their armies in foreign wars. Carthage is the "
-"most well known example, and we have evidence of them serving in such a "
-"capacity in Aquitania."
-msgstr "이베리아인들은 외국의 전쟁에서 그들의 군대에 보조 역할을 하기 위해 용병들을 다른 나라에 제공하는것으로 오랫동안 알려져 있습니다. 카르타고는 가장 잘알려진 예이며, 우리는 그들의 아키타니아에서 그런 자격으로 복무했다는 증거를 가지고있습니다."
+"The Iberians were long known to provide mercenaries to other nations to "
+"serve as auxiliaries to their armies in foreign wars. Carthage is the most "
+"well known example, and we have evidence of them serving in such a capacity "
+"in Aquitania."
+msgstr "이베리아는 외국의 전쟁에서 그들의 군대에 보조 역할을 하기 위해 다른 나라에 용병을 제공하는 것으로 오랫동안 알려져 있습니다. 카르타고는 가장 잘 알려진 예로서, 우리는 그들이 아키타니아에서 그런 자격으로 복무했다는 증거를 가지고 있습니다."
 
 #: simulation/data/civs/iber.jsonAINames[0]
 #: simulation/data/civs/iber.jsonAINames[1]
@@ -1069,7 +1071,7 @@ msgid ""
 "losses in some requiring retreat). He succumbed instead to another treachery"
 " arranged by a later Roman commander, Q. Servilius Caepio, to have him "
 "assassinated by three comrades that were close to him."
-msgstr ""
+msgstr "비리아토는 갈리아의 베링세토릭스와 마찬가지로 가장 유명한 이베리아 부족의 전쟁지도자 였습니다. 그는 기원전 147년-139년에 '루시타니 전쟁' 기간동안 반도의 남쪽 절반에서 로마를 상대로 적어도 7차례 싸웠습니다. 그는 모략에 의해 루시타니족 남자 9000명의 대학살과 2만 1000명의 노인, 여성, 어린이들을 노예로 팔아넘긴것의 생존자로 알려져있습니다. 루시타니 문제에 대한 최종 해결책으로 히스파니아 울테리오르의 총독인 세르비우스 술피시우스 갈바가 실시한 로마인과 평등 조약을 맺었습니다. 그는 기원전 151년 루시타니군의 대장으로 하찮게 시작했습니다. 그는 총명하고 뛰어난 전술가였으며 어떤 전투에서도 결코 패배하지 않았습니다 ( 다만 어쩔 수 없는 퇴각으로 병사를 잃는 경우는 있었습니다). 그는 대신 후대의 로마의 집정관인 투스 세르빌리우스 카이피오가 주선한 또 다른 배신에 굴복하여, 그와 가까웠던 세 명의 동지들에 의해 그를 암살하게 했습니다."
 
 #: simulation/data/civs/iber.jsonFactions[0].Heroes[1].History
 msgid ""
@@ -1085,7 +1087,7 @@ msgid ""
 " a battle on the 23rd of August. Karos was wounded in an after battle small "
 "cavalry action the same evening and soon died thereafter, but he had carried"
 " off one of the most humiliating defeats that Rome ever suffered."
-msgstr ""
+msgstr "카로스는 켈티베리의 동쪽(중앙에 있던 누만티족의)에 위치한 벨리 부족의 족장이었습니다. 메세타는 중앙(중앙 고원)의 부족 동맹을 이끌고, 그는 2만의 보병과 5천의 기병을 깊은 숲속 오솔길에 숨겼습니다. 한편 퀸투스 풀비우스 노빌리오르는 적절한 정찰을 소홀히하여 자신의 군대를 길게 늘어뜨리는 바람에 찌든 함정에 빠져버렸습니다. 로마 군단의 1만 5천명중 1만명이 그들의 달라든 이 대규모 매복으로 쓰러졌습니다. 그날은 기원전 153년 8월 23일, 로마가 불칸의 축제를 경축하는 날이었습니다. 이후 원로원의 법으로 이날은 '불길한 날'로 여겨졌고, 두번다시 로마는 8월 23일에는 전투를 벌이지 않았습니다. 카로스는 같은 날 저녁 소규모 기병들과의 교전후 부상당했고 그후 곧 사망했습니다. 그러나 그는 로마가 당한 가장 굴욕적인 패배중 하나를 안겨주었습니다."
 
 #: simulation/data/civs/iber.jsonFactions[0].Heroes[2].History
 msgid ""
@@ -1105,7 +1107,7 @@ msgid ""
 "were again defeated, Indibil losing his life in the final battle and "
 "Mandonio being captured then later put to death. From that date onward the "
 "Ilergetes remained a pacified tribe under Roman rule."
-msgstr ""
+msgstr "인디빌은 이레르게테스족의 왕이었고, 큰 연맹은 주로 이베리아 반도의 북서쪽에 있는 에브로 강을 따라 위치했습니다. 기원전 212년 부터 바르시드가 확장하는동안, 그는 처음에 남쪽과 서쪽으로 많은 영토를 점령한 카르타고인들과 동맹을 맺게되었다고 말했지만, 큰 전투에서 패배하고 그가 붙잡힌뒤 그는 스키피오 아프리카누스에게 회유되어 속았다는 사람도 있었지만 로마 쪽으로 돌아갔습니다. 그러나 이 동맹은 오래가지 못했습니다. 왜냐하면 로마의 약속이 공허했고 로마인들은 동맹이라기 보다 정복자처럼 행동했기 때문이었습니다. 따라서 기원전 206년 로마인들과 그들의 동맹국들이 카르타고인'히스파니아'에서 카르타고를 몰아내고, 인디빌과 그의 형제였을지도 모르는 만도니오라는 이름의 또 다른 부족 왕자는 로마인들에게 대한 반란을 일으켰습니다. 그들은 전투에서 패배 했습니다. 그런데 두번째 반란을 더 크게 일으켰습니다. 기원전 205년에 모든 이레르게이트를 다시 통일시켰습니다. 압도적인 수와 무장의 차이에서 그들은 다시 패배했고, 인디빌은 최후의 싸움에서 목숨을 잃고, 만도니오는 붙잡혀 처형당했습니다. 그 날 이후, 이레르게테스 족은 로마 지배하에서 평화를 회복했습니다."
 
 #: simulation/data/civs/iber.jsonStructures[0].Name
 msgid "Gur Oroigarri"
@@ -1133,7 +1135,7 @@ msgid ""
 "proved tenacious when Rome sought to take their land and freedom from them, "
 "and employed pioneering guerrilla tactics and flaming javelins as they "
 "fought back."
-msgstr ""
+msgstr "이베리아 사람들의 기원과 언어는 베일에 쌓여 있었습니다. 그들은 전통적으로 강력한 기마술 금속 가공술이 뛰어났습니다. 비교적 평화로운 문화에서 그들은 대게 다른 전장에서 용병으로만 싸웠습니다. 그러나 로마가 그들의 땅과 자유를 빼앗으려 하자, 그들의 집요함은 증명했고 그들로부터 해방했고, 그들은 선구적으로 게릴라 전술과 불타는 투창을 사용해 반격했습니다."
 
 #: simulation/data/civs/kush.jsonName
 msgid "Kushites"
@@ -1175,7 +1177,7 @@ msgid "Elephant Suppliers"
 msgstr "코끼리 물품보급자"
 
 #: simulation/data/civs/kush.jsonTeamBonuses[0].Description
-msgid "Allied elephants −20% resource costs and training time."
+msgid "Allied Elephants −20% resource costs and training time."
 msgstr "동맹의 코끼리 양성 자원 비용과 훈련 시간이 -20% 감소합니다."
 
 #: simulation/data/civs/kush.jsonAINames[0]
@@ -1246,7 +1248,7 @@ msgstr "시민 회관, 사원, 피라미드 및 불가사의에 대해 HP가 +50
 
 #: simulation/data/civs/kush.jsonFactions[0].Technologies[1].Description
 msgid "Allow to train elite rank healers"
-msgstr "정예 계급 치료사를 양성 할 수 있습니다."
+msgstr "정예 계급 치료사를 양성할 수 있습니다."
 
 #: simulation/data/civs/kush.jsonFactions[0].Technologies[1].Name
 msgid "High Priest of Amun"
@@ -1288,7 +1290,7 @@ msgstr "아문 사원"
 msgid ""
 "The Kushites can upgrade individual Temples to Temples of Amun, which can "
 "train Napatan Temple Guard champions and heal units faster."
-msgstr "쿠시인들은 개별사원을 아문사원으로 향상 할 수 있, 이 사원은 나파탄 사원 경비대 대표 전사들을 양성할수있고 유닛의 치료가 더 빠릅니다."
+msgstr "쿠시는 개별사원을 아문사원으로 향상할 수 있으며, 나파탄 사원 경비 대표 전사들을 양성할 수 있고 유닛의 치료가 더 빨라집니다."
 
 #: simulation/data/civs/kush.jsonStructures[0].History
 #: simulation/data/civs/kush.jsonStructures[1].History
@@ -1303,7 +1305,7 @@ msgstr "아페데마크 사원"
 msgid ""
 "The Kushites can upgrade individual Temples to Temples of Apedemak, which "
 "can train Meroe Temple Guard champions and heal units faster."
-msgstr "쿠시는 개인 사원을 아페데막 사원으로 향상 할 수 있으며, 이것은 메로에 사원 경비대 대표 전사들을 훈련시키고 유닛을 더 빠르게 치료할 수 있습니다."
+msgstr "쿠시는 개인 사원을 아페데막 사원으로 향상할 수 있으며, 메로에 사원 경비대 대표 전사들을 훈련시키고 유닛을 더 빠르게 치료할 수 있습니다."
 
 #: simulation/data/civs/kush.jsonStructures[2].Name
 msgid "Kushite Pyramids"
@@ -1336,7 +1338,7 @@ msgid ""
 "Meroitic kingdom was known as Aethiopia. The Kushite kingdom persisted until"
 " the 4th century AD, when it weakened and disintegrated due to internal "
 "rebellion, eventually succumbing to the rising power of Axum."
-msgstr ""
+msgstr "쿠시 왕국은 현재 수단 공화국에있는 블루 나일강, 화이트 나일강 아트바라 강이 합류한 위치에 놓여있는 고대 아프리카 왕국입니다. 이 지역의 쿠시 시대의 통치는 새로운 이집트 왕국의 청동기 시대 붕괴 이후 설립되었으며, 초기 단계에서 나파타를 중심으로 이루어졌습니다. 그들은 기원전 8세기에 이집트를 침략했고, 쿠시의 황제는 아시리아인들에 의해 쫒겨날때 까지 1세기 동안 이집트의 25번째 왕조의 파라오로서 지배했습니다. 쿠시의 문화는 쿠시의 피라미드 건물과 기념비적인 사원 건축 양식이 여전한 규모로 이집트인에 의해 크게 영행을 받았습니다. 쿠시는 아문을 포함한 많은 이집트의 신들을 숭배 했습니다. 고전 고대 동안, 쿠시 제국의 수도는 메로에 였습니다. 초기 그리스 지리학에서, 메로에 왕국은 아에티오피아로 알려졌습니다. 쿠시 왕국은 서기 4세기까지 지속되었습니다. 내부 반란으로 인해 약화되고 해체되었을 때, 결국 악숨 왕국의 상승하는 힘에 굴복했습니다."
 
 #: simulation/data/civs/mace.jsonName
 #: simulation/data/civs/mace.jsonFactions[0].Name
@@ -1479,7 +1481,7 @@ msgstr "필립 2세는 마케도니아 왕좌에 오르자 마케도니아 군�
 msgid ""
 "Upgrade Hypaspist Champion Infantry to Silver Shields, with greater attack "
 "and armor, but also greater cost."
-msgstr "히파스피스트 대표전사 보병을 은으로된 방패로 향상합니다. 공격력과 방어력은 증가하지만 비용도 증가합니다."
+msgstr "히파스피스트 대표 전사 보병을 은으로된 방패로 향상합니다. 공격력과 방어력은 증가하지만 비용도 증가합니다."
 
 #: simulation/data/civs/mace.jsonFactions[0].Technologies[1].Name
 msgid "Royal Gift"
@@ -1547,7 +1549,7 @@ msgid ""
 "his Asian possessions after the battle of Ipsos, he later won the Macedonian"
 " throne. Fearing lest they should be overpowered by Demetrios, the other "
 "Diadochi united against him and defeated him."
-msgstr ""
+msgstr "디아도코이(후계자라는 뜻)중 한명인 마케도니아의 왕 (기원전 294년-288년) 데메트리오스는 가장 용감하고 유능한 알렉산더의 후계자중 한명으로 알려져있습니다. 안티고노스 1세 애꾸눈 왕의 아들로, 그는 초기에 많은 중요한 전투에서 승리한 후, 기원전 306년에 아버지와 함께 자신을 국왕으로 선포했습니다. 입소스 전투 이후 아시아의 영토를 잃었지만 나중에 마케도니아의 왕위에 올랐습니다. 데메트리오스에 의해 제압당할까 두려워하면서, 다른 디아도코이들은 그에게 대항하여 동맹을 맺은후 그를 쓰러뜨렸습니다."
 
 #: simulation/data/civs/mace.jsonFactions[0].Heroes[2].Name
 msgid "Demetrios the Besieger"
@@ -1584,18 +1586,6 @@ msgid ""
 "Hellenistic culture."
 msgstr "알렉산더 대왕은 그의 새로운 제국 전역에 도서관을 설립했습니다. 이것들은 완전히 새로운 합성 문화, 즉 헬레니즘 문화에 대한 학습의 중심이 되었습니다."
 
-#: simulation/data/civs/mace.jsonStructures[2].Name
-msgid "Siege Workshop"
-msgstr "공성무기 제작소"
-
-#: simulation/data/civs/mace.jsonStructures[2].Special
-msgid "Constructs and upgrades all Macedonian siege engines."
-msgstr "마케도니아의 모든 공성 전차를 만들고 및 향상합니다."
-
-#: simulation/data/civs/mace.jsonStructures[2].History
-msgid "The Macedonians were innovators in area of siegecraft."
-msgstr "마케도니아인들은 포위 공격 분야에서 혁신가였습니다."
-
 #: simulation/data/civs/mace.jsonHistory
 msgid ""
 "Macedonia was an ancient Greek kingdom, centered in the northeastern part of"
@@ -1603,7 +1593,7 @@ msgid ""
 "Macedonian forces and allies took over most of the world they knew, "
 "including Egypt, Persia and parts of the Indian subcontinent, allowing a "
 "diffusion of Hellenic and eastern cultures for years to come."
-msgstr ""
+msgstr "마케도니아는 고대 그리스왕국으로 그리스 반도 북동부를 중심으로 했습니다. 알렉산더 대왕의 지휘아래 마케도니아 군대와 동맹국들은 이집트, 페르시아, 인도 아대륙 (대륙보다는 작지만 그린란드 정도의 크기를 가진 땅덩이) 의 일부를 포함하여 그들이 알고있는 세계의 대부분을 점령하여 수년 동안 헬레니즘 동양 문화의 확산을 수년 동안 허용했습니다."
 
 #: simulation/data/civs/maur.jsonName
 msgid "Mauryas"
@@ -1627,11 +1617,11 @@ msgid ""
 "commanded a standing army of 600,000 infantry, 9000 elephants, 8000 "
 "chariots, and 30,000 cavalry, making it arguably the largest army of its "
 "time."
-msgstr "마우리아 제국은 5 백만 평방 킬로미터의 면적에 걸쳐 수십개의 이전에 독립한 왕국을 포함했고, 인구는 6천만 명에 이르렀습니다. 마우리아의 통치자는 황제라는 제목의 황제를 지키고 60만 명의 보병, 9천 마리의 코끼리, 8천대의 전차, 3만 기병대의 상비군을 지명하여 그 시대의 가장 큰 군대로 만들었습니다."
+msgstr "마우리아 제국은 5백만 평방 킬로미터의 면적에 걸쳐 수십개의 이전에 독립한 왕국을 포함했고, 인구는 6천만 명에 이르렀습니다. 마우리아의 통치자는 황제라는 제목의 황제를 지키고 60만 명의 보병, 9천 마리의 코끼리, 8천대의 전차, 3만 기병대의 상비군을 지명하여 그 시대의 가장 큰 군대로 만들었습니다."
 
 #: simulation/data/civs/maur.jsonCivBonuses[1].Description
 msgid "The Mauryas enjoy access to 4 champions."
-msgstr "마우리아인들은 4명의 대표전사에 접근하는 것을 즐깁니다."
+msgstr "마우리아인들은 4명의 대표 전사에 접근하는 것을 즐깁니다."
 
 #: simulation/data/civs/maur.jsonCivBonuses[1].Name
 msgid "Kṣhatriya Warrior Caste."
@@ -1643,13 +1633,13 @@ msgid ""
 "orders) in Hinduism. Traditionally Kshatriya constitute the military and "
 "ruling elite of the Vedic-Hindu social system outlined by the Vedas and the "
 "Laws of Manu."
-msgstr ""
+msgstr "전사라는 의미의 크샤트리야 또는 카슈트리야는 힌두교의 4개의 바르나(사회 계층)중 하나입니다. 전통적으로 크샤트리야는 군인과 지배 정예트 계층으로 베다와 마누의 법전을 근거로 한 베다-힌두교 사회체제를 구성하고있습니다."
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Description
 msgid ""
-"Allied temples −50% resource costs and building time; temple technologies "
+"Allied Temples −50% resource costs and building time; Temple technologies "
 "−50% resource costs and research time."
-msgstr "동맹의 사원 짓는 자원비용과 건설 시간을 -50% 감소시킵니다; 사원 기술의 자원 비용과 연구시간을 -50% 감소합니다."
+msgstr "동맹의 사원 짓는 자원 비용과 건설 시간이 -50% 단축됩니다; 사원 기술의 자원 비용과 연구시간이 -50% 감소합니다."
 
 #: simulation/data/civs/maur.jsonTeamBonuses[0].Name
 msgid "Ashoka's Religious Support"
@@ -1666,43 +1656,35 @@ msgid "Chandragupta Maurya"
 msgstr "찬드라굽타 마우리아"
 
 #: simulation/data/civs/maur.jsonAINames[1]
+msgid "Bindusara Maurya"
+msgstr "빈두사라 마우리아"
+
+#: simulation/data/civs/maur.jsonAINames[2]
 #: simulation/data/civs/maur.jsonFactions[0].Heroes[1].Name
 msgid "Ashoka the Great"
 msgstr "아소카 대왕"
 
-#: simulation/data/civs/maur.jsonAINames[2]
-msgid "Ashokavardhan Maurya"
-msgstr "아소카바르드한 마우리아"
-
 #: simulation/data/civs/maur.jsonAINames[3]
-msgid "Acharya Bhadrabahu"
-msgstr "아차르야 바드라바후"
+msgid "Dasharatha Maurya"
+msgstr "다차라타 모리야"
 
 #: simulation/data/civs/maur.jsonAINames[4]
-msgid "Bindusara Maurya"
-msgstr "빈두사라 마우리아"
-
-#: simulation/data/civs/maur.jsonAINames[5]
-msgid "Dasaratha Maurya"
-msgstr "다사라타 마우리아"
-
-#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Samprati Maurya"
 msgstr "삼프라티 마우리아"
 
-#: simulation/data/civs/maur.jsonAINames[7]
-msgid "Salisuka Maurya"
-msgstr "살리수카 마우리아"
+#: simulation/data/civs/maur.jsonAINames[5]
+msgid "Shalishuka Maurya"
+msgstr "샬리슈카 모리야"
 
-#: simulation/data/civs/maur.jsonAINames[8]
+#: simulation/data/civs/maur.jsonAINames[6]
 msgid "Devavarman Maurya"
 msgstr "데바바르만 마우리아"
 
-#: simulation/data/civs/maur.jsonAINames[9]
-msgid "Satadhanvan Maurya"
-msgstr "사타드한반 마우리아"
+#: simulation/data/civs/maur.jsonAINames[7]
+msgid "Shatadhanvan Maurya"
+msgstr "샤타단반 모리야"
 
-#: simulation/data/civs/maur.jsonAINames[10]
+#: simulation/data/civs/maur.jsonAINames[8]
 msgid "Brihadratha Maurya"
 msgstr "브리하드라타 마우리아"
 
@@ -1710,7 +1692,7 @@ msgstr "브리하드라타 마우리아"
 msgid ""
 "Capture up to 5 Gaia elephants and garrison them in the Elephant Stables to "
 "gain up to a 25% bonus in cost and train time of elephant units."
-msgstr "최대 5 마리의 가이아 코끼리를 잡아서 코끼리 우리에 넣어두면 코끼리 유닛의 비용과 훈련 시간이 최대 25 %의 보너스를 얻습니다."
+msgstr "최대 5 마리의 야생 코끼리를 잡아서 코끼리 우리에 넣어두면 코끼리 유닛의 비용과 훈련 시간이 최대 25 %의 보너스를 얻습니다."
 
 #: simulation/data/civs/maur.jsonFactions[0].Technologies[1].Description
 msgid "Greater range and faster train time for Mauryan infantry archers."
@@ -1777,7 +1759,7 @@ msgid ""
 "Acharya Chanakya, contributed to such varied fields such as economics, "
 "religion, diplomacy, warfare, and good governance. Under the rule of Ashoka "
 "the Great, the empire saw 40 years of peace, harmony, and prosperity."
-msgstr ""
+msgstr "기원전 322년 찬드라굽타 마우리야에의해 설립된 마우리아 제국은 인도 아대륙의 대부분을 지배한 최초의 국가였고, 가장 광활하고 가장 인구가 많은 고대 제국 중 하나였습니다. 군부는 사거리가 긴 대나무 장궁, 맹렬한 여전사, 전차, 수천마리의 무장된 전투 코끼리를 사용하는 활잡이(궁수)를 사용하는 특징이있습니다.  그의 철학자, 특히 유명한 아차랴 차나캬는 경제, 종교, 외교, 전쟁, 훌륭한 정치와 같은 다양한 분야에 기여했습니다. 아쇼카 대왕의 통치 아래 제국은 40년간 평화, 조화, 번영을 누렸습니다."
 
 #: simulation/data/civs/pers.jsonName
 msgid "Persians"
@@ -1787,7 +1769,7 @@ msgstr "페르시아"
 msgid ""
 "The resource cost of training camel-mounted (trader) or horse-mounted units "
 "(cavalry) is reduced by 5% per animal (as appropriate) corralled."
-msgstr ""
+msgstr "낙타 탈것(상인) 또는 말 탈것(기병)의 양성 자원 비용이 같은 종류  (적절한) 동물 포획마다 -5% 감소합니다."
 
 #: simulation/data/civs/pers.jsonCivBonuses[0].Name
 msgid "Corral Camels and Horses"
@@ -1799,13 +1781,13 @@ msgid ""
 "accompanied by great success (most notably during the battle of Sardis in "
 "546 B.C.) The satrapy of Bactria was a rich source of 'two-hump' camels, "
 "while Northern Arabia supplied 'one-hump' camels."
-msgstr ""
+msgstr "페르시아인들이 몇가지 경우만 낙타를 이용했지만, 그것의 사용은 항상 큰 성공을 거두었습니다(가장 두드러진것은 기원전 546년 사르디스의 전투에서). 박트리아의 총독 영지는 '쌍봉' 낙타가 풍부했고, 반면 북부 아랍은 '단봉' 낙타를 공급했습니다."
 
 #: simulation/data/civs/pers.jsonCivBonuses[1].Description
 msgid ""
 "Persians have a +10% population cap bonus (e.g. 330 pop cap instead of the "
 "usual 300)."
-msgstr "페르시아는 최대 인구 보너스가 +10% 증가합니다 (예:통상이 300명이면 330명이 됩니다)."
+msgstr "페르시아는 최대 인구 보너스가 +10% 증가합니다 (예: 보통은 300명이면 330명이 됩니다)."
 
 #: simulation/data/civs/pers.jsonCivBonuses[1].Name
 msgid "Great King's Levy"
@@ -1819,11 +1801,11 @@ msgid ""
 "great tenacity. However while this was true the infantry were poor hand-to-"
 "hand, close combat fighters. Also, with the exception of the elite "
 "regiments, the Persian infantry was not a standing professional force."
-msgstr ""
+msgstr "페르시아는 전시에 대규모 보병의 소집을 아케메네스 왕조 제국의 엄청난 크기와 그것을 실현하는 방법에 의해 가능하게 실제로 했습니다. 일반적으로 페르시아 보병은 훈련이 잘되어있었고 대단히 끈기 있게 싸웠습니다. 그러나 보병은 가난해서 백병전을 수행한 근접 전투원들이었습니다. 또한 정예부대를 제외하고 페르시아 보병은 상비군이 아니었습니다."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Description
-msgid "Allied land traders +15% trade gain."
-msgstr "동맹의 육로 상인의 교역 수입을 +15% 증가합니다."
+msgid "Allied Land Traders +15% trade gain."
+msgstr "동맹의 육로 상인의 교역 수입이 +15% 증가합니다."
 
 #: simulation/data/civs/pers.jsonTeamBonuses[0].Name
 msgid "Royal Road"
@@ -1835,7 +1817,7 @@ msgid ""
 " common until the Persian period. Darius the Great standardized coined money"
 " and his golden coins (known as 'darics') became commonplace not only "
 "throughout his empire, but as far to the west as Central Europe."
-msgstr ""
+msgstr "주화는 기원전 7세기에 리디아인들에의해 발명되었지만 페르시아 시대까지는 그리 흔하지 않았었습니다. 다리우스 대왕은 표준화된 화폐와 그의 황금 동전( '다릭'이라고 알려진 동전)은 제국 전체뿐만아니라 멀리 중부 유럽의 서쪽까지 일반화 되었습니다."
 
 #: simulation/data/civs/pers.jsonAINames[0]
 msgid "Kurush II the Great"
@@ -1888,8 +1870,8 @@ msgid "Xsayarsa II"
 msgstr "끄샤야르샤 2세"
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Description
-msgid "Phoenician triremes gain the unique ability to train cavalry units."
-msgstr "페니키아 삼단 도선은 기병 유닛을 양성하는 특수 능력을 얻습니다."
+msgid "Phoenician triremes gain the unique ability to train cavalry."
+msgstr "페니키아 3단 도선은 기병을 양성하는 특수 능력을 얻습니다."
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[0].Name
 msgid "Naval Craftsmanship"
@@ -1904,7 +1886,7 @@ msgid ""
 "example, a canal was built in Egypt and a Persian navy was sent exploring "
 "the Indus river. According to Herodotus, some 300 ships in the Persian navy "
 "were retrofitted to carry horses and their riders."
-msgstr ""
+msgstr "초기 아케메네스 통치자들은 페르시아를 바다 지배하는 최초의 거대한 아시아 제국으로 만드는데 기여했습니다. 대왕은 다양한 바다의 백성들에게 호의적으로 행동하고 그들의 협력을 확보함과 동시에 다양한 해양 계획을 실현했습니다. 예를 들어 다리우스 대왕의 재위 기간 동안, 이집트에 운하가 건설되었고 페르시아 해군이 인더스 강을 탐험에 파견되었습니다. 헤로도토스에 따르면, 페르시아 해군의 약 300 척의 배가 말과 기수를 운반하기위해 개조되었다고 합니다."
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[1].Description
 msgid ""
@@ -1926,7 +1908,7 @@ msgstr "페르시아인들은 사르디스에서 수사로 가는 2700킬로미�
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[2].Description
 msgid "Reduces train time for Anusiya champion infantry by half."
-msgstr "아누시야 대표전사 보병의 훈련 시간을 절반으로 줄입니다."
+msgstr "아누시야 대표 전사 보병의 훈련 시간을 절반으로 줄입니다."
 
 #: simulation/data/civs/pers.jsonFactions[0].Technologies[2].Name
 msgid "Immortals"
@@ -1956,7 +1938,7 @@ msgid ""
 "Empire. He was also renown as a benevolent conqueror. (OP - Kurush). "
 "Technically the second ruler of the Persians by that name, and so appears as"
 " Kurush II on his documents and coins. Kurush I was his grandfather."
-msgstr ""
+msgstr "키루스 (고대 페르시아어: 쿠루스, 성경: 고레스, 재위 기간: 기원전 559년-530년)는 메디아 공주와 안샨 왕 사이의 아들로 태어났습니다. 당연하게도 '제국의 아버지' 라고 불리는 사이러스 대왕은 메디아 리디아, 바빌로니아, 박트리아를 정복하여 페르시아 제국이 성립했습니다. 그는 또한 자애로운 정복자로 유명했습니다. (OP - 쿠루쉬). 엄밀히 말하면 페르시아의 두 번째 통치자이며, 그의 문서와 동전에 쿠루쉬 2세로 등장합니다. 쿠루쉬 1세는 그의 할아버지 였습니다."
 
 #: simulation/data/civs/pers.jsonFactions[0].Heroes[0].Name
 msgid "Kurush II"
@@ -1968,7 +1950,7 @@ msgid ""
 "Parthia and Hyrcania; a great administrator as well as a decent general, "
 "Darius introduced the division of the empire into satrapies and conquered NW"
 " India, Thrace and Macedonia. He was called the 'Merchant of the Empire'."
-msgstr ""
+msgstr "비슈타스파(히스타스페스)의 아들인 다리우스 (재위 기간: 기원전 522년-486년)는 파르티아와 히르카니아의 총독으로 지냈습니다. 위대한 통치자이자 괜찮은 장군인 다리우스는 제국을 행정 구역으로 나누어, 북서 인도, 트라키아, 마케도니아를 정복했습니다. 그는 '제국의 상인'으로 불렸습니다."
 
 #: simulation/data/civs/pers.jsonFactions[0].Heroes[2].History
 msgid ""
@@ -1977,7 +1959,7 @@ msgid ""
 "extended Imperial rule into Chorasmia. Apart from his failed invasion of "
 "Greece, he was famous for his extensive building programme, especially at "
 "Persepolis."
-msgstr ""
+msgstr "크세르크스(재위 기간: 기원전 485-465년)은 다리우스 대왕과 키루스 대왕의 딸 아투사의 아들로 태어났습니다. 크세르크스는 유능한 행정가이며 제국 통치를 호라즘으로 확대시켰습니다. 그리스의 원정대의 실패와는 별개로, 그는 특히 페르세폴리스에서 광범위한 건설 계획으로 유명했습니다."
 
 #: simulation/data/civs/pers.jsonStructures[0].Name
 #: simulation/data/civs/sele.jsonStructures[1].Name
@@ -2020,7 +2002,7 @@ msgid ""
 "rule over various peoples with different customs, laws, religions and "
 "languages, and building a cosmopolitan army made up of contingents from each"
 " of these nations."
-msgstr ""
+msgstr "페르시아 제국은 아케메네스 왕조에 의해 통치되었을때, 고대 최대의 제국중 하나로, 전성기 때에는 동쪽은 인더스 계곡까에서 서쪽으로는 그리스 까지 펼쳐져있었습니다. 페르시아는 고대 세력의 제국 건설의 선구자이며, 다양한 관습, 법률, 종교, 언어를 가진 다양한 민족에 대한 중앙 집권적 통치를 성공적으로 시행했고, 이러한 각 국가의 선발자로 구성된 전 세계 군대를 창설했습니다."
 
 #: simulation/data/civs/ptol.jsonName
 msgid "Ptolemies"
@@ -2029,8 +2011,8 @@ msgstr "프톨레마이오스"
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Description
 msgid ""
 "The Ptolemies receive the Mercenary Camp, a Barracks that is constructed in "
-"neutral territory and trains mercenary soldiers."
-msgstr "프톨레마이오스는 중립 지역에 건설되고 용병들을 훈련시키는 병영인 용병 기지를 받습니다."
+"neutral territory and trains mercenaries."
+msgstr "프톨레마이오스는 중립 지역에 건설되어 용병을 훈련시키는 병영인 용병 기지를 받습니다."
 
 #: simulation/data/civs/ptol.jsonCivBonuses[0].Name
 msgid "Mercenary Army"
@@ -2047,7 +2029,7 @@ msgid ""
 "sometimes cheaply, sometimes not cheaply. This was of no matter, since Egypt"
 " under the Ptolemies was so prosperous as to be the richest of Alexander's "
 "successor states."
-msgstr ""
+msgstr "그레코-마케도니아의 프톨레마이오스 왕조는 많은 그리스인과 외국인 용병들에게 군사력을 의존하고있었습니다. 주로 이집트 원주민 부대의 충성심이 종종 의심되었기 때문이었습니다. 실제로, 한 국내 반란중에, 상 이집트는 수 십년 동안 프톨레마이오스의 손을 벗어나 있었습니다.  용병들은 종종 전장에 익숙해졌고, 때로는 싸게, 때로는 싸지 않지만, 그들의 충성심을 살 수 있었습니다.  그러나 이것은 문제가 되지않았습니다. 프톨레마이오스 왕조의 이집트는 알렉산더의 후계자중 너무 번창했고 가장 부유한 국가였기 때문이었습니다."
 
 #: simulation/data/civs/ptol.jsonCivBonuses[1].Description
 msgid "The Ptolemaic Egyptians receive 3 additional farming technologies."
@@ -2200,7 +2182,7 @@ msgstr "클레오파트라 7세 필로파토르"
 
 #: simulation/data/civs/ptol.jsonFactions[0].Name
 msgid "Ptolemaic Egyptians"
-msgstr "프톨레마이오스 이집트인"
+msgstr "프톨레마이오스 이집트"
 
 #: simulation/data/civs/ptol.jsonFactions[0].Description
 msgid "The great Greek-Macedonian dynastic rule over Ancient Egypt."
@@ -2212,7 +2194,7 @@ msgid ""
 "Maximum of 1 built. All Special Technologies and some regular city-phase "
 "technologies are researched here. Building one reduces the cost of all other"
 " remaining technologies by 10%."
-msgstr "최대 1개를 건설할수있습니다. 모든 특수기술 및 일부 정규 도시 기술이 여기에서 연구됩니다. 건물은 나머지 기술의 비용이 10% 절감됩니다."
+msgstr "최대 1채를 지을수 있습니다. 모든 특수기술 및 일부 정규 도시 기술이 여기에서 연구됩니다. 건물은 나머지 기술의 비용이 10% 절감됩니다."
 
 #: simulation/data/civs/ptol.jsonStructures[1].Name
 msgid "Stratópedo Misthophóron"
@@ -2221,8 +2203,8 @@ msgstr "스트라토페도 미스토포론"
 #: simulation/data/civs/ptol.jsonStructures[1].Special
 msgid ""
 "Must be constructed in neutral territory. Has no territory radius effect. "
-"Trains all 'mercenary' units."
-msgstr "반드시 중립 지역에서 건설되어야 합니다. 영토 반경 효과가 없습니다. 모든 '용병' 유닛을 양성합니다."
+"Trains mercenaries."
+msgstr "반드시 중립 지역에서 지어져야 합니다. 영토 반경 효과는 없습니다. 용병을 양성합니다."
 
 #: simulation/data/civs/ptol.jsonStructures[2].Name
 msgid "Lighthouse"
@@ -2248,7 +2230,7 @@ msgid ""
 "Ptolemaic Empire in Egypt during the Hellenistic period. Their rule lasted "
 "for 275 years, from 305 BC to 30 BC. They were the last dynasty of ancient "
 "Egypt."
-msgstr ""
+msgstr "프톨레마이오스 왕조는 헬레니즘 시대에 이집트에서 프톨레마이오스 제국을 통치한 마케도니아 그리스 왕실이었습니다. 그들의 통치는 기원전 305년에서 기원전 30년까지 275년간 지속되었습니다. 그들은 고대 이집트의 마지막 왕조였습니다."
 
 #: simulation/data/civs/rome.jsonName
 msgid "Romans"
@@ -2273,7 +2255,7 @@ msgstr "로마인들은 보통 방어를 위해 테스투도 또는 '거북이' 
 msgid ""
 "Any Roman citizen-soldier fighting within Roman territory gains a non-"
 "permanent +10% bonus in armor."
-msgstr "로마 영토 내에서 싸우는 로마 시민 군인은 갑옷에서 영구적이지 않은 +10% 보너스를 받습니다."
+msgstr "로마 영토 내에서 싸우는 로마 시민 군인은 방어력이 영구적이지 않지만 +10% 보너스를 받습니다."
 
 #: simulation/data/civs/rome.jsonCivBonuses[1].Name
 msgid "Citizenship"
@@ -2286,11 +2268,11 @@ msgid ""
 "peoples. It is said that harming a Roman citizen was akin to harming Rome "
 "herself, and would cause the entire might of Rome to fall upon the "
 "perpetrator."
-msgstr "로마 시민권을 고대 세계에서 매우 가치가 높았습니다. 로마 시민들의 기본 권리와 특권들은 다른 점령 주민들에게는 제공되지 않는 것이였습니다. 심지어 로마 시민을 해하는 일은 로마를 해하는것과 같으며, 로마 전체가 그 해친자를 잡으러 올수 있게 할수 있다고 하는 말도 있었습니다."
+msgstr "로마 시민권을 고대 세계에서 매우 가치가 높았습니다. 로마 시민들의 기본 권리와 특권들은 다른 점령 주민들에게는 제공되지 않는 것이였습니다. 심지어 로마 시민을 해하는 일은 로마를 해하는것과 같으며, 로마 전체가 그 해친자를 잡으러 올수 있게 할 수 있다고 하는 말도 있었습니다."
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry −20% training time."
-msgstr "동맹의 시민군 보병 양성 시간이 -20% 감소합니다."
+msgid "Allied Citizen Infantry −10% training time."
+msgstr "동맹의 시민 보병 훈련 시간이 -10% 감소합니다."
 
 #: simulation/data/civs/rome.jsonTeamBonuses[0].Name
 msgid "Conscription"
@@ -2305,7 +2287,7 @@ msgid ""
 "for a political career. Members of the Senate were called Conscript Fathers "
 "because of this, reflected in how the ordo equester was said to have been "
 "\"conscripted\" into the Senate."
-msgstr ""
+msgstr "많은 로마 군인들이 징집되어 병역을 수행했습니다. 지원자가 선호되는 시기에 로마는 매년 징병제도를 유지했습니다. 유사시 징병과 복무조건이 확대되었습니다. 공화국 로마에서 병역의 중요성이 매우 컸기 때문에 정치 경력을 위해 필수 조건이었습니다. 상원의원은 이때문에 원로원 의원이라고 불렸고, 귀족 기사도가 상원에 \"징집\"이 되었다고 하는것에 반영되었습니다. -- 마지막줄번역확인??"
 
 #: simulation/data/civs/rome.jsonAINames[0]
 msgid "Lucius Junius Brutus"
@@ -2377,7 +2359,7 @@ msgid ""
 "throughout its long history. The Romans lured enemies or neutral factions to"
 " their side by offering them certain privileges. In due period of time, "
 "friends as well as foes were subjugated."
-msgstr "'분열시키고 점령하라'는 로마의 긴 역사동안 유지되던 주 외교 정책이였습니다. 로마인들은 적이나 중립 진영을 어떤 특권을 조건으로 꾀어내 자신들의 편에 스게 했습니다. 이 기간동안, 로마의 친구나 적은 강제적으로 점령당했습니다."
+msgstr "'분열시키고 점령하라'는 로마의 긴 역사동안 유지되던 주 외교 정책이였습니다. 로마인들은 적이나 중립 진영을 어떤 특권을 조건으로 꾀어내 자신들의 편에 스게 했습니다. 이 기간 동안, 로마의 친구나 적은 강제적으로 점령당했습니다."
 
 #: simulation/data/civs/rome.jsonFactions[0].Heroes[0].History
 msgid ""
@@ -2401,7 +2383,7 @@ msgid ""
 "Greek culture and arts, which he enthusiastically promoted in Rome. He met "
 "his demise when his men were ambushed near Venusia. In honor of the respect "
 "the people held for him, Marcellus was granted the title of 'Sword of Rome.'"
-msgstr ""
+msgstr "카르타고와의 1차 전쟁에 군인, 2차 포에니 전쟁의 영웅, 그리고 크라스타디움에서 갈리아를 이겼습니다. 플루타르크는 그를 전쟁의 남자, 강인한 육체, 계속 싸울수있는 강철같은 의지를 가진 체질로 묘사했습니다. 장군으로서 그는 굉장히 유능했고, 스키피오 아프리카누스와 클라우디우스 네로와 함께 2차 포에니 전쟁에서 가장 유능한 로마의 장군이었습니다. 그의 군사적 업적 외에도 마르셀루스는 로마에서 열광적으로 선전한 헬레니즘 문화와 예술의 애호가 였습니다. 그의 최후는 그의 군대가 베누시아 부근에서 복병에게 습격을 당해 할때였습니다. 사람들이 그에대한 존중의 명예를 그를 유지하기위해 마르셀루스는 '로마의 검'이라는 칭호를 받았습니다."
 
 #: simulation/data/civs/rome.jsonFactions[0].Heroes[1].Name
 msgid "Marcus Claudius Marcellus"
@@ -2439,7 +2421,7 @@ msgid ""
 "execution. It has a turf wall, and it's surrounded by a canal filled with "
 "water whenever possible for extra defense. Many towns started up as bigger "
 "military camps to evolve to more complicated cities."
-msgstr ""
+msgstr "때로는 군대가 행군하는 경로를 따라 마련한 임시 야영지이기도 했고, 다른 때는 방어적이거나 공격적인 건축물이기도 했습니다. 동쪽이나 적이든 앞을 향해야 하는 사령관의 문 안에서, 백인대의 천막이나 대대(6백인대)의 천막을 치고, 드라코(대대의 군대깃발)와 다른 군대 깃발을 걸어둡니다. 거대 문은 야영지 뒤쪽에 사령관과 직접 마주하고 있고, 이를통해 처벌, 집행을 위해 임명된 장소로 지휘됩니다. 야영지는 잔디의 벽이 있고, 가급적이면 벽을 둘러싸는 물을 가득 채운 해자로 방어를 강화합니다. 많은 작은 도시들이 더 복잡한 도시로 발전하기 위해 더 큰 군대 야영지로 성장했습니다. -- 번역확인??"
 
 #: simulation/data/civs/rome.jsonStructures[1].Name
 msgid "Murus Latericius"
@@ -2462,7 +2444,7 @@ msgid ""
 "nations on earth for almost 800 years. The Romans were the supreme builders "
 "of the ancient world, excelled at siege warfare and had an exquisite "
 "infantry and navy."
-msgstr ""
+msgstr "로마는 고대 세계에서 가장 큰 제국을 지배했으며, 최 전성기때는 스코틀랜드 남부에서 사하라 사막까지 절정에 달했고, 당시 세계 인구의 4분의 1에 해당하는 6천만에서 8천만명에 이르는 고대 최대의 제국중 하나를 장악햇습니다. 로마는 고대 세계 최고의 건축 기술을 가지고 있었고 공성전이 뛰어나 강력한 보병과 해군을 거느리고 있었습니다. 또한 로마는 거의 800년 동안 지구상에서 가장 강력한 국가 중 하나로 남아있었습니다."
 
 #: simulation/data/civs/sele.jsonName
 #: simulation/data/civs/sele.jsonFactions[0].Name
@@ -2478,13 +2460,13 @@ msgstr "이것은 셀레우코스 확장 건축물인 클레로우키아 또는 
 
 #: simulation/data/civs/sele.jsonCivBonuses[0].Name
 msgid "Cleruchy"
-msgstr "크레루치"
+msgstr "클레루키"
 
 #: simulation/data/civs/sele.jsonCivBonuses[1].Description
 msgid ""
 "Choose between Traditional Army and Reform Army technologies that unlock "
 "different Champions."
-msgstr "다른 육군을 해방시킬 수 있는 전통적인 육군과 개혁 육군 기술 중에서 선택합니다."
+msgstr "다른 대표 전사의 잠금 해제하는 전통적인 전통적인 육군과 개혁 육군 기술 중에서 선택합니다."
 
 #: simulation/data/civs/sele.jsonCivBonuses[1].History
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[1].History
@@ -2496,11 +2478,11 @@ msgid ""
 " the cavalry arm. War with the Romans from the West and invasions from the "
 "Galatians also forced the Seleucids to reform their infantry regiments to be"
 " more flexible."
-msgstr ""
+msgstr "셀레우코스 왕조와 후계자들의 분쟁은 기원전 3 ~ 2세기에 걸쳐 발발했습니다.  파르티아와 같은 동부 신흥 세력과 박트리아 같은 주변부의 완충 지대가 끊임없는 반란으로 셀레우코스는 군대를 개혁하고 전술, 특히 기병의 장비에 대해 바꾸게 되었습니다. 서부 로마와의 전쟁과 갈라티아로부터 침입 또한 셀레우코스에 보병 연대를 보다 유연하게 개혁하도록 강요했습니다."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Description
-msgid "Allied civil centers −20% resource costs."
-msgstr "동맹의 시민 회관의 자원 비용을 -20% 감소합니다."
+msgid "Allied Civil Centers −20% resource costs."
+msgstr "동맹의 시민 회관 자원 비용이 -20% 감소합니다."
 
 #: simulation/data/civs/sele.jsonTeamBonuses[0].Name
 msgid "Syrian Tetrapolis"
@@ -2658,7 +2640,7 @@ msgid ""
 "alliance, he married his daughter to Chandragupta. In return, Chandragupta "
 "gifted Seleucus a corps of 500 war elephants, which would prove a decisive "
 "military asset for Seleucus as he fought the rest of Alexander's successors."
-msgstr ""
+msgstr "셀레우코스 1세 승리왕은 인도 펀자브 지방에서 기원전 305년 침공하여 마우리아 제국 건국자인 찬드라 굽타 마우리아(산드로코토스)와 대치했습니다. 찬드라 굽타는 60만명의 군대와 9천마리의 전쟁 코끼리들로 이루어진 군대를 투입했다고 합니다.(플리니우스, 박물지 6권 22.4) 셀레우코스의 침공은 실패로 끝나고, 두 강대국은 평화를 맺고 동맹을 공식화하기 위해 그의 딸을 찬드라 굽타에게 시집보냈습니다. 그 답례로 찬드라굽타는 셀레우코스에게 500마리의 전쟁 코끼리 군단을 제공했습니다. 셀레우코스가 알렉산더의 나머지 후계자들과 싸웠을때 진가를 발휘했고, 셀레우코스에게 결정적인 군사적 자산이 되었습니다."
 
 #: simulation/data/civs/sele.jsonFactions[0].Technologies[3].History
 msgid ""
@@ -2676,7 +2658,7 @@ msgid ""
 "were the most extensive in Asia after that of Alexander. The whole region "
 "from Phrygia to the Indus was subject to Seleucus. — Appian, 'The Syrian "
 "Wars'."
-msgstr ""
+msgstr "늘 이웃 국가들을 노리고, 막강한 무력과 회의에 대한 교묘한 설득으로 그(셀레우코스)는 메소포타미아, 아르메니아, '셀레우시드' 카파도키아, 페르시스, 파르티아, 박트리아, 아라비아, 타푸리아, 소그디아, 아라코시아, 히르카니아 등 알렉산더에게 정복된 이웃들을 산하에 담아 멀리 인더스강까지 제국의 경계를 확장하고 알렉산더 제국 이후 아시아에서 최대 규모로 만들었습니다. 프리기아에서 인더스까지 전 지역이 셀레우코스의 지배하에 있었습니다. —  아피아노스 '시리아 전쟁'."
 
 #: simulation/data/civs/sele.jsonFactions[0].Heroes[0].Name
 msgid "Seleukos A' Nikator"
@@ -2693,7 +2675,7 @@ msgid ""
 "Achaean League and the Kingdom of Pergamon banded together with the Romans "
 "to defeat him at the Battle of Magnesia, forever burying the dream of "
 "reuniting Alexander's empire."
-msgstr ""
+msgstr "안티오코스는 통치 초기에 곤경에 처한 왕국을 물려받았습니다. 붕괴 직전부터 그는 셀레우코스 제국을 다시 결합하기위해 열심히 싸웠습니다. 박트리아와 파르티아의 반항적인 동부 총독은 일시적으로 동쪽 국경을 확보하여 굴복하게 만들었습니다. 그는 해방의 구실로 그리스를 침략함으로써 조상의 꿈을 성취하려고 시도하면서 어머니 그리스에 관심을 돌렸습니다. 아카이아 연맹과 페르가몬 왕국은 로마인들과 함께 마그네시아 전투에서 그를 물리 치고 알렉산더 제국을 재결합시키려는 꿈을 영원히 묻어 버렸다."
 
 #: simulation/data/civs/sele.jsonFactions[0].Heroes[1].Name
 msgid "Antiokhos G' Megas"
@@ -2708,7 +2690,7 @@ msgid ""
 "conquest of Egypt (twice), which was halted by the threat of Roman "
 "intervention, and the beginning of the Jewish revolt of the Maccabees. He "
 "died of sudden illness while fighting off a Parthian invasion from the East."
-msgstr ""
+msgstr "안티오코스 4세 에피파네스(현신왕)는 안티오코스 3세의 아들이자 셀레우코스 4세 필로파토르(애부왕)의 형제입니다. 원래는 미트라다테스라는 이름이었으나, 즉위 때 혹은 형인 안티오코스의 사후에 안티오코스로 바꾼 것 같습니다.  그의 재위중 두드러진 사건은 이집트를 (두번) 거의 정복할뻔 했지만, 로마의 개입 압력과 마카베오의 유대인들의 반란때문에 포기한것을 들수 있습니다. 그는 동쪽에서 파르티아 침공을 물리치다가 갑작스런 병으로 죽었습니다."
 
 #: simulation/data/civs/sele.jsonFactions[0].Heroes[2].Name
 msgid "Antiokhos D' Epiphanes"
@@ -2721,8 +2703,8 @@ msgid ""
 msgstr "알렉산더의 옛 제국의 동부를 지배했던 마케도니아-그리스 왕조."
 
 #: simulation/data/civs/sele.jsonStructures[1].Special
-msgid "Trains all cavalry units except Citizen-Militia Cavalry."
-msgstr "시민의용군 기병을 제외하고 모든 기병 유닛을 양성합니다."
+msgid "Trains all cavalry except citizen-soldier cavalry."
+msgstr "시민 군인 기병을 제외하고 모든 기병 유닛을 양성합니다."
 
 #: simulation/data/civs/sele.jsonStructures[2].Name
 msgid "Military Colony"
@@ -2747,7 +2729,7 @@ msgid ""
 "manpower for the imperial Seleucid army. A side effect of this system was "
 "that it drained the Greek homeland of military-aged men, a contributing "
 "factor to Greece's eventual conquest by Rome."
-msgstr ""
+msgstr "셀레우코스 왕들은 그리스, 마케도니아, 갈라티아(갈레스), 크레탄, 트라키아인 모두를 초대하여 제국의 광대한 영토 내에 이주하도록 불렀습니다. 그들은 클레루키아(클레로우키아)라고 불리는 군사 식민지에 정착했습니다. 이 협정에 따라 정착민들은 토지 또는 클레로스를 부여받았고, 그 대신 소집되면 대왕의 군대에서 복무할 의무가 있었습니다. 이 제도로 시리아 왕들에게 생계와 재산을 빚지고 제국 셀레우코스 군대의 동원 능력을 늘리는데 도움을 준 중산층의 군부 정착민들을 만들게 되었습니다. 이 제도의 부작용은 그리스 본토의 징집 연령의 남성이 부족하게된것으로, 그리스가 결국 로마에 정복 될 수 있는 요인이 되었습니다."
 
 #: simulation/data/civs/sele.jsonHistory
 msgid ""
@@ -2770,7 +2752,7 @@ msgid ""
 "and run away before a single shield clashed. 'Othismos' refers to the point "
 "in a phalanx battle where both sides try to shove each other out of "
 "formation, attempting to breaking up the enemy lines and routing them."
-msgstr ""
+msgstr "스파르타는 밀집대형인 팔랑크스 대형으로 전투의 달인 이었습니다. 스파르타는 그들의 규율에 대해 너무 두려워서 적군들은 때때로 단 하나의 방패가 부딪치기도 전에 도망쳤습니다. '오티스모스' 란 밀집진형 전투에서 양쪽 군이 서로를 밀어붙여 대열을 잃고 무너지는 시점에서, 그 목적은 적의 전선을 무너뜨리고 길을 여는것입니다."
 
 #: simulation/data/civs/spart.jsonCivBonuses[1].Description
 msgid ""
@@ -2789,8 +2771,8 @@ msgid ""
 msgstr "신화적인 입법가 리쿠르고스가 쓴 헌법에 따라 아고게라는 기관이 세워졌는데, 여기서 스파르타인들은 6세 때부터 스파르타 국가를 방어하는 우월한 전사로 양성 하였습니다."
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Description
-msgid "Allied citizen-soldier infantry spearmen +10% health."
-msgstr "동맹의 시민군 소속 창 보병의 체력이 +10% 증가합니다."
+msgid "Allied Citizen Infantry Spearmen +10% health."
+msgstr "동맹의 시민 창 보병의 체력이 +10% 증가합니다."
 
 #: simulation/data/civs/spart.jsonTeamBonuses[0].Name
 msgid "Peloponnesian League"
@@ -2854,7 +2836,7 @@ msgid ""
 "Spartan female citizens cannot be captured and will doggedly fight back "
 "against any attackers. They are also capable of constructing defense towers "
 "and palisades."
-msgstr "스파르타 여성 시민들은 체포 할 수 없으며 어떤 공격자와도 싸울 것입니다. 그들은 또한 방어탑과 궁전ehsms 울타리 을 지을 수 있습니다."
+msgstr "스파르타 여성 시민들은 체포할 수 없으며 어떤 공격자와도 싸울 것입니다. 그들은 또한 방어탑과 궁전ehsms 울타리 을 지을 수 있습니다."
 
 #: simulation/data/civs/spart.jsonFactions[0].Technologies[0].Name
 msgid "Feminine Mystique"
@@ -2869,7 +2851,7 @@ msgid ""
 "lost battle against Pyrrhus of Epirus they overnight built an earthen "
 "rampart to protect the city while their men slept in preparation for the "
 "next day's siege."
-msgstr ""
+msgstr "스파르타의 여성들은 고대 세계에서 가장 자유로운 사람들이었습니다. 그들은 땅과 노예를 소유할 수 있고 스파르타의 남자들처럼 벌거벗은 채 운동할 수도 있었습니다. 스파르타의 여성들만이 진짜 남자를 낳았다고 합니다. 이런 강철의 마음을 가진 여성들은 도시를 몇번 이나 파멸에서 구했습니다. 예를 들어 에피루스의 피루스와의 전투에서 패배한 후, 남자들이 다음날 포위 공격을 준비하기위해 잠을 자는 동안 도시를 보호하기 위해 하룻밤 사이에 흙 성벽을 쌓고 여자들은 철야로 흙이 성벽을 도시를 지켰습니다."
 
 #: simulation/data/civs/spart.jsonFactions[0].Technologies[1].Description
 msgid "Units in phalanx formation move faster."
@@ -2919,7 +2901,7 @@ msgid ""
 "Because Brasidas has sponsored their citizenship in return for service, "
 "Helot Skirmishers fight longer and harder for Sparta while within range of "
 "him."
-msgstr "부라시다스 임무 대가로 시민권의 보증인을 맡은 때문에 헤이로타이의 척후병은 그의 시야 안에있는 동안은 오랫동안 격렬 스파르타를 위해 싸웠습니다. "
+msgstr "부라시다스 임무 대가로 시민권의 보증인을 맡은 때문에 헤이로타이의 척후병은 그의 시야 안에있는 동안은 오랫동안 격렬 스파르타를 위해 싸웠습니다."
 
 #: simulation/data/civs/spart.jsonFactions[0].Heroes[2].History
 msgid ""
@@ -2932,7 +2914,7 @@ msgid ""
 " the Battle of Megalopolis, the Macedonians prevailed in a long and bloody "
 "battle. Much like Leonidas 150 years earlier, instead of surrendering, Agis "
 "made a heroic final stand in order to buy time for his troops to retreat."
-msgstr ""
+msgstr "아기스 3세는 에우리폰티드 가문의 20번째 스파르타 왕이었습니다. 알렉산더 대왕이 아시아로의 대원정으로 부재중인 사이에, 아기스는 남부 그리스 제국의 동맹을 서둘러 정리해 마케도니아의 패권 타도에 일어섰습니다. 크레타 섬을 스파르타의 속국으로 확보한 후, 아기스는 마케도니아의 동맹국인 펠로포네스에서 메가로 폴리스시를 포위하기위해 이동했습니다. 마케도니아 섭정인 안티파트로스는 이 새로운 봉기를 막기 위해 군대를 이끌고 있었습니다. 메가로폴리스 전투에서 마케도니아는 오랫동안 피비린내 나는 전투를 했고 결국 승리했습니다. 150년전 레오니다스와 마찬가지로, 항복하는 대신, 아기스는 영웅적인 마지막 저항을 보여주어 아군의 철수 시간을 벌었습니다."
 
 #: simulation/data/civs/spart.jsonFactions[0].Heroes[2].Name
 msgid "Agis III"
@@ -2960,4 +2942,4 @@ msgid ""
 " at age seven. Thanks to its military might, Sparta led a coalition of Greek"
 " forces during the Greco-Persian Wars, and won over Athens in the "
 "Peloponnesian Wars, though at great cost."
-msgstr ""
+msgstr "스파르타는 고대 그리스의 유명한 도시 국가였고, 기원전 650년경 부터 육지에 지배적인 군사력을 가지고 있었습니다. 스파르타 문화는 군사훈련과 우수성에 집착했으며, 남자는 7세부터 시작하는 엄격한 훈련을 시켰습니다. 강력한 군사력 덕분에, 스파르타는 그리스 군대의 연합을 이끌어 그레코-페르시안 전쟁을 치렀고, 펠레포네소스 전쟁에서 엄청난 희생을 치뤘지만 아테네에 승리했습니다."

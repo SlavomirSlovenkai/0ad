@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_defensive_wall_gate">
   <Armour>
-    <Hack>15.0</Hack>
-    <Pierce>35.0</Pierce>
-    <Crush>5.0</Crush>
+    <Hack>15</Hack>
+    <Pierce>35</Pierce>
+    <Crush>5</Crush>
     <Foundation>
-      <Hack>4.0</Hack>
-      <Pierce>7.0</Pierce>
-      <Crush>3.0</Crush>
+      <Hack>4</Hack>
+      <Pierce>7</Pierce>
+      <Crush>3</Crush>
     </Foundation>
   </Armour>
   <BuildRestrictions>
     <Territory>own neutral enemy</Territory>
   </BuildRestrictions>
+  <Cost>
+    <Resources>
+      <wood>80</wood>
+      <stone>0</stone>
+    </Resources>
+  </Cost>
   <Footprint>
     <Square width="40.0" depth="8.0"/>
     <Height>7.0</Height>
@@ -23,12 +29,12 @@
   <Identity>
     <Civ>rome</Civ>
     <GenericName>Siege Wall Gate</GenericName>
-    <SpecificName>Porta Circummunitionis</SpecificName>
+    <SpecificName>Porta Circummūnītiōnis</SpecificName>
     <Classes datatype="tokens">SiegeWall</Classes>
     <Icon>structures/wooden_gate.png</Icon>
   </Identity>
   <Loot>
-    <wood>15</wood>
+    <wood>16</wood>
     <stone>0</stone>
   </Loot>
   <Obstruction>

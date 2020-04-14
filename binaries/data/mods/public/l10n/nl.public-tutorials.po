@@ -12,13 +12,15 @@
 # 魔大农, 2018
 # Andreas I <andreasi@tutanota.com>, 2019
 # Freagarach . <freagarach@gmail.com>, 2019
+# Piers T <pierstitus@gmail.com>, 2019
+# Paul Staring <ooypunk@hotmail.com>, 2019
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: 0 A.D. — Empires Ascendant\n"
 "POT-Creation-Date: 2019-03-22 09:45+0100\n"
 "PO-Revision-Date: 2017-06-04 12:59+0000\n"
-"Last-Translator: Freagarach . <freagarach@gmail.com>, 2019\n"
+"Last-Translator: Paul Staring <ooypunk@hotmail.com>, 2019\n"
 "Language-Team: Dutch (https://www.transifex.com/wildfire-games/teams/17418/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -228,7 +230,7 @@ msgstr ""
 #: maps/tutorials/Introductory_Tutorial.js:282
 msgid "The enemy is coming. Train more soldiers to fight off the enemies."
 msgstr ""
-"De vijand naderd. Rekruteer meer soldaten om de vijandelijke aanval af the "
+"De vijand nadert. Rekruteer meer soldaten om de vijandelijke aanval af the "
 "slaan."
 
 #: maps/tutorials/Introductory_Tutorial.js:290
@@ -516,6 +518,8 @@ msgid ""
 "Now that the rally point is set, we can produce additional units and they "
 "will do their assigned task automatically.\n"
 msgstr ""
+"Nu het verzamelpunt is toegewezen, kunnen we extra manschappen rekruteren en"
+" gaan ze automatisch aan het werk met de aangewezen taak. \n"
 
 #: maps/tutorials/starting_economy_walkthrough.js:98
 msgid ""
@@ -653,6 +657,11 @@ msgid ""
 " For that purpose, right-click on the Civic Center when it is selected (and "
 "the flag icon indicating the rally point is crossed out)."
 msgstr ""
+"Onderwijl hebben we genoeg werkers aan het Hout verzamelen. We zouden het "
+"huidige verzamelingspunt van het Beschavingscentrum moeten verplaatsen van "
+"het verzamelen van Hout. Om dat te doen, klik rechts op het "
+"Beschavingscentrum wanneer deze geselecteerd is (en het vlag-icoon welke het"
+" verzamelingspunt aangeeft is doorkruist)."
 
 #: maps/tutorials/starting_economy_walkthrough.js:192
 msgid "The units should be ready soon.\n"
@@ -772,6 +781,13 @@ msgid ""
 "click on the cavalry unit icon of the selection panel at the bottom of the "
 "screen to remove the cavalry unit from the current selection."
 msgstr ""
+"Als u probeert de drie inactieve vrouwelijke burgers te selecteren door te "
+"klikken en een rechthoek over ze heen te slepen, selecteert u misschien per "
+"ongeluk extra eenheden. Houd, om dat te voorkomen, de I toets ingedrukt. "
+"Hierdoor worden alleen inactieve eenheden geselecteerd. Als u per ongeluk "
+"een ruiter selecteert, houdt dan Ctrl ingedrukt en klik op het cavalerie "
+"icoon in het selectiepaneel aan de onderkant van het scherm om de ruiter te "
+"verwijderen uit de huidige selectie."
 
 #: maps/tutorials/starting_economy_walkthrough.js:275
 msgid ""
@@ -829,6 +845,11 @@ msgid ""
 "sent by a rally point will help building it, while they will gather it when "
 "built."
 msgstr ""
+"Een akker kan door maximaal vijf landbouwers bewerkt worden. Selecteer het "
+"Beschavingscentrum en maak een verzamelpunt aan op een akker door rechts te "
+"klikken om extra verzamelaars toe te voegen. Zolang de akker nog niet "
+"afgebouwd is zullen de nieuwe werkers mee helpen met bouwen, zodra het af is"
+" zullen ze gaan verzamelen."
 
 #: maps/tutorials/starting_economy_walkthrough.js:322
 msgid "Select the Civic Center and right-click on the field."
@@ -867,6 +888,12 @@ msgid ""
 "Hover the cursor over them to see their costs and effects and click on the "
 "one you want to research."
 msgstr ""
+"De Landbouw, bijvoorbeeld, kan verbeterd worden door een technologie te "
+"onderzoeken in de boerderij. Selecteer de boerderij en kijk naar het "
+"productiepaneel rechtsonder. U zult daar verschillende onderzoekbare "
+"technologieën zien. Beweeg de muis er overheen om te zien hoe duur het "
+"onderzoek ervan is en wat de effecten ervan zijn, en klik op degene die u "
+"wilt onderzoeken."
 
 #: maps/tutorials/starting_economy_walkthrough.js:371
 msgid ""
@@ -874,6 +901,10 @@ msgid ""
 "many more units and buildings. Select the Civic Center and hover the cursor "
 "over the Town Phase icon to see what is still needed.\n"
 msgstr ""
+"We moeten ons voorbereiden om een fase verder te gaan, naar Stadsfase, dat "
+"veel meer eenheden en gebouwen zal ontsluiten. Selecteer het "
+"Beschavingscentrum en beweeg de muis over het Stadsfase-icoon om te zien wat"
+" daar nog voor nodig is."
 
 #: maps/tutorials/starting_economy_walkthrough.js:372
 msgid ""
@@ -881,6 +912,9 @@ msgid ""
 " an economic tutorial, it is nonetheless useful to be prepared for defense "
 "in case of attack, so let's build Barracks.\n"
 msgstr ""
+"We hebben nu genoeg grondstoffen, maar er mist nog een gebouw. Ook al is dit"
+" een economische oefening, desalniettemin is het handig om voorbereid te "
+"zijn in het geval van een aanval, laten we daarom nu een Kazerne bouwen.\n"
 
 #: maps/tutorials/starting_economy_walkthrough.js:373
 msgid ""
@@ -889,6 +923,10 @@ msgid ""
 "panel and then lay down a foundation not far from your Civic Center where "
 "you want to build."
 msgstr ""
+"Selecteer vier uw soldaten en vraag hen om een Kazerne te bouwen: evenzoals "
+"eerder, begin door het selecteren van de soldaten, klik op het Kazerne icoon"
+" in het productie paneel en leg vervolgens de fundering niet ver van uw "
+"Beschavingscentrum waar u bouwen wilt."
 
 #: maps/tutorials/starting_economy_walkthrough.js:384
 msgid ""
@@ -898,12 +936,20 @@ msgid ""
 " on it (you should see a hammer icon). Then produce two more builders by "
 "clicking on the hoplite icon twice."
 msgstr ""
+"Laten we wachten tot de Kazerne gebouwd is. Omdat de constructie hiervan "
+"lang kan duren, kunnen we twee soldaten toevoegen om het bouwen sneller te "
+"laten gaan. Om dit te doen selecteren we het Beschavingscentrum en zetten we"
+" een verzamelpunt op de Kazernefundering door hier met de rechtermuisknop op"
+" te klikken. Produceer daarna twee nieuwe bouwers door tweemaal op het "
+"Hopliet-icoon te klikken."
 
 #: maps/tutorials/starting_economy_walkthrough.js:394
 msgid ""
 "You should now be able to research Town Phase. Select the Civic Center and "
 "click on the technology icon.\n"
 msgstr ""
+"U zou de Stadsfase nu moeten kunnen onderzoeken. Selecteer het "
+"Beschavingscentrum en klik op het technologie icoon.\n"
 
 #: maps/tutorials/starting_economy_walkthrough.js:395
 msgid ""
@@ -934,6 +980,12 @@ msgid ""
 "were gathering Wood, so they may still carry some Wood which would be lost "
 "when starting to gather another resource."
 msgstr ""
+"Om dit te doen kunnen we drie Burgersoldaten selecteren en rechtsklikken op "
+"de Steenmijn ten westen van het Beschavingscentrum (de muispijl verandert "
+"wanneer u deze over de Steenmijn beweegt terwijl de soldaten geselecteerd "
+"zijn). Echter, deze soldaten waren Hout aan het verzamelen, dus dit kunnen "
+"ze nog steeds bij zich dragen en dit zou verloren gaan wanneer ze een andere"
+" grondstof zouden gaan verzamelen."
 
 #: maps/tutorials/starting_economy_walkthrough.js:415
 msgid ""
@@ -943,6 +995,12 @@ msgid ""
 "their Wood and then hold Shift and right-click on the Stone mine to gather "
 "it.\n"
 msgstr ""
+"Dus moeten we hen opdracht geven om onderweg hun Hout in het "
+"Beschavingscentrum achter te laten. Om dit te doen houden we de Shift-knop "
+"ingedrukt terwijl we klikken om daarmee de opdrachten in de wachtrij te "
+"zetten: selecteer je soldaten, houd Shift ingedrukt en rechtsklik op het "
+"Beschavingscentrum om daar het Hout achter te laten, daarna houden we Shift "
+"ingedrukt en rechtsklikken we op de Steenmijn om dit te gaan verzamelen.\n"
 
 #: maps/tutorials/starting_economy_walkthrough.js:416
 msgid ""

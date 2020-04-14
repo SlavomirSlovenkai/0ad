@@ -3,9 +3,9 @@
   <Identity>
     <Civ>brit</Civ>
     <SelectionGroupName>units/brit_cavalry_javelinist_b</SelectionGroupName>
-    <SpecificName>Gaisaredos</SpecificName>
+    <SpecificName>Marcacos</SpecificName>
     <GenericName>Raiding Cavalry</GenericName>
-    <Icon>units/celt_cavalry_javelinist.png</Icon>
+    <Icon>units/brit_cavalry_javelinist.png</Icon>
   </Identity>
   <Promotion>
     <Entity>units/brit_cavalry_javelinist_a</Entity>
